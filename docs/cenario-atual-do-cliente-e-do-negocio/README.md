@@ -1,0 +1,1 @@
+# Cenário Atual e Negócio
