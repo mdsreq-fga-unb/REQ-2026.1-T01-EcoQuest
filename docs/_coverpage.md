@@ -6,4 +6,4 @@ Documentação Oficial de Engenharia de Requisitos.
 Projeto Acadêmico - Universidade de Brasília (UnB).
 
 [Iniciar Jornada](/cenario-atual-do-cliente-e-do-negocio/)
-[Visão Geral](#Visão-geral-do-ecoquest)
+[Visão Geral](/README.md)

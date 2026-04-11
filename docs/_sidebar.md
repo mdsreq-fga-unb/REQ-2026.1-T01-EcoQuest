@@ -1,8 +1,8 @@
-* [🌱 **EcoQuest Home**](/)
+* [🌱 **EcoQuest Home**](#/)
 
 * **Visão de Negócio**
-  * [Cenário Atual](cenario-atual-do-cliente-e-do-negocio/Cenario-Atual.md)
-  * [Solução Proposta](solucao-proposta/Solucao-Proposta.md)
+  * [Cenário Atual](cenario-atual-do-cliente-e-do-negocio/README.md)
+  * [Solução Proposta](solucao-proposta/README.md)
 
 * **Engenharia de Software**
   * [Estratégias de Engenharia](estrategias-de-engenharia-de-software/)
