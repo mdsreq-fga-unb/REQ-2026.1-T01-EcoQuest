@@ -1,5 +1,3 @@
-* [🌱 **EcoQuest Home**](#)
-
 * **Visão de Negócio**
   * [Cenário Atual](cenario-atual-do-cliente-e-do-negocio/README.md)
   * [Solução Proposta](solucao-proposta/README.md)

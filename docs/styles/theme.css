@@ -60,3 +60,9 @@ body {
   font-weight: bold;
   border-right: 3px solid var(--eco-primary);
 }
+
+h1.app-name img {
+  max-width: 250px; 
+  height: auto;     
+  margin-top: 15px; 
+}
