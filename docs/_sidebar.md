@@ -1,4 +1,4 @@
-* [🌱 **EcoQuest Home**](#/)
+* [🌱 **EcoQuest Home**](#)
 
 * **Visão de Negócio**
   * [Cenário Atual](cenario-atual-do-cliente-e-do-negocio/README.md)

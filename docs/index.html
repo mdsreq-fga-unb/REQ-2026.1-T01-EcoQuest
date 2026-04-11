@@ -15,23 +15,17 @@
   <div id="app">Carregando o universo EcoQuest...</div>
   
   <script>
-    // Configurações globais
-    window.$docsify = {
+   window.$docsify = {
       name: 'EcoQuest',
       repo: 'https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-EcoQuest', 
       
+      homepage: 'README.md',
       coverpage: '_coverpage.md',
-      
-      loadSidebar: true,
-
-      loadNavbar: true,
-      
+      loadSidebar: '_sidebar.md',
+      loadNavbar: '_navbar.md',
+  
       subMaxLevel: 3,
-      
-      routerMode: 'history', 
-      
       themeColor: '#2E7D32',
-      
       auto2top: true
     }
   </script>

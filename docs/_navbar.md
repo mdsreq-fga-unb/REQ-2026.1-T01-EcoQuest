@@ -1,4 +1,4 @@
-* [Início](/)
+* [Início](#/)
 
 * [Repositório GitHub](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-EcoQuest)
 * [EcoQuest]()
