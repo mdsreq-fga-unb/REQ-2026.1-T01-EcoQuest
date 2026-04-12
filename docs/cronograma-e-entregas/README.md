@@ -14,7 +14,7 @@ O projeto inicia com um foco exploratório e iterativo. Contudo, após as fases 
 | (20/04 a 26/04) | Sprint 2 - Análise e Consenso | Resolução de ambiguidades e estruturação dos requisitos com a cliente. |
 | (27/04 a 03/05) | Sprint 3 - Declaração e Sign-off | Fechamento do escopo. Marco Crítico: O cliente aprova a lista de requisitos.  |
 | (04/05 a 10/05) | Sprint 4 - Modelagem Inicial | Estruturação do documento. Definição de Backlog e Início do Setup Técnico do MVP. Início do Setup Técnico do MVP (codificação). |
-| (11/05 a 17/05) | Sprint 5 - Revisão Final (Unidade 1) | Revisão final, formatação e aprovação. Caso aja tempo hábil, continuação da codificação.  |
+| (11/05 a 17/05) | Sprint 5 - Revisão Final (Unidade 2) | Revisão final, formatação e aprovação. Caso aja tempo hábil, continuação da codificação.  |
 | 19/05 (Terça) | DEADLINE 1 | Entrega do Documento. |
 
 ### Cronograma unidade 3:
