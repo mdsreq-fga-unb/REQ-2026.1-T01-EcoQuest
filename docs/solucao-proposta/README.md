@@ -29,9 +29,9 @@ Aumentar o engajamento dos estudantes com práticas sustentáveis e com a discip
 
 ## 2.5 Pesquisa de Mercado e Análise Competitiva
 
-A referência interna é o Aprender3 UnB, voltado a entrega de conteúdo e atividades tradicionais, porém sem gamificação. Em plataformas externas, Habitica exploram gamificacao e missões para engajamento continuo, com um plano pago para funcionalidades avanças em que professores podem criar grupos e missões personalizadas, com foco geral em produtividade e hábitos.
+A referência interna é o Aprender3 UnB, voltado a entrega de conteúdo e atividades tradicionais, porém sem gamificação. Em plataformas externas, Habitica explora gamificação e missões para engajamento continuo, com um plano pago para funcionalidades avançadas em que professores podem criar grupos e missões personalizadas, com foco geral em produtividade e hábitos.
 
-O EcoQuest se diferencia por ser uma solução customizada para o contexto acadêmico, com foco em práticas sustentáveis, gamificação adaptada a esse nicho e integração social entre estudantes, promovendo um engajamento mais relevante e direcionado.
+O EcoQuest se diferencia por ser uma solução customizada para o contexto acadêmico, com foco em práticas sustentáveis, gamificação adaptada a esse nicho e integração social entre estudantes na UnB, promovendo um engajamento mais relevante e direcionado.
 
 ## 2.6  Viabilidade da Proposta
 
