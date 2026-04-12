@@ -1,10 +1,9 @@
 # 3. Estratégias de Engenharia de Software
 ## 3.1. Estratégia Priorizada
-A abordagem escolhida será híbrida, pois será necessária uma adaptação contextual a cada fase do projeto, tendo, por exemplo, o foco num planejamento detalhado já no início do projeto, mas mantendo forte colaboração com o cliente, visando a uma avaliação contínua de riscos e do contexto do momento.
 
-Devido à escolha de uma abordagem híbrida, o ciclo de vida do projeto será adaptativo. O projeto, de início, será focado na entrega de valor e na validação por parte do cliente, sendo assim mais experimental e exploratório. Conforme for se desenvolvendo, e os requisitos e o processo forem estabelecidos e definidos, seguiremos uma abordagem mais estruturada**, tendo** bem definidos os critérios de transição e uma produção progressiva de documentação conforme o entendimento do sistema evoluir.
-
-O processo escolhido será o OpenUP, por contemplar de maneira clara os ciclos em fases definidas, permitir uma evolução exploratória partindo de fases iniciais mais abertas e culminar em um processo de construção mais estruturado.
+- **Abordagem:** Híbrida
+- **Ciclo de Vida:** Adaptativo
+- **Processo:** OpenUP + Kanban
 
 ## 3.2. Quadro Comparativo
 
