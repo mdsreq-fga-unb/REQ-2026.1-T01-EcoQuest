@@ -2,13 +2,13 @@
 
 ## 6.1 Composição da Equipe
 
-| Nome | Cargo |
-|------|-------|
-| João Farias | Engenheira de Software |
-| Joaquim Neto | Engenheira de Software |
-| Nayra Nery | Engenheira de Software |
-| Paulo Gomes | Engenheira de Software |
-| Yasmin de Souza | Engenheira de Software |
+| Nome | Cargo | Matrícula |
+|------|-------|-----------|
+| João Farias | Engenheira de Software | 221022604 |
+| Joaquim Neto | Engenheira de Software | 232027510 |
+| Nayra Nery | Engenheira de Software | 221007608 |
+| Paulo Gomes | Engenheira de Software | 241025971 | 
+| Yasmin de Souza | Engenheira de Software | 241040860 |
 
 **Responsabilidades:** Trabalho em duplas cobrindo todas as áreas: coordenação, comunicação, gestão de prazos, design, desenvolvimento e testes.
 
