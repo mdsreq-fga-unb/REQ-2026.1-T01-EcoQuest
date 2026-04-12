@@ -1,3 +1,5 @@
+# 5. Cronograma e Entregas
+
 Neste primeiro momento, o trabalho será organizado em Sprints semanais focadas estritamente na elicitação, entendimento e validação do escopo e dos requisitos.
 Para garantir um fluxo contínuo de entregas sem gerar sobrecarga, o processo de validação com a cliente ocorrerá primariamente de forma assíncrona, ancorado em um Acordo de feedback. A cadência de trabalho da equipe seguirá o seguinte padrão:
 

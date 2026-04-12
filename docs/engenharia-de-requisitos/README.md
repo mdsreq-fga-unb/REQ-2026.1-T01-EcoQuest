@@ -1,3 +1,4 @@
+# 4. Engenharia de Requisitos
 ## 4.1 Atividades e Técnicas de ER
 
 No projeto EcoQuest, a Engenharia de Requisitos (ER) foi definida de forma compatível com o processo **OpenUP** e com a abordagem híbrida adotada pela equipe. Nesse sentido, as atividades de ER apoiam desde a compreensão inicial do problema até a validação e a atualização contínua dos requisitos, sempre considerando a evolução incremental da solução ao longo do projeto.

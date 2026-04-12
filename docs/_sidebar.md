@@ -3,7 +3,7 @@
   * [Solução Proposta](solucao-proposta/README.md)
 
 * **Engenharia de Software**
-  * [Estratégias de Engenharia](estrategias-de-engenharia-de-software/)
+  * [Estratégias de Engenharia de Software](estrategias-de-engenharia-de-software/)
   * [Interação com Cliente](interacao-entre-equipe-e-cliente/)
   * [Engenharia de Requisitos](engenharia-de-requisitos/)
 
