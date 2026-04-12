@@ -1,32 +1,19 @@
-# Definição de Metodologia e Processo de Desenvolvimento
+A abordagem escolhida será híbrida, pois será necessária uma adaptação contextual a cada fase do projeto, tendo, por exemplo, o foco num planejamento detalhado já no início do projeto, mas mantendo forte colaboração com o cliente, visando a uma avaliação contínua de riscos e do contexto do momento.
 
-## 1. Abordagem Híbrida e Ciclo de Vida
-A abordagem escolhida para este projeto é **híbrida**, visando uma adaptação contextual a cada fase. Esta estratégia permite equilibrar um planejamento detalhado inicial com uma forte colaboração com o cliente, garantindo avaliação contínua de riscos e ajuste ao contexto momentâneo.
+Devido à escolha de uma abordagem híbrida, o ciclo de vida do projeto será adaptativo. O projeto, de início, será focado na entrega de valor e na validação por parte do cliente, sendo assim mais experimental e exploratório. Conforme for se desenvolvendo, e os requisitos e o processo forem estabelecidos e definidos, seguiremos uma abordagem mais estruturada**, tendo** bem definidos os critérios de transição e uma produção progressiva de documentação conforme o entendimento do sistema evoluir.
 
-Devido a essa natureza híbrida, o ciclo de vida será **adaptativo**:
-* **Fase Inicial:** Foco na entrega de valor e validação pelo cliente, com caráter experimental e exploratório.
-* **Fase de Consolidação:** À medida que requisitos e processos são estabelecidos, a abordagem torna-se mais estruturada.
-* **Transição:** Baseada em critérios bem definidos e produção progressiva de documentação técnica conforme a evolução do entendimento do sistema.
+O processo escolhido será o OpenUP, por contemplar de maneira clara os ciclos em fases definidas, permitir uma evolução exploratória partindo de fases iniciais mais abertas e culminar em um processo de construção mais estruturado.
 
-## 2. Processo Escolhido: OpenUP
-O processo selecionado é o **OpenUP (Open Unified Process)**. A escolha justifica-se por:
-1.  Contemplar ciclos em fases bem definidas.
-2.  Permitir uma evolução exploratória nas fases iniciais.
-3.  Culminar em uma construção mais robusta e estruturada.
-
----
-
-## 3. Quadro Comparativo de Metodologias
+### Quadro Comparativo
 
 | Critério de Análise | OpenUP (Open Unified Process) | AUP (Agile Unified Process) | DSDM (Dynamic Systems Dev. Method) | RAD (Rapid Application Development) |
 | :--- | :--- | :--- | :--- | :--- |
-| **Foco Principal** | Equilíbrio entre agilidade e rigor arquitetural/documental. | Desenvolvimento ágil simplificado, focado nas práticas da engenharia. | Entrega rigorosa dentro do prazo (Timebox restrito). | Prototipagem visual rápida e feedback imediato do usuário. |
+| **Foco Principal** | Equilíbrio entre agilidade e rigor arquitetural/documental. | Desenvolvimento ágil simplificado, focado nas práticas da engenharia. | Entrega rigorosa dentro do prazo. | Prototipagem visual rápida e feedback imediato do usuário. |
 | **Abordagem (Ciclo de Vida)** | Híbrida/Adaptativa. Dividido em 4 fases claras (Concepção, Elaboração, Construção, Transição). | Híbrida. Também utiliza as 4 fases, mas com menos ênfase na colaboração orgânica. | Ágil/Iterativa. Focado estritamente em ciclos de tempo fixo. | Prototipagem iterativa com envolvimento intenso do cliente. |
-| **Tratamento da Documentação** | **Progressiva e Just-in-Time:** Gera apenas os artefatos essenciais (como Casos de Uso). | Moderada: Foca em modelos técnicos simples, mas exige disciplina de engenharia. | Baixa/Pragmática: Documentação é secundária ao software funcionando no prazo. | Mínima: A própria interface de software é usada como principal "documento". |
-| **Adequação ao Prazo** | **Excelente:** Fases curtas de Concepção/Elaboração liberam tempo para Construção. | Boa: Permite entregas rápidas, mas a adaptação da equipe pode tomar tempo. | Excelente: O prazo é inegociável; escopo reduzido via MoSCoW se necessário. | Razoável: Gera entregas rápidas, mas o código pode ter baixa qualidade técnica. |
-| **Tratamento de Riscos** | **Mitigação Precoce:** Exige resolução dos maiores riscos técnicos na fase de Elaboração. | Identificação iterativa, com menos estruturação formal que o OpenUP. | Gerenciado indiretamente pelo controle de tempo e prioridade. | Baixo foco em riscos técnicos; foco no risco de negócio (interface). |
+| **Tratamento da Documentação** | Progressiva e Just-in-Time: Gera apenas os artefatos essenciais, evoluindo-os conforme necessário. | Moderada: Foca em modelos técnicos simples, mas exige disciplina de engenharia. | Baixa/Pragmática: Documentação é secundária ao software funcionando no prazo. | Mínima: A própria interface de software é usada como principal "documento" de validação. |
+| **Adequação ao Prazo** | As fases curtas de Concepção e Elaboração cabem nas primeiras semanas, liberando o restante para a Construção. | Permite entregas rápidas, mas a adaptação da equipe ao processo pode tomar tempo. | O prazo é inegociável; se o tempo apertar, o escopo é reduzido via priorização. | Gera entregas rápidas, mas o código gerado às pressas costuma ter baixa qualidade técnica. |
+| **Tratamento de Riscos** | Mitigação Precoce: Exige que os maiores riscos sejam resolvidos logo na fase de Elaboração. | Identificação iterativa, mas com menos estruturação formal para mitigação do que o OpenUP. | Gerenciado indiretamente pelo controle estrito de tempo e prioridade. | Baixo foco na gestão de riscos técnicos; o foco é apenas o risco de negócio. |
 
----
+### Justificativa
 
-## 4. Justificativa Final
-A natureza acadêmica do projeto demanda a criação de artefatos formais e critérios de transição claros. O **OpenUP** consolidou-se como a escolha definitiva por unir a **rastreabilidade estruturada** herdada do RUP com a **cadência adaptativa** dos métodos ágeis. Embora o DSDM apresente vantagens para prazos curtos, o OpenUP oferece o suporte necessário para o desenvolvimento documental e arquitetural exigido.
+Além do que já foi citado anteriormente, a natureza acadêmica do projeto exige artefatos formais e critérios de transição claros e bem definidos, fazendo do OpenUP a escolha metodológica definitiva, por unir a rastreabilidade estruturada do RUP com a cadência adaptativa dos métodos ágeis, apesar de o DSDM ser atrativo para prazos curtos.
