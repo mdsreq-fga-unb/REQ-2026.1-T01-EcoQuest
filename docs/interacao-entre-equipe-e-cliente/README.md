@@ -1,6 +1,6 @@
-# Interação entre Equipe e Cliente
+# 6. Interação entre Equipe e Cliente
 
-## Composição da Equipe
+## 6.1 Composição da Equipe
 
 | Nome | Cargo |
 |------|-------|
@@ -12,7 +12,7 @@
 
 **Responsabilidades:** Trabalho em duplas cobrindo todas as áreas: coordenação, comunicação, gestão de prazos, design, desenvolvimento e testes.
 
-## Comunicação
+## 6.2 Comunicação
 
 ### Ferramentas de Comunicação:
 
@@ -28,7 +28,7 @@
 | Revisão/Retrospectiva | A cada 12 dias | Avaliação e ajustes |
 | Cliente | Quinzenais | Validação e alinhamento |
 
-## Validação de Funcionalidades
+## 6.3 Validação de Funcionalidades
 
 1. **Definition of Ready (DoR)**: Requisitos claros, documentados e critérios de aceitação estabelecidos
 2. **Definition of Done (DoD)**: Aprovação em testes unitários, integração e validação visual/funcional pela equipe e cliente
