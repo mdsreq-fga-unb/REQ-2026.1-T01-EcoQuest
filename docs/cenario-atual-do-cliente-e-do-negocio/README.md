@@ -14,17 +14,17 @@ Muitos jovens estudantes compreendem a importância de ações como reciclagem, 
 
 ## 1.3. Rich Picture
 
-[Em construção]
+![RichPicture](../assets/RichPicture.png)
 
 ## 1.4. Identificação da oportunidade ou problema
 
-Existe uma falta de conexão significativa entre o conhecimento teórico sobre sustentabilidade e a adoção prática de comportamentos sustentáveis no cotidiano, sendo o problema central o baixo engajamento prático em ações sustentáveis no dia a dia. Atualmente a disciplina é dada com um alto foco na teoria, com atividades simples, como assistir vídeos e, em uma folha, responder perguntas ou apresentar um resumo sobre o vídeo exibido. Não há atividades práticas para a execução do que foi ensinado em sala. 
+Existe uma falta de conexão significativa entre o conhecimento teórico sobre sustentabilidade e a adoção prática de comportamentos sustentáveis no cotidiano, sendo o problema central o baixo engajamento prático com os aprendizados da disciplina. Atualmente a disciplina é dada com um alto foco na teoria, com atividades simples, como assistir vídeos e, em uma folha, responder perguntas ou apresentar um resumo sobre o vídeo exibido. Não há atividades práticas para a execução do que foi ensinado em sala. 
 
 Há uma cultura pouco incentivadora dentro da disciplina para a aplicação das práticas aprendidas, além da falta de estratégias para sua execução, o que acaba ocasionando uma baixa motivação nos alunos com relação à implementação das atividades sustentáveis em seu dia a dia.
 
 A Figura 2, exibida abaixo, apresenta o diagrama de Ishikawa contendo as causas e o problema identificado na disciplina de Engenharia e Ambiente.
 
-[Em construção]
+![DiagramaIshikawa](../assets/DiagramaIshikawa.png)
 
 ## 1.5. Desafios do projeto
 - **Desafios Técnicos:** Garantia de precisão na validação das provas e a escalabilidade do sistema de processamento de mídia;
@@ -38,7 +38,7 @@ A Figura 2, exibida abaixo, apresenta o diagrama de Ishikawa contendo as causas 
 Os principais stakeholders do projeto são: Juliana Dalbone, como cliente e principal responsável por garantir o rigor conceitual das
 missões sustentáveis, a qualidade da documentação e a aderência do projeto aos critérios acadêmicos; George Marsicano Correa, como cliente secundário e orientador da disciplina e do projeto, buscando garantir o conhecimento necessário para a aplicação dos conceiros da ER; estudantes universitários, como usuários finais, sendo impactados diretamente pela plataforma; equipe de  desenvolvimento, sendo a responsável pela implementação da solução e a viabilização técnica da integração, usabilidade, segurança e a escalabilidade.
 
-[Mapa em construção]
+![MapaStakeholders](../assets/MapaStakeholders.png)
 
 Abaixo pode ser visualizado uma tabela resumida dos stakeholders.
 
