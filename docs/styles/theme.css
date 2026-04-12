@@ -1,11 +1,16 @@
-
 :root {
   /*Paleta*/
-  --eco-primary: #2E7D32;   /* Verde Floresta*/
-  --eco-action: #81C784;    /* Verde Folha */
-  --eco-bg: #F9FBE7;        /* Fundo */
-  --eco-text: #263238;      /* Constrate */
-  
+  --eco-primary: #2E7D32;
+  /* Verde Floresta*/
+  --eco-action: #81C784;
+  /* Verde Folha */
+  --eco-bg: #F9FBE7;
+  /* Fundo */
+  --eco-bg-odd: #ECEED6;
+  /* Fundo Alternativo */
+  --eco-text: #263238;
+  /* Constrate */
+
   --theme-color: var(--eco-primary);
 }
 
@@ -17,11 +22,12 @@ body {
 
 
 .markdown-section {
-  max-width: 850px; /* Largura da linha*/
+  max-width: 850px;
+  /* Largura da linha*/
 }
 
-.markdown-section h1, 
-.markdown-section h2, 
+.markdown-section h1,
+.markdown-section h2,
 .markdown-section h3 {
   color: var(--eco-primary);
   font-weight: 600;
@@ -38,31 +44,37 @@ body {
 
 .markdown-section a:hover {
   color: var(--eco-action);
-  border-bottom: 2px solid var(--eco-action); /* Efeito ao passar o mouse */
+  border-bottom: 2px solid var(--eco-action);
+  /* Efeito ao passar o mouse */
 }
 
 /* Citações e Callouts - Destacar*/
 .markdown-section blockquote {
   border-left: 5px solid var(--eco-action);
-  background-color: rgba(129, 199, 132, 0.1); 
+  background-color: rgba(129, 199, 132, 0.1);
   color: var(--eco-text);
   border-radius: 0 8px 8px 0;
   padding: 15px 20px;
 }
 
 .sidebar {
-  background-color: #FFFFFF; 
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05); 
+  background-color: #FFFFFF;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
 }
 
-.sidebar ul li.active > a {
+.sidebar ul li.active>a {
   color: var(--eco-primary);
   font-weight: bold;
   border-right: 3px solid var(--eco-primary);
 }
 
 h1.app-name img {
-  max-width: 250px; 
-  height: auto;     
-  margin-top: 15px; 
+  max-width: 250px;
+  height: auto;
+  margin-top: 15px;
+}
+
+.markdown-section p.tip,
+.markdown-section tr:nth-child(2n) {
+  background-color: var(--eco-bg-odd);
 }
