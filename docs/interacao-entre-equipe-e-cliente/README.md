@@ -28,7 +28,7 @@
 | Tipo | Frequência | Objetivo |
 |------|-----------|----------|
 | Equipe | Semanais (segundas) | Planejamento e acompanhamento |
-| Revisão/Retrospectiva | Semanal(na reunião da equipe) | Avaliação e ajustes |
+| Revisão/Retrospectiva | Semanal (na reunião da equipe) | Avaliação e ajustes |
 | Cliente | Quinzenais (síncronas) | Validação e alinhamento |
 
 ## 6.3 Validação de Funcionalidades

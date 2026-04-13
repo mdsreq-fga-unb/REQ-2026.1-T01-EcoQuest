@@ -3,9 +3,9 @@
 
 - **Abordagem:** Híbrida
 - **Ciclo de Vida:** Adaptativo
-- **Processo:** OpenUP
+- **Processo:** OpenUP 
 - **Framework:** Kanban
-
+  
 ## 3.2. Quadro Comparativo
 
 | Características | OpenUP (Open Unified Process) | AUP (Agile Unified Process) |
@@ -29,7 +29,7 @@
 Com base nas restrições de prazo, no tamanho reduzido da equipe (5 membros) e na natureza acadêmica do projeto EcoQuest, o OpenUP (Open Unified Process) é o processo mais adequado pelos seguintes motivos:
 
 **Ciclo de Vida Adaptativo:**
-Como o projeto exige a validação de mecânicas de gamificação e engajamento, as fases iniciais precisam ser altamente focadas na validação com a cliente. O OpenUP atende a essa necessidade por possuir uma abordagem híbrida: permite iniciar o projeto de forma experimental e exploratória para entender o valor esperado e, uma vez que o escopo seja definido e validado, transacionar para um processo de Construção altamente estruturado.
+Como o projeto exige a validação de mecânicas de gamificação e engajamento, as fases iniciais precisam ser altamente focadas na validação com a cliente. O OpenUP atende a essa necessidade por possuir uma abordagem híbrida: permite iniciar o projeto de forma experimental e exploratória para entender o valor esperado e, uma vez que o escopo seja definido e validado, transacionar para um processo de construção altamente estruturado.
 
 **Rigor Documental e Natureza Acadêmica:**
 O projeto possui exigências avaliativas e formais inegociáveis. Diferente de abordagens como o DSDM, que seria atrativo para o prazo de 12 semanas, mas prioriza o código em detrimento da documentação, o OpenUP une a rastreabilidade estruturada do RUP com a cadência adaptativa dos métodos ágeis. Isso garante a produção progressiva de documentação e artefatos formais conforme o entendimento do sistema evolui, sem engessar a equipe.

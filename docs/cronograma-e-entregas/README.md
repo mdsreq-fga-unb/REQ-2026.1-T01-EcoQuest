@@ -27,5 +27,5 @@ As duas primeiras semanas do projeto são dedicadas exclusivamente à elicitaç�
 
 
 **Considerações sobre o cronograma:** 
-O projeto é guiado por liberações progressivas de valor. As funcionalidades de núcleo, como o motor de missões sustentáveis, a validação via quizzes educativos e a estrutura de gamificação, serão entregues e testadas em produção ou ambiente de homologação de forma parcial (Sprints 7, 10 e 12).
+O projeto é guiado por liberações progressivas de valor. As funcionalidades de núcleo, como o motor de missões sustentáveis, a validação por mecanismo de captura em tempo real e a estrutura de gamificação, serão entregues e testadas em produção ou ambiente de homologação de forma parcial (Sprints 7, 10 e 12).
 Essa estratégia de fatiamento garante que a mitigação de riscos operacionais, especialmente no que tange ao engajamento prático do jovem na plataforma, seja aferida continuamente através do uso real da aplicação, permitindo ajustes de rota e refinamentos no backlog antes do lançamento final do MVP.
