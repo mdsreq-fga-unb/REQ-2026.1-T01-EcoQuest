@@ -30,6 +30,7 @@
 
 ## 6.3 Validação de Funcionalidades
 
-1. **Definition of Ready (DoR)**: Requisitos claros, documentados e critérios de aceitação estabelecidos
-2. **Definition of Done (DoD)**: Aprovação em testes unitários, integração e validação visual/funcional pela equipe e cliente
-3. **Testes de Aceitação**: Cliente valida conformidade com requisitos e critérios de aceitação
+1. **Validação Interna**: Análise de riscos, viabilidade, prazos e testes realizados pela equipe, incluindo testes manuais e automatizados para garantir a qualidade do produto antes da apresentação ao cliente.
+2. **Definition of Ready (DoR)**: Requisitos claros, documentados e critérios de aceitação estabelecidos
+3. **Definition of Done (DoD)**: Aprovação em testes unitários, integração e validação visual/funcional pela equipe e cliente
+4. **Testes de Aceitação**: Cliente valida conformidade com requisitos e critérios de aceitação
