@@ -18,7 +18,10 @@
 
 - **Google Meet**: Para reuniões virtuais e discussões em tempo real.
 - **Whatsapp**: Para comunicação rápida e informal entre os membros da equipe.
-- **Email**: Para comunicações formais e compartilhamento de documentos importantes.
+- **Email**: Para comunicaçõe formais e compartilhamento de documentos importantes.
+- **Github**: Para controle de versão, revisão de código e documentação técnica.
+- **Github Projects (Kanban)**: Para gerenciamento de tarefas, acompanhamento do progresso e organização do backlog.
+- **Github Pages**: Para hospedagem da documentação do projeto, garantindo fácil acesso e atualização contínua.
 
 ### Frequência de Reuniões
 
