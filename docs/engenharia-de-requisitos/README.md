@@ -26,7 +26,7 @@
 
 ### Verificação e Validação de Requisitos
 
-- **Checklist:** utilizado para revisar os requisitos documentados, verificando clareza, consistência, completude e alinhamento com os objetivos do projeto.
+- **Kanban:** utilizado para revisar os requisitos documentados, rastrebialidade, verificando clareza, consistência, completude e alinhamento com os objetivos do projeto.
 - **Revisão de critérios de aceitação:** utilizada para validar se os requisitos documentados estão claros, verificáveis e coerentes com os objetivos do projeto.
 - **Feedback com stakeholders:** utilizado para validar se os requisitos refletem corretamente as expectativas da cliente e os objetivos do EcoQuest.
 - **Testes:** utilizados para apoiar a verificação das funcionalidades implementadas com base nos requisitos definidos.
@@ -37,6 +37,7 @@
 - **Atualização do backlog:** utilizada para registrar mudanças, refinamentos e ajustes de escopo ao longo do desenvolvimento.
 - **Refinamento do backlog (Grooming):** utilizado para revisar continuamente os requisitos, detalhar funcionalidades e manter o backlog alinhado às prioridades do projeto.
 - **Versionamento:** utilizado para manter o histórico das alterações realizadas na documentação e apoiar o controle de mudanças.
+
 ## 4.2 Engenharia de Requisitos e o OpenUP
 
 A Engenharia de Requisitos (ER) do projeto foi estruturada em alinhamento com o processo **OpenUP**  e com a abordagem híbrida definida. Dessa forma, as atividades de ER são realizadas de forma iterativa e incremental, com maior foco exploratório nas fases iniciais e maior formalização e controle nas fases posteriores.
