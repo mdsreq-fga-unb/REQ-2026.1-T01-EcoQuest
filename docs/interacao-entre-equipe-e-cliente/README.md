@@ -2,13 +2,13 @@
 
 ## 6.1 Composição da Equipe
 
-| Nome | Cargo | Matrícula |
-|------|-------|-----------|
-| João Farias | Engenheira de Software | 221022604 |
-| Joaquim Neto | Engenheira de Software | 232027510 |
-| Nayra Nery | Engenheira de Software | 221007608 |
-| Paulo Gomes | Engenheira de Software | 241025971 | 
-| Yasmim de Souza | Engenheira de Software | 241040860 |
+| Papel | Descrição | Responsável | Participantes |
+|-------|-----------|------------|---------------|
+| Gerente do Projeto | Coordenação, planejamento, prazos e comunicação com cliente | Paulo Vitor Gomes | - |
+| Desenvolvedor Back-end | Implementação de APIs, banco de dados e lógica de negócio | Joaquim Neto | Todos |
+| Desenvolvedor Front-end | Desenvolvimento de interface de usuário e experiência visual | Yasmin de Souza | Todos |
+| Analista de Qualidade | Testes, validação de funcionalidades e garantia de qualidade | Nayra Nery | Joaquim Neto  |
+| Analista de Desenvolvimento | Análise de requisitos, viabilidade técnica e documentação de especificações | João Farias | Todos |
 
 **Responsabilidades:** Trabalho em duplas cobrindo todas as áreas: coordenação, comunicação, gestão de prazos, design, desenvolvimento e testes.
 
