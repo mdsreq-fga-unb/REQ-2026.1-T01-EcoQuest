@@ -6,7 +6,7 @@
 |-------|-----------|------------|---------------|
 | Gerente do Projeto | Coordenação, planejamento, prazos e comunicação com cliente | Paulo Vitor Gomes | - |
 | Desenvolvedor Back-end | Implementação de APIs, banco de dados e lógica de negócio | Joaquim Neto | Todos |
-| Desenvolvedor Front-end | Desenvolvimento de interface de usuário e experiência visual | Yasmin de Souza | Todos |
+| Desenvolvedor Front-end | Desenvolvimento de interface de usuário e experiência visual | Yasmim de Souza | Todos |
 | Analista de Qualidade | Testes, validação de funcionalidades e garantia de qualidade | Nayra Nery | Joaquim Neto  |
 | Analista de Desenvolvimento | Análise de requisitos, viabilidade técnica e documentação de especificações | João Farias | Todos |
 
