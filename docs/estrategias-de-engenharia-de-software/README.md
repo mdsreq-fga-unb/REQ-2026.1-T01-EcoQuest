@@ -3,7 +3,8 @@
 
 - **Abordagem:** Híbrida
 - **Ciclo de Vida:** Adaptativo
-- **Processo:** OpenUP + Kanban
+- **Processo:** OpenUP
+- **Framework:** Kanban
 
 ## 3.2. Quadro Comparativo
 
