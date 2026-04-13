@@ -29,9 +29,15 @@ Aumentar o engajamento dos estudantes com práticas sustentáveis e com a discip
 
 ## 2.5 Pesquisa de Mercado e Análise Competitiva
 
-A referência interna é o Aprender3 UnB, voltado a entrega de conteúdo e atividades tradicionais, porém sem gamificação. Em plataformas externas, Habitica explora gamificação e missões para engajamento continuo, com um plano pago para funcionalidades avançadas em que professores podem criar grupos e missões personalizadas, com foco geral em produtividade e hábitos.
+A referência interna é o Aprender3 UnB, voltado a entrega de conteúdo e atividades tradicionais, porém sem gamificação. Em plataformas externas, Habitica explora gamificação e missões para engajamento continuo, com um plano pago para funcionalidades avançadas em que professores podem criar grupos e missões personalizadas, com foco geral em produtividade e hábitos:
 
-O EcoQuest se diferencia por ser uma solução customizada para o contexto acadêmico, com foco em práticas sustentáveis, gamificação adaptada a esse nicho e integração social entre estudantes na UnB, promovendo um engajamento mais relevante e direcionado.
+- Aprender3: Focado em conteúdo e atividades tradicionais, sem gamificação, o que pode limitar o engajamento dos estudantes.
+- Habitica: Plataforma de gamificação para produtividade e hábitos, com plano pago para funcionalidades avançadas, mas não é customizada para o contexto acadêmico e sustentável, e carece de validação de atividades, o que pode levar a fraudes e reduzir a confiabilidade dos resultados.
+
+O EcoQuest se diferencia por:
+- ser uma solução customizada para o contexto acadêmico com foco em práticas sustentáveis;
+- gamificação adaptada a esse nicho e integração social entre estudantes na UnB, promovendo um engajamento mais relevante e direcionado;
+- ênfase na validação das atividades para garantir autenticidade e reduzir fraudes, algo que plataformas genéricas como Habitica não possuem, aumentando a confiabilidade e o impacto real das ações dos usuários.
 
 ## 2.6  Viabilidade da Proposta
 
