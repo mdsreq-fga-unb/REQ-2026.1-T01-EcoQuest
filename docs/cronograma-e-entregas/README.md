@@ -1,39 +1,31 @@
 # 5. Cronograma e Entregas
 
-Neste primeiro momento, o trabalho será organizado em Sprints semanais focadas estritamente na elicitação, entendimento e validação do escopo e dos requisitos.
-Para garantir um fluxo contínuo de entregas sem gerar sobrecarga, o processo de validação com a cliente ocorrerá primariamente de forma assíncrona, ancorado em um Acordo de feedback. A cadência de trabalho da equipe seguirá o seguinte padrão:
+A partir da estratégia de desenvolvimento estabelecida e utilizando o framework OpenUP, o projeto EcoQuest adota um ciclo de vida adaptativo. O fluxo de trabalho é estruturado em Sprints semanais, garantindo entregas contínuas e mitigação precoce de riscos.
 
-* **Segundas-feiras (20h):** Reunião síncrona interna da equipe. O foco é o processamento dos feedbacks recebidos, verificação do andamento das tarefas , identificação de impedimentos e o planejamento da nova Sprint.
-* **Terças-feiras:** Envio assíncrono do pacote de artefatos documentais produzidos ou incrementados na semana para a validação da cliente.
+Para que o processo não gere sobrecarga na agenda da cliente, as validações ocorrerão de forma síncrona e assíncrona, ancoradas em um *Acordo de Nível de Serviço* de feedback:
 
-O projeto inicia com um foco exploratório e iterativo. Contudo, após as fases de descoberta e análise, e mediante o consenso com os stakeholders, os requisitos fundamentais serão formalmente declarados e submetidos a um marco de congelamento.
+**Terças-feiras:** Envio dos incrementos (documentais ou de software) para a cliente.
 
-### Cronograma unidade 2:
+**Segundas-feiras:** Reuniões síncronas internas da equipe de desenvolvimento para processamento do feedback, análise de viabilidade e planejamento da próxima Sprint.
 
-| Período | Título da Sprint | Foco Principal (Entregas e Ritos) |
-| :--- | :--- | :--- |
-| (14/04 a 19/04) | Sprint 1 - Elicitação e Descoberta | Entendimento do domínio, dos riscos do projeto e esboço inicial de requisitos. |
-| (20/04 a 26/04) | Sprint 2 - Análise e Consenso | Resolução de ambiguidades e estruturação dos requisitos com a cliente. |
-| (27/04 a 03/05) | Sprint 3 - Declaração e Sign-off | Fechamento do escopo. Marco Crítico: O cliente aprova a lista de requisitos.  |
-| (04/05 a 10/05) | Sprint 4 - Modelagem Inicial | Estruturação do documento. Definição de Backlog e Início do Setup Técnico do MVP. Início do Setup Técnico do MVP (codificação). |
-| (11/05 a 17/05) | Sprint 5 - Revisão Final (Unidade 2) | Revisão final, formatação e aprovação. Caso aja tempo hábil, continuação da codificação.  |
-| 19/05 (Terça) | DEADLINE 1 | Entrega do Documento. |
+As duas primeiras semanas do projeto são dedicadas exclusivamente à elicitação densa do domínio e dos requisitos, mitigando riscos essenciais antes do início da codificação. A seguir, apresenta-se o cronograma com suas fases, objetivos e resultados esperados:
 
-### Cronograma unidade 3:
+| Sprint | Início | Fim | Objetivo Principal (Fase OpenUP / Atividade ER) | Entregas Esperadas | Validação do Cliente |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Sprint 1** | 13/04/2026 | 19/04/2026 | **Elicitação e Descoberta:** Levantamento profundo do domínio de sustentabilidade e perfil de usuários. | Identificação clara do problema. Esboço inicial das missões e perfil de usuários. | Validação inicial do entendimento do problema e domínio ambiental. |
+| **Sprint 2** | 20/04/2026 | 26/04/2026 | **Análise e Consenso:** Alinhamento com stakeholders e priorização de requisitos (MoSCoW). | Definição das funcionalidades essenciais para o MVP (Mínimo Produto Viável). | Revisão do escopo e confirmação das prioridades essenciais. |
+| **Sprint 3** | 27/04/2026 | 03/05/2026 | **Declaração de Requisitos:** Formalização inicial e arquitetura. | Backlog inicial estruturado. Configuração da arquitetura técnica e ambiente de desenvolvimento. | Cliente aprova a lista de requisitos que irão para desenvolvimento. |
+| **Sprint 4** | 04/05/2026 | 10/05/2026 | **Modelagem da Solução:** Início da codificação. | Protótipos visuais de interface. Inicialização da produção de código e banco de dados. | Feedback sobre navegação e usabilidade das telas desenhadas. |
+| **Sprint 5** | 11/05/2026 | 17/05/2026 | **Detalhamento e Apoio à Implementação** | Módulo de Autenticação e Perfis de Usuário. | Avaliação da fluidez do processo de cadastro e acesso ao sistema. |
+| **Sprint 6** | 18/05/2026 | 24/05/2026 | **Desenvolvimento Base:** Foco no núcleo do produto. | Implementação do Motor de Missões (Quests diárias/semanais). | Validação do fluxo de aceite e leitura das missões sustentáveis. |
+| **Sprint 7** | 25/05/2026 | 31/05/2026 | **Primeira Entrega Parcial** | Entrega Parcial 1: Integração do sistema de Quizzes para validação de missões concluídas. | Teste de uso do quiz e aderência das perguntas ao propósito educacional. |
+| **Sprint 8** | 01/06/2026 | 07/06/2026 | **Verificação e Validação Contínua** | Especificação comportamental técnica finalizada e testes integrados do fluxo desenvolvido até aqui. | Feedback sobre possíveis bugs encontrados no fluxo de missões. |
+| **Sprint 9** | 08/06/2026 | 14/06/2026 | **Desenvolvimento Gamificação** | Algoritmo de progressão (XP), contagem de ofensivas (Streaks) e níveis de usuário. | Validação do balanceamento de pontos e sensação de recompensa. |
+| **Sprint 10** | 15/06/2026 | 21/06/2026 | **Segunda Entrega Parcial** | Entrega Parcial 2: Placar de Líderes (Leaderboard) e painel de conquistas (Badges). | Avaliação da interface do ranking e competitividade saudável gerada. |
+| **Sprint 11** | 22/06/2026 | 28/06/2026 | **Ajustes Incrementais (Transição):** Foco em usabilidade e correção de bugs. | Consolidação dos diagramas arquiteturais. Testes ponta a ponta realizados pela equipe. | Validação final de interface com o usuário em ambiente de homologação. |
+| **Sprint 12** | 29/06/2026 | 05/07/2026 | **Transição e Deploy (Transição):** Validação final com cliente. | Entrega Parcial 3: MVP Funcional, documentado, codificado, testado e publicado. | Homologação Final: Confirmação de que o sistema atende aos objetivos traçados. |
 
-| Período | Título da Sprint | Foco Principal (Entregas e Ritos) |
-| :--- | :--- | :--- |
-| (18/05 a 24/05) | Sprint 6 - Organização de Requisitos | Verificação e Validação interna dos requisitos. Atualização e refinamento da base. Codificação inicial baseado em valor dentro do backlog.  |
-| (25/05 a 31/05) | Sprint 7 - Construção do Backlog (PBB) | Aplicação dos conceitos de Product Backlog Building (PBB). Quebra dos requisitos em itens acionáveis para o desenvolvimento. Verificar prioridades na Backlog, e definir etapas para codificação.  |
-| (01/06 a 07/06) | Sprint 8 - Comportamento e Aceite (BDD) | Definição de critérios de aceite utilizando BDD. Verificar prioridades na Backlog, e definir etapas para codificação.  |
-| (08/06 a 14/06) | Sprint 9 - Revisão Final  | Consolidação dos artefatos de PBB, BDD e validação do escopo da Unidade 3. Testagem de produção já feita e validação inicial de interface com o usuário. |
-| 16/06 (Terça) | DEADLINE 2 | Entrega da Documentação. |
 
-### Cronograma Unidade 4: 
-
-| Período | Título da Sprint | Foco Principal (Entregas e Ritos) |
-| :--- | :--- | :--- |
-| (15/06 a 21/06) | Sprint 10 - User Story Mapping | Mapeamento da jornada do usuário (User Story Mapping) para visualização do fluxo de valor. Com o entendimento da jornada de usuário começar a efetiva aplicação da gamificação dentro do projeto, embasado pelo backlog e a validação do cliente.  |
-| (22/06 a 28/06) | Sprint 11 - Modelagem UML | Elaboração dos Diagramas de Casos de Uso com base nas histórias mapeadas. Teste de interface e continuação do processo de codificação do produto, focado na conclusão dos requisitos do MVP.  |
-| (29/06 a 05/07) | Sprint 12 - Especificação e Homologação | Redação técnica da Especificação de Casos de Uso. Homologação final do software. Testes E2E (ponta a ponta), correção de bugs, validação de interface com os stackholders e deploy do MVP. |
-| 07/07 (Terça) | DEADLINE FINAL | Entrega da Unidade. Documentação, MVP Funcional, Codificado e Testado. |
+**Considerações sobre o cronograma:** 
+O projeto é guiado por liberações progressivas de valor. As funcionalidades de núcleo, como o motor de missões sustentáveis, a validação via quizzes educativos e a estrutura de gamificação, serão entregues e testadas em produção ou ambiente de homologação de forma parcial (Sprints 7, 10 e 12).
+Essa estratégia de fatiamento garante que a mitigação de riscos operacionais, especialmente no que tange ao engajamento prático do jovem na plataforma, seja aferida continuamente através do uso real da aplicação, permitindo ajustes de rota e refinamentos no backlog antes do lançamento final do MVP.
