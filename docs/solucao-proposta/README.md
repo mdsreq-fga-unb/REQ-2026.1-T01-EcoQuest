@@ -22,10 +22,10 @@ Aumentar o engajamento dos estudantes com práticas sustentáveis e com a discip
 
 ## 2.4 Tecnologias a Serem Utilizadas
 
-- **Backend:** Bun + Elysia (API e renderizacao server-side)
-- **Frontend:** HTML renderizado no backend com HTMX, CSS e JavaScript para interatividade
-- **Banco de dados:** PostgreSQL (Docker)
-- **Infraestrutura/hosting:** a definir
+- **Backend:** Bun + Elysia (API e renderizacao server-side), porque permite desenvolvimento seguro com Typescript e PostgreSQL integrados nativamente com alta performance, simplicidade, agilidade, ideal para MVPs e fácil manutenção, além de ser uma stack moderna e leve, alinhada com as necessidades do projeto.
+- **Frontend:** HTML renderizado no backend com HTMX, CSS e JavaScript para interatividade, pois é uma solução leve, de fácil manutenção e muito rápida para desenvolvimento de MVPs, sem complexidade de frameworks modernos, permitindo foco total na lógica de negócios e experiência do usuário.
+- **Banco de dados:** PostgreSQL (Docker), pois oferece robustez, escalabilidade e facilidade de integração com o backend
+- **Infraestrutura:** a definir um VPS que nos permita rodar as duas instâncias de processos (backend e banco) de forma integrada, com acesso remoto para desenvolvimento e testes.
 
 ## 2.5 Pesquisa de Mercado e Análise Competitiva
 
