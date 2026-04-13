@@ -41,11 +41,9 @@ O EcoQuest se diferencia por:
 
 ## 2.6  Viabilidade da Proposta
 
-Com uma equipe de 5 pessoas e cerca de 1 hora diária por membro atuando no projeto, o escopo completo descrito atualmente não é viavel para 3 meses. A proposta só se torna viável com redução de escopo e foco em um MVP funcional. Deve-se ser discutido com o cliente quais funcionalidades são mais fundamentais para o MVP, a diferenciação de necessidades e desejos; E discutido fases posteriores ao MVP para implementação das demais funcionalidades.
+Após uma análise completa do escopo e das funcionalidades propostas, concluímos que o desenvolvimento de todas as características descritas não é viável dentro do prazo de 3 meses, considerando a equipe disponível e o tempo dedicado ao projeto, com pontos críticos de riscos sendo: validação de atividades, precisão na verificação de provas, processamento de mídia e manutenção de engajamento, pois essas funcionalidades exigem desenvolvimento complexo, testes rigorosos e podem demandar recursos adicionais para garantir sua eficácia e confiabilidade. No entanto, esses riscos podem ser mitigados com priorização de missões/desafios, pontuação básica e validação manual inicialmente.
 
-**Pontos críticos de risco**: validação de atividades, precisão na verificação de provas, processamento de mídia e manutenção de engajamento. 
-
-Deve-se priorizar missões/desafios, pontuação básica e validação manual inicial.
+Para então garantir a entrega de um produto funcional e de qualidade, será conversado com o cliente a identificação de quais características são prioritárias para o MVP, diferenciando entre necessidades essenciais e desejos adicionais; será construído então um escopo para essa primeira fase de três meses, que contenha as funcionalidades mais essenciais para atingir os objetivos principais do projeto. Além disso, será planejado um roadmap para fases posteriores ao MVP, onde as funcionalidades restantes poderão ser implementadas de forma incremental, garantindo uma evolução contínua do produto e a satisfação do cliente ao longo do processo.
 
 ## 2.7 Benefícios Esperados
 
