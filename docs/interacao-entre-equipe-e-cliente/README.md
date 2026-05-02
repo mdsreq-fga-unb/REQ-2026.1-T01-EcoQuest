@@ -1,38 +1,112 @@
 # 6. Interação entre Equipe e Cliente
 
-## 6.1 Composição da Equipe
+Define a interação equipe–cliente no **OpenUP**: cadência de validações, artefatos validados e gestão de feedback/mudanças.
 
-| Papel | Descrição | Responsável | Participantes |
+Referências:
+
+- Cliente/stakeholders: [Cenário Atual](../cenario-atual-do-cliente-e-do-negocio/)
+- Cadência de incrementos e SLA de feedback: [Cronograma e Entregas](../cronograma-e-entregas/)
+- Práticas de ER alinhadas ao OpenUP: [Engenharia de Requisitos](../engenharia-de-requisitos/)
+- Critérios DoR/DoD: [DoR e DoD](../dor-e-dod/)
+- Organização de requisitos e backlog: [Requisitos de Software](../requisitos-de-software/) e [Backlog do Produto](../backlog-de-produto/)
+
+## 6.1 Stakeholders e responsabilidades
+
+| Stakeholder | Papel | Participação | Responsabilidade |
+|---|---|---|---|
+| **Prof. Dra. Juliana Dalbone** | Cliente principal | Revisão quinzenal + feedback semanal (e-mail) | Domínio ambiental, missões e regras de negócio; aprovar entregas |
+| **Prof. Dr. George Marsicano Correa** | Cliente secundário / orientador | Revisões pontuais | Orientação acadêmica e decisões de ER |
+| **Estudantes universitários** | Usuários finais | Validações pontuais (protótipos/fluxos) | Usabilidade e clareza das missões |
+| **Equipe EcoQuest** | Time de desenvolvimento | Planejamento e execução por iterações | Transformar feedback em itens rastreáveis |
+
+## 6.2 Papéis da equipe (OpenUP)
+
+| Papel | Foco | Responsável | Participantes |
 |-------|-----------|------------|---------------|
-| Gerente do Projeto | Coordenação, planejamento, prazos e comunicação com cliente | Paulo Vitor Gomes | - |
-| Desenvolvedor Back-end | Implementação de APIs, banco de dados e lógica de negócio | Joaquim Neto | Todos |
-| Desenvolvedor Front-end | Desenvolvimento de interface de usuário e experiência visual | Yasmim de Souza | Todos |
-| Analista de Qualidade | Testes, validação de funcionalidades e garantia de qualidade | Nayra Nery | Joaquim Neto  |
-| Analista de Requisitos | Elicitação, análise e documentação de requisitos; definição de critérios de aceitação e rastreabilidade | João Farias | Todos |
+| Gerente do Projeto (Project Manager) | Planejamento, riscos e alinhamento com stakeholders | Paulo Vitor Gomes | - |
+| Analista de Requisitos (Analyst) | Elicitação/especificação; AC e rastreabilidade (OE/CP) | João Farias | Todos |
+| Desenvolvedor Back-end (Developer) | API, banco e regras de negócio | Joaquim Neto | Todos |
+| Desenvolvedor Front-end (Developer) | Implementação de Interface, fluxos e integração | Yasmim de Souza | Todos |
+| Analista de Qualidade (Tester) | Testes e suporte ao aceite | Nayra Nery | Joaquim Neto |
 
-**Responsabilidades:** Trabalho em duplas cobrindo todas as áreas: coordenação, comunicação, gestão de prazos, design, desenvolvimento e testes.
+**Responsabilidades:** atuação em duplas e compartilhamento de tarefas.
 
-## 6.2 Comunicação
+## 6.3 Comunicação e cerimônias (iterações OpenUP)
 
 ### Ferramentas de Comunicação:
 
-- **Google Meet**: Para reuniões virtuais e discussões em tempo real.
-- **Whatsapp**: Para comunicação rápida e informal entre os membros da equipe.
-- **Email**: Para comunicações formais e compartilhamento de documentos importantes.
-- **Github**: Para controle de versão, revisão de código e documentação técnica.
-- **Github Projects (Kanban)**: Para gerenciamento de tarefas, acompanhamento do progresso e organização do backlog.
-- **Github Pages**: Para hospedagem da documentação do projeto, garantindo fácil acesso e atualização contínua.
+- **Google Meet**: reuniões síncronas.
+- **WhatsApp**: alinhamentos rápidos (decisões vão para ata).
+- **E-mail**: validação assíncrona e envio de artefatos.
+- **GitHub**: versionamento e documentação.
+- **GitHub Projects (Kanban)**: *Work Items List* (backlog).
+- **GitHub Pages**: publicação da documentação.
 
 ### Frequência de Reuniões
 
-| Tipo | Frequência | Objetivo |
-|------|-----------|----------|
-| Equipe | Semanais (segundas) | Planejamento e acompanhamento |
-| Revisão/Retrospectiva | Semanal (na reunião da equipe) | Avaliação e ajustes |
-| Cliente | Quinzenais (síncronas) | Validação e alinhamento |
+**Iteração = Sprint semanal.**
 
-## 6.3 Validação de Funcionalidades
+| Cerimônia | Cadência | Objetivo | Registro |
+|---|---|---|---|
+| Planejamento da iteração (Iteration Planning) | Semanal (seg.) | Selecionar itens e planejar execução | Kanban + plano da iteração |
+| Revisão/Avaliação (Iteration Review/Assessment) | Semanal | Validar incremento internamente | Registro de status |
+| Retrospectiva | Semanal | Ajustes de processo | Ações de melhoria |
+| Revisão com stakeholders | Quinzenal (síncrona) | Decisões de escopo/artefatos | Ata |
+| Validação assíncrona | Semanal (e-mail) | Feedback sobre incrementos | Ata + backlog |
 
-1. **Validação Interna**: Análise de riscos, viabilidade, prazos e testes realizados pela equipe, incluindo testes manuais e automatizados para garantir a qualidade do produto antes da apresentação ao cliente.
-2. **Definition of Ready (DoR)**: Requisitos claros, documentados e critérios de aceitação estabelecidos
-3. **Definition of Done (DoD)**: Aprovação em testes unitários, integração e validação visual/funcional pela equipe e testes de aceitação pelo cliente.
+**SLA (cronograma):** envio terça; triagem/processamento segunda.
+
+## 6.4 Participação do cliente nas atividades de Requisitos (OpenUP)
+
+- **Elicitação/descoberta:** entrevistas e regras do domínio.
+- **Análise/consenso:** escopo, MoSCoW, trade-offs.
+- **Especificação:** histórias + critérios de aceitação (AC).
+- **Modelagem:** protótipos e fluxos.
+- **Verificação/validação:** aceite de incrementos e confirmação de AC.
+
+## 6.5 Artefatos (work products) validados com a cliente
+
+| Artefato (OpenUP) | Como aparece no EcoQuest | Onde é mantido | Quando é validado |
+|---|---|---|---|
+| **Visão (Vision)** | Objetivo do produto, OE, CP | [Solução Proposta](../solucao-proposta/) | Revisões quinzenais |
+| **Stakeholder Requests** | Feedback/decisões/solicitações | [Atas](atas.md) | Contínuo |
+| **Work Items List** | Backlog (Kanban) | GitHub Projects + [Backlog do Produto](../backlog-de-produto/) | Planejamento semanal |
+| **Requisitos** | User stories + Critério de Aceitação | [Requisitos de Software](../requisitos-de-software/) | Refinamento semanal |
+| **Protótipos de IU** | Wireframes/fluxos | Ferramenta/artefatos de design | Elaboração + ajustes |
+| **Change Request (CR)** | Solicitações de mudança | [Atas](atas.md) + backlog | Contínuo |
+| **Critérios de aceite** | DoR/DoD + testes | [DoR e DoD](../dor-e-dod/) | Entrada (DoR) / saída (DoD) |
+| **Plano da iteração** | Escopo e prioridades | Kanban + cronograma | Semanal |
+
+## 6.6 Registro de feedback e decisões (atas)
+
+Registro oficial: [Atas](atas.md).
+
+## 6.7 Tratamento de mudanças de requisitos (Change Management)
+
+Fluxo de CR:
+
+1. Registrar na ata ([Atas](atas.md)) (CR + motivação).
+2. Analisar impacto (esforço, riscos, dependências, OE/CP).
+3. Decidir/priorizar (MoSCoW) e atualizar backlog/artefatos.
+4. Validar com a cliente (assíncrono ou reunião quinzenal).
+
+## 6.8 Resolução de conflitos e divergências
+
+1. Analista de Requisitos media e propõe alternativas.
+2. Decisão por critérios: OE/CP, valor, riscos, prazo.
+3. Impasse: cliente principal decide; registrar em ata e backlog.
+
+## 6.9 DoR e DoD conectados ao OpenUP
+
+DoR/DoD = critérios de **entrada/saída** para itens do *Work Items List*.
+
+- **DoR:** história + AC + OE/CP + prioridade.
+- **DoD:** implementado, testado/validado e rastreado.
+
+Checklists: [DoR e DoD](../dor-e-dod/).
+
+## 6.10 Validação interna (antes de enviar ao cliente)
+
+- Risco/viabilidade (impacto e dependências).
+- Funcional/visual (fluxo x AC).
+- Testes (quando aplicável).
