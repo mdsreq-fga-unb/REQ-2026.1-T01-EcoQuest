@@ -4,7 +4,7 @@
 
 
 **No âmbito do Processo:** A equipe aprendeu que a ambição inicial do projeto pode ser o maior risco para o prazo. A ideia original de validar ações sustentáveis por fotos/vídeos provou-se inviável para 12 semanas.
-**Ação de Melhoria:** Manter a prática de fatiar o escopo e aplicar a técnica de priorização (MoSCoW) de forma rigorosa em todas as próximas Sprints, garantindo que a equipe foque apenas no núcleo do MVP.
+**Ação de Melhoria:** Manter a prática de fatiar o escopo e aplicar a técnica de priorização (MoSCoW) de forma rigorosa em todas as próximas iterações, garantindo que a equipe foque apenas no núcleo do MVP.
 
 **No âmbito da Colaboração com o Cliente:** Compreendemos que depender exclusivamente de reuniões síncronas gera gargalos e desgasta a agenda da cliente.
 **Ação de Melhoria:** Consolidar o Acordo de Nível de Serviço de feedback assíncrono estabelecido.
