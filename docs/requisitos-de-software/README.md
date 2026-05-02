@@ -37,7 +37,7 @@ A rastreabilidade é mantida de forma simples e prática:
 
 - **Requisito - OE/CP:** cada história explicita a contribuição ao objetivo e à característica do produto.
 - **Requisito - Backlog:** cada história existe como item no backlog (Kanban) e recebe prioridade.
-- **Requisito - Feedback do cliente:** decisões e mudanças são registradas nas atas em [Interação com Cliente](../interacao-entre-equipe-e-cliente/).
+- **Requisito - Feedback do cliente:** decisões e mudanças são registradas em [Atas](../interacao-entre-equipe-e-cliente/atas.md).
 
 ## 5. Tratamento de mudanças
 
