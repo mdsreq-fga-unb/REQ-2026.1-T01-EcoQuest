@@ -8,7 +8,7 @@
 | Desenvolvedor Back-end | Implementação de APIs, banco de dados e lógica de negócio | Joaquim Neto | Todos |
 | Desenvolvedor Front-end | Desenvolvimento de interface de usuário e experiência visual | Yasmim de Souza | Todos |
 | Analista de Qualidade | Testes, validação de funcionalidades e garantia de qualidade | Nayra Nery | Joaquim Neto  |
-| Analista de Desenvolvimento | Análise de requisitos, viabilidade técnica e documentação de especificações | João Farias | Todos |
+| Analista de Requisitos | Elicitação, análise e documentação de requisitos; definição de critérios de aceitação e rastreabilidade | João Farias | Todos |
 
 **Responsabilidades:** Trabalho em duplas cobrindo todas as áreas: coordenação, comunicação, gestão de prazos, design, desenvolvimento e testes.
 
