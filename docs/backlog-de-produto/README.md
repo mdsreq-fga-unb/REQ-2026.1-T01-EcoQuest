@@ -33,7 +33,7 @@ A priorização segue **MoSCoW** e é revisada continuamente no refinamento sema
 
 Mudanças são tratadas de forma leve:
 
-1. Solicitação registrada em ata ([Interação com Cliente](../interacao-entre-equipe-e-cliente/));
+1. Solicitação registrada em ata ([Atas](../interacao-entre-equipe-e-cliente/atas.md));
 2. Triagem interna (impacto, custo-benefício, riscos, OE/CP);
 3. Priorização MoSCoW e atualização do Kanban;
 4. Atualização de artefatos (histórias, AC, protótipos) mantendo rastreabilidade.
