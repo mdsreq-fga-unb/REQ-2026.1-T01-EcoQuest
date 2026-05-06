@@ -18,6 +18,8 @@
 - **Casos de Uso de alto nível:** utilizados para complementar a descrição das funcionalidades principais do sistema e representar as interações mais relevantes.
 - **Critérios de aceitação:** utilizados para detalhar as condições que cada requisito deve atender para ser considerado válido e pronto para desenvolvimento.
 
+Para manter consistência entre ER e desenvolvimento, o projeto utiliza **DoR/DoD** como critérios de prontidão e conclusão dos requisitos, conectando cada história aos objetivos (OE) e às características do produto (CP). As checklists estão em [DoR e DoD](../dor-e-dod/).
+
 ### Representação de Requisitos
 
 - **Protótipos:** utilizados para representar visualmente as principais funcionalidades do sistema antes da implementação.

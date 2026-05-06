@@ -4,7 +4,7 @@
 |----------|-----------|
 | **Nome**     | Prof. Dra. Juliana Dalbone |
 | **Tipo**     | Cliente Institucional/acadêmico |
-| **Forma de Contato** | Reuniões de alinhamento semanais (remotas) e comunicação assíncrona por e-mail institucional |
+| **Forma de Contato** | Reuniões de alinhamento quinzenais (remotas) e validações assíncronas semanais por e-mail institucional |
 | **Vínculo com o projeto** | Principal Stakeholder. Responsável por orientar as regras de negócio do domínio ambiental, validar os requisitos elicitados e aprovar as entregas |
 
 ## 1.2. Introdução ao negócio e contexto
