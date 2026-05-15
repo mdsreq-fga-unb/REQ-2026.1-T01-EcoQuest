@@ -21,9 +21,18 @@ body {
 }
 
 
+section.cover {
+  background: linear-gradient(135deg, #F9FBE7 0%, #81C784 100%) !important;
+}
+
+section.cover h1, 
+section.cover p, 
+section.cover small {
+  color: var(--eco-text) !important;
+}
+
 .markdown-section {
   max-width: 850px;
-  /* Largura da linha*/
 }
 
 .markdown-section h1,
@@ -33,7 +42,6 @@ body {
   font-weight: 600;
 }
 
-/* Links */
 .markdown-section a {
   color: var(--eco-primary);
   font-weight: 500;
@@ -45,10 +53,8 @@ body {
 .markdown-section a:hover {
   color: var(--eco-action);
   border-bottom: 2px solid var(--eco-action);
-  /* Efeito ao passar o mouse */
 }
 
-/* Citações e Callouts - Destacar*/
 .markdown-section blockquote {
   border-left: 5px solid var(--eco-action);
   background-color: rgba(129, 199, 132, 0.1);
