@@ -1,24 +1,35 @@
 # Visão geral do ecoquest
 
 ## EcoQuest
-O EcoQuest é uma plataforma web gamificada desenvolvida para incentivar e validar a adoção de práticas sustentáveis no cotidiano de jovens estudantes. O projeto busca transformar o conhecimento teórico sobre sustentabilidade em ações práticas mensuráveis através de mecânicas de jogos e recompensas virtuais.
+
+O EcoQuest é uma plataforma de infraestrutura digital desenhada para viabilizar e escalar a economia circular através do descarte inteligente de resíduos. O sistema conecta doadores a Pontos de Entrega Voluntária (PEVs), automatizando a validação de ativos físicos e convertendo o impacto ambiental em recompensas tangíveis e rastreáveis.
 
 ## O Problema
-Existe uma lacuna significativa entre o entendimento teórico sobre questões ambientais (como reciclagem e economia de recursos) e a aplicação dessas práticas no dia a dia. A falta de incentivos imediatos e de ferramentas de acompanhamento contribui para a baixa adesão a comportamentos sustentáveis entre o público jovem.
+
+No processo atual de descarte de resíduos especializados (como lixo eletrônico), as doações possuem alta fricção e nenhum feedback. Como o esforço logístico (busca, triagem, deslocamento e tempo) é maior do que o retorno percebido.
+
+ os potenciais doadores apresentam desmotivação na contribuição, o que leva a baixas taxas de participação e descarte inadequado de resíduos.
+
+A falta de feedback imediato, a ausência de um comprovante digital de impacto e a inexistência de incentivos recíprocos geram desmotivação sistêmica, resultando em baixas taxas de participação e o descarte inadequado de materiais críticos.
 
 ## A Solução
-O EcoQuest atua como um sistema de gestão de hábitos sustentáveis. Através de um motor de missões (Quests), os usuários são desafiados a realizar ações reais no mundo físico. A validação dessas ações ocorre por meio de capturas de imagens em tempo real, garantindo a veracidade, o engajamento e a integridade da progressão no sistema.
+
+O EcoQuest atua como uma ponte físico-digital entre o doador e as ONGs de reciclagem. Através de um ecossistema integrado, a plataforma oferece:
+
+- Logística Simplificada: Mapeamento inteligente e centralizado de PEVs e materiais aceitos;
+- Validação de Integridade: Um protocolo de segurança baseado em tokens únicos (QR Codes) que garante a autenticidade da doação no ato da entrega física;
+- Sistema de Valor Recíproco: A conversão de dados brutos (volume/tipo de resíduo) em créditos digitais, permitindo o resgate de benefícios em uma rede de parceiros e o acompanhamento transparente do impacto ambiental gerado.
 
 ## Metodologia e Ciclo de Vida
 O desenvolvimento adota uma abordagem híbrida e o processo OpenUP (Open Unified Process). Esta escolha permite:
 
 Fases Definidas: Organização em Concepção, Elaboração, Construção e Transição.
 
-Foco em Arquitetura: Estabilização da base tecnológica nas fases iniciais.
+Foco em Arquitetura: Estabilização de uma base modular que permite a futura integração de hardware IoT e expansão para diferentes tipos de doação.
 
-Desenvolvimento Adaptativo: Início exploratório para descoberta de valor e evolução para uma construção estruturada.
+Desenvolvimento Adaptativo: Ciclos iterativos que permitem validar a usabilidade do aplicativo (PWA) e a eficácia do sistema de tokens antes de uma implementação em larga escala.
 
-Documentação Progressiva: Produção de artefatos técnicos conforme a maturidade do entendimento do sistema aumenta.
+Documentação Progressiva: Produção de artefatos técnicos conforme a maturidade do entendimento do sistema aumenta, garantindo rastreabilidade e alinhamento com os objetivos do projeto.
 
 ### Vídeo de Apresentação
 
