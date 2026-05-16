@@ -5,12 +5,13 @@
 | **Nome**     | Prof. Dra. Juliana Dalbone |
 | **Tipo**     | Cliente Institucional/acadêmico |
 | **Forma de Contato** | Reuniões de alinhamento quinzenais (remotas) e validações assíncronas semanais por e-mail institucional |
-| **Vínculo com o projeto** | Principal Stakeholder. Responsável por orientar as regras de negócio do domínio ambiental, validar os requisitos elicitados e aprovar as entregas |
+| **Vínculo com o projeto** | Principal Stakeholder. Responsável por orientar as regras de negócio, fases, e validar os requisitos elicitados e aprovar as entregas |
 
 ## 1.2. Introdução ao negócio e contexto
-A crescente preocupação global com questões ambientais tem impulsionado iniciativas voltadas à sustentabilidade, especialmente no contexto educacional. Disciplinas, como Engenharia e Ambiente, desempenham um papel fundamental na formação de aluno-cidadãos conscientes e engajados com práticas sustentáveis.  
 
-Muitos jovens estudantes compreendem a importância de ações como reciclagem, economia de recursos naturais e consumo consciente, porém apresentam baixa adesão prática.
+A gestão de Resíduos de Equipamentos Eletroeletrônicos (REEE) tornou-se um dos maiores desafios ambientais da década. No Distrito Federal, embora existam iniciativas isoladas, observa-se a ausência de uma rede integrada que conecte eficientemente o cidadão comum às entidades de reciclagem. O cenário atual é marcado por uma desconexão: de um lado, cidadãos que acumulam resíduos por não conhecerem pontos de coleta confiáveis; de outro, ONGs como a "Programando o Futuro", que possuem capacidade técnica de reciclagem, mas enfrentam dificuldades na captação constante e qualificada desses materiais. Redes de parceiros comerciais, que poderiam atuar como incentivadores, permanecem subutilizadas, criando um ciclo vicioso de baixa participação e impacto ambiental crescente.
+
+O contexto atual exige uma transição do modelo de descarte baseado puramente no esforço individual para um sistema que reconheça e valorize a ação do cidadão, mitigando o impacto ambiental negativo causado pelo descarte inadequado no ecossistema local.
 
 ## 1.3. Rich Picture
 
@@ -18,39 +19,45 @@ Muitos jovens estudantes compreendem a importância de ações como reciclagem, 
 
 ## 1.4. Identificação da oportunidade ou problema
 
-Existe uma falta de conexão significativa entre o conhecimento teórico sobre sustentabilidade e a adoção prática de comportamentos sustentáveis no cotidiano, sendo o problema central o baixo engajamento prático com os aprendizados da disciplina. Atualmente a disciplina é dada com um alto foco na teoria, com atividades simples, como assistir vídeos e, em uma folha, responder perguntas ou apresentar um resumo sobre o vídeo exibido. Não há atividades práticas para a execução do que foi ensinado em sala. 
+Observando modelos internacionais de sucesso que utilizam a reciprocidade para incentivar o descarte correto, identifica-se a oportunidade de transformar a percepção pública sobre o lixo eletrônico.
 
-Há uma cultura pouco incentivadora dentro da disciplina para a aplicação das práticas aprendidas, além da falta de estratégias para sua execução, o que acaba ocasionando uma baixa motivação nos alunos com relação à implementação das atividades sustentáveis em seu dia a dia.
+O problema central identificado é que **a alta fricção logística e a ausência de reciprocidade imediata criam uma "lacuna de altruísmo" sistêmica que desencoraja a participação ativa na gestão sustentável de resíduos**.
 
-A Figura 2, exibida abaixo, apresenta o diagrama de Ishikawa contendo as causas e o problema identificado na disciplina de Engenharia e Ambiente.
+A análise das causas raiz mostrada na Figura 2, exibida abaixo, revela que o baixo índice de descarte adequado é sustentado pelos seguintes fatores:
 
 ![DiagramaIshikawa](../assets/DiagramaIshikawa.png)
 
 ## 1.5. Desafios do projeto
-- **Desafios Técnicos:** Garantia de precisão na validação das provas e a escalabilidade do sistema de processamento de mídia;
 
-- **Desafios Operacionais:** Gestão de recompensas e a separação das missões relevantes;
+- **Desafios de Integridade**: Necessidade de mecanismos robustos para validar que a doação física ocorreu conforme declarado, evitando fraudes em sistemas de incentivo.
 
-- **Desafios de Engajamento:** Manter o uso contínuo, evitar fraudes nas provas do cumprimento das atividades e balancear a dificuldade das missões.
+- **Desafios Logísticos**: Coordenação entre a disponibilidade do cidadão e a capacidade operacional de recebimento das ONGs e PEVs.
+
+- **Desafios de Sustentabilidade Econômica**: Estruturação de parcerias que permitam a manutenção de recompensas e a viabilidade financeira da infraestrutura digital (servidores e manutenção).
+
+- **Desafios de Retenção**: Converter a ação de descarte — que é naturalmente eventual — em um comportamento recorrente e consciente.
+
+- **Desafios de Escalabilidade**: Garantir que a solução seja adaptável a diferentes contextos regionais e possa ser expandida para além do Distrito Federal, considerando as particularidades locais.
 
 ## 1.6.Mapa de Stakeholders
 
-Os principais stakeholders do projeto são: Juliana Dalbone, como cliente e principal responsável por garantir o rigor conceitual das
-missões sustentáveis, a qualidade da documentação e a aderência do projeto aos critérios acadêmicos; George Marsicano Correa, como cliente secundário e orientador da disciplina e do projeto, buscando garantir o conhecimento necessário para a aplicação dos conceiros da ER; estudantes universitários, como usuários finais, sendo impactados diretamente pela plataforma; equipe de  desenvolvimento, sendo a responsável pela implementação da solução e a viabilização técnica da integração, usabilidade, segurança e a escalabilidade.
-
-![MapaStakeholders](../assets/MapaStakeholders.png)
-
-Abaixo pode ser visualizado uma tabela resumida dos stakeholders.
+Os principais stakeholders identificados no ecossistema de gestão de resíduos eletrônicos são:
 
 | Stakeholder | Relação com a solução | Interesse principal | Influência |
 |----------|-----------|-----------|---------------|
-| Prof. Dra. Juliana Dalbone | Cliente e Orientadora | Qualidade acadêmica e documental, e aderência ao domínio | Alta |
-| Prof. Dr. George Marsicano Correa | Cliente secundário e Orientador | Aquisição dos conhecimentos de ER por parte da equipe desenvolvedora e a entrega da solução | Alta |
-| Estudantes Universitários | Usuários finais do sistema | Engajamento, recompensas, usabilidade | Média |
-| Equipe de desenvolvedores | Responsáveis pela construção do produto | Entrega de uma solução viável e de qualidade | Alta |
+| Prof. Dra. Juliana Dalbone | Cliente e Orientadora | Validação do domínio ambiental e rigor metodológico | Alta |
+| Prof. Dr. George Marsicano Correa | Cliente e Orientador | Aquisição dos conhecimentos de ER por parte da equipe desenvolvedora e a entrega da solução | Alta |
+| Equipe de Desenvolvedores | Executores | Implementação técnica, segurança e escalável | Alta |
+| Cidadãos (Doadores) | Usuários Finais | Facilidade de descarte, transparência e incentivos | Alta |
+| ONGs (ex: Programando o Futuro) | Operadores Logísticos | Aumento do volume de captação e automação de triagem | Alta |
+| Rede de Parceiros | Provedores de Incentivo | Responsabilidade social e visibilidade de marca | Média |
+
+![MapaStakeholders](../assets/MapaStakeholders.png)
 
 ## 1.7. Segmentação de Clientes
+
 A disciplina de Engenharia e Ambiente atende a um principal segmento de cliente:
 
-- **Estudantes Universitários (17-24 anos):** Este grupo possui um baixo engajamento na disciplina, desvalorizando-a. São, geralmente, jovens recém chegados à universidade e ainda não possuem uma visão sobre a importância da disciplina e do impacto que eles mesmos podem gerar;
-- **Estudantes Universitários 60+ (60-70 anos):** Este grupo apresenta maior interesse na disciplina, tendo maior conhecimento do impacto que as ações sustentáveis geram. Geralmente possui letramento digital.
+- **Jovens Adultos (17-24 anos)**: Nativos digitais com alta circulação de dispositivos eletrônicos. Apresentam consciência ambiental teórica, mas são altamente sensíveis à conveniência e à gratificação imediata. A barreira principal para este grupo é o esforço logístico em comparação ao retorno percebido.
+
+- **Idosos com Letramento Digital (60-70 anos)**: Grupo que costuma acumular equipamentos antigos por cautela ou falta de opção de descarte. Possuem interesse em contribuir para o bem comum, mas enfrentam barreiras na complexidade dos processos de descarte e na localização física dos pontos de entrega.
