@@ -20,8 +20,6 @@
 
 **CAMADA 3 — QUANDO O CRITÉRIO FALHA**
 
-**CAMADA 3 — QUANDO O CRITÉRIO FALHA (Exemplos Concretos)**
-
 *   **Falha de Ator/Regra Ambígua:** A **US06 — Localizar PEVs** solicita a exibição de pontos no mapa, mas não especifica qual é o raio de distância padrão a ser carregado inicialmente (5km? 10km?) nem se a ordenação deve ser por proximidade geográfica ou por tipo de material reciclável aceito, deixando a regra de completude de negócio ambígua.
     
 *   **Falha de Fluxo Alternativo/AC Incompleto:** A **US08 — Ler Token de Doação** não especifica o que acontece quando o token está expirado, já foi lido anteriormente ou pertence a outro usuário. O ator está nomeado, mas a falta desses fluxos de exceção torna os critérios de aceitação incompletos para aprovação.
@@ -54,7 +52,7 @@
 *   **Artefato obrigatório:** Matriz de dependências validada e checklist de acessos/ambientes com status "Liberado" no card.
     
 
-**CAMADA 3 — QUANDO O CRITÉRIO FALHA (Exemplos Concretos)**
+**CAMADA 3 — QUANDO O CRITÉRIO FALHA**
 
 *   **Dependência Externa Não Mapeada:** A **US10 — Catálogo de recompensas** depende da integração com o sistema ou API de um parceiro/patrocinador para listar os itens disponíveis, mas as chaves de acesso a essa API de homologação e a documentação do endpoint ainda não foram disponibilizadas.
     
@@ -90,7 +88,7 @@
 *   **Artefato obrigatório:** Valores de CX e ES preenchidos na Tabela de Priorização e acatados pela dupla de desenvolvimento.
     
 
-**CAMADA 3 — QUANDO O CRITÉRIO FALHA (Exemplos Concretos)**
+**CAMADA 3 — QUANDO O CRITÉRIO FALHA**
 
 *   **Lacuna Técnica Indefinida:** A **US15 — Visualizar Painel de Impacto Pessoal** (PT 3) exige a consolidação de dados de todo o histórico do usuário. A equipe ainda não decidiu se utilizará uma _view_ materializada no banco relacional ou se consolidará isso via código, gerando uma incerteza técnica que inviabiliza cravar se o Esforço (ES) será 3 ou 5.
     
@@ -129,7 +127,7 @@
 *   **Artefato obrigatório:** _Task Breakdown_ (quebra técnica) elaborada e anexada à US com estimativas de horas/tarefa.
     
 
-**CAMADA 3 — QUANDO O CRITÉRIO FALHA (Exemplos Concretos)**
+**CAMADA 3 — QUANDO O CRITÉRIO FALHA**
 
 *   **Assimetria de Entendimento:** Durante a quebra de tarefas da **US13 — Exibir Progresso Mensal**, o Front-end estimou construir gráficos interativos complexos, enquanto o Back-end estimou apenas devolver um JSON com totais simples. A equipe não tem a mesma visão arquitetural do que será entregue.
     
@@ -166,7 +164,7 @@
 *   **Artefato obrigatório:** Software operando em ambiente de teste reproduzindo 100% dos fluxos documentados na US.
     
 
-**CAMADA 3 — QUANDO O CRITÉRIO FALHA (Exemplos Concretos)**
+**CAMADA 3 — QUANDO O CRITÉRIO FALHA**
 
 *   **Caminho Feliz Exclusivo:** Na **US02 — Autenticar usuário**, o login com credenciais válidas funciona perfeitamente e o token é gerado, mas o fluxo de erro que deveria bloquear a conta após 5 tentativas incorretas consecutivas (descrito no Caso de Uso) não foi codificado.
     
@@ -201,7 +199,7 @@
 *   **Artefato obrigatório:** Relatório de _linter_, análise estática de código ou aprovação em checklist rigoroso de RNF documentado.
     
 
-**CAMADA 3 — QUANDO O CRITÉRIO FALHA (Exemplos Concretos)**
+**CAMADA 3 — QUANDO O CRITÉRIO FALHA**
 
 *   **Violação de Desempenho:** A **US16 — Consultar Estatísticas do Impacto da Comunidade** está demorando 8 segundos para processar a agregação de dados de todos os PEVs e carregar a tela, violando o RNF arquitetural que estipula um tempo de resposta máximo de 5 segundos para relatórios web.
     
@@ -236,7 +234,7 @@
 *   **Artefato obrigatório:** Relatório de Cobertura de Testes (verde), _Pull Request_ assinado por um par, e Ata/Registro de Aceite do cliente.
     
 
-**CAMADA 3 — QUANDO O CRITÉRIO FALHA (Exemplos Concretos)**
+**CAMADA 3 — QUANDO O CRITÉRIO FALHA**
 
 *   **Uso Incorreto de Test Doubles:** Os testes unitários da **US08 — Ler Token de Doação** não utilizaram um _Mock_ ou _Spy_ adequadamente isolado na camada de validação do PubSub. Em vez de simular, o teste está tentando realizar requisições reais de leitura, quebrando a estrutura AAA (Arrange, Act, Assert).
     
@@ -269,7 +267,7 @@
 *   **Artefato obrigatório:** Links de rastreabilidade atualizados e _commits_ submetidos e mesclados nos repositórios de documentação (ex: MkDocs).
     
 
-**CAMADA 3 — QUANDO O CRITÉRIO FALHA (Exemplos Concretos)**
+**CAMADA 3 — QUANDO O CRITÉRIO FALHA**
 
 *   **Assincronia Arquitetural (Dicionário de Dados):** A **US14 — Configurar Anonimato** inseriu uma nova coluna booleana is\_anonymous na tabela de usuários e alterou as rotas de impacto. No entanto, o desenvolvedor não atualizou o diagrama UML, e o repositório de documentação oficial do projeto (ex: MkDocs) continua refletindo a versão anterior da API.
     
