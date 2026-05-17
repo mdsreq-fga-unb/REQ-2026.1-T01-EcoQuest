@@ -31,15 +31,14 @@ Reduzir a alta fricção e introduzir feedback no processo de descarte responsá
 
 ## 2.5 Pesquisa de Mercado e Análise Competitiva
 
-A referência interna é o Aprender3 UnB, voltado a entrega de conteúdo e atividades tradicionais, porém sem gamificação. Em plataformas externas, Habitica explora gamificação e missões para engajamento continuo, com um plano pago para funcionalidades avançadas em que professores podem criar grupos e missões personalizadas, com foco geral em produtividade e hábitos:
-
-- Aprender3: Focado em conteúdo e atividades tradicionais, sem gamificação, o que pode limitar o engajamento dos estudantes.
-- Habitica: Plataforma de gamificação para produtividade e hábitos, com plano pago para funcionalidades avançadas, mas não é customizada para o contexto acadêmico e sustentável, e carece de validação de atividades, o que pode levar a fraudes e reduzir a confiabilidade dos resultados.
+Há plataformas que abordam a temática de sustentabilidade, mas poucas focam especificamente na gestão de resíduos eletrônicos com um modelo de gamificação e recompensa. As soluções existentes geralmente se enquadram em duas categorias principais:
+- Sistemas de Gestão de Resíduos (Benchmarks): Existem soluções como o Recicle Bem ou aplicativos de prefeituras, mas geralmente carecem de um mecanismo de recompensa imediata e de uma interface focada na experiência do cidadão, limitando-se a diretórios estáticos;
+- Plataformas de Incentivo (Marketplace): Programas de fidelidade tradicionais raramente se integram a causas ambientais de forma direta e validada, criando um vácuo de confiança sobre o real destino do resíduo.
 
 O EcoQuest se diferencia por:
-- ser uma solução customizada para o contexto acadêmico com foco em práticas sustentáveis;
-- gamificação adaptada a esse nicho e integração social entre estudantes na UnB, promovendo um engajamento mais relevante e direcionado;
-- ênfase na validação das atividades para garantir autenticidade e reduzir fraudes, algo que plataformas genéricas como Habitica não possuem, aumentando a confiabilidade e o impacto real das ações dos usuários.
+- Ponte Físico-Digital: Validação via tokens únicos que impedem a fraude, algo ausente em sistemas baseados apenas em autodeclaração;
+- Foco em Logística Reversa Local: Integração direta com ONGs do DF (ex: Programando o Futuro), criando um ecossistema de valor real para a comunidade local;
+- Escalabilidade Modular: Arquitetura pronta para evoluir de um sistema de pontos para um marketplace completo de benefícios sustentáveis.
 
 ## 2.6  Viabilidade da Proposta
 
