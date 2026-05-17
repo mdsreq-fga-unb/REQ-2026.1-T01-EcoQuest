@@ -42,9 +42,15 @@ O EcoQuest se diferencia por:
 
 ## 2.6  Viabilidade da Proposta
 
-Após uma análise completa do escopo e das funcionalidades propostas, concluímos que o desenvolvimento de todas as características descritas não é viável dentro do prazo de 3 meses, considerando a equipe disponível e o tempo dedicado ao projeto, com pontos críticos de riscos sendo: validação de atividades, precisão na verificação de provas, processamento de mídia e manutenção de engajamento, pois essas funcionalidades exigem desenvolvimento complexo, testes rigorosos e podem demandar recursos adicionais para garantir sua eficácia e confiabilidade. No entanto, esses riscos podem ser mitigados com priorização de missões/desafios, pontuação básica e validação manual inicialmente.
+O projeto demonstra viabilidade técnica e financeira através de uma execução em fases:
 
-Para então garantir a entrega de um produto funcional e de qualidade, será conversado com o cliente a identificação de quais características são prioritárias para o MVP, diferenciando entre necessidades essenciais e desejos adicionais; será construído então um escopo para essa primeira fase de três meses, que contenha as funcionalidades mais essenciais para atingir os objetivos principais do projeto. Além disso, será planejado um roadmap para fases posteriores ao MVP, onde as funcionalidades restantes poderão ser implementadas de forma incremental, garantindo uma evolução contínua do produto e a satisfação do cliente ao longo do processo.
+- Fase 1 (MVP): Foco no desenvolvimento dentro do ecossistema acadêmico, particulamente focando no sistema de usuário. Utilizando infraestrutura de baixo custo e tecnologias de código aberto, a validação interna do modelo ocorre com investimento financeiro mínimo.
+- Transição para Extensão: O projeto foi desenhado para transcender os muros da universidade, consolidando-se como um Projeto de Extensão. Isso permite a captação de recursos institucionais e o estabelecimento de parcerias estratégicas com a sociedade civil e ONGs, com desenvolvimento e implementação em hardware em PEVs e pontos de coleta.
+
+Custos Estimados (Mensais):
+- Hospedagem (VPS): ~€5.00 (Contabo);
+- Domínio (.com.br / .org): ~R$ 40,00/ano;
+- Manutenção: custo operacional de desenvolvimento (equipe acadêmica).
 
 ## 2.7 Benefícios Esperados
 
