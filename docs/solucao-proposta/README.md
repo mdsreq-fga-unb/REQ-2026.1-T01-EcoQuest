@@ -1,13 +1,15 @@
 # 2. Solução Proposta
 
 ## 2.1. Objetivo geral do produto
-Aumentar o engajamento dos estudantes com práticas sustentáveis e com a disciplina, promovendo atividades práticas por meio de uma plataforma web gamificada, utilizando mecânicas de jogos e um sistema de recompensas, promovendo um engajamento contínuo, integração dos estudantes através de atividades coletivas e um impacto ambiental positivo.
+
+Reduzir a alta fricção e introduzir feedback no processo de descarte responsável ao oferecer recompensa e informações de descarte aos usuários.
 
 ## 2.2. Objetivos específicos (OE's)
-- **OE1:**  Incentivar a adoção de práticas sustentáveis no cotidiano;
-- **OE2:** Aumentar o engajamento por meio de gamificação;
-- **OE3:** Validar as atividades realizadas, evitando fraudes;
-- **OE4:** Promover interação social e competição saudável.
+
+- **OE1**: Incentivar o engajamento à prática de ação sustentável através de gamificação.
+- **OE2**: Facilitar o processo de descarte responsável, fornecendo mapeamento intuitivo e identificação de materiais que podem ser descartados.
+- **OE3**: Prevenção de fraudes na validação de descarte responsável físicos.
+- **OE4**: Comprovar o impacto de descarte responsável.
 
 ## 2.3. Características do Produto
 | ID | Característica do Produto (CP) | Descrição Resumida | ID | Valor de Negócio | Contribuição principal | Contribuição secundária | 
