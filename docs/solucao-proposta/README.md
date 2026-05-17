@@ -25,7 +25,7 @@ Aumentar o engajamento dos estudantes com práticas sustentáveis e com a discip
 - **Backend:** Bun + Elysia (API e renderizacao server-side), porque permite desenvolvimento seguro com Typescript e PostgreSQL integrados nativamente com alta performance, simplicidade, agilidade, ideal para MVPs e fácil manutenção, além de ser uma stack moderna e leve, alinhada com as necessidades do projeto.
 - **Frontend:** HTML renderizado no backend com HTMX, CSS e JavaScript para interatividade, pois é uma solução leve, de fácil manutenção e muito rápida para desenvolvimento de MVPs, sem complexidade de frameworks modernos, permitindo foco total na lógica de negócios e experiência do usuário.
 - **Banco de dados:** PostgreSQL (Docker), pois oferece robustez, escalabilidade e facilidade de integração com o backend
-- **Infraestrutura:** a definir um VPS que nos permita rodar as duas instâncias de processos (backend e banco) de forma integrada, com acesso remoto para desenvolvimento e testes.
+- **Infraestrutura:** Contabo, por ser uma opção de hospedagem acessível, confiável e com boa performance, ideal para projetos acadêmicos e MVPs, oferecendo recursos suficientes para o desenvolvimento e testes iniciais do projeto.
 
 ## 2.5 Pesquisa de Mercado e Análise Competitiva
 
