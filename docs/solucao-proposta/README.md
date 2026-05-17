@@ -8,7 +8,7 @@ Reduzir a alta fricção e introduzir feedback no processo de descarte responsá
 
 - **OE1**: Incentivar o engajamento à prática de ação sustentável através de gamificação.
 - **OE2**: Facilitar o processo de descarte responsável, fornecendo mapeamento intuitivo e identificação de materiais que podem ser descartados.
-- **OE3**: Prevenção de fraudes na validação de descarte responsável físicos.
+- **OE3**: Prevenção de fraudes na validação de descarte físico responsável.
 - **OE4**: Comprovar o impacto de descarte responsável.
 
 ## 2.3. Características do Produto
