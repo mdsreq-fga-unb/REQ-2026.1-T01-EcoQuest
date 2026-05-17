@@ -11,6 +11,7 @@
   * [Requisitos de Software](requisitos-de-software/)
   * [Backlog do Produto](backlog-de-produto/)
   * [DoR e DoD](dor-e-dod/)
+  * [Critérios](criterios/)
 
 * **Acompanhamento**
   * [Cronograma e Entregas](cronograma-e-entregas/)

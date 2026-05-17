@@ -100,8 +100,8 @@ Fluxo de CR:
 
 DoR/DoD = critérios de **entrada/saída** para itens do *Work Items List*.
 
-- **DoR:** história + AC + OE/CP + prioridade.
-- **DoD:** implementado, testado/validado e rastreado.
+- **DoR:** história clara, critérios de aceitação, vínculo com OE/CP, prioridade definida;
+- **DoD:** requisito implementado, testado, validado e rastreado.
 
 Checklists: [DoR e DoD](../dor-e-dod/).
 
