@@ -39,6 +39,7 @@ Cada requisito deve indicar **OE** e **CP** (ver [Solução Proposta](../solucao
 
 ## Uso no processo
 
+```mermaid
 flowchart TD
     %% Estilização de Cores (Paleta Ecológica aplicada ao diagrama)
     classDef objetivo fill:#2E7D32,stroke:#1b5e20,stroke-width:2px,color:#fff;
@@ -59,6 +60,8 @@ flowchart TD
     E -- Sim --> F[✅ Done válido] ::: execucao
     
     F --> G([🔄 Revisão Semanal do OKR / Key Result Atualizado]) ::: objetivo
+
+```
 
 ## Exemplo mínimo (User Story)
 
