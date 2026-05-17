@@ -54,14 +54,22 @@ Custos Estimados (Mensais):
 
 ## 2.7 Benefícios Esperados
 
-### Para o cliente
+###### Para a Cliente (Prof. Dra. Juliana)
 
-- Aumento do engajamento e participação na disciplina.
-- Evidências praticas de atividades sustentáveis realizadas.
-- Base inicial para mensurar impacto e ajustar a metodologia.
+- Impacto Social: Fortalecimento do papel da universidade na solução de problemas ambientais reais através de um projeto de extensão.
 
-### Para os usuarios
+###### Para as ONGs
 
-- Atividades praticas com retorno imediato (pontuação/progresso).
-- Motivação por metas e desafios sustentaveis.
-- Interação social e competição saudável no grupo.
+- Aumento de Captação: Incremento no fluxo de resíduos eletrônicos e materiais doados de forma qualificada;
+- Automação e Visibilidade: Redução do trabalho manual de registro de descartes responsáveis e maior exposição da ONG para um público engajado.
+
+###### Para a Rede de Parceiros
+
+- Responsabilidade Socioambiental (ESG): Para parceiros comerciais, a oportunidade de atrair clientes conscientes através do sistema de recompensas;
+- Visibilidade de Marca: Participação em um projeto inovador e de impacto social, com potencial para gerar mídia positiva e engajamento comunitário.
+
+###### Para os Usuários (Cidadãos)
+
+- Reciprocidade Tangível: Retorno direto pelo esforço despendido, seja através de pontos, benefícios ou reconhecimento social;
+- Fricção Reduzida: Facilidade em encontrar locais de descarte e entender o processo;
+- Transparência: Visualização clara do impacto ambiental individual, transformando uma "obrigação" em uma ação de impacto positivo visível.
