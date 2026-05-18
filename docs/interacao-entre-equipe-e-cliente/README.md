@@ -76,7 +76,7 @@ Referências:
 | **Requisitos** | User stories + Critério de Aceitação | [Requisitos de Software](/requisitos-de-software/) | Refinamento semanal |
 | **Protótipos de IU** | Wireframes/fluxos | Ferramenta/artefatos de design | Refinamento quinzenal |
 | **Change Request (CR)** | Solicitações de mudança | [Atas](/interacao-entre-equipe-e-cliente/atas/) + backlog | Contínuo |
-| **Critérios de aceite** | DoR/DoD + testes | [DoR e DoD](/interacao-entre-equipe-e-cliente/dor-e-dod/) | Entrada (DoR) / saída (DoD) |
+| **Critérios de aceite** | DoR/DoD + testes | [DoR e DoD](/dor-e-dod/) | Entrada (DoR) / saída (DoD) |
 | **Plano da iteração** | Escopo e prioridades | Kanban + cronograma | Quinzenal |
 
 ## 6.6 Registro de feedback e decisões
