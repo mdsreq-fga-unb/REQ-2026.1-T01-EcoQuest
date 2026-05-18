@@ -1,13 +1,15 @@
 # 2. Solução Proposta
 
 ## 2.1. Objetivo geral do produto
-Aumentar o engajamento dos estudantes com práticas sustentáveis e com a disciplina, promovendo atividades práticas por meio de uma plataforma web gamificada, utilizando mecânicas de jogos e um sistema de recompensas, promovendo um engajamento contínuo, integração dos estudantes através de atividades coletivas e um impacto ambiental positivo.
+
+Reduzir a alta fricção e introduzir feedback no processo de descarte responsável ao oferecer recompensa e informações de descarte aos usuários.
 
 ## 2.2. Objetivos específicos (OE's)
-- **OE1:**  Incentivar a adoção de práticas sustentáveis no cotidiano;
-- **OE2:** Aumentar o engajamento por meio de gamificação;
-- **OE3:** Validar as atividades realizadas, evitando fraudes;
-- **OE4:** Promover interação social e competição saudável.
+
+- **OE1**: Incentivar o engajamento à prática de ação sustentável através de gamificação.
+- **OE2**: Facilitar o processo de descarte responsável, fornecendo mapeamento intuitivo e identificação de materiais que podem ser descartados.
+- **OE3**: Prevenção de fraudes na validação de descarte físico responsável.
+- **OE4**: Comprovar o impacto de descarte responsável.
 
 ## 2.3. Características do Produto
 | ID | Característica do Produto (CP) | Descrição Resumida | ID | Valor de Negócio | Contribuição principal | Contribuição secundária | 
@@ -25,36 +27,49 @@ Aumentar o engajamento dos estudantes com práticas sustentáveis e com a discip
 - **Backend:** Bun + Elysia (API e renderizacao server-side), porque permite desenvolvimento seguro com Typescript e PostgreSQL integrados nativamente com alta performance, simplicidade, agilidade, ideal para MVPs e fácil manutenção, além de ser uma stack moderna e leve, alinhada com as necessidades do projeto.
 - **Frontend:** HTML renderizado no backend com HTMX, CSS e JavaScript para interatividade, pois é uma solução leve, de fácil manutenção e muito rápida para desenvolvimento de MVPs, sem complexidade de frameworks modernos, permitindo foco total na lógica de negócios e experiência do usuário.
 - **Banco de dados:** PostgreSQL (Docker), pois oferece robustez, escalabilidade e facilidade de integração com o backend
-- **Infraestrutura:** a definir um VPS que nos permita rodar as duas instâncias de processos (backend e banco) de forma integrada, com acesso remoto para desenvolvimento e testes.
+- **Infraestrutura:** Contabo, por ser uma opção de hospedagem acessível, confiável e com boa performance, ideal para projetos acadêmicos e MVPs, oferecendo recursos suficientes para o desenvolvimento e testes iniciais do projeto.
 
 ## 2.5 Pesquisa de Mercado e Análise Competitiva
 
-A referência interna é o Aprender3 UnB, voltado a entrega de conteúdo e atividades tradicionais, porém sem gamificação. Em plataformas externas, Habitica explora gamificação e missões para engajamento continuo, com um plano pago para funcionalidades avançadas em que professores podem criar grupos e missões personalizadas, com foco geral em produtividade e hábitos:
-
-- Aprender3: Focado em conteúdo e atividades tradicionais, sem gamificação, o que pode limitar o engajamento dos estudantes.
-- Habitica: Plataforma de gamificação para produtividade e hábitos, com plano pago para funcionalidades avançadas, mas não é customizada para o contexto acadêmico e sustentável, e carece de validação de atividades, o que pode levar a fraudes e reduzir a confiabilidade dos resultados.
+Há plataformas que abordam a temática de sustentabilidade, mas poucas focam especificamente na gestão de resíduos eletrônicos com um modelo de gamificação e recompensa. As soluções existentes geralmente se enquadram em duas categorias principais:
+- Sistemas de Gestão de Resíduos (Benchmarks): Existem soluções como o Recicle Bem ou aplicativos de prefeituras, mas geralmente carecem de um mecanismo de recompensa imediata e de uma interface focada na experiência do cidadão, limitando-se a diretórios estáticos;
+- Plataformas de Incentivo (Marketplace): Programas de fidelidade tradicionais raramente se integram a causas ambientais de forma direta e validada, criando um vácuo de confiança sobre o real destino do resíduo.
 
 O EcoQuest se diferencia por:
-- ser uma solução customizada para o contexto acadêmico com foco em práticas sustentáveis;
-- gamificação adaptada a esse nicho e integração social entre estudantes na UnB, promovendo um engajamento mais relevante e direcionado;
-- ênfase na validação das atividades para garantir autenticidade e reduzir fraudes, algo que plataformas genéricas como Habitica não possuem, aumentando a confiabilidade e o impacto real das ações dos usuários.
+- Ponte Físico-Digital: Validação via tokens únicos que impedem a fraude, algo ausente em sistemas baseados apenas em autodeclaração;
+- Foco em Logística Reversa Local: Integração direta com ONGs do DF (ex: Programando o Futuro), criando um ecossistema de valor real para a comunidade local;
+- Escalabilidade Modular: Arquitetura pronta para evoluir de um sistema de pontos para um marketplace completo de benefícios sustentáveis.
 
 ## 2.6  Viabilidade da Proposta
 
-Após uma análise completa do escopo e das funcionalidades propostas, concluímos que o desenvolvimento de todas as características descritas não é viável dentro do prazo de 3 meses, considerando a equipe disponível e o tempo dedicado ao projeto, com pontos críticos de riscos sendo: validação de atividades, precisão na verificação de provas, processamento de mídia e manutenção de engajamento, pois essas funcionalidades exigem desenvolvimento complexo, testes rigorosos e podem demandar recursos adicionais para garantir sua eficácia e confiabilidade. No entanto, esses riscos podem ser mitigados com priorização de missões/desafios, pontuação básica e validação manual inicialmente.
+O projeto demonstra viabilidade técnica e financeira através de uma execução em fases:
 
-Para então garantir a entrega de um produto funcional e de qualidade, será conversado com o cliente a identificação de quais características são prioritárias para o MVP, diferenciando entre necessidades essenciais e desejos adicionais; será construído então um escopo para essa primeira fase de três meses, que contenha as funcionalidades mais essenciais para atingir os objetivos principais do projeto. Além disso, será planejado um roadmap para fases posteriores ao MVP, onde as funcionalidades restantes poderão ser implementadas de forma incremental, garantindo uma evolução contínua do produto e a satisfação do cliente ao longo do processo.
+- Fase 1 (MVP): Foco no desenvolvimento dentro do ecossistema acadêmico, particulamente focando no sistema de usuário. Utilizando infraestrutura de baixo custo e tecnologias de código aberto, a validação interna do modelo ocorre com investimento financeiro mínimo.
+- Transição para Extensão: O projeto foi desenhado para transcender os muros da universidade, consolidando-se como um Projeto de Extensão. Isso permite a captação de recursos institucionais e o estabelecimento de parcerias estratégicas com a sociedade civil e ONGs, com desenvolvimento e implementação em hardware em PEVs e pontos de coleta.
+
+Custos Estimados (Mensais):
+- Hospedagem (VPS): ~€5.00 (Contabo);
+- Domínio (.com.br / .org): ~R$ 40,00/ano;
+- Manutenção: custo operacional de desenvolvimento (equipe acadêmica).
 
 ## 2.7 Benefícios Esperados
 
-### Para o cliente
+###### Para a Cliente (Prof. Dra. Juliana)
 
-- Aumento do engajamento e participação na disciplina.
-- Evidências praticas de atividades sustentáveis realizadas.
-- Base inicial para mensurar impacto e ajustar a metodologia.
+- Impacto Social: Fortalecimento do papel da universidade na solução de problemas ambientais reais através de um projeto de extensão.
 
-### Para os usuarios
+###### Para as ONGs
 
-- Atividades praticas com retorno imediato (pontuação/progresso).
-- Motivação por metas e desafios sustentaveis.
-- Interação social e competição saudável no grupo.
+- Aumento de Captação: Incremento no fluxo de resíduos eletrônicos e materiais doados de forma qualificada;
+- Automação e Visibilidade: Redução do trabalho manual de registro de descartes responsáveis e maior exposição da ONG para um público engajado.
+
+###### Para a Rede de Parceiros
+
+- Responsabilidade Socioambiental (ESG): Para parceiros comerciais, a oportunidade de atrair clientes conscientes através do sistema de recompensas;
+- Visibilidade de Marca: Participação em um projeto inovador e de impacto social, com potencial para gerar mídia positiva e engajamento comunitário.
+
+###### Para os Usuários (Cidadãos)
+
+- Reciprocidade Tangível: Retorno direto pelo esforço despendido, seja através de pontos, benefícios ou reconhecimento social;
+- Fricção Reduzida: Facilidade em encontrar locais de descarte e entender o processo;
+- Transparência: Visualização clara do impacto ambiental individual, transformando uma "obrigação" em uma ação de impacto positivo visível.

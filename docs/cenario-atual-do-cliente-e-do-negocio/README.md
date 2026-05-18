@@ -37,7 +37,7 @@ A análise das causas raiz mostrada na Figura 2, exibida abaixo, revela que o ba
 
 - **Desafios de Retenção**: Converter a ação de descarte — que é naturalmente eventual — em um comportamento recorrente e consciente.
 
-- **Desafios de Escalabilidade**: Garantir que a solução seja adaptável a diferentes contextos regionais e possa ser expandida para além do Distrito Federal, considerando as particularidades locais.
+- **Desafio de Expansão Institucional**: Migrar de um MVP acadêmico para um projeto de extensão formalizado, garantindo a continuidade do desenvolvimento e a manutenção das parcerias externas após a fase inicial de implantação no campus.
 
 ## 1.6.Mapa de Stakeholders
 

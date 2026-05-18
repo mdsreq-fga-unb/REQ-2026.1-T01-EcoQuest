@@ -15,6 +15,8 @@
   * [Backlog do Produto](backlog-de-produto/)
   * [DoR e DoD](dor-e-dod/)
   * [Critérios](criterios/)
+  * [ACs e OKRs](criterios/acs-e-okrs.md)
+  * 
 
 * **Acompanhamento**
   * [Cronograma e Entregas](cronograma-e-entregas/)
