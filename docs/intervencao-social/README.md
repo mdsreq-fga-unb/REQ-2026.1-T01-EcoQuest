@@ -1,4 +1,4 @@
-# 3 Intervenção Social
+# 3. Intervenção Social
 
 A solução proposta pelo EcoQuest tende a produzir uma intervenção social relacionada à incorporação de práticas sustentáveis mediadas por tecnologia no cotidiano dos usuários. A utilização de mecanismos gamificados e acompanhamento digital pode alterar a forma como as pessoas interagem com ações ambientais, influenciando hábitos, participação e percepção sobre sustentabilidade.
 
