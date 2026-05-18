@@ -18,26 +18,18 @@ comprometimento. A resposta "Não" em qualquer uma delas bloqueia o
 item antes do Commitment Point.
 
 **C1 — Ator e Objetivo**
-> O ator está nomeado, seu papel está descrito e seu objetivo de
-> negócio está explícito na US?
+- O ator está nomeado, seu papel está descrito e seu objetivo de negócio está explícito na US?
 
 **C2 — Priorização**
-> O IP foi calculado, o quadrante definido e a classificação MoSCoW
-> registrada no backlog?
+- O IP foi calculado, o quadrante definido e a classificação MoSCoW registrada no backlog?
 
 **C3 — Critérios de Aceitação**
-> Os critérios de aceitação existem, estão no formato verificável
-> (Dado / Quando / Então) e estão rastreados ao OE e CP
-> correspondentes?
+- Os critérios de aceitação existem, estão no formato verificável (Dado / Quando / Então) e estão rastreados ao OE e CP correspondentes?
 
-**C4 — Regras de Negócio**
-> As regras de negócio específicas do domínio (missões, tokens,
-> gamificação) que afetam esta US estão documentadas e compreendidas
-> por todos os membros da equipe?
+**C4 — Regras de Negócio** As regras de negócio específicas do domínio (missões, tokens, gamificação) que afetam esta US estão documentadas e compreendidas por todos os membros da equipe?
 
 **C5 — Validação**
-> O validador, o canal de validação e o critério de aprovação estão
-> definidos e registrados na US?
+- O validador, o canal de validação e o critério de aprovação estão definidos e registrados na US?
 
 **Artefato obrigatório para "Sim" em todas:**
 US formalmente preenchida na ferramenta de gestão com IP calculado

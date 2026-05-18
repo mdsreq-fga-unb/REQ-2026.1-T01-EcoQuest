@@ -1,9 +1,9 @@
 ---
 name: "Novo Caso de Uso (UC)"
-description: "Template padrão para especificação e desenvolvimento de um Caso de Uso seguindo o OpenUP e nosso fluxo Kanban."
+about: "Template padrão para especificação e desenvolvimento de um Caso de Uso seguindo o OpenUP e nosso fluxo Kanban."
 title: "UCXX - [Nome do Caso de Uso no Infinitivo]"
-labels: ["Use Case", "Upstream"]
-assignees: []
+labels: ''
+assignees: ''
 ---
 
 ## 🎯 1. Definição do Caso de Uso
@@ -66,11 +66,10 @@ assignees: []
 **Completude Funcional**
 - [ ] Fluxo principal, alternativos e de exceção foram 100% implementados no código.
 - [ ] Cenários de falha possuem tratamento de erro com feedback amigável (sem quebras bruscas).
-- [ ] A interface foi adaptada ao Design System garantindo a função estrutural.
 
 **Qualidade Técnica (RNFs) e Validação**
 - [ ] Parâmetros mensuráveis dos RNFs atrelados a este UC foram testados.
-- [ ] Pipeline de CI/CD (GitHub Actions) aprovado sem alertas críticos do linter.
+- [ ] Pipeline de CI/CD aprovado sem alertas críticos do linter.
 - [ ] Testes unitários escritos (estrutura AAA e Mocks adequados).
 - [ ] Cobertura de testes unitários atingiu o mínimo de **70%**.
 - [ ] Code Review aprovado por um par.
