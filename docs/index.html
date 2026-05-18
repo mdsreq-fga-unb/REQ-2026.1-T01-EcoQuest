@@ -9,7 +9,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
-  
   <link rel="stylesheet" href="styles/theme.css">
 </head>
 <body>
@@ -30,29 +29,33 @@
   
       subMaxLevel: 3,
       themeColor: '#2E7D32',
-      auto2top: true
+      auto2top: true,
+
+      markdown: {
+        renderer: {
+          code: function(code, lang) {
+            if (lang === "mermaid") {
+              return '<div class="mermaid">' + code + '</div>';
+            }
+            return this.origin.code.apply(this, arguments);
+          }
+        }
+      },
+
+      plugins: [
+        function(hook, vm) {
+          hook.doneEach(function() {
+            if (typeof mermaid !== "undefined") {
+              mermaid.initialize({ startOnLoad: false, theme: 'default' });
+              mermaid.init(undefined, '.mermaid');
+            }
+          });
+        }
+      ]
     }
   </script>
   
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
-  <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
-
-  <script src="//cdn.jsdelivr.net/npm/mermaid@9.3.0/dist/mermaid.min.js"></script>
-  
-  <script src="//cdn.jsdelivr.net/npm/docsify-mermaid@2.0.1/dist/docsify-mermaid.js"></script>
-
-  <script>
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: 'base',
-      themeVariables: {
-        primaryColor: '#F9FBE7',       
-        primaryTextColor: '#263238',   
-        primaryBorderColor: '#81C784', 
-        lineColor: '#2E7D32',          
-        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif'
-      }
-    });
-  </script>
+  <script src="//cdn.jsdelivr.net/npm/mermaid@9.4.3/dist/mermaid.min.js"></script>
 </body>
 </html>

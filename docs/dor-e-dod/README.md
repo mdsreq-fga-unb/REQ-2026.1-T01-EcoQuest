@@ -29,50 +29,106 @@ Cada requisito deve indicar **OE** e **CP** (ver [Solução Proposta](../solucao
 
 ## DoD (Done)
 
- Dimensão de Completude Funcional (RF): 
- → Todos os fluxos principais e alternativos do Caso de Uso foram implementados? 
- Dimensão de Qualidade Técnica (RNF): → Requisitos de desempenho, segurança e usabilidade foram verificados dentro os parâmetros mensuráveis dos mesmos ? 
- Dimensão de Validação: → Testes unitários escritos e passando? → Revisão de código realizada por outro membro? → Critérios de aceitação validados com o usuário/cliente, validação assíncrona de núcleos de funcionalidades menores e prototipos e validação síncrona de regras de negócio e conjuntos funcionais que englobem mais de 3 US.  
- Dimensão de Documentação: → A documentação técnica relevante foi atualizada? → Rastreabiliade completa atualizada, (backlog - história - OE/CP - AC) 
- Dimensão de Integração: → O código está integrado na branch principal sem conflitos? → O build de integração passou? 
+
+### DoD Nível 1: Done Técnico (Pronto para Homologação)
+
+_Este nível atesta que o código foi construído com excelência técnica, integrado sem quebras e está disponível no ambiente de testes._
+
+**1\. Dimensão de Completude Funcional (RF):**
+
+*   \[ \] Todos os fluxos principais, alternativos e de **exceção** descritos na US/Caso de Uso foram implementados.
+    
+*   \[ \] Cenários de falha (ex: instabilidade externa, dados inválidos) possuem tratamento de erro com feedback amigável ao usuário.
+    
+*   \[ \] O código implementado atende integralmente a todos os Critérios de Aceitação (ACs) estipulados no DoR.
+    
+*   \[ \] O comportamento funcional da interface atende integralmente aos critérios de aceite, independentemente de variações visuais em relação ao Design System?"
+    
+
+**2\. Dimensão de Qualidade Técnica (RNF):**
+
+*   \[ \] Os parâmetros mensuráveis definidos individualmente nos Requisitos Não Funcionais (Desempenho, Segurança, Usabilidade) da US foram aferidos e aprovados.
+    
+*   \[ \] O código passou sem alertas críticos pelas ferramentas de análise estática configuradas no pipeline do **GitHub Actions** (nenhuma vulnerabilidade grave introduzida).
+    
+
+**3\. Dimensão de Cobertura e Validação Interna:**
+
+*   \[ \] Testes unitários foram escritos utilizando estrutura clara (ex: AAA) e instâncias de substituição adequadas (_Mocks/Spies_) para dependências externas.
+    
+*   \[ \] A taxa de cobertura de código (_Code Coverage_) da funcionalidade atingiu a **métrica mínima exigida de 70%**.
+    
+*   \[ \] O _Pull Request_ foi aprovado após uma revisão de código (_Code Review_) assíncrona por outro membro da equipe.
+    
+
+**4\. Dimensão de Integração e Documentação:**
+
+*   \[ \] A rastreabilidade bidirecional (Backlog → US → OE/CP → AC) foi devidamente mapeada e atualizada na ferramenta de gestão.
+    
+*   \[ \] A documentação técnica relevante (decisões de arquitetura, diagramas UML, mudanças de banco de dados) foi atualizada diretamente na **GitHub Pages** oficial do projeto.
+    
+*   \[ \] O código da _feature branch_ foi integrado na branch principal sem conflitos e o _build_ no servidor de CI (GitHub Actions) passou integralmente.
+    
+*   \[ \] O incremento de software foi implantado (_deploy_) com sucesso no ambiente de Homologação/Staging.
+    
+
+### DoD Nível 2: Done de Negócio (Validado)
+
+_Este nível é atestado de forma síncrona ou assíncrona junto à cliente. É o gatilho final que arquiva o card no Kanban e permite a coleta de dados para os OKRs._
+
+**5\. Dimensão de Validação de Valor:**
+
+*   \[ \] A funcionalidade foi inspecionada pela cliente no ambiente de Homologação.
+    
+*   \[ \] **Regra de Escopo da Validação:**
+    
+    *   Se for núcleo de funcionalidade menor/protótipo ➔ Validação Assíncrona aprovada.
+        
+    *   (Validar) Se for regra de negócio complexa ou conjunto funcional maior que 3 US ➔ Validação Síncrona (reunião/demonstração) realizada e aprovada.
+        
+*   \[ \] O incremento gerou o comportamento de negócio esperado, liberando a métrica para alimentar os _Key Results_ (KRs) do ciclo atual.
 
 
 ## Uso no processo
 
 ```mermaid
 flowchart TD
-    %% Estilização de Cores (Paleta Ecológica aplicada ao diagrama)
-    classDef objetivo fill:#2E7D32,stroke:#1b5e20,stroke-width:2px,color:#fff;
-    classDef gate fill:#F9FBE7,stroke:#81C784,stroke-width:2px,color:#263238;
-    classDef execucao fill:#81C784,stroke:#2E7D32,stroke-width:2px,color:#263238;
+    %% 1. Estrutura de Nós e Conexões (Textos blindados com aspas duplas)
+    A(["🎯 OKR Semanal Definido"]) --> B{"Item passa pelo DoR?"}
+    
+    B -->|"Não"| B_Refine["Refinamento de Backlog"]
+    B_Refine -.-> B
+    
+    B -->|"Sim"| C["📌 Commitment Point no Kanban"]
+    
+    C --> D["⚙️ Desenvolvimento com WIP Controlado"]
+    
+    D --> E{"Item passa pelo DoD?"}
+    
+    E -->|"Não"| E_Fix["Correção / Débito Técnico"]
+    E_Fix -.-> E
+    
+    E -->|"Sim"| F["✅ Done válido"]
+    
+    F --> G(["🔄 Revisão Semanal do OKR"])
 
-    %% Nós e Fluxos
-    A([🎯 OKR Semanal Definido]) ::: objetivo --> B{Item passa pelo DoR?} ::: gate
-    
-    B -- Não --> B_Refine[Refinamento de Backlog] -.-> B
-    B -- Sim --> C[📌 Commitment Point no Kanban] ::: execucao
-    
-    C --> D[Desenvolvimento com WIP Controlado] ::: execucao
-    
-    D --> E{Item passa pelo DoD?} ::: gate
-    
-    E -- Não --> E_Fix[Correção / Débito Técnico] -.-> E
-    E -- Sim --> F[✅ Done válido] ::: execucao
-    
-    F --> G([🔄 Revisão Semanal do OKR / Key Result Atualizado]) ::: objetivo
+    %% 2. Aplicação de Classes 
+    class A,G objetivo
+    class B,E gate
+    class C,D,F execucao
 
+    %% 3. Definição de Estilos 
+    classDef objetivo fill:#2E7D32,stroke:#1b5e20,stroke-width:2px,color:#fff
+    classDef gate fill:#F9FBE7,stroke:#81C784,stroke-width:2px,color:#263238
+    classDef execucao fill:#81C784,stroke:#2E7D32,stroke-width:2px,color:#263238
 ```
 
-## Exemplo mínimo (User Story)
 
-**ID:** US-XX  
-**História:** Como estudante, quero concluir uma missão diária e ganhar XP para acompanhar meu progresso.  
-**OE/CP:** OE2; CP1 + CP2  
-**MoSCoW:** Must  
 
-**AC:**
-- Concluir missão com evidência válida registra conclusão e soma XP.
-- Painel de progresso exibe XP e nível atualizados.
+## Histórico de Versão
 
-**Validação com cliente:** assíncrona (e-mail); consolidar decisão em ata.
-
+| Data | Versão | Descrição da Alteração | Autor(a) |
+| :---: | :---: | :--- | :--- | :--- |
+| 02/05/2026 | 0.1 | Criação do documento e estruturação dos tópicos iniciais. | João Vitor | 
+| 17/05/2026 | 1.0 | Inclusão das dimensões e domínios no DoR. | Paulo Vitor | 
+| 18//05/2026 | 1.1 | Inclusão das dimensões e domínios do DoD.| Paulo Vitor |

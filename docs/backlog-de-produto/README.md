@@ -23,6 +23,8 @@
 | RF16 | Visualizar Painel de Impacto Pessoal | UC16 | -- | -- | 
 | RF17 | Consultar Estatísticas do Impato da Comunidade | UC17 | -- | -- | 
 
+---
+
 ### UC01 — Cadastrar Usuário
 
 - Atores: Usuário
@@ -320,6 +322,8 @@
     - O sistema deve bloquear tokens expirados.
     - O sistema deve confirmar descarte realizado com sucesso.
 
+---
+
 ## 10.2. Priorização
 
 | ID | Nome | MoSCoW | VN | CX | Matriz de Esforço |
@@ -341,6 +345,8 @@
 | RF15 | Visualizar Ranking | Must have | 5 | 3 | Quadrante 2 | 
 | RF16 | Visualizar Painel de Impacto Pessoal | Could have | 2 | 3 | Quadrante 4 | 
 | RF17 | Consultar Estatísticas do Impato da Comunidade | Could have | 2 | 3 | Quadrante 4 | 
+
+---
 
 ## 10.3. Matriz de esforço
 
@@ -366,3 +372,4 @@ Mudanças são tratadas de forma leve:
 2. Triagem interna (impacto, custo-benefício, riscos, OE/CP);
 3. Priorização MoSCoW e atualização do Kanban;
 4. Atualização de artefatos (histórias, AC, protótipos) mantendo rastreabilidade.
+

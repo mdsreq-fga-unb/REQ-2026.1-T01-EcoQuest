@@ -13,9 +13,36 @@
 
 **CAMADA 2 — CRITÉRIO OPERACIONAL**
 
-*   **Pergunta binária:** O Ator, o Objetivo de Negócio, o Índice de Prioridade (IP/MoSCoW) e os Critérios de Aceite (ACs) estão redigidos, validados no contexto de negócio e inequivocamente compreendidos por todos?
-    
-*   **Artefato obrigatório:** Item de trabalho (US/RF) formalmente preenchido na ferramenta de gestão com o IP calculado na Tabela de Priorização e ACs mapeados para seus respectivos objetivos.
+Cada pergunta abaixo é verificada individualmente na cerimônia de
+comprometimento. A resposta "Não" em qualquer uma delas bloqueia o
+item antes do Commitment Point.
+
+**C1 — Ator e Objetivo**
+> O ator está nomeado, seu papel está descrito e seu objetivo de
+> negócio está explícito na US?
+
+**C2 — Priorização**
+> O IP foi calculado, o quadrante definido e a classificação MoSCoW
+> registrada no backlog?
+
+**C3 — Critérios de Aceitação**
+> Os critérios de aceitação existem, estão no formato verificável
+> (Dado / Quando / Então) e estão rastreados ao OE e CP
+> correspondentes?
+
+**C4 — Regras de Negócio**
+> As regras de negócio específicas do domínio (missões, tokens,
+> gamificação) que afetam esta US estão documentadas e compreendidas
+> por todos os membros da equipe?
+
+**C5 — Validação**
+> O validador, o canal de validação e o critério de aprovação estão
+> definidos e registrados na US?
+
+**Artefato obrigatório para "Sim" em todas:**
+US formalmente preenchida na ferramenta de gestão com IP calculado
+na Tabela de Priorização, ACs mapeados aos OE/CP correspondentes,
+regras de negócio documentadas e campo de validação preenchido.
     
 
 **CAMADA 3 — QUANDO O CRITÉRIO FALHA**
@@ -28,7 +55,7 @@
 
 *   **Diagrama de Decisão:**
     
-    *   _Se NÃO_ ➔ O item é imediatamente bloqueado na coluna de _Upstream_ (Refinamento).
+    *   _Se NÃO_ ➔ O item é imediatamente bloqueado na coluna de Refinamento.
         
     *   _Ação:_ A equipe revisa a US com o cliente.
         
@@ -61,14 +88,16 @@
 
 **CAMADA 4 — FLUXO DE RESOLUÇÃO**
 
-*   **Diagrama de Decisão:**
-    
-    *   _Se NÃO_ ➔ Não cruza o _Commitment Point_ do Kanban.
-        
-    *   _Ação:_ Arquiteto ou Scrum Master/Agile Coach assume a responsabilidade de contatar terceiros ou reordenar o backlog para que a dependência seja desenvolvida primeiro.
-        
-    *   _Registro:_ Item marcado como "Dependência Externa".
-*   
+- *Se NÃO* ➔ O item não cruza o Commitment Point do Kanban.
+
+- *Ação:* Um membro da equipe, definido por disponibilidade ou
+  afinidade prévia com a cliente, assume a responsabilidade de
+  contatar terceiros ou reordenar o backlog para que a dependência
+  seja desenvolvida primeiro.
+
+- *Registro:* Item marcado com label `dependencia-ativa` na
+  ferramenta de gestão, com nome do responsável e prazo de
+  resolução registrados no card.
 
 #### Domínio 3: Dimensão de Estimabilidade
 
@@ -83,7 +112,7 @@
 
 **CAMADA 2 — CRITÉRIO OPERACIONAL**
 
-*   **Pergunta binária:** A equipe consegue quantificar de forma unânime o esforço total, incluindo validação, passando em todos os crivos do acrônimo INVEST?
+*   **Pergunta binária:** A equipe consegue quantificar de forma consensual o esforço total, incluindo validação, passando em todos os crivos do acrônimo INVEST?
     
 *   **Artefato obrigatório:** Valores de CX e ES preenchidos na Tabela de Priorização e acatados pela dupla de desenvolvimento.
     
@@ -122,9 +151,9 @@
 
 **CAMADA 2 — CRITÉRIO OPERACIONAL**
 
-*   **Pergunta binária:** Cada desenvolvedor escalado consegue explicar agora mesmo — sem fazer perguntas — exatamente o que vai construir, como vai testar, e atestar que isso cabe nesta iteração?
+*   **Pergunta binária:** Cada desenvolvedor escalado consegue explicar agora mesmo, sem fazer perguntas, exatamente o que vai construir, como vai testar, e atestar que isso cabe nesta iteração?
     
-*   **Artefato obrigatório:** _Task Breakdown_ (quebra técnica) elaborada e anexada à US com estimativas de horas/tarefa.
+*   **Artefato obrigatório:** Estimativas de horas por tarefa anexadas à US na ferramenta de gestão, com detalhamento suficiente para que qualquer membro da equipe consiga responder o que será construído, como será testado e em quanto tempo, sem fazer perguntas adicionais.
     
 
 **CAMADA 3 — QUANDO O CRITÉRIO FALHA**
@@ -138,7 +167,7 @@
 
 *   **Diagrama de Decisão:**
     
-    *   _Se NÃO_ ➔ O item é ejetado do planejamento da Sprint/Iteração atual.
+    *   _Se NÃO_ ➔ O item é ejetado do planejamento da Iteração atual.
         
     *   _Ação:_ Nível de equipe -> Retorna para refinamento imediato (lousa/design do fluxo). Nível individual -> Abre-se uma _Issue de Estudo/Verificação_.
         
@@ -183,6 +212,19 @@
   
 #### Domínio 6: Dimensão de Qualidade Técnica (RNF)
 
+**Pré-requisito documental mandatório**
+
+Este critério só é verificável se os Requisitos Não Funcionais (RNFs)
+do projeto possuírem parâmetros mensuráveis definidos na
+Especificação Suplementar. Exemplos de parâmetros aceitáveis:
+
+- Desempenho: tempo de resposta máximo de X segundos para operação Y
+- Segurança: algoritmo de hash mínimo Z para senhas
+- Usabilidade: padrão de referência W como critério de conformidade
+
+**RNFs sem parâmetros mensuráveis tornam este critério de DoD
+inverificável.**
+
 **CAMADA 1 — CONCEITO BASE**
 
 *   **O que verifica e por que existe:** Assegura que o sistema não apenas funciona, mas obedece a restrições arquiteturais rigorosas (URPS+). Impede a degradação silenciosa do projeto.
@@ -208,14 +250,16 @@
 
 **CAMADA 4 — FLUXO DE RESOLUÇÃO**
 
-*   **Diagrama de Decisão:**
-    
-    *   _Se NÃO_ ➔ Bloqueio imediato de liberação.
-        
-    *   _Ação:_ Refatoração técnica mandatória liderada pelo arquiteto de software ou desenvolvedor sênior da dupla.
-        
-    *   _Registro:_ Criação de tarefa de refatoração associada à US pai.
+**CAMADA 4 — FLUXO DE RESOLUÇÃO**
 
+- *Se NÃO* ➔ Bloqueio imediato de liberação para homologação.
+
+- *Ação:* Refatoração técnica por parte da dupla ou membro
+  assignado à US.
+
+- *Registro:* Tarefa de refatoração criada e associada à US pai
+  na ferramenta de gestão.
+  
 #### Domínio 7: Dimensão de Validação
 
 **CAMADA 1 — CONCEITO BASE**
@@ -238,16 +282,18 @@
 
 *   **Uso Incorreto de Test Doubles:** Os testes unitários da **US08 — Ler Token de Doação** não utilizaram um _Mock_ ou _Spy_ adequadamente isolado na camada de validação do PubSub. Em vez de simular, o teste está tentando realizar requisições reais de leitura, quebrando a estrutura AAA (Arrange, Act, Assert).
     
-*   **Rejeição do Cliente (Impacto no OKR):** A **US04 — Gerenciar Perfil** foi implementada e validada internamente. Contudo, ao validar sincronamente, o cliente apontou que o fluxo de edição de dados é tão confuso que não diminuiu os chamados de suporte técnico, não atingindo o KR esperado para a funcionalidade.
+*   **Rejeição do Cliente:** A **US04 — Gerenciar Perfil** foi implementada e validada internamente. Contudo, ao validar sincronamente, o cliente apontou que o fluxo de edição de dados é tão confuso que não diminuiu os chamados de suporte técnico, não atingindo o KR esperado para a funcionalidade.
     
 
 **CAMADA 4 — FLUXO DE RESOLUÇÃO**
 
-*   **Diagrama de Decisão:**
-    
-    *   _Se NÃO_ ➔ Intervenção baseada na origem do erro.
-        
-    *   _Ação:_ Se Teste Falhou -> Dev refatora o código de teste. Se Cliente Rejeitou -> A US original é fechada como entregue (se atendeu aos requisitos iniciais) e abre-se um NOVO ticket de Ajuste/Melhoria no backlog, ou a própria US é reciclada caso tenha sido erro claro de construção.
+- *Se NÃO* ➔ Intervenção baseada na origem do erro:
+
+  - **Se Teste Falhou** → O desenvolvedor refatora o código de teste e resubmete para revisão.
+
+  - **Se Cliente Rejeitou** → A US original é fechada como entregue (se atendeu aos requisitos iniciais conforme ACsdocumentados) e abre-se um novo ticket de Ajuste/Melhoria no backlog. Caso a rejeição evidencie erro claro de construção, implementação divergente dos ACs acordados, a própria US é reciclada para correção antes do fechamento.
+
+- *Registro:* Comentário técnico no Pull Request detalhando a origem da falha e a ação tomada.
 
 #### Domínio 8: Dimensão de Documentação
 
@@ -269,7 +315,7 @@
 
 **CAMADA 3 — QUANDO O CRITÉRIO FALHA**
 
-*   **Assincronia Arquitetural (Dicionário de Dados):** A **US14 — Configurar Anonimato** inseriu uma nova coluna booleana is\_anonymous na tabela de usuários e alterou as rotas de impacto. No entanto, o desenvolvedor não atualizou o diagrama UML, e o repositório de documentação oficial do projeto (ex: MkDocs) continua refletindo a versão anterior da API.
+*   **Assincronia Arquitetural (Dicionário de Dados):** A **US14 — Configurar Anonimato** inseriu uma nova coluna booleana is\_anonymous na tabela de usuários e alterou as rotas de impacto. No entanto, o repositório de documentação oficial do projeto continua refletindo a versão anterior da API.
     
 *   **Falha de Rastreabilidade:** O _Pull Request_ da **US10 — Catálogo de recompensas** não faz referência direta ao ID da história de usuário, quebrando o elo rastreável entre a Característica de Produto (CP) exigida, os requisitos e o código versionado.
     
@@ -318,3 +364,10 @@
     *   _Ação:_ O desenvolvedor responsável atualiza sua branch local (git pull --rebase), resolve os conflitos de integração manualmente na sua IDE, roda os testes localmente e submete o _Push_ corrigido.
         
     *   _Registro:_ Comentários no _Pull Request_ detalhando a resolução dos conflitos.
+
+## Histórico de Versão
+
+| Data | Versão | Descrição da Alteração | Autor(a) | Revisor(a) |
+| :---: | :---: | :--- | :--- | :--- |
+| 17/05/2026 | 0.1 | Criação do documento e estruturação dos tópicos iniciais. | Paulo Vitor | 
+| 17/05/2026 | 1.0 | Inclusão das especificações das dimensões e domínios no DoR e DoD, visando rastreabilidade e entendimento de cada critério. | Paulo Vitor | 
