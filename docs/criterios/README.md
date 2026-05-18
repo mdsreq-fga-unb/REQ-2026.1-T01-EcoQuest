@@ -32,7 +32,7 @@ item antes do Commitment Point.
 - O validador, o canal de validação e o critério de aprovação estão definidos e registrados no UC?
 
 **Artefato obrigatório para "Sim" em todas:**
-UC formalmente preenchida na ferramenta de gestão com IP calculado
+UC formalmente preenchido na ferramenta de gestão com IP calculado
 na Tabela de Priorização, ACs mapeados aos OE/CP correspondentes,
 regras de negócio documentadas e campo de validação preenchido.
     
@@ -51,7 +51,7 @@ regras de negócio documentadas e campo de validação preenchido.
         
     *   _Ação:_ A equipe revisa o UC com o cliente.
         
-    *   _Registro:_ Issue sinalizada com _tag_ "Bloqueado - Falta Clareza". Só retorna à Planning após revisão de completude de negócio.
+    *   _Registro:_ Issue sinalizada com _tag_ "Bloqueado - Falta Clareza". Só retorna ao planejamento após revisão de completude de negócio.
   
 #### Domínio 2: Dimensão de Viabilidade
 
@@ -113,7 +113,7 @@ regras de negócio documentadas e campo de validação preenchido.
 
 *   **Lacuna Técnica Indefinida:** A **UC15 — Visualizar Painel de Impacto Pessoal** (PT 3) exige a consolidação de dados de todo o histórico do usuário. A equipe ainda não decidiu se utilizará uma _view_ materializada no banco relacional ou se consolidará isso via código, gerando uma incerteza técnica que inviabiliza cravar se o Esforço (ES) será 3 ou 5.
     
-*   **Item Grande Demais (Fere o 'S' do INVEST):** A **UC05 — Excluir conta** tem PT 4. A equipe percebeu que excluir a conta envolve apagar a autenticação, mas _anonimizar_ as doações passadas (para manter estatísticas de impacto sem ferir a LGPD). O esforço é muito grande para um ciclo só e o UC precisa ser dividida.
+*   **Item Grande Demais (Fere o 'S' do INVEST):** A **UC05 — Excluir conta** tem PT 4. A equipe percebeu que excluir a conta envolve apagar a autenticação, mas _anonimizar_ as doações passadas (para manter estatísticas de impacto sem ferir a LGPD). O esforço é muito grande para um ciclo só e o UC precisa ser dividido.
     
 
 **CAMADA 4 — FLUXO DE RESOLUÇÃO**
@@ -136,7 +136,7 @@ regras de negócio documentadas e campo de validação preenchido.
 
 *   **O que verifica e por que existe:** Garante o alinhamento mental compartilhado da equipe sobre a arquitetura da solução e se o "tamanho" físico do trabalho cabe no ciclo de entrega.
     
-*   **Fonte teórica:** 
+*   **Fonte teórica:** Eclipse Foundation. Iteration Plan — OpenUP. Eclipse Process Framework.
     
 *   **A Frase:** "Sem essa dimensão, desenvolvedores diferentes constroem soluções conflitantes para o mesmo problema dentro do mesmo ciclo."
     
@@ -242,12 +242,10 @@ inverificável.**
 
 **CAMADA 4 — FLUXO DE RESOLUÇÃO**
 
-**CAMADA 4 — FLUXO DE RESOLUÇÃO**
-
 - *Se NÃO* ➔ Bloqueio imediato de liberação para homologação.
 
 - *Ação:* Refatoração técnica por parte da dupla ou membro
-  assignado ao UCOE → CP → UC → Backlog → AC.
+  assignado ao UC pai.
 
 - *Registro:* Tarefa de refatoração criada e associada ao UC pai
   na ferramenta de gestão.
@@ -258,7 +256,7 @@ inverificável.**
 
 *   **O que verifica e por que existe:** Institui a governança de engenharia. Valida a inexistência de regressões no código e atesta formalmente a aderência da solução aos olhos do usuário final (KR).
     
-*   **Fonte teórica:** _Test-Driven Development_ (Kent Beck) e Scrum Guide.
+*   **Fonte teórica:** _Test-Driven Development_ (Kent Beck) e Schwaber, K.; Sutherland, J. *The Scrum Guide*. Scrum.org, 2020..
     
 *   **A Frase:** "Sem essa dimensão, o custo e o estresse para consertar _bugs_ em produção destroem a moral da equipe."
     
@@ -283,7 +281,7 @@ inverificável.**
 
   - **Se Teste Falhou** → O desenvolvedor refatora o código de teste e resubmete para revisão.
 
-  - **Se Cliente Rejeitou** → O UC original é fechada como entregue (se atendeu aos requisitos iniciais conforme ACs documentados) e abre-se um novo ticket de Ajuste/Melhoria no backlog. Caso a rejeição evidencie erro claro de construção, implementação divergente dos ACs acordados, o próprio UC é reciclado para correção antes do fechamento.
+  - **Se Cliente Rejeitou** → O UC original é fechado como entregue (se atendeu aos requisitos iniciais conforme ACs documentados) e abre-se um novo ticket de Ajuste/Melhoria no backlog. Caso a rejeição evidencie erro claro de construção, implementação divergente dos ACs acordados, o próprio UC é reciclado para correção antes do fechamento.
 
 - *Registro:* Comentário técnico no Pull Request detalhando a origem da falha e a ação tomada.
 
@@ -309,7 +307,7 @@ inverificável.**
 
 *   **Assincronia Arquitetural (Dicionário de Dados):** A **UC14 — Configurar Anonimato** inseriu uma nova coluna booleana is\_anonymous na tabela de usuários e alterou as rotas de impacto. No entanto, o repositório de documentação oficial do projeto continua refletindo a versão anterior da API.
     
-*   **Falha de Rastreabilidade:** O _Pull Request_ da **UC10 — Catálogo de recompensas** não faz referência direta ao ID da história de usuário, quebrando o elo rastreável entre a Característica de Produto (CP) exigida, os requisitos e o código versionado.
+*   **Falha de Rastreabilidade:** O _Pull Request_ da **UC10 — Catálogo de recompensas** não faz referência direta ao ID do caso de uso, quebrando o elo rastreável entre a Característica de Produto (CP) exigida, os requisitos e o código versionado.
     
 
 **CAMADA 4 — FLUXO DE RESOLUÇÃO**
@@ -328,7 +326,7 @@ inverificável.**
 
 *   **O que verifica e por que existe:** Assegura que o código desenvolvido localmente se comporta perfeitamente no ecossistema central, sem quebrar funcionalidades anteriores.
     
-*   **Fonte teórica:** _Continuous Integration_ (Martin Fowler).
+*   **Fonte teórica:** Fowler, M. *Continuous Integration*. martinfowler.com, 2006.
     
 *   **A Frase:** "Sem essa dimensão, o famoso 'na minha máquina funciona' derruba o servidor de produção."
     

@@ -42,7 +42,7 @@ Um AC sem rastreabilidade ao OE e CP correspondentes não é
 um critério válido neste processo: ele desconecta a execução
 técnica do propósito estratégico do produto.
 
-**Referência:** Eclipse Foundation. OpenUP (Open Unified Process) — Eclipse Process Framework (EPF)
+**Referência:** Eclipse Foundation. OpenUP (Open Unified Process) — Eclipse Process Framework (EPF) / North, D. *Introducing BDD*. 2006. Disponível em: https://dannorth.net/introducing-bdd/
 
 ---
 

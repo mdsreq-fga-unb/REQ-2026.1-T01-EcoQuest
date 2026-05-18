@@ -60,7 +60,7 @@ _Atesta que o código foi construído com excelência técnica, integrado sem qu
 
 #### Dimensão de Qualidade Técnica (RNF)
 
-- [ ] Os RNFs possuem parâmetros mensuráveis definidos?
+- [ ] Os RNFs possuem parâmetros mensuráveis definidos e documentados na Especificação Suplementar.
 - [ ] Os parâmetros mensuráveis definidos nos Requisitos Não Funcionais (Desempenho, Segurança, Usabilidade) deste UC foram aferidos e aprovados.
 - [ ] O código passou sem alertas críticos pelas ferramentas de análise estática configuradas no pipeline (nenhuma vulnerabilidade grave introduzida).
 
@@ -72,7 +72,7 @@ _Atesta que o código foi construído com excelência técnica, integrado sem qu
 
 #### Dimensão de Integração e Documentação
 
-- [ ] A rastreabilidade bidirecional (OE → CP → UC → Backlog → AC → Validação → Entrega) foi mapeada e atualizada na ferramenta de gestão.
+- [ ] A rastreabilidade bidirecional (OE → CP → UC → Backlog → AC) foi mapeada e atualizada na ferramenta de gestão.
 - [ ] A documentação técnica relevante (decisões de arquitetura, diagramas UML, mudanças de banco de dados) foi atualizada na GitHub Pages oficial do projeto.
 - [ ] O código da _feature branch_ foi integrado na branch principal sem conflitos e o _build_ no servidor de CI passou integralmente.
 - [ ] O incremento de software foi implantado (_deploy_) com sucesso no ambiente de Homologação/Staging.
