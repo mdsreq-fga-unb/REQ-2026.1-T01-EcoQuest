@@ -359,7 +359,7 @@ inverificável.**
 
 ## Histórico de Versão
 
-| Data | Versão | Descrição da Alteração | Autor(a) | Revisor(a) |
-| :---: | :---: | :--- | :--- | :--- |
+| Data | Versão | Descrição da Alteração | Autor(a) |
+|-------|-------|------|------|
 | 17/05/2026 | 0.1 | Criação do documento e estruturação dos tópicos iniciais. | Paulo Vitor | 
 | 17/05/2026 | 1.0 | Inclusão das especificações das dimensões e domínios no DoR e DoD, visando rastreabilidade e entendimento de cada critério. | Paulo Vitor | 

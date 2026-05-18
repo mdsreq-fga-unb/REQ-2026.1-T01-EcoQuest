@@ -13,15 +13,15 @@
 | RF06 | Localizar PEVs | UC06 | Exibir pontos de coleta próximos | -- | 
 | RF07 | Consultar detalhes do PEV | UC07 | Exibir informações detalhadas de um ponto de coleta | -- | 
 | RF08 | Ler Token para Descarte | UC08 | Permitir leitura de QR Code para descarte | -- | 
-| RF09 | Consultar Extrato | UC09 | -- | -- | 
-| RF10 | Exibir Catálogo de Recompensas | UC10 | -- | -- | 
-| RF11 | Resgatar Recompensas | UC11 |  -- | -- | 
-| RF12 | Exibir Vitrine de Conquistas | UC12 | -- | -- | 
-| RF13 | Exibir Progresso da Sequência | UC13 | -- | -- | 
-| RF14 | Configurar Anonimato | UC14 | -- | -- | 
-| RF15 | Visualizar Ranking | UC15 | -- | -- | 
-| RF16 | Visualizar Painel de Impacto Pessoal | UC16 | -- | -- | 
-| RF17 | Consultar Estatísticas do Impato da Comunidade | UC17 | -- | -- | 
+| RF09 | Consultar Extrato | UC09 | Exibir histórico de descartes e saldo de créditos disponível | -- | 
+| RF10 | Exibir Catálogo de Recompensas | UC10 | Exibir benefícios, cupons e prêmios disponíveis para resgate | -- | 
+| RF11 | Resgatar Recompensas | UC11 |  Processar o resgate de uma recompensa do catálogo | -- | 
+| RF12 | Exibir Vitrine de Conquistas | UC12 | Exibir marcos e medalhas conquistados pelo usuário | -- | 
+| RF13 | Exibir Progresso da Sequência | UC13 | Mostrar o status atual da sequência de descartes e proximidade de bônus | -- | 
+| RF14 | Configurar Anonimato | UC14 | Permitir que o usuário oculte sua identidade no ranking social | -- | 
+| RF15 | Visualizar Ranking | UC15 | Exibir ranking social com pontuação dos usuários | -- | 
+| RF16 | Visualizar Painel de Impacto Pessoal | UC16 | Exibir métricas de impacto ambiental geradas pelo usuário | -- | 
+| RF17 | Consultar Estatísticas do Impato da Comunidade | UC17 | Exibir o impacto ambiental acumulado por todos os usuários da plataforma | -- | 
 
 ---
 
@@ -322,9 +322,350 @@
     - O sistema deve bloquear tokens expirados.
     - O sistema deve confirmar descarte realizado com sucesso.
 
----
+### UC09 — Consultar Extrato
 
+- Atores: Usuário
+
+- Objetivo: Exibir histórico de descartes e saldo de créditos disponível.
+
+- Pré-condições: Usuário autenticado.
+
+- Fluxo Principal
+
+1. Usuário acessa a área de extrato.
+2. Sistema recupera o histórico de descartes do usuário.
+3. Sistema exibe lista de operações realizadas.
+4. Sistema exibe saldo de créditos disponível.
+5. Usuário consulta as informações.
+
+- Fluxos Alternativos
+
+    - 2A — Sem histórico
+
+        - 2A.1 Sistema não encontra registros.
+        - 2A.2 Sistema informa ausência de histórico.
+
+- Pós-condições: Extrato exibido ao usuário.
+
+- Critérios de aceitação
+
+    - O sistema deve exibir histórico detalhado de descartes realizados.
+    - O sistema deve exibir saldo de créditos disponível.
+    - O sistema deve ordenar o histórico por data.
+    - O sistema deve informar quando não houver registros.
+
+### UC10 — Exibir Catálogo de Recompensas
+
+- Atores: Usuário
+
+- Objetivo: Exibir benefícios, cupons e prêmios disponíveis para resgate.
+
+- Pré-condições: Usuário autenticado.
+
+- Fluxo Principal
+
+1. Usuário acessa o catálogo de recompensas.
+2. Sistema recupera os itens disponíveis.
+3. Sistema exibe catálogo com benefícios, cupons e prêmios.
+4. Usuário visualiza as recompensas disponíveis.
+
+- Fluxos Alternativos
+
+    - 2A — Catálogo indisponível
+
+        - 2A.1 Sistema não consegue carregar os itens.
+        - 2A.2 Sistema informa indisponibilidade temporária.
+
+    - 3A — Sem itens disponíveis
+
+        - 3A.1 Sistema não encontra recompensas cadastradas.
+        - 3A.2 Sistema informa ausência de itens.
+
+- Pós-condições: Catálogo exibido ao usuário.
+
+- Critérios de aceitação
+
+    - O sistema deve exibir todos os itens disponíveis para resgate.
+    - O sistema deve indicar o custo em pontos de cada recompensa.
+    - O sistema deve indicar recompensas indisponíveis por saldo insuficiente.
+    - O sistema deve informar indisponibilidade caso o catálogo não possa ser carregado.
+
+### UC11 — Resgatar Recompensas
+
+- Atores: Usuário
+
+- Objetivo: Processar o resgate de uma recompensa do catálogo.
+
+- Pré-condições:
+    - Usuário autenticado.
+    - Usuário possuir saldo suficiente.
+
+- Fluxo Principal
+
+1. Usuário seleciona uma recompensa no catálogo.
+2. Sistema exibe detalhes e custo em pontos.
+3. Usuário confirma o resgate.
+4. Sistema debita os pontos do saldo.
+5. Sistema gera o código ou cupom de benefício.
+6. Sistema confirma o resgate realizado.
+
+- Fluxos Alternativos
+
+    - 3A — Saldo insuficiente
+
+        - 3A.1 Sistema identifica pontos insuficientes.
+        - 3A.2 Sistema bloqueia a operação e informa o usuário.
+
+    - 4A — Recompensa esgotada
+
+        - 4A.1 Sistema identifica item indisponível.
+        - 4A.2 Sistema informa indisponibilidade.
+
+- Pós-condições: Pontos debitados e cupom gerado para o usuário.
+
+- Critérios de aceitação
+
+    - O sistema deve exibir custo em pontos antes da confirmação.
+    - O sistema deve debitar os pontos após confirmação.
+    - O sistema deve gerar código ou cupom válido para uso externo.
+    - O sistema deve bloquear resgate com saldo insuficiente.
+    - O sistema deve informar quando a recompensa estiver esgotada.
+    - O sistema deve confirmar o resgate com sucesso.
+
+### UC12 — Exibir Vitrine de Conquistas
+
+- Atores: Usuário
+
+- Objetivo: Exibir marcos e medalhas conquistados pelo usuário.
+
+- Pré-condições: Usuário autenticado.
+
+- Fluxo Principal
+
+1. Usuário acessa a vitrine de conquistas.
+2. Sistema recupera as conquistas do usuário.
+3. Sistema exibe medalhas e marcos obtidos.
+4. Sistema exibe conquistas ainda não desbloqueadas.
+5. Usuário visualiza seu progresso.
+
+- Fluxos Alternativos
+
+    - 2A — Sem conquistas
+
+        - 2A.1 Sistema não encontra conquistas registradas.
+        - 2A.2 Sistema exibe vitrine vazia com conquistas disponíveis para obter.
+
+- Pós-condições: Vitrine de conquistas exibida ao usuário.
+
+- Critérios de aceitação
+
+    - O sistema deve exibir todas as conquistas desbloqueadas pelo usuário.
+    - O sistema deve exibir conquistas ainda não obtidas.
+    - O sistema deve diferenciar visualmente conquistas obtidas das bloqueadas.
+    - O sistema deve exibir descrição de cada conquista.
+
+### UC13 — Exibir Progresso da Sequência
+
+- Atores: Usuário
+
+- Objetivo: Mostrar o status atual da sequência de descartes e proximidade de bônus.
+
+- Pré-condições: Usuário autenticado.
+
+- Fluxo Principal
+
+1. Usuário acessa o painel de sequência.
+2. Sistema recupera o histórico de sequência do usuário.
+3. Sistema calcula o progresso atual.
+4. Sistema exibe visualmente o status da sequência e o próximo bônus.
+5. Usuário visualiza seu progresso.
+
+- Fluxos Alternativos
+
+    - 2A — Sequência zerada
+
+        - 2A.1 Sistema identifica ausência de sequência ativa.
+        - 2A.2 Sistema exibe status inicial com incentivo para começar.
+
+- Pós-condições: Progresso da sequência exibido ao usuário.
+
+- Critérios de aceitação
+
+    - O sistema deve exibir o número atual de descartes na sequência.
+    - O sistema deve indicar quantos descartes faltam para o próximo bônus.
+    - O sistema deve exibir o bônus que será desbloqueado.
+    - O sistema deve reiniciar a sequência caso o usuário perca a regularidade.
+    - O sistema deve notificar visualmente quando a sequência estiver próxima de quebrar.
+
+### UC14 — Configurar Anonimato
+
+- Atores: Usuário
+
+- Objetivo: Permitir que o usuário oculte sua identidade no ranking social.
+
+- Pré-condições: Usuário autenticado.
+
+- Fluxo Principal
+
+1. Usuário acessa as configurações de privacidade.
+2. Sistema exibe opções de anonimato disponíveis.
+3. Usuário escolhe ocultar posição ou definir pseudônimo.
+4. Sistema salva a preferência.
+5. Sistema aplica a configuração no ranking.
+
+- Fluxos Alternativos
+
+    - 3A — Pseudônimo já utilizado
+
+        - 3A.1 Sistema identifica conflito de pseudônimo.
+        - 3A.2 Sistema solicita novo pseudônimo.
+
+- Pós-condições: Preferência de anonimato salva e aplicada no ranking.
+
+- Critérios de aceitação
+
+    - O sistema deve permitir ocultar a posição do usuário no ranking.
+    - O sistema deve permitir uso de pseudônimo no lugar do nome real.
+    - O sistema deve validar unicidade do pseudônimo.
+    - O sistema deve aplicar a configuração imediatamente no ranking.
+    - O sistema deve permitir reverter a configuração a qualquer momento.
+
+### UC15 — Visualizar Ranking
+
+- Atores: Usuário
+
+- Objetivo: Exibir ranking social com pontuação dos usuários.
+
+- Pré-condições: Usuário autenticado.
+
+- Fluxo Principal
+
+1. Usuário acessa o ranking.
+2. Sistema recupera a classificação dos usuários.
+3. Sistema exibe lista ordenada por pontuação.
+4. Sistema destaca a posição do usuário no ranking.
+5. Usuário visualiza o ranking.
+
+- Fluxos Alternativos
+
+    - 2A — Ranking indisponível
+
+        - 2A.1 Sistema não consegue carregar os dados.
+        - 2A.2 Sistema informa indisponibilidade temporária.
+
+- Pós-condições: Ranking exibido ao usuário.
+
+- Critérios de aceitação
+
+    - O sistema deve exibir ranking ordenado por pontuação.
+    - O sistema deve destacar a posição do usuário logado.
+    - O sistema deve respeitar as configurações de anonimato de cada usuário.
+    - O sistema deve exibir nome ou pseudônimo conforme preferência do usuário.
+    - O sistema deve informar indisponibilidade caso os dados não possam ser carregados.
+
+### UC16 — Visualizar Painel de Impacto Pessoal
+
+- Atores: Usuário
+
+- Objetivo: Exibir métricas de impacto ambiental geradas pelo usuário.
+
+- Pré-condições: Usuário autenticado.
+
+- Fluxo Principal
+
+1. Usuário acessa o painel de impacto pessoal.
+2. Sistema recupera os dados de descarte do usuário.
+3. Sistema calcula as métricas de impacto ambiental.
+4. Sistema exibe indicadores como kg de CO2 evitado e resíduos desviados.
+5. Usuário visualiza seu impacto.
+
+- Fluxos Alternativos
+
+    - 2A — Sem descartes registrados
+
+        - 2A.1 Sistema não encontra histórico.
+        - 2A.2 Sistema exibe painel zerado com incentivo ao primeiro descarte.
+
+- Pós-condições: Métricas de impacto exibidas ao usuário.
+
+- Critérios de aceitação
+
+    - O sistema deve exibir kg de CO2 evitado pelo usuário.
+    - O sistema deve exibir volume de resíduos desviados do descarte irregular.
+    - O sistema deve atualizar as métricas após cada novo descarte.
+    - O sistema deve exibir painel inicial quando não houver descartes registrados.
+
+### UC17 — Consultar Estatísticas do Impacto da Comunidade
+
+- Atores: Usuário
+
+- Objetivo: Exibir o impacto ambiental acumulado por todos os usuários da plataforma.
+
+- Pré-condições: Nenhuma.
+
+- Fluxo Principal
+
+1. Usuário acessa o painel de impacto da comunidade.
+2. Sistema recupera os dados agregados de todos os usuários.
+3. Sistema calcula o impacto ambiental coletivo.
+4. Sistema exibe contador global com as métricas acumuladas.
+5. Usuário visualiza o impacto da comunidade.
+
+- Fluxos Alternativos
+
+    - 2A — Dados indisponíveis
+
+        - 2A.1 Sistema não consegue carregar os dados agregados.
+        - 2A.2 Sistema informa indisponibilidade temporária.
+
+- Pós-condições: Painel de impacto da comunidade exibido ao usuário.
+
+- Critérios de aceitação
+
+    - O sistema deve exibir contador global de resíduos descartados corretamente.
+    - O sistema deve exibir total de CO2 evitado pela comunidade.
+    - O sistema deve atualizar os dados periodicamente.
+    - O sistema deve ser acessível sem necessidade de autenticação.
+    - O sistema deve informar indisponibilidade caso os dados não possam ser carregados.
+
+---
 ## 10.2. Priorização
+
+A priorização do backlog foi realizada com base no modelo MoSCoW (Must Have, Should Have, Could Have e Won't Have), que auxilia na identificação e categorização das funcionalidades como essenciais, desejáveis ou opcionais. Esse modelo orienta o desenvolvimento conforme os objetivos do projeto, garantindo que as entregas mais importantes sejam priorizadas.
+
+Cada requisito foi avaliado segundo dois grupos de critérios: Negócio e Complexidade.
+
+O tabela abaixo foi utilizada para determinar a importância dos requisitos para o negócio:
+
+### Valor de Negócio (VN)
+
+| Valor | Nível | Critério de Atribuição |
+|-------|-------|------------------------|
+| 5 | Alto | O requisito entrega valor direto ao negócio e é condição indispensável para o funcionamento do produto. |
+| 4 | Médio/Alto | Requisito de alto impacto operacional ou estratégico, necessário para o lançamento inicial do produto. |
+| 3 | Médio | Agrega valor relevante à experiência do usuário ou a fluxos secundários, mas pode ser postergado sem comprometer o MVP. |
+| 2 | Médio/Baixo | Funcionalidade complementar com ganho incremental; sua ausência não afeta o uso central do sistema. |
+| 1 | Baixo | Requisito de impacto mínimo no valor percebido pelo usuário. |
+
+### Complexidade (CX)
+
+A complexidade dos requisitos foi definida com base nos seguintes critérios de esforço técnico:
+
+- (+1) A equipe já possui experiência prévia com a funcionalidade ou tecnologia envolvida.
+- (+1) O requisito demanda baixo volume de trabalho e implementação rápida.
+- (+1) A solução possui baixa complexidade técnica, sem necessidade de pesquisa ou tecnologias novas.
+- (+1) O requisito está alinhado aos padrões arquiteturais e técnicos já adotados no projeto.
+
+
+| Valor | Nível | Critério de Atribuição |
+|-------|-------|------------------------|
+| 5 | Muito Alta | Nenhum critério atendido. |
+| 4 | Alta | Apenas 1 critério atendido. |
+| 3 | Média | 2 critérios atendidos. |
+| 2 | Baixa | 3 critérios atendidos. |
+| 1 | Muito Baixa | Todos os critérios atendidos. |
+
+### Tabela de priorização
 
 | ID | Nome | MoSCoW | VN | CX | Matriz de Esforço |
 | :--- | :--- | :--- | :--- | :--- | :--- | 
@@ -368,7 +709,7 @@
 
 Mudanças são tratadas de forma leve:
 
-1. Solicitação registrada em ata ([Atas](../interacao-entre-equipe-e-cliente/atas.md));
+1. Solicitação registrada em ata ([Atas](/interacao-entre-equipe-e-cliente/atas.md));
 2. Triagem interna (impacto, custo-benefício, riscos, OE/CP);
 3. Priorização MoSCoW e atualização do Kanban;
 4. Atualização de artefatos (histórias, AC, protótipos) mantendo rastreabilidade.

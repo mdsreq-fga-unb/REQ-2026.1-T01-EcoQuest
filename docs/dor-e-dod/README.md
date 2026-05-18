@@ -2,11 +2,9 @@
 
 Checklists de **Definition of Ready (DoR)** e **Definition of Done (DoD)** para itens do backlog (*Work Items List*).
 
-Cada requisito deve indicar **OE** e **CP** (ver [Solução Proposta](../solucao-proposta/)).
+Cada requisito deve indicar **OE** e **CP** (ver [Solução Proposta](/solucao-proposta/)).
 
----
-
-## DoR — Definition of Ready (Pronto para Iniciar)
+## DoR (Ready)
 
 Um item só cruza o Commitment Point do Kanban se todas as perguntas abaixo forem respondidas com **Sim**. A resposta **Não** será tratada dentro de duas esferas: a nível de equipe, o item volta para refinamento; a nível individual, será aberta uma issue de estudo.
 
@@ -148,7 +146,7 @@ flowchart TD
 ## Histórico de Versão
 
 | Data | Versão | Descrição da Alteração | Autor(a) |
-| :---: | :---: | :--- | :--- |
-| 02/05/2026 | 0.1 | Criação do documento e estruturação dos tópicos iniciais. | João Vitor |
-| 17/05/2026 | 1.0 | Inclusão das dimensões e domínios no DoR. | Paulo Vitor |
-| 18/05/2026 | 1.1 | Inclusão das dimensões e domínios do DoD. | Paulo Vitor |
+|-------|-------|------|------|
+| 02/05/2026 | 0.1 | Criação do documento e estruturação dos tópicos iniciais. | João Vitor | 
+| 17/05/2026 | 1.0 | Inclusão das dimensões e domínios no DoR. | Paulo Vitor | 
+| 18//05/2026 | 1.1 | Inclusão das dimensões e domínios do DoD.| Paulo Vitor |

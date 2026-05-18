@@ -1,13 +1,18 @@
-* **Visão de Negócio**
+* **1. Visão de Produto**
   * [Cenário Atual](cenario-atual-do-cliente-e-do-negocio/README.md)
   * [Solução Proposta](solucao-proposta/README.md)
 
-* **Engenharia de Software**
+* **2. Engenharia de Software**
   * [Estratégias de Engenharia de Software](estrategias-de-engenharia-de-software/)
+  * [Arquitetura do Sistema](arquitetura-do-sistema/)
   * [Interação com Cliente](interacao-entre-equipe-e-cliente/)
+  * [Atas](interacao-entre-equipe-e-cliente/atas/)
   * [Engenharia de Requisitos](engenharia-de-requisitos/)
 
-* **Gestão de Produto**
+* **3. Intervenção Social**
+  * [Intervenção Social](intervencao-social/)
+
+* **4. Gestão de Produto**
   * [Requisitos de Software](requisitos-de-software/)
   * [Backlog do Produto](backlog-de-produto/)
   * [DoR e DoD](dor-e-dod/)

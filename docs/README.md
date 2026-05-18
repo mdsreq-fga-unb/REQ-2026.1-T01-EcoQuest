@@ -8,8 +8,6 @@ O EcoQuest é uma plataforma de infraestrutura digital desenhada para viabilizar
 
 No processo atual de descarte de resíduos especializados (como lixo eletrônico), as doações possuem alta fricção e nenhum feedback. Como o esforço logístico (busca, triagem, deslocamento e tempo) é maior do que o retorno percebido.
 
- os potenciais doadores apresentam desmotivação na contribuição, o que leva a baixas taxas de participação e descarte inadequado de resíduos.
-
 A falta de feedback imediato, a ausência de um comprovante digital de impacto e a inexistência de incentivos recíprocos geram desmotivação sistêmica, resultando em baixas taxas de participação e o descarte inadequado de materiais críticos.
 
 ## A Solução
@@ -33,5 +31,5 @@ Documentação Progressiva: Produção de artefatos técnicos conforme a maturid
 
 ### Vídeo de Apresentação
 
-[Vídeo De Apresentação Unidade 1](https://drive.google.com/file/d/11vpElBrEdoNow_er_ai70Onx9ud4XC8E/view?usp=drive_link)
-
+- [Vídeo De Apresentação Unidade 1](https://drive.google.com/file/d/11vpElBrEdoNow_er_ai70Onx9ud4XC8E/view?usp=drive_link)
+- [Vídeo de Apresnetação Unidade 2]()

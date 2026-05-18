@@ -13,6 +13,14 @@ A gestão de Resíduos de Equipamentos Eletroeletrônicos (REEE) tornou-se um do
 
 O contexto atual exige uma transição do modelo de descarte baseado puramente no esforço individual para um sistema que reconheça e valorize a ação do cidadão, mitigando o impacto ambiental negativo causado pelo descarte inadequado no ecossistema local.
 
+Durante a fase inicial de levantamento de requisitos e reuniões de alinhamento com a cliente, o escopo deste projeto passou por um processo de pivô estratégico.
+
+Originalmente concebido como uma ferramenta pedagógica gamificada voltada ao público acadêmico, o entendimento do problema evoluiu para uma solução de infraestrutura de engajamento logístico. Identificou-se que o maior gargalo para a sustentabilidade não é a falta de conhecimento teórico dos estudantes, mas sim o déficit de reciprocidade no descarte de resíduos potencialmente contaminantes por parte do estudantes, estendendo-se ao cidadão comum.
+
+Dessa forma, o foco foi redefinido para a criação de um ecossistema de economia circular com mecanismos de recompensas e gamificação, priorizando a segurança na validação de ativos físicos e a integração real com ONGs de reciclagem do Distrito Federal.
+
+Nota de Revisão: Este documento reflete a readequação do escopo aprovada em [reunião](https://drive.google.com/file/d/1U3NeajI4OqFEe_qryC7OIHkJSHl5f_0W/view?usp=sharing) e subsequente conversas, migrando de um modelo de gamificação educacional para uma plataforma de engajamento logístico para o descarte de resíduos eletrônicos, com foco na reciprocidade e integração com ONGs locais.
+
 ## 1.3. Rich Picture
 
 ![RichPicture](../assets/RichPicture.png)
@@ -61,3 +69,13 @@ A disciplina de Engenharia e Ambiente atende a um principal segmento de cliente:
 - **Jovens Adultos (17-24 anos)**: Nativos digitais com alta circulação de dispositivos eletrônicos. Apresentam consciência ambiental teórica, mas são altamente sensíveis à conveniência e à gratificação imediata. A barreira principal para este grupo é o esforço logístico em comparação ao retorno percebido.
 
 - **Idosos com Letramento Digital (60-70 anos)**: Grupo que costuma acumular equipamentos antigos por cautela ou falta de opção de descarte. Possuem interesse em contribuir para o bem comum, mas enfrentam barreiras na complexidade dos processos de descarte e na localização física dos pontos de entrega.
+
+## Histórico de Versão
+
+| Data | Versão | Descrição da Alteração | Autor(a) |
+|-------|-------|------|------|
+| 11/04/2026 | 0.1 | Criação do documento e estruturação dos tópicos iniciais. | Yasmim | 
+| 11/04/2026 | 1.0 | Adicionar mapa de stakeholders, rich picture e diagrama de ishikawa. | Yasmim | 
+| 16/05/2026 | 1.1 | Atualizar novo contexto do projeto | João Victor |
+| 17/05/2026 | 1.1 | Atualizar mapa de stakeholders, rich picture, e diagrama de ishikawa. | João Victor |
+| 18/05/2026 | 1.2 | Adicionar evolução e readequação do escopo. | João Victor |
