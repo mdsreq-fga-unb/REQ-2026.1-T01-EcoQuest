@@ -656,6 +656,7 @@ A complexidade dos requisitos foi definida com base nos seguintes critérios de 
 - (+1) A solução possui baixa complexidade técnica, sem necessidade de pesquisa ou tecnologias novas.
 - (+1) O requisito está alinhado aos padrões arquiteturais e técnicos já adotados no projeto.
 
+
 | Valor | Nível | Critério de Atribuição |
 |-------|-------|------------------------|
 | 5 | Muito Alta | Nenhum critério atendido. |
@@ -663,6 +664,8 @@ A complexidade dos requisitos foi definida com base nos seguintes critérios de 
 | 3 | Média | 2 critérios atendidos. |
 | 2 | Baixa | 3 critérios atendidos. |
 | 1 | Muito Baixa | Todos os critérios atendidos. |
+
+### Tabela de priorização
 
 | ID | Nome | MoSCoW | VN | CX | Matriz de Esforço |
 | :--- | :--- | :--- | :--- | :--- | :--- | 
