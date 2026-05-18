@@ -631,6 +631,39 @@
 ---
 ## 10.2. Priorização
 
+A priorização do backlog foi realizada com base no modelo MoSCoW (Must Have, Should Have, Could Have e Won't Have), que auxilia na identificação e categorização das funcionalidades como essenciais, desejáveis ou opcionais. Esse modelo orienta o desenvolvimento conforme os objetivos do projeto, garantindo que as entregas mais importantes sejam priorizadas.
+
+Cada requisito foi avaliado segundo dois grupos de critérios: Negócio e Complexidade.
+
+O tabela abaixo foi utilizada para determinar a importância dos requisitos para o negócio:
+
+### Valor de Negócio (VN)
+
+| Valor | Nível | Critério de Atribuição |
+|-------|-------|------------------------|
+| 5 | Alto | O requisito entrega valor direto ao negócio e é condição indispensável para o funcionamento do produto. |
+| 4 | Médio/Alto | Requisito de alto impacto operacional ou estratégico, necessário para o lançamento inicial do produto. |
+| 3 | Médio | Agrega valor relevante à experiência do usuário ou a fluxos secundários, mas pode ser postergado sem comprometer o MVP. |
+| 2 | Médio/Baixo | Funcionalidade complementar com ganho incremental; sua ausência não afeta o uso central do sistema. |
+| 1 | Baixo | Requisito de impacto mínimo no valor percebido pelo usuário. |
+
+### Complexidade (CX)
+
+A complexidade dos requisitos foi definida com base nos seguintes critérios de esforço técnico:
+
+- (+1) A equipe já possui experiência prévia com a funcionalidade ou tecnologia envolvida.
+- (+1) O requisito demanda baixo volume de trabalho e implementação rápida.
+- (+1) A solução possui baixa complexidade técnica, sem necessidade de pesquisa ou tecnologias novas.
+- (+1) O requisito está alinhado aos padrões arquiteturais e técnicos já adotados no projeto.
+
+| Valor | Nível | Critério de Atribuição |
+|-------|-------|------------------------|
+| 5 | Muito Alta | Nenhum critério atendido. |
+| 4 | Alta | Apenas 1 critério atendido. |
+| 3 | Média | 2 critérios atendidos. |
+| 2 | Baixa | 3 critérios atendidos. |
+| 1 | Muito Baixa | Todos os critérios atendidos. |
+
 | ID | Nome | MoSCoW | VN | CX | Matriz de Esforço |
 | :--- | :--- | :--- | :--- | :--- | :--- | 
 | RF01 | Cadastrar usuário | Must have | 5 | 1 | Quadrante 1 | 
