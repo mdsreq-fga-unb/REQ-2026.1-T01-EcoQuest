@@ -15,11 +15,11 @@ O contexto atual exige uma transição do modelo de descarte baseado puramente n
 
 Durante a fase inicial de levantamento de requisitos e reuniões de alinhamento com a cliente, o escopo deste projeto passou por um processo de pivô estratégico.
 
-Originalmente concebido como uma ferramenta pedagógica gamificada voltada ao público acadêmico, o entendimento do problema evoluiu para uma solução de infraestrutura logística. Identificou-se que o maior gargalo para a sustentabilidade não é a falta de conhecimento teórico dos estudantes, mas sim a fricção logística e o déficit de reciprocidade no descarte de resíduos por parte do estudantes, estendendo-se ao cidadão comum.
+Originalmente concebido como uma ferramenta pedagógica gamificada voltada ao público acadêmico, o entendimento do problema evoluiu para uma solução de infraestrutura de engajamento logístico. Identificou-se que o maior gargalo para a sustentabilidade não é a falta de conhecimento teórico dos estudantes, mas sim o déficit de reciprocidade no descarte de resíduos potencialmente contaminantes por parte do estudantes, estendendo-se ao cidadão comum.
 
-Dessa forma, o foco foi redefinido para a criação de um ecossistema de economia circular, priorizando a segurança na validação de ativos físicos e a integração real com ONGs de reciclagem do Distrito Federal.
+Dessa forma, o foco foi redefinido para a criação de um ecossistema de economia circular com mecanismos de recompensas e gamificação, priorizando a segurança na validação de ativos físicos e a integração real com ONGs de reciclagem do Distrito Federal.
 
-Nota de Revisão: Este documento reflete a readequação do escopo aprovada em [reunião](https://drive.google.com/file/d/1U3NeajI4OqFEe_qryC7OIHkJSHl5f_0W/view?usp=sharing) e subsequente conversas, migrando de um modelo de gamificação educacional para uma plataforma de validação de logística reversa e economia circular.
+Nota de Revisão: Este documento reflete a readequação do escopo aprovada em [reunião](https://drive.google.com/file/d/1U3NeajI4OqFEe_qryC7OIHkJSHl5f_0W/view?usp=sharing) e subsequente conversas, migrando de um modelo de gamificação educacional para uma plataforma de engajamento logístico para o descarte de resíduos eletrônicos, com foco na reciprocidade e integração com ONGs locais.
 
 ## 1.3. Rich Picture
 
