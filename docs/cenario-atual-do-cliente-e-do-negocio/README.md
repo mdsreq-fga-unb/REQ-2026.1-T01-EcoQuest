@@ -73,7 +73,7 @@ A disciplina de Engenharia e Ambiente atende a um principal segmento de cliente:
 ## Histórico de Versão
 
 | Data | Versão | Descrição da Alteração | Autor(a) |
-| :---: | :---: | :--- | :--- | :--- |
+|-------|-------|------|------|
 | 11/04/2026 | 0.1 | Criação do documento e estruturação dos tópicos iniciais. | Yasmim | 
 | 11/04/2026 | 1.0 | Adicionar mapa de stakeholders, rich picture e diagrama de ishikawa. | Yasmim | 
 | 16/05/2026 | 1.1 | Atualizar novo contexto do projeto | João Victor |

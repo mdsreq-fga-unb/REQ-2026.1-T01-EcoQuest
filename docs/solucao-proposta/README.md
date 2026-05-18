@@ -77,7 +77,7 @@ Custos Estimados (Mensais):
 ## Histórico de Versão
 
 | Data | Versão | Descrição da Alteração | Autor(a) |
-| :---: | :---: | :--- | :--- | :--- |
+|-------|-------|------|------|
 | 11/04/2026 | 0.1 | Criação do documento e estruturação dos tópicos iniciais. | Yasmim | 
 | 11/04/2026 | 1.0 | Adicionar características de produto. | Yasmim | 
 | 11/04/2026 | 2.1 | Atualizar pesquisa de mercado, tecnologias, beneficios e desafios. | João Victor |

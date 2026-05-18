@@ -116,7 +116,7 @@ Checklists: [DoR e DoD](../dor-e-dod/).
 ## Histórico de Versão
 
 | Data | Versão | Descrição da Alteração | Autor(a) |
-| :---: | :---: | :--- | :--- | :--- |
+|-------|-------|------|------|
 | 11/04/2026 | 0.1 | Criação do documento e estruturação dos tópicos iniciais. | João Victor | 
 | 12/04/2026 | 0.2 | Atualização dos papéis da equipe com analista de requisitos. | João Victor | 
 | 17/05/2026 | 1.0 | Inclusão de critérios no DoR e DoD. | Paulo Vitor | 
