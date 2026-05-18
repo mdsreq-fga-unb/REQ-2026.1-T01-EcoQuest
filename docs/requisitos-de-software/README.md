@@ -38,6 +38,14 @@
 
 | ID | Nome | Descrição | Classificação URPS+ | Classificação Sommerville |
 | :--- | :--- | :--- | :--- | :--- |
+| RNF01 | Garantir responsividade de dispositivos móveis | Interface deve adaptar-se adequadamente a telas com largura a partir de 360px. | U (Usabilidade) / S (Suportabilidade) | Produto - Portabilidade / Usabilidade |
+| RNF02 | Garantir desempenho < 2s | Transações principais, como validação e pontuação, não podem exceder 2 segundos no P95. | P (Desempenho) | Produto - Eficiência |
+| RNF03 | Proteger dados em trânsito e repouso | Utilizar TLS 1.2+ e criptografia robusta para senhas. | + (Segurança) / R (Confiabilidade) | Externo - Legal / Ético; Produto - Segurança |
+| RNF04 | Garantir acessibilidade web/mobile | Adequar-se a guias de acessibilidade digital, como WCAG, ISOs e similares. | U (Usabilidade) | Produto - Usabilidade |
+| RNF05 | Garantir disponibilidade do sistema | Manter uptime da plataforma e estabilidade para suportar leituras contínuas. | R (Confiabilidade) | Produto - Confiabilidade |
+| RNF06 | Assegurar integridade antifraude | Aplicar regras criptográficas aos tokens para impedir reutilização e falsificação. | + (Segurança) | Produto - Segurança |
+| RNF07 | Extensibilidade modular | Deve permitir inclusão de novos tipos de resíduos. | S (Suportabilidade) | Produto - Manutenibilidade |
+| RNF08 | Mudança de valores | Permitir mudança de valores das doações para recompensas. | S (Suportabilidade) | Produto - Manutenibilidade |
 
 <iframe
   width="100%"

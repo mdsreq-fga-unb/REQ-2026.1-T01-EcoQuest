@@ -5,23 +5,23 @@
 
 | ID | Nome | ID UC | Objetivo UC | RNFs Relacionados |
 | :--- | :--- | :--- | :--- | :--- |
-| RF01 | Cadastrar usuário | UC01 | Permitir a criação de uma conta no sistema| -- | 
-| RF02 | Autenticar usuário | UC02 | Permitir acesso seguro ao sistema | -- | 
-| RF03 | Recuperar senha | UC03 | Permitir redefinição da senha | -- | 
-| RF04 | Gerenciar Perfil | UC04 | Permitir edição de dados pessoais e preferências | -- | 
-| RF05 | Excluir conta | UC05 | Permitir exclusão da conta conforme LGPD | -- | 
-| RF06 | Localizar PEVs | UC06 | Exibir pontos de coleta próximos | -- | 
-| RF07 | Consultar detalhes do PEV | UC07 | Exibir informações detalhadas de um ponto de coleta | -- | 
-| RF08 | Ler Token para Descarte | UC08 | Permitir leitura de QR Code para descarte | -- | 
-| RF09 | Consultar Extrato | UC09 | -- | -- | 
-| RF10 | Exibir Catálogo de Recompensas | UC10 | -- | -- | 
-| RF11 | Resgatar Recompensas | UC11 |  -- | -- | 
-| RF12 | Exibir Vitrine de Conquistas | UC12 | -- | -- | 
-| RF13 | Exibir Progresso da Sequência | UC13 | -- | -- | 
-| RF14 | Configurar Anonimato | UC14 | -- | -- | 
-| RF15 | Visualizar Ranking | UC15 | -- | -- | 
-| RF16 | Visualizar Painel de Impacto Pessoal | UC16 | -- | -- | 
-| RF17 | Consultar Estatísticas do Impato da Comunidade | UC17 | -- | -- | 
+| RF01 | Cadastrar usuário | UC01 | Permitir a criação de uma conta no sistema| RNF01, RNF03, RNF04 | 
+| RF02 | Autenticar usuário | UC02 | Permitir acesso seguro ao sistema | RNF02, RNF03, RNF05 | 
+| RF03 | Recuperar senha | UC03 | Permitir redefinição da senha | RNF02, RNF03, RNF05 | 
+| RF04 | Gerenciar Perfil | UC04 | Permitir edição de dados pessoais e preferências | RNF01, RNF03, RNF04 | 
+| RF05 | Excluir conta | UC05 | Permitir exclusão da conta conforme LGPD | RNF03, RNF05 | 
+| RF06 | Localizar PEVs | UC06 | Exibir pontos de coleta próximos | RNF01, RNF02, RNF04, RNF05 | 
+| RF07 | Consultar detalhes do PEV | UC07 | Exibir informações detalhadas de um ponto de coleta | RNF01, RNF02, RNF04 | 
+| RF08 | Ler Token para Descarte | UC08 | Permitir leitura de QR Code para descarte | RNF01, RNF02, RNF03, RNF06 | 
+| RF09 | Consultar Extrato | UC09 | -- | RNF02, RNF03, RNF05 | 
+| RF10 | Exibir Catálogo de Recompensas | UC10 | -- | RNF01, RNF02, RNF04, RNF08 | 
+| RF11 | Resgatar Recompensas | UC11 |  -- | RNF02, RNF03, RNF05, RNF08 | 
+| RF12 | Exibir Vitrine de Conquistas | UC12 | -- | RNF01, RNF04, RNF05 | 
+| RF13 | Exibir Progresso da Sequência | UC13 | -- | RNF01, RNF02, RNF05 | 
+| RF14 | Configurar Anonimato | UC14 | -- | RNF01, RNF03, RNF04 | 
+| RF15 | Visualizar Ranking | UC15 | -- | RNF01, RNF02, RNF04, RNF05 | 
+| RF16 | Visualizar Painel de Impacto Pessoal | UC16 | -- | RNF01, RNF02, RNF05, RNF07 | 
+| RF17 | Consultar Estatísticas do Impato da Comunidade | UC17 | -- | RNF01, RNF02, RNF05, RNF07 | 
 
 ---
 
