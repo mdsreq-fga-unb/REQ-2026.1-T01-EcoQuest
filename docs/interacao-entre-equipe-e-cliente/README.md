@@ -113,6 +113,48 @@ Checklists: [DoR e DoD](/dor-e-dod/).
 - Funcional/visual (fluxo x AC).
 - Testes (quando aplicável).
 
+## 6.11 Atas (Interação com Cliente)
+
+Esta seção centraliza as **atas**, **decisões** e **Change Requests (CR)** levantados nas interações com a cliente e stakeholders.
+
+## Regras
+
+- Toda decisão relevante deve estar registrada aqui.
+- Feedback recebido por **Google Meet / e-mail / WhatsApp** deve ser consolidado em ata.
+- Cada item deve referenciar o artefato impactado (requisito, backlog/*Work Items List*, protótipo, regra de negócio).
+
+## Template de ata
+
+**Data:** AAAA-MM-DD  
+**Tipo:** (Revisão com stakeholders / Validação assíncrona)  
+**Participantes:** (nomes)  
+**Artefatos avaliados:** (links)  
+
+**Feedback (Stakeholder Requests):**
+- (ponto 1)
+
+**Decisões:**
+- (decisão 1)
+
+**Change Requests (CR):**
+- (CR-1) — descrição — impacto — prioridade (MoSCoW)
+
+**Ações:**
+- (ação) — responsável — prazo
+
+---
+
+## Histórico
+
+> [08/05/2026 - Reunião de Alinhamento e clarificação de escopo com a cliente](/interacao-entre-equipe-e-cliente/atas/08-05.md)
+> 
+> [11/05/2026 - Reunião de Alinhamento e Mudança com a equipe](/interacao-entre-equipe-e-cliente/atas/11-05.md)
+> 
+> [16/05/2026 - Validação Assíncrona dos Requisitos e Regras de Negócio](/interacao-entre-equipe-e-cliente/atas/16-05.md)
+> 
+> Adicione novas atas acima desta linha.
+
+
 ## Histórico de Versão
 
 | Data | Versão | Descrição da Alteração | Autor(a) |
@@ -120,4 +162,5 @@ Checklists: [DoR e DoD](/dor-e-dod/).
 | 11/04/2026 | 0.1 | Criação do documento e estruturação dos tópicos iniciais. | João Victor | 
 | 12/04/2026 | 0.2 | Atualização dos papéis da equipe com analista de requisitos. | João Victor | 
 | 17/05/2026 | 1.0 | Inclusão de critérios no DoR e DoD. | Paulo Vitor | 
-| 18/05/2026 | 1.1 | Adicionar registro de feedback e decisões, validação, e tratamento de mudanças. | João Victor
+| 18/05/2026 | 1.1 | Adicionar registro de feedback e decisões, validação, e tratamento de mudanças. | João Victor |
+| 19/05/2026 | 1.2 | Adicionar histórico de reuniões e atas. | João Victor |
