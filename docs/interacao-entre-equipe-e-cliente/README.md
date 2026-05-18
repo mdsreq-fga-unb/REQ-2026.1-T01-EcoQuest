@@ -14,9 +14,11 @@ Referências:
 
 | Stakeholder | Papel | Participação | Responsabilidade |
 |---|---|---|---|
-| **Prof. Dra. Juliana Dalbone** | Cliente principal | Revisão quinzenal + feedback semanal (e-mail) | Domínio ambiental, missões e regras de negócio; aprovar entregas |
+| **Prof. Dra. Juliana Dalbone** | Cliente principal | Revisão quinzenal + feedback semanal (e-mail) | Domínio ambiental,regras de negócio; aprovar entregas |
 | **Prof. Dr. George Marsicano Correa** | Cliente secundário / orientador | Revisões pontuais | Orientação acadêmica e decisões de ER |
-| **Estudantes universitários** | Usuários finais | Validações pontuais (protótipos/fluxos) | Usabilidade e clareza das missões |
+| **Cidadãos (Doadores)** | Usuários finais | Validações pontuais (protótipos/fluxos) | Fornecer feedback sobre a fricção logística, clareza do mapeamento de PEVs e atratividade das recompensas |
+| **ONGs (ex: Programando o Futuro)** | Operadores logísticos | Definição de fluxos operacionais e triagem | Feedback sobre integração, segurança e usabilidade para facilitar a triagem e recebimento de doações |
+| **Rede de Parceiros** | Provedores de incentivo | Definição de regras de resgate | Definir critérios para recompensas, validar a atratividade e viabilidade das parcerias |
 | **Equipe EcoQuest** | Time de desenvolvimento | Planejamento e execução por iterações | Transformar feedback em itens rastreáveis |
 
 ## 6.2 Papéis da equipe (OpenUP)
