@@ -33,5 +33,6 @@ Esta página centraliza as **atas**, **decisões** e **Change Requests (CR)** le
 
 > [08/05/2026 - Reunião de Alinhamento e clarificação de escopo com a cliente](08-05.md)  
 > [11/05/2026 - Reunião de Alinhamento e Mudança com a equipe](11-05.md)
+> [16/05/2026 - Validação Assíncrona dos Requisitos e Regras de Negócio](16-05.md)
 
 > Adicione novas atas acima desta linha.
