@@ -17,10 +17,13 @@ Este documento centraliza a visão arquitetural do **EcoQuest (MVP)**, servindo 
 ![Arquitetura](../assets/Arquitetura.png)
 
 Legenda:
-- Componentes em preto e branco são parte do MVP.
-- Componentes em cinza claro são simulações para fins de desenvolvimento e testes na 1ª fase.
-- Setas indicam fluxos de dados e interações entre os componentes, se bidirecionais, representam comunicação em ambos os sentidos, se unidirecionais, representam comunicação em um sentido.
-- Blocos roxos são apenas para fins de visualização e não representam componentes reais do sistema.
+- <div style="display:inline-block; width:1rem; height:1rem; background-color:#fff; border:1px solid #000; margin-right:0.4rem; margin-bottom:-0.25rem;"></div>: Componentes em preto e branco são parte do MVP.
+- <div style="display:inline-block; width:1rem; height:1rem; background-color:#ccc; border:1px dotted #777; margin-right:0.4rem; margin-bottom:-0.25rem;"></div>: Componentes em cinza claro são simulações para fins de desenvolvimento e testes para o MVP na 1ª fase.
+<!-- Aqui fazer uma seta com CSS e HTML -->
+- Setas indicam fluxos de dados e interações entre os componentes:
+	- <div style="display:inline-block; font-size:1.2rem;">↔</div> : se bidirecionais, representam comunicação em ambos os sentidos;
+	- <div style="display:inline-block; font-size:1.2rem;">→</div> : se unidirecionais, representam comunicação em um sentido.
+- <div style="display:inline-block; width:1rem; height:1rem; background-color:#f2e2fc; border:1px solid #9f67cf; margin-right:0.4rem; margin-bottom:-0.25rem;"></div> Blocos roxos são apenas para fins de visualização e não representam componentes reais do sistema.
 
 ## Histórico de Versão
 
