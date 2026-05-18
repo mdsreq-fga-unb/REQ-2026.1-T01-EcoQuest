@@ -13,6 +13,14 @@ A gestão de Resíduos de Equipamentos Eletroeletrônicos (REEE) tornou-se um do
 
 O contexto atual exige uma transição do modelo de descarte baseado puramente no esforço individual para um sistema que reconheça e valorize a ação do cidadão, mitigando o impacto ambiental negativo causado pelo descarte inadequado no ecossistema local.
 
+Durante a fase inicial de levantamento de requisitos e reuniões de alinhamento com a cliente, o escopo deste projeto passou por um processo de pivô estratégico.
+
+Originalmente concebido como uma ferramenta pedagógica gamificada voltada ao público acadêmico, o entendimento do problema evoluiu para uma solução de infraestrutura logística. Identificou-se que o maior gargalo para a sustentabilidade não é a falta de conhecimento teórico dos estudantes, mas sim a fricção logística e o déficit de reciprocidade no descarte de resíduos por parte do estudantes, estendendo-se ao cidadão comum.
+
+Dessa forma, o foco foi redefinido para a criação de um ecossistema de economia circular, priorizando a segurança na validação de ativos físicos e a integração real com ONGs de reciclagem do Distrito Federal.
+
+Nota de Revisão: Este documento reflete a readequação do escopo aprovada em [reunião](https://drive.google.com/file/d/1U3NeajI4OqFEe_qryC7OIHkJSHl5f_0W/view?usp=sharing) e subsequente conversas, migrando de um modelo de gamificação educacional para uma plataforma de validação de logística reversa e economia circular.
+
 ## 1.3. Rich Picture
 
 ![RichPicture](../assets/RichPicture.png)
@@ -61,16 +69,6 @@ A disciplina de Engenharia e Ambiente atende a um principal segmento de cliente:
 - **Jovens Adultos (17-24 anos)**: Nativos digitais com alta circulação de dispositivos eletrônicos. Apresentam consciência ambiental teórica, mas são altamente sensíveis à conveniência e à gratificação imediata. A barreira principal para este grupo é o esforço logístico em comparação ao retorno percebido.
 
 - **Idosos com Letramento Digital (60-70 anos)**: Grupo que costuma acumular equipamentos antigos por cautela ou falta de opção de descarte. Possuem interesse em contribuir para o bem comum, mas enfrentam barreiras na complexidade dos processos de descarte e na localização física dos pontos de entrega.
-
-## 1.8. Evolução e Readequação do Escopo
-
-Durante a fase inicial de levantamento de requisitos e reuniões de alinhamento com a cliente, o escopo deste projeto passou por um processo de pivô estratégico.
-
-Originalmente concebido como uma ferramenta pedagógica gamificada voltada ao público acadêmico, o entendimento do problema evoluiu para uma solução de infraestrutura logística. Identificou-se que o maior gargalo para a sustentabilidade não é a falta de conhecimento teórico dos estudantes, mas sim a fricção logística e o déficit de reciprocidade no descarte de resíduos por parte do estudantes, estendendo-se ao cidadão comum.
-
-Dessa forma, o foco foi redefinido para a criação de um ecossistema de economia circular, priorizando a segurança na validação de ativos físicos e a integração real com ONGs de reciclagem do Distrito Federal.
-
-Nota de Revisão: Este documento reflete a readequação do escopo aprovada em [reunião](https://drive.google.com/file/d/1U3NeajI4OqFEe_qryC7OIHkJSHl5f_0W/view?usp=sharing) e subsequente conversas, migrando de um modelo de gamificação educacional para uma plataforma de validação de logística reversa e economia circular.
 
 ## Histórico de Versão
 
