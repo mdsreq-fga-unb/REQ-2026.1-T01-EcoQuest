@@ -4,6 +4,7 @@
 
 * **2. Engenharia de Software**
   * [Estratégias de Engenharia de Software](estrategias-de-engenharia-de-software/)
+  * [Arquitetura do Sistema](arquitetura-do-sistema/)
   * [Interação com Cliente](interacao-entre-equipe-e-cliente/)
   * [Engenharia de Requisitos](engenharia-de-requisitos/)
 
