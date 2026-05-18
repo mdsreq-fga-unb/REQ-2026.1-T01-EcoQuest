@@ -10,7 +10,7 @@ critério descrito neste documento.
 ### O que são Critérios de Aceitação (ACs)
 
 Critérios de Aceitação são condições verificáveis e inequívocas que
-definem quando uma User Story foi implementada corretamente. Eles
+definem quando um caso de uso foi implementado corretamente. Eles
 funcionam como o contrato entre quem especifica o requisito e quem
 o implementa: antes do desenvolvimento, estabelecem o que será
 construído; após o desenvolvimento, estabelecem o que será testado.
@@ -24,28 +24,25 @@ construído; após o desenvolvimento, estabelecem o que será testado.
 **Cadeia de rastreabilidade obrigatória:**
 ```mermaid
 flowchart TD
-    %% 1. Estrutura de Nós e Conexões
     A(["🎯 Objetivo Específico do Produto (OE)"]) --> B(["📦 Característica de Produto (CP)"])
-    B --> C(["📝 User Story (US)"])
-    C --> D(["✅ Critérios de Aceitação (AC)"])
+    B --> C(["📋 Caso de Uso (UC)"])
+    C --> D(["🗂️ Backlog"])
+    D --> E(["✅ Critérios de Aceitação (AC)"])
 
-    %% 2. Aplicação de Classes
-    class A objetivo
-    class B,C execucao
-    class D gate
-
-    %% 3. Definição de Estilos
     classDef objetivo fill:#2E7D32,stroke:#1b5e20,stroke-width:2px,color:#fff
-    classDef gate fill:#F9FBE7,stroke:#81C784,stroke-width:2px,color:#263238
     classDef execucao fill:#81C784,stroke:#2E7D32,stroke-width:2px,color:#263238
+    classDef gate fill:#F9FBE7,stroke:#81C784,stroke-width:2px,color:#263238
+
+    class A objetivo
+    class B,C,D execucao
+    class E gate
 ```
 
 Um AC sem rastreabilidade ao OE e CP correspondentes não é
 um critério válido neste processo: ele desconecta a execução
 técnica do propósito estratégico do produto.
 
-**Referência:** Cohn, M. *User Stories Applied*. Addison-Wesley,
-2004.
+**Referência:** Eclipse Foundation. OpenUP (Open Unified Process) — Eclipse Process Framework (EPF)
 
 ---
 
@@ -60,55 +57,58 @@ por dois elementos:
   É quantitativo, mensurável e falsificável — ou seja, ao final
   do ciclo, é possível dizer com certeza se foi atingido ou não.
 
-**Referência:** Doerr, J. *Measure What Matters*. Portfolio/Penguin,
-2018.
+**Referência:** Doerr, J. *Measure What Matters*. 
+
 
 **Como os OKRs se conectam ao DoR e ao DoD neste processo:**
 
 ```mermaid
 flowchart TD
-    %% 1. Definição de Estilos
-    classDef objetivo fill:#2E7D32,stroke:#1b5e20,stroke-width:2px,color:#fff
-    classDef gate fill:#F9FBE7,stroke:#81C784,stroke-width:2px,color:#263238
-    classDef execucao fill:#81C784,stroke:#2E7D32,stroke-width:2px,color:#263238
+    classDef objetivo  fill:#2E7D32,stroke:#1b5e20,stroke-width:2px,color:#fff
+    classDef gate      fill:#F9FBE7,stroke:#81C784,stroke-width:2px,color:#263238
+    classDef execucao  fill:#81C784,stroke:#2E7D32,stroke-width:2px,color:#263238
     classDef bloqueado fill:#FFEBEE,stroke:#EF5350,stroke-width:2px,color:#263238
+    classDef debito    fill:#fff3cd,stroke:#856404,stroke-width:2px,color:#000
 
-    %% 2. Estrutura de Nós e Conexões 
-    A(["🎯 OKR Semanal definido"]) --> B{"📋 Item passa pelo DoR?"}
-    
-    %% Fluxo DoR
-    B -->|"Passa no DoR"| C["📌 Commitment Point no Kanban"]
-    B -->|"Falha no DoR"| B_Fail["❌ Bloqueado — Retorna ao Refinamento"]
-    %% Feedback para o início do ciclo (nó auxiliar para melhor visualização)
-    B_Fail -.->|Refinamento| A_Loop(( )):::execucao
-    A_Loop -.-> A
-    
-    C --> D["⚙️ Desenvolvimento com WIP controlado"]
-    
-    D --> E{"🛠️ Item passa pelo DoD Nível 1?"}
-    
-    %% Fluxo DoD Técnico
-    E -->|"Done Técnico aprovado"| F{"💼 Item validado pela cliente?"}
-    E -->|"Falha técnica"| E_Fail["❌ Bloqueado — Retorna ao Desenvolvimento"]
-    %% Feedback para desenvolvimento
-    E_Fail -.-> D
-    
-    %% Fluxo DoD Negócio
-    F -->|"Validado pela cliente"| G["📈 Done válido alimenta o Key Result"]
-    F -->|"Rejeitado pela cliente"| F_Fail["❌ Bloqueado — Retorna à Homologação"]
-    %% Feedback para DoD Técnico
-    F_Fail -.-> E
-    
-    G --> H(["🔄 Revisão semanal do OKR"])
-    %% Feedback para o início de um novo ciclo
-    H -.->|Novo ciclo| A
+    A(["🎯 OKR Semanal Definido"])
+    B{"📋 Item passa\npelo DoR?"}
+    B_Fail["❌ Bloqueado\nRetorna ao Refinamento"]
+    C["📌 Commitment Point\nno Kanban"]
+    D["⚙️ Desenvolvimento\ncom WIP Controlado"]
+    E{"🛠️ DoD Nível 1\nDone Técnico?"}
+    E_Fail["❌ Bloqueado\nRetorna ao Desenvolvimento"]
+    F{"💼 DoD Nível 2\nValidado pela cliente?"}
+    REJ{"Tipo de\nrejeição?"}
+    F_Cons["❌ Erro de Construção\nRetorna ao Desenvolvimento"]
+    F_Debt["📋 Ajuste de Valor\nNovo ticket — Débito Técnico\nUC fechado"]
+    G["📈 Done válido\nalimenta o Key Result"]
+    H(["🔄 Revisão Semanal do OKR"])
 
-    %% 3. Aplicação de Classes
+    A   --> B
+    B   -->|"Passa no DoR"| C
+    B   -->|"Falha no DoR"| B_Fail
+    B_Fail -.->|"Após refinamento"| A
+
+    C   --> D
+    D   --> E
+    E   -->|"Aprovado"| F
+    E   -->|"Falha técnica"| E_Fail
+    E_Fail -.->|"Após correção"| D
+
+    F   -->|"Validado"| G
+    F   -->|"Rejeitado"| REJ
+    REJ -->|"Erro de construção"| F_Cons
+    REJ -->|"Ajuste de valor"| F_Debt
+    F_Cons -.->|"Após correção"| D
+
+    G   --> H
+    H   -.->|"Novo ciclo"| A
+
     class A,H objetivo
-    class B,E,F gate
-    class C,D,G,A_Loop execucao
-    class B_Fail,E_Fail,F_Fail bloqueado
-
+    class B,E,F,REJ gate
+    class C,D,G execucao
+    class B_Fail,E_Fail,F_Cons bloqueado
+    class F_Debt debito
 ```
 
 **Regra de contagem:** Um item só é contabilizado no progresso
@@ -124,4 +124,4 @@ entregue, não esforço despendido.
 | Data | Versão | Descrição da Alteração | Autor(a) | Revisor(a) |
 | :---: | :---: | :--- | :--- | :--- |
 | 17/05/2026 | 0.1 | Criação do documento e estruturação dos tópicos iniciais. | Paulo Vitor | 
-| 18//05/2026 | 1.0 | Adição de fluxos de trabalho e refinamento da estrutura do documento.| Paulo Vitor |
+| 18/05/2026 | 1.0 | Adição de fluxos de trabalho e refinamento da estrutura do documento.| Paulo Vitor |
