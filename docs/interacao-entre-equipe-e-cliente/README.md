@@ -4,11 +4,11 @@ Define a interação equipe–cliente no **OpenUP**: cadência de validações, 
 
 Referências:
 
-- Cliente/stakeholders: [Cenário Atual](../cenario-atual-do-cliente-e-do-negocio/)
-- Cadência de incrementos e SLA de feedback: [Cronograma e Entregas](../cronograma-e-entregas/)
-- Práticas de ER alinhadas ao OpenUP: [Engenharia de Requisitos](../engenharia-de-requisitos/)
-- Critérios DoR/DoD: [DoR e DoD](../dor-e-dod/)
-- Organização de requisitos e backlog: [Requisitos de Software](../requisitos-de-software/) e [Backlog do Produto](../backlog-de-produto/)
+- Cliente/stakeholders: [Cenário Atual](/cenario-atual-do-cliente-e-do-negocio/)
+- Cadência de incrementos e SLA de feedback: [Cronograma e Entregas](/cronograma-e-entregas/)
+- Práticas de ER alinhadas ao OpenUP: [Engenharia de Requisitos](/engenharia-de-requisitos/)
+- Critérios DoR/DoD: [DoR e DoD](/dor-e-dod/)
+- Organização de requisitos e backlog: [Requisitos de Software](/requisitos-de-software/) e [Backlog do Produto](/backlog-de-produto/)
 
 ## 6.1 Stakeholders e responsabilidades
 
@@ -70,24 +70,24 @@ Referências:
 
 | Artefato (OpenUP) | Como aparece no EcoQuest | Onde é mantido | Quando é validado |
 |---|---|---|---|
-| **Visão (Vision)** | Objetivo do produto, OE, CP | [Solução Proposta](../solucao-proposta/) | Revisões quinzenais |
-| **Stakeholder Requests** | Feedback/decisões/solicitações | [Atas](atas.md) | Contínuo |
-| **Work Items List** | Backlog (Kanban) | GitHub Projects + [Backlog do Produto](../backlog-de-produto/) | Planejamento semanal |
-| **Requisitos** | User stories + Critério de Aceitação | [Requisitos de Software](../requisitos-de-software/) | Refinamento semanal |
-| **Protótipos de IU** | Wireframes/fluxos | Ferramenta/artefatos de design | Elaboração + ajustes |
-| **Change Request (CR)** | Solicitações de mudança | [Atas](atas.md) + backlog | Contínuo |
-| **Critérios de aceite** | DoR/DoD + testes | [DoR e DoD](../dor-e-dod/) | Entrada (DoR) / saída (DoD) |
-| **Plano da iteração** | Escopo e prioridades | Kanban + cronograma | Semanal |
+| **Visão (Vision)** | Objetivo do produto, OE, CP | [Solução Proposta](/solucao-proposta/) | Revisões quinzenais |
+| **Stakeholder Requests** | Feedback/decisões/solicitações | [Atas](/interacao-entre-equipe-e-cliente/atas/) | Contínuo |
+| **Work Items List** | Backlog (Kanban) | GitHub Projects + [Backlog do Produto](/backlog-de-produto/) | Planejamento quinzenal |
+| **Requisitos** | User stories + Critério de Aceitação | [Requisitos de Software](/requisitos-de-software/) | Refinamento semanal |
+| **Protótipos de IU** | Wireframes/fluxos | Ferramenta/artefatos de design | Refinamento quinzenal |
+| **Change Request (CR)** | Solicitações de mudança | [Atas](/interacao-entre-equipe-e-cliente/atas/) + backlog | Contínuo |
+| **Critérios de aceite** | DoR/DoD + testes | [DoR e DoD](/interacao-entre-equipe-e-cliente/dor-e-dod/) | Entrada (DoR) / saída (DoD) |
+| **Plano da iteração** | Escopo e prioridades | Kanban + cronograma | Quinzenal |
 
-## 6.6 Registro de feedback e decisões (atas)
+## 6.6 Registro de feedback e decisões
 
-Registro oficial: [Atas](atas.md).
-
+Registro oficial: [Atas](/interacao-entre-equipe-e-cliente/atas/).
+	
 ## 6.7 Tratamento de mudanças de requisitos (Change Management)
 
 Fluxo de CR:
 
-1. Registrar na ata ([Atas](atas.md)) (CR + motivação).
+1. Registrar na ata ([Atas](/interacao-entre-equipe-e-cliente/atas/)) (CR + motivação).
 2. Analisar impacto (esforço, riscos, dependências, OE/CP).
 3. Decidir/priorizar (MoSCoW) e atualizar backlog/artefatos.
 4. Validar com a cliente (assíncrono ou reunião quinzenal).
@@ -105,7 +105,7 @@ DoR/DoD = critérios de **entrada/saída** para itens do *Work Items List*.
 - **DoR:** história clara, critérios de aceitação, vínculo com OE/CP, prioridade definida;
 - **DoD:** requisito implementado, testado, validado e rastreado.
 
-Checklists: [DoR e DoD](../dor-e-dod/).
+Checklists: [DoR e DoD](/dor-e-dod/).
 
 ## 6.10 Validação interna (antes de enviar ao cliente)
 

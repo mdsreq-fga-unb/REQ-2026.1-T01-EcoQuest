@@ -3,7 +3,7 @@
 
 Checklists de **Definition of Ready (DoR)** e **Definition of Done (DoD)** para itens do backlog (*Work Items List*).
 
-Cada requisito deve indicar **OE** e **CP** (ver [Solução Proposta](../solucao-proposta/)).
+Cada requisito deve indicar **OE** e **CP** (ver [Solução Proposta](/solucao-proposta/)).
 
 ## DoR (Ready)
 
