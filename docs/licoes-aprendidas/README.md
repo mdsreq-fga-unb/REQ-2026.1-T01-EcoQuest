@@ -21,7 +21,7 @@
 
 ## Unidade 2
 
-**No âmbito do Processo:** A equipe aprendeu que definir critérios sem embasamento teórico explícito gera critérios vagos e inverificáveis. A primeira versão do DoR/Priorização misturava instrumentos de naturezas distintas, como o INVEST e os Critérios de Aceitação ou a falta de definição do que significava cada coisa dentro da contexto da priorização, em um único critério, tornando a cerimônia de comprometimento ambígua na prática.
+**No âmbito do Processo:** A equipe aprendeu que definir critérios sem embasamento teórico explícito gera critérios vagos e inverificáveis. A primeira versão do DoR/Priorização misturava instrumentos de naturezas distintas, como o INVEST e os Critérios de Aceitação ou a falta de definição do que significava cada coisa dentro da contexto da priorização, em um único critério, tornando a cerimônia ambígua na prática.
 **Ação de Melhoria:** Adotar o princípio de atomização de critérios: cada pergunta deve verificar exatamente um artefato ou condição, com resposta inequívoca de sim ou não, antes de ser incorporada ao processo.
 
 **No âmbito da Rastreabilidade:** A equipe identificou que a cadeia `OE → CP → UC → Backlog → AC` só funciona como mecanismo de rastreabilidade se todos os artefatos intermediários existirem e estiverem preenchidos. A ausência de parâmetros mensuráveis nos RNFs, por exemplo, tornava o critério de Qualidade Técnica do DoD estruturalmente inverificável, independentemente de como estava redigido.
