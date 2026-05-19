@@ -53,6 +53,48 @@ Custos Estimados (Mensais):
 - Hospedagem (VPS): ~€5.00 (Contabo);
 - Domínio (.com.br / .org): ~R$ 40,00/ano;
 - Manutenção: custo operacional de desenvolvimento (equipe acadêmica).
+- 
+### 2.6.1 Análise de Capacidade e Orçamento do Projeto
+
+Para a precificação do desenvolvimento do software, optou-se pela utilização do método de custeio baseado em capacidade. Esta abordagem foi escolhida devido à natureza da equipe, composta por estudantes universitários com dedicação parcial ao projeto.
+
+#### Premissas de Custeio e Valor da Hora
+
+O custo da hora técnica foi estabelecido utilizando como benchmark o piso salarial médio de um Engenheiro de Software Júnior no mercado nacional, fixado em R$ 2.500,00 mensais.
+
+Considerando a jornada padrão de 220 horas mensais (regime CLT), o custo unitário da hora de desenvolvimento na equipe foi parametrizado em:
+
+*   **Valor da Hora Técnica:** R$ 11,36
+    
+
+#### Capacidade Produtiva da Equipe
+
+O tempo de ciclo total do projeto está estimado em 3 meses e meio (aproximadamente 14 semanas). A equipe de desenvolvimento é composta por 5 integrantes.
+
+Para garantir a viabilidade da entrega sem comprometer a carga acadêmica dos estudantes nas demais disciplinas, a capacidade de dedicação foi travada de forma conservadora em **5 horas semanais por desenvolvedor**.
+
+A projeção de esforço bruto do projeto é:
+
+*   **Capacidade Semanal da Equipe:** 5 desenvolvedores x 5 horas = 25 horas/semana
+    
+*   **Esforço Individual no Ciclo:** 14 semanas x 5 horas = 70 horas/desenvolvedor
+    
+*   **Capacidade Total do Projeto:** 5 desenvolvedores x 70 horas = 350 horas totais
+    
+
+#### Orçamento Base e Fator de Risco
+
+Custo Base = 350 horas x R$ 11,36 = R$ 3.976,00
+
+**Mitigação de Risco:**
+
+Projetos de software desenvolvidos em ambiente acadêmico possuem riscos inerentes, como curvas de aprendizado com novas tecnologias e flutuações na disponibilidade da equipe durante semanas de provas.
+
+Para garantir a segurança do orçamento, aplica-se uma margem de contingência de **30%** sobre o custo base:
+
+Orçamento Final Projetado = R$3.976,00 x 1,30 = R$ 5.168,80
+
+
 
 ## 2.7 Benefícios Esperados
 
