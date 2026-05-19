@@ -629,61 +629,74 @@
 ---
 ## 10.2. Priorização
 
-A priorização do backlog foi realizada com base no modelo MoSCoW (Must Have, Should Have, Could Have e Won't Have), que auxilia na identificação e categorização das funcionalidades como essenciais, desejáveis ou opcionais. Esse modelo orienta o desenvolvimento conforme os objetivos do projeto, garantindo que as entregas mais importantes sejam priorizadas.
+A priorização do backlog foi realizada com base no modelo MoSCoW (Must Have, Should Have, Could Have e Won't Have). Esse modelo orienta o desenvolvimento conforme os objetivos do projeto, garantindo que as entregas mais importantes sejam priorizadas.
 
-Cada requisito foi avaliado segundo dois grupos de critérios: Negócio e Complexidade.
+A priorização dos Casos de Uso (UC) foi realizada com o objetivo de organizar o desenvolvimento das funcionalidades conforme sua relevância para o produto, impacto no usuário e viabilidade técnica. Para isso, foi adotado um modelo de classificação baseado em valor funcional e esforço de implementação, permitindo identificar quais funcionalidades devem ser entregues primeiro.
 
-A tabela abaixo foi utilizada para determinar a importância dos requisitos para o negócio:
+Cada Caso de Uso foi avaliado em dois eixos principais: Valor e Complexidade Técnica.
 
-### Valor de Negócio (VN)
+## Critérios de Valor Funcional
 
-| Valor | Nível | Critério de Atribuição |
-|-------|-------|------------------------|
-| 5 | Alto | O requisito entrega valor direto ao negócio e é condição indispensável para o funcionamento do produto. |
-| 4 | Médio/Alto | Requisito de alto impacto operacional ou estratégico, necessário para o lançamento inicial do produto. |
-| 3 | Médio | Agrega valor relevante à experiência do usuário ou a fluxos secundários, mas pode ser postergado sem comprometer o MVP. |
-| 2 | Médio/Baixo | Funcionalidade complementar com ganho incremental; sua ausência não afeta o uso central do sistema. |
-| 1 | Baixo | Requisito de impacto mínimo no valor percebido pelo usuário. |
+Os critérios abaixo foram utilizados para analisar a importância do Caso de Uso para o funcionamento da solução e atendimento dos objetivos do projeto:
 
-### Complexidade (CX)
+- (+1) O Caso de Uso é essencial para o funcionamento principal da plataforma?
+- (+1) O Caso de Uso impacta diretamente a experiência ou engajamento do usuário?
+- (+1) O Caso de Uso contribui para os objetivos estratégicos do produto?
+- (+1) O Caso de Uso reduz problemas identificados na análise de negócio?
 
-A complexidade dos requisitos foi definida com base nos seguintes critérios de esforço técnico:
+Com base na pontuação obtida, os Casos de Uso foram classificados conforme o nível de prioridade funcional:
 
-- (+1) A equipe já possui experiência prévia com a funcionalidade ou tecnologia envolvida.
-- (+1) O requisito demanda baixo volume de trabalho e implementação rápida.
-- (+1) A solução possui baixa complexidade técnica, sem necessidade de pesquisa ou tecnologias novas.
-- (+1) O requisito está alinhado aos padrões arquiteturais e técnicos já adotados no projeto.
+| Pontuação | Classificação |
+| :--- | :--- |
+| 4 pontos | Prioridade Crítica |
+| 3 pontos | Alta Prioridade |
+| 2 pontos | Média Prioridade |
+| 1 ponto | Baixa Prioridade |
+
+## Critérios de Complexidade Técnica
+
+Além da relevância funcional, cada Caso de Uso foi avaliado quanto ao esforço necessário para sua implementação:
+
+- (+1) A funcionalidade utiliza tecnologias já dominadas pela equipe?
+- (+1) O Caso de Uso possui baixa complexidade de integração?
+- (+1) O desenvolvimento pode ser realizado sem necessidade de pesquisa extensa?
+- (+1) O Caso de Uso possui baixo impacto arquitetural no sistema?
+- (+1) A implementação apresenta baixo risco técnico?
+
+## Classificação da Complexidade Técnica
+
+| Pontuação | Nível de Complexidade | Descrição |
+| :--- | :--- | :--- |
+| 5 pontos | 1 | Funcionalidade simples, utilizando tecnologias dominadas pela equipe e com baixo risco técnico. |
+| 4 pontos | 2 | Implementação relativamente simples, com poucas integrações e baixo impacto arquitetural. |
+| 3 pontos | 3 | Requer maior esforço técnico, podendo envolver integrações ou pequenas pesquisas adicionais. |
+| 2 pontos | 4 | Funcionalidade com maior impacto técnico, necessidade de pesquisa e possíveis riscos de implementação. |
+| 1 ponto | 5 | Implementação crítica, com elevado risco técnico, forte impacto arquitetural ou tecnologias pouco dominadas pela equipe. |
 
 
-| Valor | Nível | Critério de Atribuição |
-|-------|-------|------------------------|
-| 5 | Muito Alta | Nenhum critério atendido. |
-| 4 | Alta | Apenas 1 critério atendido. |
-| 3 | Média | 2 critérios atendidos. |
-| 2 | Baixa | 3 critérios atendidos. |
-| 1 | Muito Baixa | Todos os critérios atendidos. |
+A soma dos critérios funcionais e técnicos foi utilizada para definir a ordem de desenvolvimento dos Casos de Uso. Funcionalidades com maior valor agregado e menor complexidade tendem a receber maior prioridade no planejamento das entregas.
 
 ### Tabela de priorização
 
 | ID | Nome | MoSCoW | VN | CX | Matriz de Esforço | MVP |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | 
-| RF01 | Cadastrar usuário | Must have | 5 | 1 | Quadrante 1 | X |
-| RF02 | Autenticar usuário | Must have | 5 | 1 | Quadrante 1 | X |
-| RF03 | Recuperar senha | Should have | 3 | 2 | Quadrante 3 | X |
-| RF04 | Gerenciar Perfil | Should have | 3 | 1 | Quadrante 3 | X |
-| RF05 | Excluir conta | Should have | 3 | 1 | Quadrante 3 | X |
-| RF06 | Localizar PEVs | Should have | 2 | 3 | Quadrante 4 |  -- |
-| RF07 | Consultar detalhes do PEV | Could have | 2 | 2 | Quadrante 3 |  -- |
-| RF08 | Ler Token para Descarte | Must have | 4 | 4 | Quadrante 2 | X |
-| RF09 | Consultar Extrato | Must have | 4 | 3 | Quadrante 2 | X |
-| RF10 | Exibir Catálogo de Recompensas | Must have | 5 | 3 | Quadrante 2 | X |
-| RF11 | Resgatar Recompensas | Must have | 5 | 4 | Quadrante 2 | X |
-| RF12 | Exibir Vitrine de Conquistas | Must have | 4 | 3 | Quadrante 2 | X |
-| RF13 | Exibir Progresso da Sequência | Could have | 4 | 3 | Quadrante 2 | X |
-| RF14 | Configurar Anonimato | Could have | 2 | 2 | Quadrante 3 | X |
-| RF15 | Visualizar Ranking | Must have | 5 | 3 | Quadrante 2 | X |
-| RF16 | Visualizar Painel de Impacto Pessoal | Could have | 2 | 3 | Quadrante 4 | -- |
-| RF17 | Consultar Estatísticas do Impato da Comunidade | Could have | 2 | 3 | Quadrante 4 | -- |
+| UC01 | Cadastrar usuário | Must have | 5 | 1 | Quadrante 1 | X |
+| UC02 | Autenticar usuário | Must have | 5 | 1 | Quadrante 1 | X |
+| UC03 | Recuperar senha | Should have | 3 | 2 | Quadrante 3 | -- |
+| UC04 | Gerenciar Perfil | Should have | 3 | 1 | Quadrante 3 | -- |
+| UC05 | Excluir conta | Should have | 3 | 1 | Quadrante 3 | -- |
+| UC06 | Localizar PEVs | Should have | 2 | 3 | Quadrante 4 |  -- |
+| UC07 | Consultar detalhes do PEV | Could have | 2 | 2 | Quadrante 3 |  -- |
+| UC08 | Ler Token para Descarte | Must have | 4 | 4 | Quadrante 2 | X |
+| UC09 | Consultar Extrato | Must have | 4 | 3 | Quadrante 2 | X |
+| UC10 | Exibir Catálogo de Recompensas | Must have | 5 | 3 | Quadrante 2 | X |
+| UC11 | Resgatar Recompensas | Must have | 5 | 4 | Quadrante 2 | X |
+| UC12 | Exibir Vitrine de Conquistas | Must have | 4 | 3 | Quadrante 2 | X |
+| UC13 | Exibir Progresso da Sequência | Could have | 4 | 3 | Quadrante 2 | X |
+| UC14 | Configurar Anonimato | Could have | 2 | 2 | Quadrante 3 | -- |
+| UC15 | Visualizar Ranking | Must have | 5 | 3 | Quadrante 2 | X |
+| UC16 | Visualizar Painel de Impacto Pessoal | Could have | 2 | 3 | Quadrante 4 | -- |
+| UC17 | Consultar Estatísticas do Impato da Comunidade | Could have | 2 | 3 | Quadrante 4 | -- |
 
 ---
 
