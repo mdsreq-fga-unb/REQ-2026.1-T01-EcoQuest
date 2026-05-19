@@ -2,25 +2,27 @@
 
 ## 2.1. Objetivo geral do produto
 
-Reduzir a alta fricção e introduzir feedback no processo de descarte responsável ao oferecer recompensa e informações de descarte aos usuários.
+Promover o engajamento da população no descarte responsável de resíduos eletroeletrônicos por meio de uma plataforma integrada de economia circular, conectando cidadãos, pontos de coleta, parceiros comerciais e ONGs de reciclagem com mecanismos de gamificação, recompensas e validação segura de descartes, a fim de facilitar o descarte correto, ampliar a participação dos usuários e reduzir os impactos ambientais causados pelo descarte inadequado de resíduos eletrônicos.
 
 ## 2.2. Objetivos específicos (OE's)
 
-- **OE1**: Incentivar o engajamento à prática de ação sustentável através de gamificação.
-- **OE2**: Facilitar o processo de descarte responsável, fornecendo mapeamento intuitivo e identificação de materiais que podem ser descartados.
-- **OE3**: Prevenção de fraudes na validação de descarte físico responsável.
-- **OE4**: Comprovar o impacto de descarte responsável.
+- **OE1**: Aumentar o engajamento com relação à práticas sustentáveis através da gamificação.
+- **OE2**: Incentivar a adoção de práticas de descarte responsável.
+- **OE3**: Facilitar o processo de descarte responsável.
+- **OE4**: Prevenção de fraudes na validação de descarte físico responsável.
+- **OE5**: Gerenciar o descarte responsável.
 
 ## 2.3. Características do Produto
 | ID | Característica do Produto (CP) | Descrição Resumida | ID | Valor de Negócio | Contribuição principal | Contribuição secundária | 
-|----|----------|-------------|----|----------|-------------|--------------| 
-| CP1 | Sistema de Missões (Quests) | A solução deverá conter um sistema de missões sustentáveis, organizadas em diárias ou semanais, com objetivos definidos, de modo a incentivar a adoção contínua de práticas sustentáveis e promover o engajamento recorrente dos usuários | VN1 | Melhoria do engajamento contínuo e fortalecimento da participação dos usuários | OE1 | OE2 |
-| CP2 | Sistema de progressão | A solução deverá conter um sistema de pontuação baseado em experiência (XP) e níveis, estruturado por métricas de desempenho, de modo a acompanhar a evolução dos usuários e estimular sua progressão na plataforma. | VN2 | Aumento da retenção e redução da evasão de usuários | OE2 | OE4 |
-| CP3 | Conquistas (Insígnias) | A solução deverá conter um sistema de recompensas simbólicas atreladas ao cumprimento de metas, de modo a reconhecer o desempenho dos usuários e incentivar a continuidade de suas ações | VN3 | Aumento da motivação e estímulo à continuidade das atividades | OE2 | OE1 |
-| CP4 | Streaks | A solução deverá conter um contador de dias consecutivos de participação, de modo a monitorar a consistência dos usuários e incentivar a manutenção de hábitos contínuos | VN4 | Aumento da fidelização e fortalecimento do vínculo com a plataforma | OE2 | OE1 |
-| CP5 | Ranking Social | A solução deverá conter um sistema de ranking para competição entre estudantes, baseado em critérios de desempenho, de modo a promover a interação, o engajamento e a motivação por meio da competitividade | VN5 | Aumento do engajamento social, da interação e da integração no ambiente acadêmico | OE4 | OE2 |
-| CP6 | Validação do cumprimento das atividades | A solução deverá conter um sistema de validação das atividades realizadas, por meio do envio de fotos ou vídeos capturados em tempo real, de modo a garantir a autenticidade das ações dos usuários e reduzir a ocorrência de fraudes ou plágio | VN6 | Redução de fraudes e aumento da confiabilidade nas interações e resultados da plataforma | OE3 | -- |
-| CP7 | Sistema de recompensas | A solução deverá conter um sistema de premiação para os usuários com melhores pontuações nos rankings, de modo a reconhecer os que se destacaram e incentivar a participação ativa na plataforma | VN7 | Aumento da percepção de valor, reconhecimento das conquistas e valorização das missões concluídas | OE4 | OE2 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | 
+| CP1 | Sistema de ranking e gamificação | A solução deverá conter rankings, streaks e elementos de gamificação para incentivar participação contínua e competição saudável entre usuários | VN1 | Melhoria do engajamento contínuo e fortalecimento da participação dos usuários | OE1 | OE2 |
+| CP2 | Sistema de pontuação e recompensas | A solução deverá conter um sistema de pontuação baseado em descartes responsáveis realizados, permitindo acúmulo de pontos e troca por cupons e recompensas | VN2 | Incentivo contínuo às práticas sustentáveis por meio de recompensas e reconhecimento dos usuários | OE2 | OE1 |
+| CP3 | Gestão e validação de descarte responsável | A solução deverá conter mecanismos de validação de entregas utilizando QR Code, token único e integração com APIs | VN3 | Garantia da autenticidade dos descartes e redução de fraudes no processo de validação | OE4 | OE5 |
+| CP4 | Logística e Localização de PEVs | A solução deverá permitir identificar pontos de coleta próximos ao usuário com localização e materiais aceitos | VN4 | Facilitação do descarte correto e aumento da acessibilidade aos pontos de coleta | OE3 | OE2 |
+| CP5 | Gerenciamento e Autenticação de Usuários        | A solução deverá conter mecanismos de cadastro, login, redefinição de senha e gerenciamento de perfis, permitindo acesso seguro e controle das contas dos usuários | VN5 | Segurança no acesso à plataforma e melhor gerenciamento das informações dos usuários | OE5 | OE4 |
+| CP6 | Dados de impacto | A solução deverá conter informações do impacto ambiental do descarte responsável dos usuários e coletas dos PEVs | VN6 | Conscientização ambiental por meio da visualização de dados e resultados sustentáveis | OE1 | OE2 |
+| CP7 | Integridade e Usabilidade                       | A solução deverá oferecer compatibilidade com dispositivos móveis e navegação otimizada em diferentes tamanhos de tela | VN7 | Melhoria da experiência do usuário e ampliação da acessibilidade da solução | OE1 | OE3 |
+| CP8 | Proteção e privacidade de dados                 | A solução deverá proteger informações pessoais dos usuários utilizando criptografia e controle de privacidade | VN8 | Garantia de privacidade, proteção de dados e conformidade com requisitos de segurança | OE5 | OE4 |
 
 ## 2.4 Tecnologias a Serem Utilizadas
 
@@ -82,3 +84,4 @@ Custos Estimados (Mensais):
 | 11/04/2026 | 1.0 | Adicionar características de produto. | Yasmim | 
 | 11/04/2026 | 2.1 | Atualizar pesquisa de mercado, tecnologias, beneficios e desafios. | João Victor |
 | 17/05/2026 | 2.2 | Atualizar todos os tópicos com mudança de escopo do projeto de acordo com [1.2. Introdução ao negócio e contexto](../cenario-atual-do-cliente-e-do-negocio/README.md#12-introdução-ao-negócio-e-contexto). | João Victor |
+| 17/05/2026 | 2.3 | Atualizar Objetivo Geral do Produto, Objetivos Específicos e Características de Produto | Yasmim |
