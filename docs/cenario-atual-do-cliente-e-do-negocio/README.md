@@ -29,7 +29,7 @@ Nota de Revisão: Este documento reflete a readequação do escopo aprovada em [
 
 Observando modelos internacionais de sucesso que utilizam a reciprocidade para incentivar o descarte correto, identifica-se a oportunidade de transformar a percepção pública sobre o lixo eletrônico.
 
-O problema central identificado é que **a alta fricção logística e a ausência de reciprocidade imediata criam uma "lacuna de altruísmo" sistêmica que desencoraja a participação ativa na gestão sustentável de resíduos**.
+O problema central identificado é que **baixo engajamento na realização de descarte responsável por parte dos cidadãos**.
 
 A análise das causas raiz mostrada na Figura 2, exibida abaixo, revela que o baixo índice de descarte adequado é sustentado pelos seguintes fatores:
 
