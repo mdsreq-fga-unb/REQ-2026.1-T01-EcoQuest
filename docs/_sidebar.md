@@ -6,7 +6,6 @@
   * [Estratégias de Engenharia de Software](estrategias-de-engenharia-de-software/)
   * [Arquitetura do Sistema](arquitetura-do-sistema/)
   * [Interação com Cliente](interacao-entre-equipe-e-cliente/)
-  * [Atas](interacao-entre-equipe-e-cliente/atas/)
   * [Engenharia de Requisitos](engenharia-de-requisitos/)
 
 * **3. Intervenção Social**
