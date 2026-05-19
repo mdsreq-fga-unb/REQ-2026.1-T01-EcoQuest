@@ -14,9 +14,8 @@ _Verifica se o "o quê" e o "por quê" estão absolutamente claros para toda a e
 
 > - O ator, qualquer entidade externa ao sistema que interage com ele para atingir um objetivo, está nomeado, seu papel está descrito e seu objetivo de negócio está explícito no Caso de Uso?
 > - O IP foi calculado, o quadrante definido e a classificação MoSCoW registrada no backlog?
-> - Os critérios de aceitação — condições verificáveis que definem as formas de uso das funcionalidades implementadas no UC, existem e estão ligados ao OE e CP correspondentes?
+> - Os critérios de aceitação, condições verificáveis que definem as formas de uso das funcionalidades implementadas no UC, existem e estão ligados ao OE e CP correspondentes?
 > - As regras de negócio estão devidamente verificadas dentro do contexto? _(Critério de completude do contexto de negócio, especialmente para lógicas de gamificação: missões, tokens, progressão e recompensas.)_
-> - O validador, o canal de validação e o critério de aprovação estão definidos e registrados no UC?
 
 #### Dimensão de Viabilidade
 
@@ -48,7 +47,7 @@ _Atesta que o código foi construído com excelência técnica, integrado sem qu
 - [ ] Todos os fluxos principais, alternativos e de exceção descritos no Caso de Uso foram implementados.
 - [ ] Cenários de falha (ex: instabilidade externa, dados inválidos) possuem tratamento de erro com feedback amigável ao usuário.
 - [ ] O código implementado atende integralmente a todos os Critérios de Aceitação (ACs) definidos no DoR.
-- [ ] O comportamento funcional da interface atende integralmente aos ACs, independentemente de variações visuais em relação ao Design System.
+- [ ] O comportamento funcional da interface atende integralmente aos ACs ?
 
 #### Dimensão de Qualidade Técnica (RNF)
 
