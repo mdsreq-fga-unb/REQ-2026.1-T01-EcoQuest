@@ -47,11 +47,14 @@ A tabela a seguir apresenta o mapeamento entre as fases do OpenUP, as atividades
 |  | Análise e Consenso | Alinhamento com stakeholders | Discussões em equipe, Priorização MoSCoW | Definição das funcionalidades essenciais para o MVP |
 |  | Declaração de Requisitos | Formalização inicial | User Stories, Casos de Uso de alto nível | Registro inicial das funcionalidades (missões, pontuação, validação) |
 |  | Organização e Atualização | Estruturação inicial | Criação do backlog | Backlog inicial priorizado e alinhado com os objetivos do projeto |
+|  | Verificação e Validação | Avaliação inicial dos requisitos | DoR, revisão de critérios de aceitação, feedback com stakeholders | Confirmação inicial de clareza, consistência, rastreabilidade e alinhamento dos requisitos |
 | **Elaboração** | Elicitação e Descoberta | Refinamento dos requisitos | Entrevistas detalhadas, Análise de domínio | Requisitos mais claros e alinhados ao contexto acadêmico e ambiental |
 |  | Análise e Consenso | Avaliação de viabilidade | Análise de custo-benefício, Discussões técnicas | Definição do escopo viável (MVP) |
 |  | Representação de Requisitos | Modelagem da solução | Protótipos, Wireframes, Diagramas UML | Visualização das funcionalidades (quests, ranking, progresso) |
 |  | Declaração de Requisitos | Detalhamento | Critérios de aceitação, Especificação de requisitos | Requisitos prontos para desenvolvimento |
+|  | Organização e Atualização | Refinamento e controle dos requisitos | Atualização do backlog, versionamento, DoR | Requisitos refinados, priorizados e preparados para avançar no desenvolvimento |
 | **Construção** | Representação de Requisitos | Apoio à implementação | Protótipos evolutivos | Melhor entendimento das funcionalidades pela equipe |
+|  | Elicitação e Descoberta | Descoberta de ajustes durante a construção | Feedback de uso, revisões com stakeholders, análise de novas necessidades | Identificação de ajustes, lacunas e novas informações surgidas durante a implementação |
 |  | Verificação da implementação | Conferência do incremento | Testes funcionais e testes de aceitação | Garantia de que a implementação atende aos requisitos especificados |
 |  | Organização e Atualização | Controle de mudanças | Atualização do backlog, versionamento | Ajustes contínuos com base no feedback |
 |  | Análise e Consenso | Ajustes incrementais | Reuniões de acompanhamento | Correção de problemas e melhoria do sistema |
