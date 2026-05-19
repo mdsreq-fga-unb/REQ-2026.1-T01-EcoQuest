@@ -56,7 +56,7 @@ Os principais stakeholders identificados no ecossistema de gestão de resíduos 
 | Prof. Dra. Juliana Dalbone | Cliente e Orientadora | Validação do domínio ambiental e rigor metodológico | Alta |
 | Prof. Dr. George Marsicano Correa | Cliente e Orientador | Aquisição dos conhecimentos de ER por parte da equipe desenvolvedora e a entrega da solução | Alta |
 | Equipe de Desenvolvedores | Executores | Implementação técnica, segurança e escalável | Alta |
-| Cidadãos (Doadores) | Usuários Finais | Facilidade de descarte, transparência e incentivos | Alta |
+| Cidadãos | Usuários Finais | Facilidade de descarte, transparência e incentivos | Alta |
 | ONGs (ex: Programando o Futuro) | Operadores Logísticos | Aumento do volume de captação e automação de triagem | Alta |
 | Rede de Parceiros | Provedores de Incentivo | Responsabilidade social e visibilidade de marca | Média |
 

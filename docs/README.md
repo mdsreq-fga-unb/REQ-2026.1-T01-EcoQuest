@@ -2,7 +2,7 @@
 
 ## EcoQuest
 
-O EcoQuest é uma plataforma de infraestrutura digital desenhada para viabilizar e escalar a economia circular através do descarte inteligente de resíduos. O sistema conecta doadores a Pontos de Entrega Voluntária (PEVs), automatizando a validação de ativos físicos e convertendo o impacto ambiental em recompensas tangíveis e rastreáveis.
+O EcoQuest é uma plataforma de infraestrutura digital desenhada para viabilizar e escalar a economia circular através do descarte inteligente de resíduos. O sistema conecta cidadãos que deseja descartar resíduos a Pontos de Entrega Voluntária (PEVs), automatizando a validação de ativos físicos e convertendo o impacto ambiental em recompensas tangíveis e rastreáveis.
 
 ## O Problema
 
@@ -12,7 +12,7 @@ A falta de feedback imediato, a ausência de um comprovante digital de impacto e
 
 ## A Solução
 
-O EcoQuest atua como uma ponte físico-digital entre o doador e as ONGs de reciclagem. Através de um ecossistema integrado, a plataforma oferece:
+O EcoQuest atua como uma ponte físico-digital entre o cidadão que deseja descartar resíduos e as ONGs de reciclagem. Através de um ecossistema integrado, a plataforma oferece:
 
 - Logística Simplificada: Mapeamento inteligente e centralizado de PEVs e materiais aceitos;
 - Validação de Integridade: Um protocolo de segurança baseado em tokens únicos (QR Codes) que garante a autenticidade da doação no ato da entrega física;
