@@ -626,66 +626,101 @@
     - O sistema deve ser acessível sem necessidade de autenticação.
     - O sistema deve informar indisponibilidade caso os dados não possam ser carregados.
 
----
-## 10.2. Priorização
 
-A priorização do backlog foi realizada com base no modelo MoSCoW (Must Have, Should Have, Could Have e Won't Have), que auxilia na identificação e categorização das funcionalidades como essenciais, desejáveis ou opcionais. Esse modelo orienta o desenvolvimento conforme os objetivos do projeto, garantindo que as entregas mais importantes sejam priorizadas.
+## 10.2 Priorização
 
-Cada requisito foi avaliado segundo dois grupos de critérios: Negócio e Complexidade.
+A priorização do backlog foi realizada com base no modelo MoSCoW (Must Have, Should Have, Could Have e Won’t Have). Esse modelo orienta o desenvolvimento conforme os objetivos do projeto, garantindo que as funcionalidades mais relevantes sejam priorizadas durante o planejamento das entregas.
 
-A tabela abaixo foi utilizada para determinar a importância dos requisitos para o negócio:
+A priorização dos Casos de Uso (UC) foi definida considerando sua relevância para o funcionamento da solução, impacto no usuário e esforço técnico necessário para implementação. Para isso, foi adotado um modelo baseado em Valor Funcional (VF) e Complexidade Técnica (CT).
 
-### Valor de Negócio (VN)
+Cada Caso de Uso foi avaliado em dois eixos principais: Valor Funcional e Complexidade Técnica.
 
-| Valor | Nível | Critério de Atribuição |
-|-------|-------|------------------------|
-| 5 | Alto | O requisito entrega valor direto ao negócio e é condição indispensável para o funcionamento do produto. |
-| 4 | Médio/Alto | Requisito de alto impacto operacional ou estratégico, necessário para o lançamento inicial do produto. |
-| 3 | Médio | Agrega valor relevante à experiência do usuário ou a fluxos secundários, mas pode ser postergado sem comprometer o MVP. |
-| 2 | Médio/Baixo | Funcionalidade complementar com ganho incremental; sua ausência não afeta o uso central do sistema. |
-| 1 | Baixo | Requisito de impacto mínimo no valor percebido pelo usuário. |
+### Critérios de Valor Funcional (VF)
 
-### Complexidade (CX)
+Os critérios abaixo foram utilizados para analisar a importância do Caso de Uso para o produto e para os objetivos do projeto:
 
-A complexidade dos requisitos foi definida com base nos seguintes critérios de esforço técnico:
+- (+1) O Caso de Uso é essencial para o funcionamento principal da plataforma?
+- (+1) O Caso de Uso impacta diretamente a experiência ou engajamento do usuário?
+- (+1) O Caso de Uso contribui para os objetivos estratégicos do produto?
+- (+1) O Caso de Uso reduz problemas identificados na análise de negócio?
 
-- (+1) A equipe já possui experiência prévia com a funcionalidade ou tecnologia envolvida.
-- (+1) O requisito demanda baixo volume de trabalho e implementação rápida.
-- (+1) A solução possui baixa complexidade técnica, sem necessidade de pesquisa ou tecnologias novas.
-- (+1) O requisito está alinhado aos padrões arquiteturais e técnicos já adotados no projeto.
+Com base na pontuação obtida, os Casos de Uso foram classificados conforme o modelo MoSCoW:
 
+| Pontos VF | Classificação |
+|---|---|
+| 4 | Must Have |
+| 3 | Should Have |
+| 2 | Could Have |
+| 1 | Won’t Have |
 
-| Valor | Nível | Critério de Atribuição |
-|-------|-------|------------------------|
-| 5 | Muito Alta | Nenhum critério atendido. |
-| 4 | Alta | Apenas 1 critério atendido. |
-| 3 | Média | 2 critérios atendidos. |
-| 2 | Baixa | 3 critérios atendidos. |
-| 1 | Muito Baixa | Todos os critérios atendidos. |
+Após a classificação, foi atribuído um peso para representar a relevância funcional do Caso de Uso:
 
-### Tabela de priorização
+| Classificação | Peso |
+|---|---|
+| Must Have | 10 |
+| Should Have | 7 |
+| Could Have | 4 |
+| Won’t Have | 1 |
 
-| ID | Nome | MoSCoW | VN | CX | Matriz de Esforço | MVP |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | 
-| RF01 | Cadastrar usuário | Must have | 5 | 1 | Quadrante 1 | X |
-| RF02 | Autenticar usuário | Must have | 5 | 1 | Quadrante 1 | X |
-| RF03 | Recuperar senha | Should have | 3 | 2 | Quadrante 3 | X |
-| RF04 | Gerenciar Perfil | Should have | 3 | 1 | Quadrante 3 | X |
-| RF05 | Excluir conta | Should have | 3 | 1 | Quadrante 3 | X |
-| RF06 | Localizar PEVs | Should have | 2 | 3 | Quadrante 4 |  -- |
-| RF07 | Consultar detalhes do PEV | Could have | 2 | 2 | Quadrante 3 |  -- |
-| RF08 | Ler Token para Descarte | Must have | 4 | 4 | Quadrante 2 | X |
-| RF09 | Consultar Extrato | Must have | 4 | 3 | Quadrante 2 | X |
-| RF10 | Exibir Catálogo de Recompensas | Must have | 5 | 3 | Quadrante 2 | X |
-| RF11 | Resgatar Recompensas | Must have | 5 | 4 | Quadrante 2 | X |
-| RF12 | Exibir Vitrine de Conquistas | Must have | 4 | 3 | Quadrante 2 | X |
-| RF13 | Exibir Progresso da Sequência | Could have | 4 | 3 | Quadrante 2 | X |
-| RF14 | Configurar Anonimato | Could have | 2 | 2 | Quadrante 3 | X |
-| RF15 | Visualizar Ranking | Must have | 5 | 3 | Quadrante 2 | X |
-| RF16 | Visualizar Painel de Impacto Pessoal | Could have | 2 | 3 | Quadrante 4 | -- |
-| RF17 | Consultar Estatísticas do Impato da Comunidade | Could have | 2 | 3 | Quadrante 4 | -- |
+### Critérios de Complexidade Técnica (CT)
 
----
+Além da relevância funcional, cada Caso de Uso foi avaliado quanto ao esforço necessário para implementação.
+
+A pontuação de Complexidade Técnica representa o nível de esforço exigido para o desenvolvimento da funcionalidade. Quanto maior a pontuação, maior a complexidade da implementação.
+
+Os seguintes critérios foram considerados:
+
+- (+1) Necessidade de integração com serviços externos
+- (+1) Necessidade de pesquisa ou aprendizado de novas tecnologias
+- (+1) Alto impacto arquitetural no sistema
+- (+1) Maior volume de regras de negócio
+- (+1) Alto risco técnico ou operacional
+
+A soma dos critérios técnicos gera a pontuação de Complexidade Técnica (CT).
+
+### Cálculo da Prioridade Final
+
+A prioridade final de cada Caso de Uso foi definida pela seguinte fórmula:
+
+```text
+Valor Final = Peso - Complexidade Técnica (CT)
+```
+
+Quanto maior o valor final obtido, maior a prioridade do Caso de Uso dentro do backlog do projeto.
+
+### Classificação na Matriz de Esforço
+
+Após o cálculo da prioridade final, os Casos de Uso foram posicionados em uma Matriz de Esforço, considerando a relação entre valor agregado e complexidade técnica:
+
+| Quadrante | Característica |
+|---|---|
+| Quadrante 1 | Alto valor e baixa complexidade |
+| Quadrante 2 | Alto valor e alta complexidade |
+| Quadrante 3 | Médio valor e baixa complexidade |
+| Quadrante 4 | Baixo valor e alta complexidade |
+
+### Tabela de Priorização
+
+| ID | Nome | VF | Peso | CT | Valor Final (Peso - CT) | MoSCoW | Matriz de Esforço | MVP |
+|---|---|---|---|---|---|---|---|---|
+| UC01 | Cadastrar usuário | 4 | 10 | 1 | 9 | Must Have | Quadrante 1 | X |
+| UC02 | Autenticar usuário | 4 | 10 | 1 | 9 | Must Have | Quadrante 1 | X |
+| UC03 | Recuperar senha | 3 | 7 | 2 | 5 | Should Have | Quadrante 3 | -- |
+| UC04 | Gerenciar Perfil | 3 | 7 | 1 | 6 | Should Have | Quadrante 3 | -- |
+| UC05 | Excluir conta | 3 | 7 | 1 | 6 | Should Have | Quadrante 3 | -- |
+| UC06 | Localizar PEVs | 2 | 4 | 3 | 1 | Could Have | Quadrante 4 | -- |
+| UC07 | Consultar detalhes do PEV | 2 | 4 | 2 | 2 | Could Have | Quadrante 3 | -- |
+| UC08 | Ler Token para Descarte | 4 | 10 | 4 | 6 | Must Have | Quadrante 2 | X |
+| UC09 | Consultar Extrato | 4 | 10 | 3 | 7 | Must Have | Quadrante 2 | X |
+| UC10 | Exibir Catálogo de Recompensas | 4 | 10 | 3 | 7 | Must Have | Quadrante 2 | X |
+| UC11 | Resgatar Recompensas | 4 | 10 | 4 | 6 | Must Have | Quadrante 2 | X |
+| UC12 | Exibir Vitrine de Conquistas | 4 | 10 | 3 | 7 | Must Have | Quadrante 2 | X |
+| UC13 | Exibir Progresso da Sequência | 2 | 4 | 3 | 1 | Could Have | Quadrante 4 | -- |
+| UC14 | Configurar Anonimato | 2 | 4 | 2 | 2 | Could Have | Quadrante 3 | -- |
+| UC15 | Visualizar Ranking | 4 | 10 | 3 | 7 | Must Have | Quadrante 2 | X |
+| UC16 | Visualizar Painel de Impacto Pessoal | 2 | 4 | 3 | 1 | Could Have | Quadrante 4 | -- |
+| UC17 | Consultar Estatísticas do Impacto da Comunidade | 2 | 4 | 3 | 1 | Could Have | Quadrante 4 | -- |
+
 
 ## 10.3. Matriz de esforço
 
