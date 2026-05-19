@@ -28,21 +28,14 @@ Para manter consistência entre ER e desenvolvimento, o projeto utiliza **DoR/Do
 
 ### Verificação e Validação de Requisitos
 
-- **Kanban:** utilizado para revisar os requisitos documentados, rastrebialidade, verificando clareza, consistência, completude e alinhamento com os objetivos do projeto.
-- **Revisão de critérios de aceitação:** utilizada para validar se os requisitos documentados estão claros, verificáveis e coerentes com os objetivos do projeto.
-- **Feedback com stakeholders:** utilizado para validar se os requisitos refletem corretamente as expectativas da cliente e os objetivos do EcoQuest.
-- **Testes:** utilizados para apoiar a verificação das funcionalidades implementadas com base nos requisitos definidos.
-
-### Organização e Atualização de Requisitos
-
-- **Criação do backlog:** utilizada para organizar os requisitos de forma priorizada e alinhada com os objetivos do projeto.
-- **Atualização do backlog:** utilizada para registrar mudanças, refinamentos e ajustes de escopo ao longo do desenvolvimento.
-- **Refinamento do backlog (Grooming):** utilizado para revisar continuamente os requisitos, detalhar funcionalidades e manter o backlog alinhado às prioridades do projeto.
-- **Versionamento:** utilizado para manter o histórico das alterações realizadas na documentação e apoiar o controle de mudanças.
+- **DoR (Definition of Ready):** utilizado para verificar se os requisitos estão claros, completos, consistentes, rastreáveis e prontos para seguir no fluxo de desenvolvimento. O DoR confirma se cada item possui objetivo, ator, prioridade, critérios de aceitação, regras de negócio e relação com OE e CP antes de ser assumido pela equipe.
+- **Revisão de critérios de aceitação:** utilizada para verificar se os critérios definidos são claros, verificáveis e coerentes com os objetivos do projeto.
+- **Feedback com stakeholders:** utilizado para validar se os requisitos refletem corretamente as necessidades da cliente e dos demais stakeholders do EcoQuest.
+- **Testes:** utilizados posteriormente para verificar se as funcionalidades implementadas atendem aos requisitos e critérios de aceitação definidos.
 
 ## 4.2 Engenharia de Requisitos e o OpenUP
 
-A Engenharia de Requisitos (ER) do projeto foi estruturada em alinhamento com o processo **OpenUP**  e com a abordagem híbrida definida. Dessa forma, as atividades de ER são realizadas de forma iterativa e incremental, com maior foco exploratório nas fases iniciais e maior formalização e controle nas fases posteriores.
+A Engenharia de Requisitos (ER) do projeto foi estruturada em alinhamento com o processo **OpenUP**  e com a abordagem híbrida definida. Dessa forma, as atividades de ER são realizadas de forma iterativa e incremental, com maior foco exploratório nas fases iniciais e maior formalização e controle nas fases posteriores.
 
 Considerando o contexto do projeto, uma plataforma gamificada voltada ao engajamento em práticas sustentáveis, as atividades de ER também priorizam a validação contínua com stakeholders e a mitigação de riscos, especialmente relacionados à validação de atividades e ao engajamento dos usuários.
 
@@ -51,21 +44,21 @@ A tabela a seguir apresenta o mapeamento entre as fases do OpenUP, as atividades
 | Fases do Processo | Atividades ER | Prática | Técnica | Resultado Esperado |
 |------------------|--------------|--------|--------|-------------------|
 | **Concepção** | Elicitação e Descoberta | Levantamento inicial de requisitos | Entrevistas com cliente, Brainstorming | Identificação do problema (baixo engajamento) e definição dos requisitos iniciais |
-|  | Análise e Consenso | Alinhamento com stakeholders | Discussões em equipe, Priorização MoSCoW | Definição das funcionalidades essenciais para o MVP |
-|  | Declaração de Requisitos | Formalização inicial | User Stories, Casos de Uso de alto nível | Registro inicial das funcionalidades (missões, pontuação, validação) |
-|  | Organização e Atualização | Estruturação inicial | Criação do backlog | Backlog inicial priorizado e alinhado com os objetivos do projeto |
+|  | Análise e Consenso | Alinhamento com stakeholders | Discussões em equipe, Priorização MoSCoW | Definição das funcionalidades essenciais para o MVP |
+|  | Declaração de Requisitos | Formalização inicial | User Stories, Casos de Uso de alto nível | Registro inicial das funcionalidades (missões, pontuação, validação) |
+|  | Organização e Atualização | Estruturação inicial | Criação do backlog | Backlog inicial priorizado e alinhado com os objetivos do projeto |
 | **Elaboração** | Elicitação e Descoberta | Refinamento dos requisitos | Entrevistas detalhadas, Análise de domínio | Requisitos mais claros e alinhados ao contexto acadêmico e ambiental |
-|  | Análise e Consenso | Avaliação de viabilidade | Análise de custo-benefício, Discussões técnicas | Definição do escopo viável (MVP) |
-|  | Representação de Requisitos | Modelagem da solução | Protótipos, Wireframes, Diagramas UML | Visualização das funcionalidades (quests, ranking, progresso) |
-|  | Declaração de Requisitos | Detalhamento | Critérios de aceitação, Especificação de requisitos | Requisitos prontos para desenvolvimento |
+|  | Análise e Consenso | Avaliação de viabilidade | Análise de custo-benefício, Discussões técnicas | Definição do escopo viável (MVP) |
+|  | Representação de Requisitos | Modelagem da solução | Protótipos, Wireframes, Diagramas UML | Visualização das funcionalidades (quests, ranking, progresso) |
+|  | Declaração de Requisitos | Detalhamento | Critérios de aceitação, Especificação de requisitos | Requisitos prontos para desenvolvimento |
 | **Construção** | Representação de Requisitos | Apoio à implementação | Protótipos evolutivos | Melhor entendimento das funcionalidades pela equipe |
-|  | Verificação e Validação | Validação contínua | Testes, Revisão de critérios de aceitação | Garantia de que as funcionalidades atendem aos requisitos |
-|  | Organização e Atualização | Controle de mudanças | Atualização do backlog, versionamento | Ajustes contínuos com base no feedback |
-|  | Análise e Consenso | Ajustes incrementais | Reuniões de acompanhamento | Correção de problemas e melhoria do sistema |
-| **Transição** | Verificação e Validação | Validação final com cliente | Testes de aceitação, Feedback do cliente | Confirmação de que o sistema atende aos objetivos |
-|  | Organização e Atualização | Ajustes finais | Correções baseadas em feedback | Sistema refinado e pronto para uso |
-|  | Declaração de Requisitos | Consolidação | Documentação final | Requisitos formalizados e rastreáveis |
-|  | Representação de Requisitos | Documentação final | Diagramas atualizados | Visão final consistente do sistema |
+|  | Verificação da implementação | Conferência do incremento | Testes funcionais e testes de aceitação | Garantia de que a implementação atende aos requisitos especificados |
+|  | Organização e Atualização | Controle de mudanças | Atualização do backlog, versionamento | Ajustes contínuos com base no feedback |
+|  | Análise e Consenso | Ajustes incrementais | Reuniões de acompanhamento | Correção de problemas e melhoria do sistema |
+| **Transição** | Validação com stakeholder | Aceite final | Feedback e aceite do cliente | Confirmação de que o sistema atende aos objetivos |
+|  | Organização e Atualização | Ajustes finais | Correções baseadas em feedback | Sistema refinado e pronto para uso |
+|  | Declaração de Requisitos | Consolidação | Documentação final | Requisitos formalizados e rastreáveis |
+|  | Representação de Requisitos | Documentação final | Diagramas atualizados | Visão final consistente do sistema |
 
 ## DoR e DoD
 
