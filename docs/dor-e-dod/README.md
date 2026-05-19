@@ -23,7 +23,7 @@ _Garante que não existem bloqueadores externos, de infraestrutura ou de depend�
 
 > - As dependências técnicas foram mapeadas?
 > - Os impedimentos conhecidos foram removidos ou possuem plano de mitigação documentado?
-
+add
 #### Dimensão de Escopo
 
 _Garante o alinhamento mental compartilhado sobre a solução e se o tamanho do trabalho cabe no ciclo de entrega._

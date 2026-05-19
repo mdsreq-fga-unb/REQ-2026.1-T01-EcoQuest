@@ -14,7 +14,6 @@
 * **4. Gestão de Produto**
   * [Requisitos de Software](requisitos-de-software/)
   * [Backlog do Produto](backlog-de-produto/)
-  * [DoR e DoD](dor-e-dod/)
   * [Critérios](criterios/)
   * 
 

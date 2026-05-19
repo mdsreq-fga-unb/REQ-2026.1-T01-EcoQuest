@@ -667,25 +667,25 @@ A complexidade dos requisitos foi definida com base nos seguintes critérios de 
 
 ### Tabela de priorização
 
-| ID | Nome | MoSCoW | VN | CX | Matriz de Esforço |
-| :--- | :--- | :--- | :--- | :--- | :--- | 
-| RF01 | Cadastrar usuário | Must have | 5 | 1 | Quadrante 1 | 
-| RF02 | Autenticar usuário | Must have | 5 | 1 | Quadrante 1 | 
-| RF03 | Recuperar senha | Should have | 3 | 2 | Quadrante 3 | 
-| RF04 | Gerenciar Perfil | Should have | 3 | 1 | Quadrante 3 | 
-| RF05 | Excluir conta | Should have | 3 | 1 | Quadrante 3 | 
-| RF06 | Localizar PEVs | Should have | 2 | 3 | Quadrante 4 |
-| RF07 | Consultar detalhes do PEV | Could have | 2 | 2 | Quadrante 3 |
-| RF08 | Ler Token para Descarte | Must have | 4 | 4 | Quadrante 2 | 
-| RF09 | Consultar Extrato | Must have | 4 | 3 | Quadrante 2 | 
-| RF10 | Exibir Catálogo de Recompensas | Must have | 5 | 3 | Quadrante 2 |
-| RF11 | Resgatar Recompensas | Must have | 5 | 4 | Quadrante 2 |
-| RF12 | Exibir Vitrine de Conquistas | Must have | 4 | 3 | Quadrante 2 | 
-| RF13 | Exibir Progresso da Sequência | Could have | 4 | 3 | Quadrante 2 | 
-| RF14 | Configurar Anonimato | Could have | 2 | 2 | Quadrante 3 | 
-| RF15 | Visualizar Ranking | Must have | 5 | 3 | Quadrante 2 | 
-| RF16 | Visualizar Painel de Impacto Pessoal | Could have | 2 | 3 | Quadrante 4 | 
-| RF17 | Consultar Estatísticas do Impato da Comunidade | Could have | 2 | 3 | Quadrante 4 | 
+| ID | Nome | MoSCoW | VN | CX | Matriz de Esforço | MVP |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | 
+| RF01 | Cadastrar usuário | Must have | 5 | 1 | Quadrante 1 | X |
+| RF02 | Autenticar usuário | Must have | 5 | 1 | Quadrante 1 | X |
+| RF03 | Recuperar senha | Should have | 3 | 2 | Quadrante 3 | X |
+| RF04 | Gerenciar Perfil | Should have | 3 | 1 | Quadrante 3 | X |
+| RF05 | Excluir conta | Should have | 3 | 1 | Quadrante 3 | X |
+| RF06 | Localizar PEVs | Should have | 2 | 3 | Quadrante 4 |  -- |
+| RF07 | Consultar detalhes do PEV | Could have | 2 | 2 | Quadrante 3 |  -- |
+| RF08 | Ler Token para Descarte | Must have | 4 | 4 | Quadrante 2 | X |
+| RF09 | Consultar Extrato | Must have | 4 | 3 | Quadrante 2 | X |
+| RF10 | Exibir Catálogo de Recompensas | Must have | 5 | 3 | Quadrante 2 | X |
+| RF11 | Resgatar Recompensas | Must have | 5 | 4 | Quadrante 2 | X |
+| RF12 | Exibir Vitrine de Conquistas | Must have | 4 | 3 | Quadrante 2 | X |
+| RF13 | Exibir Progresso da Sequência | Could have | 4 | 3 | Quadrante 2 | X |
+| RF14 | Configurar Anonimato | Could have | 2 | 2 | Quadrante 3 | X |
+| RF15 | Visualizar Ranking | Must have | 5 | 3 | Quadrante 2 | X |
+| RF16 | Visualizar Painel de Impacto Pessoal | Could have | 2 | 3 | Quadrante 4 | -- |
+| RF17 | Consultar Estatísticas do Impato da Comunidade | Could have | 2 | 3 | Quadrante 4 | -- |
 
 ---
 
@@ -700,17 +700,30 @@ A complexidade dos requisitos foi definida com base nos seguintes critérios de 
   allowfullscreen>
 </iframe>
 
-## 10.4. Atualização e refinamento
+## 10.4. Tabelas gerais (Miro)
 
-- **Refinamento (Grooming):** semanal, com detalhamento de histórias, AC e definição de DoR.
-- **Atualizações por feedback:** entradas vindas do cliente são registradas em ata e transformadas em itens acionáveis no backlog.
+<iframe
+  width="100%"
+  height="600"
+  src="https://miro.com/app/live-embed/uXjVHSUl9qY=/?focusWidget=3458764672164512812&embedMode=view_only_without_ui&embedId=603681073206"
+  frameborder="0"
+  scrolling="no"
+  allowfullscreen>
+</iframe>
 
-## 10.5. Controle de mudanças
+<iframe
+  width="100%"
+  height="600"
+  src="https://miro.com/app/live-embed/uXjVHSb7VK4=/?focusWidget=3458764672166382207&embedMode=view_only_without_ui&embedId=726221475887"
+  frameborder="0"
+  scrolling="no"
+  allowfullscreen>
+</iframe>
 
-Mudanças são tratadas de forma leve:
+## Histórico de versões
 
-1. Solicitação registrada em ata ([Atas](/interacao-entre-equipe-e-cliente/atas.md));
-2. Triagem interna (impacto, custo-benefício, riscos, OE/CP);
-3. Priorização MoSCoW e atualização do Kanban;
-4. Atualização de artefatos (histórias, AC, protótipos) mantendo rastreabilidade.
-
+| Data | Versão | Descrição da Alteração | Autor(a) |
+|-------|-------|------|------|
+| 13/05/2026 | 1.0 | Criação do documento e estruturação dos tópicos iniciais, bem como seu conteúdo. | Joaquim e Nayla | 
+| 17/04/2026 | 2.0 | Correção da priorização conforme feedback do professor. | Yasmim e Joaquim | 
+| 18/04/2026 | 2.1 | Corrigindo template das tabelas, adicionando os Casos de Uso, definição do MVP e centralização das informações nas tabelas gerais do miro. | Yasmim e Joaquim |

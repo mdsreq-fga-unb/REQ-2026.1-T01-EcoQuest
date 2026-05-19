@@ -24,16 +24,6 @@
 | RF17 | Consultar Estatísticas do Impato da Comunidade | Exibir um contador global ou painel público com o impacto ambiental acumulado por todos os usuários da plataforma | Dados de impacto | Comprovar o impacto de descarte |
 
 
-<iframe
-  width="100%"
-  height="600"
-  src="https://miro.com/app/live-embed/uXjVHSUl9qY=/?focusWidget=3458764672164512812&embedMode=view_only_without_ui&embedId=606878797406"
-  frameborder="0"
-  scrolling="no"
-  allowfullscreen>
-</iframe>
-
-
 ## 8.2. Requisitos não funcionais
 
 | ID | Nome | Descrição | Classificação URPS+ | Classificação Sommerville |
@@ -45,19 +35,10 @@
 | RNF05 | Segurança de Dados     | Uso de TLS 1.2+ para trânsito e hashing robusto (ex: Argon2/BCrypt) para senhas | + (Segurança) | Produto (Segurança) |
 | RNF06 | Integridade de Tokens  | Tokens (QR) devem ser assinados criptograficamente e possuir expiração curta para impedir replay attacks. | + (Segurança) | Produto (Segurança) |
 
-<iframe
-  width="100%"
-  height="600"
-  src="https://miro.com/app/board/uXjVHSb7VK4=/?share_link_id=231315817041"
-  frameborder="0"
-  scrolling="no"
-  allowfullscreen>
-</iframe>
+## Histórico de versões
 
-## 8.3. Tratamento de mudanças
-
-Mudanças de requisito devem ser:
-
-1. Registradas em ata (feedback/decisão);
-2. Triadas e priorizadas internamente (MoSCoW + impacto);
-3. Refletidas no backlog e nos artefatos associados (história, AC, protótipos, regras de negócio).
+| Data | Versão | Descrição da Alteração | Autor(a) |
+|-------|-------|------|------|
+| 11/05/2026 | 1.0 | Criação do documento e estruturação dos tópicos iniciais, bem como seu conteúdo. | Yasmim e Paulo | 
+| 14/04/2026 | 2.0 | Correção dos requisitos conforme feedback do professor. | Yasmim e João Victor | 
+| 18/04/2026 | 2.1 | Corrigindo template das tabelas. | Yasmim |
