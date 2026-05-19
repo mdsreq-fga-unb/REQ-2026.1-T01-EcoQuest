@@ -84,4 +84,4 @@ Custos Estimados (Mensais):
 | 11/04/2026 | 1.0 | Adicionar características de produto. | Yasmim | 
 | 11/04/2026 | 2.1 | Atualizar pesquisa de mercado, tecnologias, beneficios e desafios. | João Victor |
 | 17/05/2026 | 2.2 | Atualizar todos os tópicos com mudança de escopo do projeto de acordo com [1.2. Introdução ao negócio e contexto](../cenario-atual-do-cliente-e-do-negocio/README.md#12-introdução-ao-negócio-e-contexto). | João Victor |
-| 17/05/2026 | 2.3 | Atualizar Objetivo Geral do Produto, Objetivos Específicos e Características de Produto | Yasmim |
+| 18/05/2026 | 2.3 | Atualizar Objetivo Geral do Produto, Objetivos Específicos e Características de Produto | Yasmim |
