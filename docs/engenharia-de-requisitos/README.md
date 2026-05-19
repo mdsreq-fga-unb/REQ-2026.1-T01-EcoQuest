@@ -52,9 +52,11 @@ A tabela a seguir apresenta o mapeamento entre as fases do OpenUP, as atividades
 |  | Análise e Consenso | Avaliação de viabilidade | Análise de custo-benefício, Discussões técnicas | Definição do escopo viável (MVP) |
 |  | Representação de Requisitos | Modelagem da solução | Protótipos, Wireframes, Diagramas UML | Visualização das funcionalidades (quests, ranking, progresso) |
 |  | Declaração de Requisitos | Detalhamento | Critérios de aceitação, Especificação de requisitos | Requisitos prontos para desenvolvimento |
+|  | Verificação e Validação | Revisão dos requisitos refinados | DoR, revisão de critérios de aceitação, feedback com stakeholders | Confirmação de que os requisitos refinados estão claros, verificáveis e alinhados às necessidades dos stakeholders |
 |  | Organização e Atualização | Refinamento e controle dos requisitos | Atualização do backlog, versionamento, DoR | Requisitos refinados, priorizados e preparados para avançar no desenvolvimento |
 | **Construção** | Representação de Requisitos | Apoio à implementação | Protótipos evolutivos | Melhor entendimento das funcionalidades pela equipe |
 |  | Elicitação e Descoberta | Descoberta de ajustes durante a construção | Feedback de uso, revisões com stakeholders, análise de novas necessidades | Identificação de ajustes, lacunas e novas informações surgidas durante a implementação |
+|  | Declaração de Requisitos | Atualização da especificação durante a implementação | Ajuste de requisitos, critérios de aceitação e regras de negócio | Requisitos mantidos consistentes com as decisões e aprendizados da construção |
 |  | Verificação da implementação | Conferência do incremento | Testes funcionais e testes de aceitação | Garantia de que a implementação atende aos requisitos especificados |
 |  | Organização e Atualização | Controle de mudanças | Atualização do backlog, versionamento | Ajustes contínuos com base no feedback |
 |  | Análise e Consenso | Ajustes incrementais | Reuniões de acompanhamento | Correção de problemas e melhoria do sistema |
