@@ -14,7 +14,7 @@ _Verifica se o "o quê" e o "por quê" estão absolutamente claros para toda a e
 
 > - O ator, qualquer entidade externa ao sistema que interage com ele para atingir um objetivo, está nomeado, seu papel está descrito e seu objetivo de negócio está explícito no Caso de Uso?
 > - O IP foi calculado, o quadrante definido e a classificação MoSCoW registrada no backlog?
-> - Os critérios de aceitação — condições verificáveis que definem as formas de uso das funcionalidades implementadas no UC — existem e estão ligados ao OE e CP correspondentes?
+> - Os critérios de aceitação — condições verificáveis que definem as formas de uso das funcionalidades implementadas no UC, existem e estão ligados ao OE e CP correspondentes?
 > - As regras de negócio estão devidamente verificadas dentro do contexto? _(Critério de completude do contexto de negócio, especialmente para lógicas de gamificação: missões, tokens, progressão e recompensas.)_
 > - O validador, o canal de validação e o critério de aprovação estão definidos e registrados no UC?
 
@@ -24,14 +24,6 @@ _Garante que não existem bloqueadores externos, de infraestrutura ou de depend�
 
 > - As dependências técnicas foram mapeadas?
 > - Os impedimentos conhecidos foram removidos ou possuem plano de mitigação documentado?
-
-#### Dimensão de Estimabilidade
-
-_Confirma que a equipe possui domínio técnico e informação suficiente para prever o esforço e assumir um compromisso responsável._
-
-> - Os critérios de aceitação são específicos o suficiente para que a equipe estime o esforço com precisão?
-> - O INVEST _(Independent, Negotiable, Valuable, Estimable, Small, Testable)_ passou sem ressalvas de nenhum membro da equipe?
-> - Conseguimos estimar o tempo total, incluindo o ciclo de validação com a cliente?
 
 #### Dimensão de Escopo
 
