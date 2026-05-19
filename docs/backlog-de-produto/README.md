@@ -5,25 +5,23 @@
 
 | ID | Nome | ID UC | Objetivo UC | RNFs Relacionados |
 | :--- | :--- | :--- | :--- | :--- |
-| RF01 | Cadastrar usuário | UC01 | Permitir a criação de uma conta no sistema| -- | 
-| RF02 | Autenticar usuário | UC02 | Permitir acesso seguro ao sistema | -- | 
-| RF03 | Recuperar senha | UC03 | Permitir redefinição da senha | -- | 
-| RF04 | Gerenciar Perfil | UC04 | Permitir edição de dados pessoais e preferências | -- | 
-| RF05 | Excluir conta | UC05 | Permitir exclusão da conta conforme LGPD | -- | 
-| RF06 | Localizar PEVs | UC06 | Exibir pontos de coleta próximos | -- | 
-| RF07 | Consultar detalhes do PEV | UC07 | Exibir informações detalhadas de um ponto de coleta | -- | 
-| RF08 | Ler Token para Descarte | UC08 | Permitir leitura de QR Code para descarte | -- | 
-| RF09 | Consultar Extrato | UC09 | Exibir histórico de descartes e saldo de créditos disponível | -- | 
-| RF10 | Exibir Catálogo de Recompensas | UC10 | Exibir benefícios, cupons e prêmios disponíveis para resgate | -- | 
-| RF11 | Resgatar Recompensas | UC11 |  Processar o resgate de uma recompensa do catálogo | -- | 
-| RF12 | Exibir Vitrine de Conquistas | UC12 | Exibir marcos e medalhas conquistados pelo usuário | -- | 
-| RF13 | Exibir Progresso da Sequência | UC13 | Mostrar o status atual da sequência de descartes e proximidade de bônus | -- | 
-| RF14 | Configurar Anonimato | UC14 | Permitir que o usuário oculte sua identidade no ranking social | -- | 
-| RF15 | Visualizar Ranking | UC15 | Exibir ranking social com pontuação dos usuários | -- | 
-| RF16 | Visualizar Painel de Impacto Pessoal | UC16 | Exibir métricas de impacto ambiental geradas pelo usuário | -- | 
-| RF17 | Consultar Estatísticas do Impato da Comunidade | UC17 | Exibir o impacto ambiental acumulado por todos os usuários da plataforma | -- | 
-
----
+| RF01 | Cadastrar usuário | UC01 | Permitir a criação de uma conta no sistema | **RNF01** — Responsividade Mobile<br>**RNF03** — Acessibilidade Digital<br>**RNF05** — Segurança de Dados |
+| RF02 | Autenticar usuário | UC02 | Permitir acesso seguro ao sistema | **RNF02** — Desempenho de Resposta<br>**RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados<br>**RNF06** — Integridade de Tokens |
+| RF03 | Recuperar senha | UC03 | Permitir redefinição da senha | **RNF02** — Desempenho de Resposta<br>**RNF05** — Segurança de Dados<br>**RNF06** — Integridade de Tokens |
+| RF04 | Gerenciar Perfil | UC04 | Permitir edição de dados pessoais e preferências | **RNF01** — Responsividade Mobile<br>**RNF03** — Acessibilidade Digital<br>**RNF05** — Segurança de Dados |
+| RF05 | Excluir conta | UC05 | Permitir exclusão da conta conforme LGPD | **RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados |
+| RF06 | Localizar PEVs | UC06 | Exibir pontos de coleta próximos | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade |
+| RF07 | Consultar detalhes do PEV | UC07 | Exibir informações detalhadas de um ponto de coleta | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital |
+| RF08 | Ler Token para Descarte | UC08 | Permitir leitura de QR Code para descarte | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados<br>**RNF06** — Integridade de Tokens |
+| RF09 | Consultar Extrato | UC09 | Exibir histórico de descartes e saldo de créditos disponível | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados |
+| RF10 | Exibir Catálogo de Recompensas | UC10 | Exibir benefícios, cupons e prêmios disponíveis para resgate | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade |
+| RF11 | Resgatar Recompensas | UC11 | Processar o resgate de uma recompensa do catálogo | **RNF02** — Desempenho de Resposta<br>**RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados<br>**RNF06** — Integridade de Tokens |
+| RF12 | Exibir Vitrine de Conquistas | UC12 | Exibir marcos e medalhas conquistados pelo usuário | **RNF01** — Responsividade Mobile<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade |
+| RF13 | Exibir Progresso da Sequência | UC13 | Mostrar o status atual da sequência de descartes e proximidade de bônus | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF04** — Alta Disponibilidade |
+| RF14 | Configurar Anonimato | UC14 | Permitir que o usuário oculte sua identidade no ranking social | **RNF03** — Acessibilidade Digital<br>**RNF05** — Segurança de Dados |
+| RF15 | Visualizar Ranking | UC15 | Exibir ranking social com pontuação dos usuários | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade |
+| RF16 | Visualizar Painel de Impacto Pessoal | UC16 | Exibir métricas de impacto ambiental geradas pelo usuário | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade |
+| RF17 | Consultar Estatísticas do Impacto da Comunidade | UC17 | Exibir o impacto ambiental acumulado por todos os usuários da plataforma | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade |
 
 ### UC01 — Cadastrar Usuário
 
