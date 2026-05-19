@@ -38,6 +38,6 @@
 
 | Data | Versão | Descrição da Alteração | Autor(a) |
 |-------|-------|------|------|
-| 11/05/2026 | 1.0 | Criação do documento e estruturação dos tópicos iniciais, bem como seu conteúdo. | Yasmim e Paulo | 
-| 14/04/2026 | 2.0 | Correção dos requisitos conforme feedback do professor. | Yasmim e João Victor | 
+| 11/05/2026 | 1.0 | Criação do documento e estruturação dos tópicos iniciais, bem como seu conteúdo. | Yasmim e Paulo |
+| 14/04/2026 | 2.0 | Correção dos requisitos conforme feedback do professor. | Yasmim e João Victor |
 | 18/04/2026 | 2.1 | Corrigindo template das tabelas. | Yasmim |
