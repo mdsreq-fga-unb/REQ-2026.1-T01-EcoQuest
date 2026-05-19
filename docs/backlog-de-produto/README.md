@@ -5,25 +5,23 @@
 
 | ID | Nome | ID UC | Objetivo UC | RNFs Relacionados |
 | :--- | :--- | :--- | :--- | :--- |
-| RF01 | Cadastrar usuário | UC01 | Permitir a criação de uma conta no sistema| RNF01, RNF03, RNF04 | 
-| RF02 | Autenticar usuário | UC02 | Permitir acesso seguro ao sistema | RNF02, RNF03, RNF05 | 
-| RF03 | Recuperar senha | UC03 | Permitir redefinição da senha | RNF02, RNF03, RNF05 | 
-| RF04 | Gerenciar Perfil | UC04 | Permitir edição de dados pessoais e preferências | RNF01, RNF03, RNF04 | 
-| RF05 | Excluir conta | UC05 | Permitir exclusão da conta conforme LGPD | RNF03, RNF05 | 
-| RF06 | Localizar PEVs | UC06 | Exibir pontos de coleta próximos | RNF01, RNF02, RNF04, RNF05 | 
-| RF07 | Consultar detalhes do PEV | UC07 | Exibir informações detalhadas de um ponto de coleta | RNF01, RNF02, RNF04 | 
-| RF08 | Ler Token para Descarte | UC08 | Permitir leitura de QR Code para descarte | RNF01, RNF02, RNF03, RNF06 | 
-| RF09 | Consultar Extrato | UC09 | -- | RNF02, RNF03, RNF05 | 
-| RF10 | Exibir Catálogo de Recompensas | UC10 | -- | RNF01, RNF02, RNF04, RNF08 | 
-| RF11 | Resgatar Recompensas | UC11 |  -- | RNF02, RNF03, RNF05, RNF08 | 
-| RF12 | Exibir Vitrine de Conquistas | UC12 | -- | RNF01, RNF04, RNF05 | 
-| RF13 | Exibir Progresso da Sequência | UC13 | -- | RNF01, RNF02, RNF05 | 
-| RF14 | Configurar Anonimato | UC14 | -- | RNF01, RNF03, RNF04 | 
-| RF15 | Visualizar Ranking | UC15 | -- | RNF01, RNF02, RNF04, RNF05 | 
-| RF16 | Visualizar Painel de Impacto Pessoal | UC16 | -- | RNF01, RNF02, RNF05, RNF07 | 
-| RF17 | Consultar Estatísticas do Impato da Comunidade | UC17 | -- | RNF01, RNF02, RNF05, RNF07 | 
-
----
+| **RF01** | Cadastrar usuário | **UC01** | Permitir a criação de uma conta no sistema | **RNF01** — Responsividade Mobile<br>**RNF03** — Acessibilidade Digital<br>**RNF05** — Segurança de Dados |
+| **RF02** | Autenticar usuário | **UC02** | Permitir acesso seguro ao sistema | **RNF02** — Desempenho de Resposta<br>**RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados<br>**RNF06** — Integridade de Tokens |
+| **RF03** | Recuperar senha | **UC03** | Permitir redefinição da senha | **RNF02** — Desempenho de Resposta<br>**RNF05** — Segurança de Dados<br>**RNF06** — Integridade de Tokens |
+| **RF04** | Gerenciar Perfil | **UC04** | Permitir edição de dados pessoais e preferências | **RNF01** — Responsividade Mobile<br>**RNF03** — Acessibilidade Digital<br>**RNF05** — Segurança de Dados |
+| **RF05** | Excluir conta | **UC05** | Permitir exclusão da conta conforme LGPD | **RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados |
+| **RF06** | Localizar PEVs | **UC06** | Exibir pontos de coleta próximos | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade |
+| **RF07** | Consultar detalhes do PEV | **UC07** | Exibir informações detalhadas de um ponto de coleta | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital |
+| **RF08** | Ler Token para Descarte | **UC08** | Permitir leitura de QR Code para descarte | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados<br>**RNF06** — Integridade de Tokens |
+| **RF09** | Consultar Extrato | **UC09** | Exibir histórico de descartes e saldo de créditos disponível | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados |
+| **RF10** | Exibir Catálogo de Recompensas | **UC10** | Exibir benefícios, cupons e prêmios disponíveis para resgate | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade |
+| **RF11** | Resgatar Recompensas | **UC11** | Processar o resgate de uma recompensa do catálogo | **RNF02** — Desempenho de Resposta<br>**RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados<br>**RNF06** — Integridade de Tokens |
+| **RF12** | Exibir Vitrine de Conquistas | **UC12** | Exibir marcos e medalhas conquistados pelo usuário | **RNF01** — Responsividade Mobile<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade |
+| **RF13** | Exibir Progresso da Sequência | **UC13** | Mostrar o status atual da sequência de descartes e proximidade de bônus | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF04** — Alta Disponibilidade |
+| **RF14** | Configurar Anonimato | **UC14** | Permitir que o usuário oculte sua identidade no ranking social | **RNF03** — Acessibilidade Digital<br>**RNF05** — Segurança de Dados |
+| **RF15** | Visualizar Ranking | **UC15** | Exibir ranking social com pontuação dos usuários | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade |
+| **RF16** | Visualizar Painel de Impacto Pessoal | **UC16** | Exibir métricas de impacto ambiental geradas pelo usuário | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade |
+| **RF17** | Consultar Estatísticas do Impacto da Comunidade | **UC17** | Exibir o impacto ambiental acumulado por todos os usuários da plataforma | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade |
 
 ### UC01 — Cadastrar Usuário
 
@@ -322,31 +320,407 @@
     - O sistema deve bloquear tokens expirados.
     - O sistema deve confirmar descarte realizado com sucesso.
 
----
+### UC09 — Consultar Extrato
 
-## 10.2. Priorização
+- Atores: Usuário
 
-| ID | Nome | MoSCoW | VN | CX | Matriz de Esforço |
-| :--- | :--- | :--- | :--- | :--- | :--- | 
-| RF01 | Cadastrar usuário | Must have | 5 | 1 | Quadrante 1 | 
-| RF02 | Autenticar usuário | Must have | 5 | 1 | Quadrante 1 | 
-| RF03 | Recuperar senha | Should have | 3 | 2 | Quadrante 3 | 
-| RF04 | Gerenciar Perfil | Should have | 3 | 1 | Quadrante 3 | 
-| RF05 | Excluir conta | Should have | 3 | 1 | Quadrante 3 | 
-| RF06 | Localizar PEVs | Should have | 2 | 3 | Quadrante 4 |
-| RF07 | Consultar detalhes do PEV | Could have | 2 | 2 | Quadrante 3 |
-| RF08 | Ler Token para Descarte | Must have | 4 | 4 | Quadrante 2 | 
-| RF09 | Consultar Extrato | Must have | 4 | 3 | Quadrante 2 | 
-| RF10 | Exibir Catálogo de Recompensas | Must have | 5 | 3 | Quadrante 2 |
-| RF11 | Resgatar Recompensas | Must have | 5 | 4 | Quadrante 2 |
-| RF12 | Exibir Vitrine de Conquistas | Must have | 4 | 3 | Quadrante 2 | 
-| RF13 | Exibir Progresso da Sequência | Could have | 4 | 3 | Quadrante 2 | 
-| RF14 | Configurar Anonimato | Could have | 2 | 2 | Quadrante 3 | 
-| RF15 | Visualizar Ranking | Must have | 5 | 3 | Quadrante 2 | 
-| RF16 | Visualizar Painel de Impacto Pessoal | Could have | 2 | 3 | Quadrante 4 | 
-| RF17 | Consultar Estatísticas do Impato da Comunidade | Could have | 2 | 3 | Quadrante 4 | 
+- Objetivo: Exibir histórico de descartes e saldo de créditos disponível.
 
----
+- Pré-condições: Usuário autenticado.
+
+- Fluxo Principal
+
+1. Usuário acessa a área de extrato.
+2. Sistema recupera o histórico de descartes do usuário.
+3. Sistema exibe lista de operações realizadas.
+4. Sistema exibe saldo de créditos disponível.
+5. Usuário consulta as informações.
+
+- Fluxos Alternativos
+
+    - 2A — Sem histórico
+
+        - 2A.1 Sistema não encontra registros.
+        - 2A.2 Sistema informa ausência de histórico.
+
+- Pós-condições: Extrato exibido ao usuário.
+
+- Critérios de aceitação
+
+    - O sistema deve exibir histórico detalhado de descartes realizados.
+    - O sistema deve exibir saldo de créditos disponível.
+    - O sistema deve ordenar o histórico por data.
+    - O sistema deve informar quando não houver registros.
+
+### UC10 — Exibir Catálogo de Recompensas
+
+- Atores: Usuário
+
+- Objetivo: Exibir benefícios, cupons e prêmios disponíveis para resgate.
+
+- Pré-condições: Usuário autenticado.
+
+- Fluxo Principal
+
+1. Usuário acessa o catálogo de recompensas.
+2. Sistema recupera os itens disponíveis.
+3. Sistema exibe catálogo com benefícios, cupons e prêmios.
+4. Usuário visualiza as recompensas disponíveis.
+
+- Fluxos Alternativos
+
+    - 2A — Catálogo indisponível
+
+        - 2A.1 Sistema não consegue carregar os itens.
+        - 2A.2 Sistema informa indisponibilidade temporária.
+
+    - 3A — Sem itens disponíveis
+
+        - 3A.1 Sistema não encontra recompensas cadastradas.
+        - 3A.2 Sistema informa ausência de itens.
+
+- Pós-condições: Catálogo exibido ao usuário.
+
+- Critérios de aceitação
+
+    - O sistema deve exibir todos os itens disponíveis para resgate.
+    - O sistema deve indicar o custo em pontos de cada recompensa.
+    - O sistema deve indicar recompensas indisponíveis por saldo insuficiente.
+    - O sistema deve informar indisponibilidade caso o catálogo não possa ser carregado.
+
+### UC11 — Resgatar Recompensas
+
+- Atores: Usuário
+
+- Objetivo: Processar o resgate de uma recompensa do catálogo.
+
+- Pré-condições:
+    - Usuário autenticado.
+    - Usuário possuir saldo suficiente.
+
+- Fluxo Principal
+
+1. Usuário seleciona uma recompensa no catálogo.
+2. Sistema exibe detalhes e custo em pontos.
+3. Usuário confirma o resgate.
+4. Sistema debita os pontos do saldo.
+5. Sistema gera o código ou cupom de benefício.
+6. Sistema confirma o resgate realizado.
+
+- Fluxos Alternativos
+
+    - 3A — Saldo insuficiente
+
+        - 3A.1 Sistema identifica pontos insuficientes.
+        - 3A.2 Sistema bloqueia a operação e informa o usuário.
+
+    - 4A — Recompensa esgotada
+
+        - 4A.1 Sistema identifica item indisponível.
+        - 4A.2 Sistema informa indisponibilidade.
+
+- Pós-condições: Pontos debitados e cupom gerado para o usuário.
+
+- Critérios de aceitação
+
+    - O sistema deve exibir custo em pontos antes da confirmação.
+    - O sistema deve debitar os pontos após confirmação.
+    - O sistema deve gerar código ou cupom válido para uso externo.
+    - O sistema deve bloquear resgate com saldo insuficiente.
+    - O sistema deve informar quando a recompensa estiver esgotada.
+    - O sistema deve confirmar o resgate com sucesso.
+
+### UC12 — Exibir Vitrine de Conquistas
+
+- Atores: Usuário
+
+- Objetivo: Exibir marcos e medalhas conquistados pelo usuário.
+
+- Pré-condições: Usuário autenticado.
+
+- Fluxo Principal
+
+1. Usuário acessa a vitrine de conquistas.
+2. Sistema recupera as conquistas do usuário.
+3. Sistema exibe medalhas e marcos obtidos.
+4. Sistema exibe conquistas ainda não desbloqueadas.
+5. Usuário visualiza seu progresso.
+
+- Fluxos Alternativos
+
+    - 2A — Sem conquistas
+
+        - 2A.1 Sistema não encontra conquistas registradas.
+        - 2A.2 Sistema exibe vitrine vazia com conquistas disponíveis para obter.
+
+- Pós-condições: Vitrine de conquistas exibida ao usuário.
+
+- Critérios de aceitação
+
+    - O sistema deve exibir todas as conquistas desbloqueadas pelo usuário.
+    - O sistema deve exibir conquistas ainda não obtidas.
+    - O sistema deve diferenciar visualmente conquistas obtidas das bloqueadas.
+    - O sistema deve exibir descrição de cada conquista.
+
+### UC13 — Exibir Progresso da Sequência
+
+- Atores: Usuário
+
+- Objetivo: Mostrar o status atual da sequência de descartes e proximidade de bônus.
+
+- Pré-condições: Usuário autenticado.
+
+- Fluxo Principal
+
+1. Usuário acessa o painel de sequência.
+2. Sistema recupera o histórico de sequência do usuário.
+3. Sistema calcula o progresso atual.
+4. Sistema exibe visualmente o status da sequência e o próximo bônus.
+5. Usuário visualiza seu progresso.
+
+- Fluxos Alternativos
+
+    - 2A — Sequência zerada
+
+        - 2A.1 Sistema identifica ausência de sequência ativa.
+        - 2A.2 Sistema exibe status inicial com incentivo para começar.
+
+- Pós-condições: Progresso da sequência exibido ao usuário.
+
+- Critérios de aceitação
+
+    - O sistema deve exibir o número atual de descartes na sequência.
+    - O sistema deve indicar quantos descartes faltam para o próximo bônus.
+    - O sistema deve exibir o bônus que será desbloqueado.
+    - O sistema deve reiniciar a sequência caso o usuário perca a regularidade.
+    - O sistema deve notificar visualmente quando a sequência estiver próxima de quebrar.
+
+### UC14 — Configurar Anonimato
+
+- Atores: Usuário
+
+- Objetivo: Permitir que o usuário oculte sua identidade no ranking social.
+
+- Pré-condições: Usuário autenticado.
+
+- Fluxo Principal
+
+1. Usuário acessa as configurações de privacidade.
+2. Sistema exibe opções de anonimato disponíveis.
+3. Usuário escolhe ocultar posição ou definir pseudônimo.
+4. Sistema salva a preferência.
+5. Sistema aplica a configuração no ranking.
+
+- Fluxos Alternativos
+
+    - 3A — Pseudônimo já utilizado
+
+        - 3A.1 Sistema identifica conflito de pseudônimo.
+        - 3A.2 Sistema solicita novo pseudônimo.
+
+- Pós-condições: Preferência de anonimato salva e aplicada no ranking.
+
+- Critérios de aceitação
+
+    - O sistema deve permitir ocultar a posição do usuário no ranking.
+    - O sistema deve permitir uso de pseudônimo no lugar do nome real.
+    - O sistema deve validar unicidade do pseudônimo.
+    - O sistema deve aplicar a configuração imediatamente no ranking.
+    - O sistema deve permitir reverter a configuração a qualquer momento.
+
+### UC15 — Visualizar Ranking
+
+- Atores: Usuário
+
+- Objetivo: Exibir ranking social com pontuação dos usuários.
+
+- Pré-condições: Usuário autenticado.
+
+- Fluxo Principal
+
+1. Usuário acessa o ranking.
+2. Sistema recupera a classificação dos usuários.
+3. Sistema exibe lista ordenada por pontuação.
+4. Sistema destaca a posição do usuário no ranking.
+5. Usuário visualiza o ranking.
+
+- Fluxos Alternativos
+
+    - 2A — Ranking indisponível
+
+        - 2A.1 Sistema não consegue carregar os dados.
+        - 2A.2 Sistema informa indisponibilidade temporária.
+
+- Pós-condições: Ranking exibido ao usuário.
+
+- Critérios de aceitação
+
+    - O sistema deve exibir ranking ordenado por pontuação.
+    - O sistema deve destacar a posição do usuário logado.
+    - O sistema deve respeitar as configurações de anonimato de cada usuário.
+    - O sistema deve exibir nome ou pseudônimo conforme preferência do usuário.
+    - O sistema deve informar indisponibilidade caso os dados não possam ser carregados.
+
+### UC16 — Visualizar Painel de Impacto Pessoal
+
+- Atores: Usuário
+
+- Objetivo: Exibir métricas de impacto ambiental geradas pelo usuário.
+
+- Pré-condições: Usuário autenticado.
+
+- Fluxo Principal
+
+1. Usuário acessa o painel de impacto pessoal.
+2. Sistema recupera os dados de descarte do usuário.
+3. Sistema calcula as métricas de impacto ambiental.
+4. Sistema exibe indicadores como kg de CO2 evitado e resíduos desviados.
+5. Usuário visualiza seu impacto.
+
+- Fluxos Alternativos
+
+    - 2A — Sem descartes registrados
+
+        - 2A.1 Sistema não encontra histórico.
+        - 2A.2 Sistema exibe painel zerado com incentivo ao primeiro descarte.
+
+- Pós-condições: Métricas de impacto exibidas ao usuário.
+
+- Critérios de aceitação
+
+    - O sistema deve exibir kg de CO2 evitado pelo usuário.
+    - O sistema deve exibir volume de resíduos desviados do descarte irregular.
+    - O sistema deve atualizar as métricas após cada novo descarte.
+    - O sistema deve exibir painel inicial quando não houver descartes registrados.
+
+### UC17 — Consultar Estatísticas do Impacto da Comunidade
+
+- Atores: Usuário
+
+- Objetivo: Exibir o impacto ambiental acumulado por todos os usuários da plataforma.
+
+- Pré-condições: Nenhuma.
+
+- Fluxo Principal
+
+1. Usuário acessa o painel de impacto da comunidade.
+2. Sistema recupera os dados agregados de todos os usuários.
+3. Sistema calcula o impacto ambiental coletivo.
+4. Sistema exibe contador global com as métricas acumuladas.
+5. Usuário visualiza o impacto da comunidade.
+
+- Fluxos Alternativos
+
+    - 2A — Dados indisponíveis
+
+        - 2A.1 Sistema não consegue carregar os dados agregados.
+        - 2A.2 Sistema informa indisponibilidade temporária.
+
+- Pós-condições: Painel de impacto da comunidade exibido ao usuário.
+
+- Critérios de aceitação
+
+    - O sistema deve exibir contador global de resíduos descartados corretamente.
+    - O sistema deve exibir total de CO2 evitado pela comunidade.
+    - O sistema deve atualizar os dados periodicamente.
+    - O sistema deve ser acessível sem necessidade de autenticação.
+    - O sistema deve informar indisponibilidade caso os dados não possam ser carregados.
+
+
+## 10.2 Priorização
+
+A priorização do backlog foi realizada com base no modelo MoSCoW (Must Have, Should Have, Could Have e Won’t Have). Esse modelo orienta o desenvolvimento conforme os objetivos do projeto, garantindo que as funcionalidades mais relevantes sejam priorizadas durante o planejamento das entregas.
+
+A priorização dos Casos de Uso (UC) foi definida considerando sua relevância para o funcionamento da solução, impacto no usuário e esforço técnico necessário para implementação. Para isso, foi adotado um modelo baseado em Valor Funcional (VF) e Complexidade Técnica (CT).
+
+Cada Caso de Uso foi avaliado em dois eixos principais: Valor Funcional e Complexidade Técnica.
+
+### Critérios de Valor Funcional (VF)
+
+Os critérios abaixo foram utilizados para analisar a importância do Caso de Uso para o produto e para os objetivos do projeto:
+
+- (+1) O Caso de Uso é essencial para o funcionamento principal da plataforma?
+- (+1) O Caso de Uso impacta diretamente a experiência ou engajamento do usuário?
+- (+1) O Caso de Uso contribui para os objetivos estratégicos do produto?
+- (+1) O Caso de Uso reduz problemas identificados na análise de negócio?
+
+Com base na pontuação obtida, os Casos de Uso foram classificados conforme o modelo MoSCoW:
+
+| Pontos VF | Classificação |
+|---|---|
+| 4 | Must Have |
+| 3 | Should Have |
+| 2 | Could Have |
+| 1 | Won’t Have |
+
+Após a classificação, foi atribuído um peso para representar a relevância funcional do Caso de Uso:
+
+| Classificação | Peso |
+|---|---|
+| Must Have | 10 |
+| Should Have | 7 |
+| Could Have | 4 |
+| Won’t Have | 1 |
+
+### Critérios de Complexidade Técnica (CT)
+
+Além da relevância funcional, cada Caso de Uso foi avaliado quanto ao esforço necessário para implementação.
+
+A pontuação de Complexidade Técnica representa o nível de esforço exigido para o desenvolvimento da funcionalidade. Quanto maior a pontuação, maior a complexidade da implementação.
+
+Os seguintes critérios foram considerados:
+
+- (+1) Necessidade de integração com serviços externos
+- (+1) Necessidade de pesquisa ou aprendizado de novas tecnologias
+- (+1) Alto impacto arquitetural no sistema
+- (+1) Maior volume de regras de negócio
+- (+1) Alto risco técnico ou operacional
+
+A soma dos critérios técnicos gera a pontuação de Complexidade Técnica (CT).
+
+### Cálculo da Prioridade Final
+
+A prioridade final de cada Caso de Uso foi definida pela seguinte fórmula:
+
+```text
+Valor Final = Peso - Complexidade Técnica (CT)
+```
+
+Quanto maior o valor final obtido, maior a prioridade do Caso de Uso dentro do backlog do projeto.
+
+### Classificação na Matriz de Esforço
+
+Após o cálculo da prioridade final, os Casos de Uso foram posicionados em uma Matriz de Esforço, considerando a relação entre valor agregado e complexidade técnica:
+
+| Quadrante | Característica |
+|---|---|
+| Quadrante 1 | Alto valor e baixa complexidade |
+| Quadrante 2 | Alto valor e alta complexidade |
+| Quadrante 3 | Médio valor e baixa complexidade |
+| Quadrante 4 | Baixo valor e alta complexidade |
+
+### Tabela de Priorização
+
+| ID | Nome | VF | Peso | CT | Valor Final (Peso - CT) | MoSCoW | Matriz de Esforço | MVP |
+|---|---|---|---|---|---|---|---|---|
+| **UC01** | Cadastrar usuário | 4 | 10 | 1 | 9 | Must Have | Quadrante 1 | X |
+| **UC02** | Autenticar usuário | 4 | 10 | 1 | 9 | Must Have | Quadrante 1 | X |
+| **UC03** | Recuperar senha | 3 | 7 | 2 | 5 | Should Have | Quadrante 3 | -- |
+| **UC04** | Gerenciar Perfil | 3 | 7 | 1 | 6 | Should Have | Quadrante 3 | -- |
+| **UC05** | Excluir conta | 3 | 7 | 1 | 6 | Should Have | Quadrante 3 | -- |
+| **UC06** | Localizar PEVs | 2 | 4 | 3 | 1 | Could Have | Quadrante 4 | -- |
+| **UC07** | Consultar detalhes do PEV | 2 | 4 | 2 | 2 | Could Have | Quadrante 3 | -- |
+| **UC08** | Ler Token para Descarte | 4 | 10 | 4 | 6 | Must Have | Quadrante 2 | X |
+| **UC09** | Consultar Extrato | 4 | 10 | 3 | 7 | Must Have | Quadrante 2 | X |
+| **UC10** | Exibir Catálogo de Recompensas | 4 | 10 | 3 | 7 | Must Have | Quadrante 2 | X |
+| **UC11** | Resgatar Recompensas | 4 | 10 | 4 | 6 | Must Have | Quadrante 2 | X |
+| **UC12** | Exibir Vitrine de Conquistas | 4 | 10 | 3 | 7 | Must Have | Quadrante 2 | X |
+| **UC13** | Exibir Progresso da Sequência | 2 | 4 | 3 | 1 | Could Have | Quadrante 4 | -- |
+| **UC14** | Configurar Anonimato | 2 | 4 | 2 | 2 | Could Have | Quadrante 3 | -- |
+| **UC15** | Visualizar Ranking | 4 | 10 | 3 | 7 | Must Have | Quadrante 2 | X |
+| **UC16** | Visualizar Painel de Impacto Pessoal | 2 | 4 | 3 | 1 | Could Have | Quadrante 4 | -- |
+| **UC17** | Consultar Estatísticas do Impacto da Comunidade | 2 | 4 | 3 | 1 | Could Have | Quadrante 4 | -- |
+
 
 ## 10.3. Matriz de esforço
 
@@ -359,17 +733,11 @@
   allowfullscreen>
 </iframe>
 
-## 10.4. Atualização e refinamento
 
-- **Refinamento (Grooming):** semanal, com detalhamento de histórias, AC e definição de DoR.
-- **Atualizações por feedback:** entradas vindas do cliente são registradas em ata e transformadas em itens acionáveis no backlog.
+## Histórico de versões
 
-## 10.5. Controle de mudanças
-
-Mudanças são tratadas de forma leve:
-
-1. Solicitação registrada em ata ([Atas](../interacao-entre-equipe-e-cliente/atas.md));
-2. Triagem interna (impacto, custo-benefício, riscos, OE/CP);
-3. Priorização MoSCoW e atualização do Kanban;
-4. Atualização de artefatos (histórias, AC, protótipos) mantendo rastreabilidade.
-
+| Data | Versão | Descrição da Alteração | Autor(a) |
+|-------|-------|------|------|
+| 13/05/2026 | 1.0 | Criação do documento e estruturação dos tópicos iniciais, bem como seu conteúdo. | Joaquim e Nayla |
+| 17/04/2026 | 2.0 | Correção da priorização conforme feedback do professor. | Yasmim e Joaquim |
+| 18/04/2026 | 2.1 | Corrigindo template das tabelas, adicionando os Casos de Uso e definição do MVP. | Yasmim e Joaquim |

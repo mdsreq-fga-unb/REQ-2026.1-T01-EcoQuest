@@ -4,6 +4,7 @@
 
 * **2. Engenharia de Software**
   * [Estratégias de Engenharia de Software](estrategias-de-engenharia-de-software/)
+  * [Arquitetura do Sistema](arquitetura-do-sistema/)
   * [Interação com Cliente](interacao-entre-equipe-e-cliente/)
   * [Engenharia de Requisitos](engenharia-de-requisitos/)
 
@@ -13,14 +14,13 @@
 * **4. Gestão de Produto**
   * [Requisitos de Software](requisitos-de-software/)
   * [Backlog do Produto](backlog-de-produto/)
-  * [DoR e DoD](dor-e-dod/)
   * [Critérios](criterios/)
-  * [ACs e OKRs](criterios/acs-e-okrs.md)
   * 
 
 * **Acompanhamento**
   * [Cronograma e Entregas](cronograma-e-entregas/)
   * [Lições Aprendidas](licoes-aprendidas/)
+  * [Entregas de Unidade](entregas/)
 
 * **Documentos de Base**
   * [Referências Bibliográficas](referencias-bibliograficas/)

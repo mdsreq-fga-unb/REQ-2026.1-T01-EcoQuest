@@ -2,19 +2,17 @@
 
 ## EcoQuest
 
-O EcoQuest é uma plataforma de infraestrutura digital desenhada para viabilizar e escalar a economia circular através do descarte inteligente de resíduos. O sistema conecta doadores a Pontos de Entrega Voluntária (PEVs), automatizando a validação de ativos físicos e convertendo o impacto ambiental em recompensas tangíveis e rastreáveis.
+O EcoQuest é uma plataforma de infraestrutura digital desenhada para viabilizar e escalar a economia circular através do descarte inteligente de resíduos. O sistema conecta cidadãos que deseja descartar resíduos a Pontos de Entrega Voluntária (PEVs), automatizando a validação de ativos físicos e convertendo o impacto ambiental em recompensas tangíveis e rastreáveis.
 
 ## O Problema
 
 No processo atual de descarte de resíduos especializados (como lixo eletrônico), as doações possuem alta fricção e nenhum feedback. Como o esforço logístico (busca, triagem, deslocamento e tempo) é maior do que o retorno percebido.
 
- os potenciais doadores apresentam desmotivação na contribuição, o que leva a baixas taxas de participação e descarte inadequado de resíduos.
-
 A falta de feedback imediato, a ausência de um comprovante digital de impacto e a inexistência de incentivos recíprocos geram desmotivação sistêmica, resultando em baixas taxas de participação e o descarte inadequado de materiais críticos.
 
 ## A Solução
 
-O EcoQuest atua como uma ponte físico-digital entre o doador e as ONGs de reciclagem. Através de um ecossistema integrado, a plataforma oferece:
+O EcoQuest atua como uma ponte físico-digital entre o cidadão que deseja descartar resíduos e as ONGs de reciclagem. Através de um ecossistema integrado, a plataforma oferece:
 
 - Logística Simplificada: Mapeamento inteligente e centralizado de PEVs e materiais aceitos;
 - Validação de Integridade: Um protocolo de segurança baseado em tokens únicos (QR Codes) que garante a autenticidade da doação no ato da entrega física;
@@ -31,7 +29,20 @@ Desenvolvimento Adaptativo: Ciclos iterativos que permitem validar a usabilidade
 
 Documentação Progressiva: Produção de artefatos técnicos conforme a maturidade do entendimento do sistema aumenta, garantindo rastreabilidade e alinhamento com os objetivos do projeto.
 
-### Vídeo de Apresentação
+### Vídeos de Apresentação
 
-[Vídeo De Apresentação Unidade 1](https://drive.google.com/file/d/11vpElBrEdoNow_er_ai70Onx9ud4XC8E/view?usp=drive_link)
+--- 
+
+## Vídeo de Apresentação - Unidade 2
+
+<iframe width="800" height="450" src="https://drive.google.com/file/d/1Wi0XVAZdGszHA_qYsBTmGz2WLaMMEZGk/view?usp=sharing" title="Unidade 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+---
+
+## Vídeo De Apresentação - Unidade 1
+
+<iframe width="800" height="450" src="https://drive.google.com/file/d/11vpElBrEdoNow_er_ai70Onx9ud4XC8E/view?usp=drive_link" title="Unidade 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+--- 
+
 
