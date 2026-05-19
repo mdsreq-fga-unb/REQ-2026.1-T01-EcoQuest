@@ -15,7 +15,7 @@
   * [Requisitos de Software](requisitos-de-software/)
   * [Backlog do Produto](backlog-de-produto/)
   * [Critérios](criterios/)
-  * [ACs e OKRs](criterios/acs-e-okrs.md)
+  * 
 
 * **Acompanhamento**
   * [Cronograma e Entregas](cronograma-e-entregas/)
