@@ -635,7 +635,7 @@ A priorização do backlog foi realizada com base no modelo MoSCoW (Must Have, S
 
 Cada requisito foi avaliado segundo dois grupos de critérios: Negócio e Complexidade.
 
-O tabela abaixo foi utilizada para determinar a importância dos requisitos para o negócio:
+A tabela abaixo foi utilizada para determinar a importância dos requisitos para o negócio:
 
 ### Valor de Negócio (VN)
 
