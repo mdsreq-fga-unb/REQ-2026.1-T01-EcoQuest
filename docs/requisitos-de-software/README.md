@@ -5,11 +5,11 @@
 
 | ID | Nome | Descrição | CP mãe | OE |
 | :--- | :--- | :--- | :--- | :--- |
-| RF01 | Cadastrar usuário | Permitir a criação de conta com nome, CPF, telefone, e-mail e senha. | Gerenciamento e autenticação de usuários | Comprovar o impacto de descarte |
-| RF02 | Autenticar usuário | Validar credenciais (email e senha) e gerenciar a sessão segura do usuário no sistema | Gerenciamento e autenticação de usuários | Comprovar o impacto de descarte |
-| RF03 | Recuperar senha | Permitir que o usuário redefina sua senha via link seguro enviado ao e-mail cadastrado | Gerenciamento e autenticação de usuários | Comprovar o impacto de descarte |
-| RF04 | Gerenciar Perfil | Permitir edição de dados pessoais e preferências de privacidade/anonimato | Gerenciamento e autenticação de usuários | Comprovar o impacto de descarte |
-| RF05 | Excluir conta | Garantir o direito ao esquecimento, removendo dados do usuário conforme a LGPD | Gerenciamento e autenticação de usuários | Comprovar o impacto de descarte |
+| RF01 | Cadastrar usuário | Permitir a criação de conta com nome, CPF, telefone, e-mail e senha. | Gerenciamento e autenticação de usuários | Gerenciar o descarte responsável |
+| RF02 | Autenticar usuário | Validar credenciais (email e senha) e gerenciar a sessão segura do usuário no sistema | Gerenciamento e autenticação de usuários | Gerenciar o descarte responsável |
+| RF03 | Recuperar senha | Permitir que o usuário redefina sua senha via link seguro enviado ao e-mail cadastrado | Gerenciamento e autenticação de usuários | Gerenciar o descarte responsável |
+| RF04 | Gerenciar Perfil | Permitir edição de dados pessoais e preferências de privacidade/anonimato | Gerenciamento e autenticação de usuários | Gerenciar o descarte responsável |
+| RF05 | Excluir conta | Garantir o direito ao esquecimento, removendo dados do usuário conforme a LGPD | Gerenciamento e autenticação de usuários | Gerenciar o descarte responsável |
 | RF06 | Localizar PEVs | Exibir mapa interativo com geolocalização dos pontos de coleta mais próximos | Logística e localização de PEVs | Facilitar o processo de descarte responsável |
 | RF07 | Consultar detalhes do PEV | Exibir informações do ponto físico: horários, materiais aceitos e capacidade de coleta | Logística e localização de PEVs | Facilitar o processo de descarte responsável |
 | RF08 | Ler Token para Descarte | Permitir que o usuário utilize a câmera para ler o QR Code gerado pelo PEV | Gestão e validação de descarte responsável | Prevenção de fraudes na validação de descarte responsável |
@@ -20,8 +20,8 @@
 | RF13 | Exibir Progresso da Sequência | Mostrar visualmente o status atual da sequência e a proximidade de bônus | Sistema de ranking e gamificação | Aumentar o engajamento com relação à práticas sustentáveis através da gamificação |
 | RF14 | Configurar Anonimato | Permitir que o usuário oculte sua posição ou use pseudônimo no ranking social | Sistema de ranking e gamificação | Aumentar o engajamento com relação à práticas sustentáveis através da gamificação |
 | RF15 | Visualizar Ranking | Exibir um ranking social, onde deve ser possível visualizar os pontos obtidos por cada usuário | Sistema de ranking e gamificação | Aumentar o engajamento com relação à práticas sustentáveis através da gamificação |
-| RF16 | Visualizar Painel de Impacto Pessoal | Mostrar métricas de impacto ambiental (ex: kg de CO2 evitado ou resíduos desviados) | Dados de impacto | Comprovar o impacto de descarte |
-| RF17 | Consultar Estatísticas do Impato da Comunidade | Exibir um contador global ou painel público com o impacto ambiental acumulado por todos os usuários da plataforma | Dados de impacto | Comprovar o impacto de descarte |
+| RF16 | Visualizar Painel de Impacto Pessoal | Mostrar métricas de impacto ambiental (ex: kg de CO2 evitado ou resíduos desviados) | Dados de impacto | Gerenciar o descarte responsável |
+| RF17 | Consultar Estatísticas do Impato da Comunidade | Exibir um contador global ou painel público com o impacto ambiental acumulado por todos os usuários da plataforma | Dados de impacto | Gerenciar o descarte responsável |
 
 
 ## 8.2. Requisitos não funcionais
