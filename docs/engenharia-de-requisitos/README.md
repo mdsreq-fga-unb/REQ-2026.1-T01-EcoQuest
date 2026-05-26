@@ -64,6 +64,14 @@ A tabela a seguir apresenta o mapeamento entre as fases do OpenUP, as atividades
 |  | Declaração de Requisitos | Consolidação | Documentação final | Requisitos formalizados e rastreáveis |
 |  | Representação de Requisitos | Documentação final | Diagramas atualizados | Visão final consistente do sistema |
 
+<iframe 
+style="border: 1px solid rgba(0, 0, 0, 0.1);"
+width="800" 
+height="450" 
+src="https://embed.figma.com/board/f6CjlyYaVd3bPZBigmWU9o/Untitled?node-id=0-1&embed-host=share" 
+allowfullscreen>
+</iframe>
+
 ## DoR e DoD
 
 Checklists de **Definition of Ready (DoR)** e **Definition of Done (DoD)** para a lista de itens de trabalho.

@@ -1,6 +1,6 @@
 ## Conceitos de Referência do Processo
 
-Esta seção define os dois conceitos que aparecem como artefatos e
+Esta seção define os conceitos que aparecem como artefatos e
 métricas ao longo de todas as dimensões do DoR e do DoD. Compreender
 esses conceitos é pré-requisito para aplicar corretamente qualquer
 critério descrito neste documento.
