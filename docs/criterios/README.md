@@ -7,27 +7,13 @@ critério descrito neste documento.
 
 ---
 
-### O que são Critérios de Aceitação (ACs)
-
-Critérios de Aceitação são condições verificáveis e inequívocas que
-definem quando um caso de uso foi implementado corretamente. Eles
-funcionam como o contrato entre quem especifica o requisito e quem
-o implementa: antes do desenvolvimento, estabelecem o que será
-construído; após o desenvolvimento, estabelecem o que será testado.
-
-**Formato padrão adotado:**
-
-> *Dado* [um contexto inicial],
-> *Quando* [uma ação é executada],
-> *Então* [um resultado esperado e verificável ocorre].
-
 **Cadeia de rastreabilidade obrigatória:**
 ```mermaid
 flowchart TD
     A(["🎯 Objetivo Específico do Produto (OE)"]) --> B(["📦 Característica de Produto (CP)"])
     B --> C(["📋 Caso de Uso (UC)"])
     C --> D(["🗂️ Backlog"])
-    D --> E(["✅ Critérios de Aceitação (AC)"])
+    D --> E(["✅ Casos de Uso Priorizados"])
 
     classDef objetivo fill:#2E7D32,stroke:#1b5e20,stroke-width:2px,color:#fff
     classDef execucao fill:#81C784,stroke:#2E7D32,stroke-width:2px,color:#263238
@@ -38,7 +24,7 @@ flowchart TD
     class E gate
 ```
 
-Um AC sem rastreabilidade ao OE e CP correspondentes não é
+Uma priorização sem rastreabilidade ao OE e CP correspondentes não é
 um critério válido neste processo: ele desconecta a execução
 técnica do propósito estratégico do produto.
 
