@@ -39,10 +39,6 @@ Documentação Progressiva: Produção de artefatos técnicos conforme a maturid
 
 ---
 
-## Vídeo De Apresentação - Unidade 1
-
-<iframe width="800" height="450" src="https://drive.google.com/file/d/11vpElBrEdoNow_er_ai70Onx9ud4XC8E/view?usp=drive_link" title="Unidade 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
---- 
-
+- [Vídeo de Apresentação - Unidade 1](https://drive.google.com/file/d/11vpElBrEdoNow_er_ai70Onx9ud4XC8E/view?usp=drive_link)
+- [Vídeo de Apresentação - Unidade 2](https://drive.google.com/file/d/1Wi0XVAZdGszHA_qYsBTmGz2WLaMMEZGk/view?usp=sharing)
 
