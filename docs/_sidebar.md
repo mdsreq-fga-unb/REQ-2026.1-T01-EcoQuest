@@ -13,7 +13,7 @@
 
 * **4. Gestão de Produto**
   * [Requisitos de Software](requisitos-de-software/)
-  * [Backlog do Produto](backlog-de-produto/)
+  * [Lista de itens de trabalho](lista-de-itens-de-trabalho/)
   * [Critérios](criterios/)
   * 
 
