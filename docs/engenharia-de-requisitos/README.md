@@ -202,4 +202,5 @@ flowchart TD
 | Data | Versão | Descrição da Alteração | Autor(a) |
 |-------|-------|------|------|
 | 02/05/2026 | 0.1 | Criação do documento e estruturação dos tópicos iniciais. | Nayra | 
-| 18/05/2026 | 1.1 | Inclusão das dimensões e domínios do DoD.| Paulo Vitor |
+| 17/05/2026 | 1.0 | Inclusão das dimensões e domínios no DoR. | Paulo Vitor | 
+| 18//05/2026 | 1.1 | Inclusão das dimensões e domínios do DoD.| Paulo Vitor |
