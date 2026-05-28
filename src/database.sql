@@ -40,3 +40,23 @@ CREATE TABLE partners (
 	CONSTRAINT partners_partner_type_valid CHECK (partner_type IN ('ngo', 'commercial')),
 	CONSTRAINT partners_external_ref_not_empty CHECK (external_ref IS NULL OR char_length(btrim(external_ref)) > 0)
 );
+
+CREATE TABLE rewards (
+	id BIGSERIAL PRIMARY KEY,
+	partner_id BIGINT NOT NULL REFERENCES partners(id) ON DELETE RESTRICT,
+	name TEXT NOT NULL,
+	description TEXT,
+	reward_type TEXT NOT NULL,
+	points_cost INTEGER NOT NULL,
+	stock INTEGER,
+	is_active BOOLEAN NOT NULL DEFAULT TRUE,
+	created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+	CONSTRAINT rewards_name_not_empty CHECK (char_length(btrim(name)) > 0),
+	CONSTRAINT rewards_reward_type_valid CHECK (reward_type IN ('coupon', 'benefit', 'prize')),
+	CONSTRAINT rewards_points_cost_positive CHECK (points_cost > 0),
+	CONSTRAINT rewards_stock_non_negative CHECK (stock IS NULL OR stock >= 0)
+);
+
+CREATE INDEX rewards_is_active_idx ON rewards (is_active);
+CREATE INDEX rewards_partner_id_idx ON rewards (partner_id);
+
