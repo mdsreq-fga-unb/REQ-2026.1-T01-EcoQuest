@@ -9,25 +9,25 @@ CREATE TABLE user (
 	points_total_earned INTEGER NOT NULL DEFAULT 0,
 	created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
 	updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),
-	CONSTRAINT users_email_not_empty CHECK (char_length(btrim(email)) > 0),
-	CONSTRAINT users_name_not_empty CHECK (char_length(btrim(name)) > 0),
-	CONSTRAINT users_cpf_format CHECK (cpf ~ '^[0-9]{11}$'),
-	CONSTRAINT users_phone_not_empty CHECK (char_length(btrim(phone)) > 0),
-	CONSTRAINT users_password_hash_not_empty CHECK (char_length(btrim(password_hash)) > 0),
-	CONSTRAINT users_points_balance_non_negative CHECK (points_balance >= 0),
-	CONSTRAINT users_points_total_earned_non_negative CHECK (points_total_earned >= 0)
+	CONSTRAINT user_email_not_empty CHECK (char_length(btrim(email)) > 0),
+	CONSTRAINT user_name_not_empty CHECK (char_length(btrim(name)) > 0),
+	CONSTRAINT user_cpf_format CHECK (cpf ~ '^[0-9]{11}$'),
+	CONSTRAINT user_phone_not_empty CHECK (char_length(btrim(phone)) > 0),
+	CONSTRAINT user_password_hash_not_empty CHECK (char_length(btrim(password_hash)) > 0),
+	CONSTRAINT user_points_balance_non_negative CHECK (points_balance >= 0),
+	CONSTRAINT user_points_total_earned_non_negative CHECK (points_total_earned >= 0)
 );
 
-CREATE UNIQUE INDEX users_email_lower_unique ON users (lower(email));
-CREATE UNIQUE INDEX users_cpf_unique ON users (cpf);
+CREATE UNIQUE INDEX user_email_lower_unique ON user (lower(email));
+CREATE UNIQUE INDEX user_cpf_unique ON user (cpf);
 
 CREATE TABLE pev (
 	id BIGSERIAL PRIMARY KEY,
 	name TEXT NOT NULL,
 	-- code TEXT UNIQUE,
 	created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
-	CONSTRAINT pevs_name_not_empty CHECK (char_length(btrim(name)) > 0)
-	-- CONSTRAINT pevs_code_not_empty CHECK (code IS NULL OR char_length(btrim(code)) > 0)
+	CONSTRAINT pev_name_not_empty CHECK (char_length(btrim(name)) > 0)
+	-- CONSTRAINT pev_code_not_empty CHECK (code IS NULL OR char_length(btrim(code)) > 0)
 );
 
 CREATE TYPE partner_type AS ENUM ('NGO', 'COMMERCIAL');
@@ -59,8 +59,8 @@ CREATE TABLE reward (
 	CONSTRAINT rewards_stock_non_negative CHECK (stock IS NULL OR stock >= 0)
 );
 
-CREATE INDEX rewards_is_active_idx ON rewards (is_active);
-CREATE INDEX rewards_partner_id_idx ON rewards (partner_id);
+CREATE INDEX rewards_is_active_idx ON reward (is_active);
+CREATE INDEX rewards_partner_id_idx ON reward (partner_id);
 
 CREATE TABLE disposal_token (
 	jti UUID PRIMARY KEY,
@@ -68,14 +68,17 @@ CREATE TABLE disposal_token (
 	issued_at TIMESTAMPTZ NOT NULL DEFAULT now(),
 	expires_at TIMESTAMPTZ NOT NULL,
 	used_at TIMESTAMPTZ,
-	id_user_used_by BIGINT REFERENCES users(id) ON DELETE RESTRICT,
-	CONSTRAINT disposal_tokens_expires_after_issue CHECK (expires_at > issued_at),
-	CONSTRAINT disposal_tokens_used_consistency CHECK (
+	id_user_used_by BIGINT REFERENCES user(id) ON DELETE RESTRICT,
+	CONSTRAINT disposal_token_expires_after_issue CHECK (expires_at > issued_at),
+	CONSTRAINT disposal_token_used_consistency CHECK (
 		(used_at IS NULL AND used_by_user_id IS NULL)
 		OR
 		(used_at IS NOT NULL AND used_by_user_id IS NOT NULL)
 	)
 );
+
+CREATE INDEX disposal_token_pev_expires_idx ON disposal_token (pev_id, expires_at);
+CREATE INDEX disposal_token_unused_idx ON disposal_token (expires_at) WHERE used_at IS NULL;
 
 CREATE TABLE disposal (
 	id BIGSERIAL PRIMARY KEY,
