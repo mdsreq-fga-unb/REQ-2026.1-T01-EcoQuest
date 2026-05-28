@@ -77,6 +77,15 @@ CREATE TABLE disposal_token (
 	)
 );
 
-CREATE INDEX disposal_tokens_pev_expires_idx ON disposal_tokens (pev_id, expires_at);
-CREATE INDEX disposal_tokens_unused_idx ON disposal_tokens (expires_at) WHERE used_at IS NULL;
+CREATE TABLE disposal (
+	id BIGSERIAL PRIMARY KEY,
+	id_user BIGINT NOT NULL REFERENCES user(id) ON DELETE CASCADE,
+	id_pev BIGINT NOT NULL REFERENCES pev(id) ON DELETE RESTRICT,
+	jti_token UUID NOT NULL UNIQUE REFERENCES disposal_token(jti) ON DELETE RESTRICT,
+	points_awarded INTEGER NOT NULL,
+	created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+	CONSTRAINT disposal_points_awarded_non_negative CHECK (points_awarded >= 0)
+);
 
+CREATE INDEX disposal_user_created_at_idx ON disposal (user_id, created_at DESC);
+CREATE INDEX disposal_pev_created_at_idx ON disposal (pev_id, created_at DESC);
