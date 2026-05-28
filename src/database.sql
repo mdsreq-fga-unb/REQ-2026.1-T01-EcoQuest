@@ -92,3 +92,22 @@ CREATE TABLE disposal (
 
 CREATE INDEX disposal_user_created_at_idx ON disposal (id_user, created_at DESC);
 CREATE INDEX disposal_pev_created_at_idx ON disposal (id_pev, created_at DESC);
+
+CREATE TYPE reward_redemption_status AS ENUM ('issued', 'cancelled', 'used');
+
+CREATE TABLE reward_redemption (
+	id BIGSERIAL PRIMARY KEY,
+	id_user BIGINT NOT NULL REFERENCES user(id) ON DELETE CASCADE,
+	id_reward BIGINT NOT NULL REFERENCES reward(id) ON DELETE RESTRICT,
+	points_cost_snapshot INTEGER NOT NULL,
+	code TEXT NOT NULL,
+	status reward_redemption_status NOT NULL DEFAULT 'issued',
+	created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+	expires_at TIMESTAMPTZ,
+	CONSTRAINT reward_redemption_points_cost_snapshot_positive CHECK (points_cost_snapshot > 0),
+	CONSTRAINT reward_redemption_code_not_empty CHECK (char_length(btrim(code)) > 0)
+);
+
+CREATE UNIQUE INDEX reward_redemption_code_unique ON reward_redemption (code);
+CREATE INDEX reward_redemption_user_created_at_idx ON reward_redemption (id_user, created_at DESC);
+CREATE INDEX reward_redemption_reward_created_at_idx ON reward_redemption (id_reward, created_at DESC);
