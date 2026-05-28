@@ -77,8 +77,8 @@ CREATE TABLE disposal_token (
 	)
 );
 
-CREATE INDEX disposal_token_pev_expires_idx ON disposal_token (id_pev, expires_at);
-CREATE INDEX disposal_token_unused_idx ON disposal_token (expires_at) WHERE used_at IS NULL;
+CREATE INDEX disposal_token_pev_expires_idx ON disposal_token (id_pev, expires_at); -- Para listar tokens recentes por PEV, mesmo os usados (útil para auditoria)
+CREATE INDEX disposal_token_unused_idx ON disposal_token (expires_at) WHERE used_at IS NULL; -- Isso permite encontrar rapidamente um token válido para um PEV no momento do descarte, ignorando os usados/expirados
 
 CREATE TABLE disposal (
 	id BIGSERIAL PRIMARY KEY,
