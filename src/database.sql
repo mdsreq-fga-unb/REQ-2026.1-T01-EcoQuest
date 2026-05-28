@@ -29,3 +29,14 @@ CREATE TABLE pevs (
 	CONSTRAINT pevs_name_not_empty CHECK (char_length(btrim(name)) > 0)
 	-- CONSTRAINT pevs_code_not_empty CHECK (code IS NULL OR char_length(btrim(code)) > 0)
 );
+
+CREATE TABLE partners (
+	id BIGSERIAL PRIMARY KEY,
+	name TEXT NOT NULL,
+	partner_type TEXT NOT NULL,
+	external_ref TEXT,
+	created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+	CONSTRAINT partners_name_not_empty CHECK (char_length(btrim(name)) > 0),
+	CONSTRAINT partners_partner_type_valid CHECK (partner_type IN ('ngo', 'commercial')),
+	CONSTRAINT partners_external_ref_not_empty CHECK (external_ref IS NULL OR char_length(btrim(external_ref)) > 0)
+);
