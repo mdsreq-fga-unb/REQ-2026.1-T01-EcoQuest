@@ -140,6 +140,14 @@ Template de registro quinzenal:
 - **Resultado obtido:** inclusão e consolidação de evidências de ER com foco em validação, brainstorming e entrevista.
 - **Evidência produzida:** atas de entrevista, brainstorming e validação; artefatos visuais (protótipos e wireframes) vinculados às decisões registradas
 
+<iframe 
+style="border: 1px solid rgba(0, 0, 0, 0.1);"
+width="800" 
+height="450" 
+src="https://embed.figma.com/board/f6CjlyYaVd3bPZBigmWU9o/Untitled?node-id=0-1&embed-host=share" 
+allowfullscreen>
+</iframe>
+
 ## DoR e DoD
 
 Checklists de **Definition of Ready (DoR)** e **Definition of Done (DoD)** para a lista de itens de trabalho.
