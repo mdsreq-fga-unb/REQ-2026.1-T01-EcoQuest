@@ -1,0 +1,1594 @@
+{
+  "id": "0",
+  "name": "EcoQuest",
+  "createdAt": "2026-05-27T23:35:26.965Z",
+  "updatedAt": "2026-05-28T04:09:28.204Z",
+  "databaseType": "postgresql",
+  "tables": [
+    {
+      "id": "1",
+      "name": "User",
+      "x": -4134.303662251708,
+      "y": -1829.1746613928037,
+      "fields": [
+        {
+          "id": "2",
+          "name": "id",
+          "type": {
+            "id": "bigserial",
+            "name": "bigserial"
+          },
+          "unique": true,
+          "nullable": false,
+          "primaryKey": true,
+          "createdAt": 1779926232965,
+          "increment": true
+        },
+        {
+          "id": "3",
+          "name": "email",
+          "type": {
+            "id": "varchar",
+            "name": "varchar"
+          },
+          "unique": true,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779927164612,
+          "characterMaximumLength": "256"
+        },
+        {
+          "id": "4",
+          "name": "name",
+          "type": {
+            "id": "varchar",
+            "name": "varchar"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779927184879,
+          "characterMaximumLength": "256"
+        },
+        {
+          "id": "5",
+          "name": "cpf",
+          "type": {
+            "id": "varchar",
+            "name": "varchar"
+          },
+          "unique": true,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779927195364,
+          "characterMaximumLength": "11"
+        },
+        {
+          "id": "6",
+          "name": "phone",
+          "type": {
+            "id": "varchar",
+            "name": "varchar"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779927255790,
+          "characterMaximumLength": "20"
+        },
+        {
+          "id": "7",
+          "name": "password_hash",
+          "type": {
+            "id": "varchar",
+            "name": "varchar"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779927267662,
+          "characterMaximumLength": "512"
+        },
+        {
+          "id": "8",
+          "name": "points_balance",
+          "type": {
+            "id": "int",
+            "name": "int"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779927281184,
+          "default": "0"
+        },
+        {
+          "id": "9",
+          "name": "points_total_earned",
+          "type": {
+            "id": "int",
+            "name": "int"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779927299186,
+          "default": "0"
+        },
+        {
+          "id": "10",
+          "name": "created_at",
+          "type": {
+            "id": "timestamptz",
+            "name": "timestamptz"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779927331799,
+          "default": "now()"
+        },
+        {
+          "id": "11",
+          "name": "updated_at",
+          "type": {
+            "id": "timestamptz",
+            "name": "timestamptz"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779927346119,
+          "default": "now()"
+        }
+      ],
+      "indexes": [
+        {
+          "id": "12",
+          "name": "",
+          "fieldIds": [
+            "2"
+          ],
+          "unique": true,
+          "isPrimaryKey": true,
+          "createdAt": 1779926232965
+        },
+        {
+          "id": "13",
+          "name": "user_email_lower_unique",
+          "fieldIds": [
+            "3"
+          ],
+          "unique": true,
+          "createdAt": 1779939745317,
+          "comments": "lower(email)\n"
+        },
+        {
+          "id": "14",
+          "name": "user_cpf_unique",
+          "fieldIds": [
+            "5"
+          ],
+          "unique": true,
+          "createdAt": 1779939775774
+        }
+      ],
+      "color": "#8eb7ff",
+      "createdAt": 1779926232965,
+      "isView": false,
+      "order": 0,
+      "schema": "public",
+      "checkConstraints": [
+        {
+          "id": "sokz4h3mamnbfgkocv3gbm5pq",
+          "expression": "char_length(btrim(email)) > 0",
+          "createdAt": 1779939678073
+        },
+        {
+          "id": "boa4bx8z0qqnbl7jg3ue9v273",
+          "expression": "char_length(btrim(name)) > 0",
+          "createdAt": 1779939688142
+        },
+        {
+          "id": "flat56exw227e5vxjghqjia1n",
+          "expression": "cpf ~ '^[0-9]{11}$'",
+          "createdAt": 1779939696071
+        },
+        {
+          "id": "dnqwrx46nhb48g9yhqj1yfm8q",
+          "expression": "char_length(btrim(phone)) > 0",
+          "createdAt": 1779939721734
+        },
+        {
+          "id": "3y0enbd1lk5hfk7dcevvlflgh",
+          "expression": "char_length(btrim(password_hash)) > 0",
+          "createdAt": 1779939729027
+        },
+        {
+          "id": "2toj69u7dvmfsncjhriyhfy9t",
+          "expression": "points_balance >= 0",
+          "createdAt": 1779939732484
+        },
+        {
+          "id": "uexvbqmaf0e1dr2v4ie1hgmto",
+          "expression": "points_total_earned >= 0",
+          "createdAt": 1779939742184
+        }
+      ],
+      "parentAreaId": "e827i1g5zlll6t33ddtfcz8u3"
+    },
+    {
+      "id": "15",
+      "name": "PEV",
+      "x": -4182.758372503915,
+      "y": -2598.2495344038703,
+      "fields": [
+        {
+          "id": "16",
+          "name": "id",
+          "type": {
+            "id": "bigserial",
+            "name": "bigserial"
+          },
+          "unique": true,
+          "nullable": false,
+          "primaryKey": true,
+          "createdAt": 1779926232965,
+          "increment": true
+        },
+        {
+          "id": "17",
+          "name": "name",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779927184879
+        },
+        {
+          "id": "18",
+          "name": "created_at",
+          "type": {
+            "id": "timestamptz",
+            "name": "timestamptz"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779927331799,
+          "default": "now()"
+        }
+      ],
+      "indexes": [
+        {
+          "id": "19",
+          "name": "",
+          "fieldIds": [
+            "16"
+          ],
+          "unique": true,
+          "isPrimaryKey": true,
+          "createdAt": 1779926232965
+        }
+      ],
+      "color": "#ff6b8a",
+      "createdAt": 1779926232965,
+      "isView": false,
+      "order": 1,
+      "schema": "public",
+      "checkConstraints": [
+        {
+          "id": "20gevg6inomz8lijc5v7b4h1u",
+          "expression": "char_length(btrim(name)) > 0",
+          "createdAt": 1779939795294
+        }
+      ],
+      "parentAreaId": "0dbafro8vcfvzzvarp26u2rri"
+    },
+    {
+      "id": "20",
+      "name": "Partner",
+      "x": -3775.0597964710196,
+      "y": -908.1395703608257,
+      "fields": [
+        {
+          "id": "21",
+          "name": "id",
+          "type": {
+            "id": "bigserial",
+            "name": "bigserial"
+          },
+          "unique": true,
+          "nullable": false,
+          "primaryKey": true,
+          "createdAt": 1779926232965,
+          "increment": true
+        },
+        {
+          "id": "22",
+          "name": "name",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779927184879
+        },
+        {
+          "id": "23",
+          "name": "partner_type",
+          "type": {
+            "id": "PARTNER_TYPE",
+            "name": "PARTNER_TYPE"
+          },
+          "unique": true,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779927195364
+        },
+        {
+          "id": "24",
+          "name": "created_at",
+          "type": {
+            "id": "timestamptz",
+            "name": "timestamptz"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779927331799,
+          "default": "now()"
+        }
+      ],
+      "indexes": [
+        {
+          "id": "25",
+          "name": "",
+          "fieldIds": [
+            "21"
+          ],
+          "unique": true,
+          "isPrimaryKey": true,
+          "createdAt": 1779926232965
+        }
+      ],
+      "color": "#42e0c0",
+      "createdAt": 1779926232965,
+      "isView": false,
+      "order": 2,
+      "schema": "public",
+      "checkConstraints": [
+        {
+          "id": "ys4cjbe7or1kppli47qx6ykrd",
+          "expression": "char_length(btrim(name)) > 0",
+          "createdAt": 1779939824254
+        }
+      ],
+      "parentAreaId": "gpq414frdtqe1yjsxnddf89o5"
+    },
+    {
+      "id": "26",
+      "name": "Reward",
+      "x": -4193.164765285521,
+      "y": -1275.618635058968,
+      "fields": [
+        {
+          "id": "27",
+          "name": "id",
+          "type": {
+            "id": "bigserial",
+            "name": "bigserial"
+          },
+          "unique": true,
+          "nullable": false,
+          "primaryKey": true,
+          "createdAt": 1779926232965,
+          "increment": true
+        },
+        {
+          "id": "28",
+          "name": "id_partner",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779927184879
+        },
+        {
+          "id": "29",
+          "name": "name",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "unique": true,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779927195364
+        },
+        {
+          "id": "30",
+          "name": "description",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "unique": false,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1779928053419
+        },
+        {
+          "id": "31",
+          "name": "reward_type",
+          "type": {
+            "id": "REWARD_TYPE",
+            "name": "REWARD_TYPE"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779927331799
+        },
+        {
+          "id": "32",
+          "name": "points_cost",
+          "type": {
+            "id": "interval",
+            "name": "interval"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779936581513
+        },
+        {
+          "id": "33",
+          "name": "stock",
+          "type": {
+            "id": "interval",
+            "name": "interval"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779936587586
+        },
+        {
+          "id": "34",
+          "name": "is_active",
+          "type": {
+            "id": "boolean",
+            "name": "boolean"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779936591687,
+          "default": "TRUE"
+        },
+        {
+          "id": "35",
+          "name": "created_at",
+          "type": {
+            "id": "timestamptz",
+            "name": "timestamptz"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779936595982,
+          "default": "now()"
+        }
+      ],
+      "indexes": [
+        {
+          "id": "36",
+          "name": "",
+          "fieldIds": [
+            "27"
+          ],
+          "unique": true,
+          "isPrimaryKey": true,
+          "createdAt": 1779926232965
+        },
+        {
+          "id": "37",
+          "name": "rewards_is_active_idx",
+          "fieldIds": [
+            "34"
+          ],
+          "unique": false,
+          "createdAt": 1779939923821
+        },
+        {
+          "id": "38",
+          "name": "rewards_partner_id_idx",
+          "fieldIds": [
+            "28"
+          ],
+          "unique": false,
+          "createdAt": 1779939929437
+        }
+      ],
+      "color": "#42e0c0",
+      "createdAt": 1779926232965,
+      "isView": false,
+      "order": 3,
+      "schema": "public",
+      "checkConstraints": [
+        {
+          "id": "uhj8y6h0bin859640bgwmv0xm",
+          "expression": "char_length(btrim(name)) > 0",
+          "createdAt": 1779938215328
+        },
+        {
+          "id": "7r49bgdnpvu9r4chn7bzfztxh",
+          "expression": "points_cost > 0",
+          "createdAt": 1779939849337
+        },
+        {
+          "id": "q8i3tyl9ml2j220mmxqfjtna7",
+          "expression": "stock IS NULL OR stock >= 0",
+          "createdAt": 1779939857049
+        }
+      ],
+      "parentAreaId": "gpq414frdtqe1yjsxnddf89o5"
+    },
+    {
+      "id": "39",
+      "name": "Disposal_Token",
+      "x": -4223.731494588659,
+      "y": -2245.1044391627365,
+      "fields": [
+        {
+          "id": "40",
+          "name": "jti",
+          "type": {
+            "id": "uuid",
+            "name": "uuid"
+          },
+          "unique": true,
+          "nullable": false,
+          "primaryKey": true,
+          "createdAt": 1779937468812
+        },
+        {
+          "id": "41",
+          "name": "id_pev",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779937489123
+        },
+        {
+          "id": "42",
+          "name": "issued_at",
+          "type": {
+            "id": "timestamptz",
+            "name": "timestamptz"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779937495447
+        },
+        {
+          "id": "43",
+          "name": "expires_at",
+          "type": {
+            "id": "timestamptz",
+            "name": "timestamptz"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779937503665
+        },
+        {
+          "id": "44",
+          "name": "used_at",
+          "type": {
+            "id": "timestamptz",
+            "name": "timestamptz"
+          },
+          "unique": false,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1779937509620
+        },
+        {
+          "id": "45",
+          "name": "id_user_used_by",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": false,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1779937536652
+        }
+      ],
+      "indexes": [
+        {
+          "id": "46",
+          "name": "",
+          "fieldIds": [
+            "40"
+          ],
+          "unique": true,
+          "isPrimaryKey": true,
+          "createdAt": 1779937468812
+        },
+        {
+          "id": "47",
+          "name": "disposal_token_pev_expires_idx",
+          "fieldIds": [
+            "41",
+            "43"
+          ],
+          "unique": false,
+          "createdAt": 1779939990474
+        },
+        {
+          "id": "48",
+          "name": "disposal_token_unused_idx",
+          "fieldIds": [
+            "43"
+          ],
+          "unique": false,
+          "createdAt": 1779939998790,
+          "comments": "WHERE used_at IS NULL"
+        }
+      ],
+      "color": "#ff6b8a",
+      "createdAt": 1779937468812,
+      "isView": false,
+      "order": 4,
+      "schema": "public",
+      "checkConstraints": [
+        {
+          "id": "xjgt4gc2xfp5tvvl1kkv0d24a",
+          "expression": "expires_at > issued_at",
+          "createdAt": 1779939962578
+        },
+        {
+          "id": "8eiipraqj672vvgcsf4dcjpfb",
+          "expression": "(used_at IS NULL AND used_by_user_id IS NULL) OR (used_at IS NOT NULL AND used_by_user_id IS NOT NULL)",
+          "createdAt": 1779939966338
+        }
+      ],
+      "parentAreaId": "0dbafro8vcfvzzvarp26u2rri"
+    },
+    {
+      "id": "49",
+      "name": "Disposal",
+      "x": -3585.8316771969016,
+      "y": -2304.0707560629553,
+      "fields": [
+        {
+          "id": "50",
+          "name": "id",
+          "type": {
+            "id": "bigserial",
+            "name": "bigserial"
+          },
+          "unique": true,
+          "nullable": false,
+          "primaryKey": true,
+          "createdAt": 1779937468812,
+          "increment": true
+        },
+        {
+          "id": "51",
+          "name": "id_pev",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779937495447
+        },
+        {
+          "id": "52",
+          "name": "jti_token",
+          "type": {
+            "id": "uuid",
+            "name": "uuid"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779937503665
+        },
+        {
+          "id": "53",
+          "name": "id_user",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779937489123
+        },
+        {
+          "id": "54",
+          "name": "points_awarded",
+          "type": {
+            "id": "int",
+            "name": "int"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779937509620
+        },
+        {
+          "id": "55",
+          "name": "created_at",
+          "type": {
+            "id": "timestamptz",
+            "name": "timestamptz"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779937536652,
+          "default": "now()",
+          "comments": ""
+        }
+      ],
+      "indexes": [
+        {
+          "id": "56",
+          "name": "",
+          "fieldIds": [
+            "50"
+          ],
+          "unique": true,
+          "isPrimaryKey": true,
+          "createdAt": 1779937468812
+        },
+        {
+          "id": "57",
+          "name": "disposal_user_created_at_idx",
+          "fieldIds": [
+            "53",
+            "55"
+          ],
+          "unique": false,
+          "createdAt": 1779939312750
+        },
+        {
+          "id": "58",
+          "name": "disposal_pev_created_at_idx",
+          "fieldIds": [
+            "51",
+            "55"
+          ],
+          "unique": false,
+          "createdAt": 1779939342119
+        }
+      ],
+      "color": "#ff6b8a",
+      "createdAt": 1779937468812,
+      "isView": false,
+      "order": 5,
+      "schema": "public",
+      "checkConstraints": [
+        {
+          "id": "qqzfslmxgxz7a8g9jlkhu5bop",
+          "expression": "points_awarded >= 0",
+          "createdAt": 1779938192438
+        }
+      ],
+      "parentAreaId": "0dbafro8vcfvzzvarp26u2rri"
+    },
+    {
+      "id": "59",
+      "name": "Reward_Redemption",
+      "x": -3684.8996891161496,
+      "y": -1333.2356372597267,
+      "fields": [
+        {
+          "id": "60",
+          "name": "id",
+          "type": {
+            "id": "bigserial",
+            "name": "bigserial"
+          },
+          "unique": true,
+          "nullable": false,
+          "primaryKey": true,
+          "createdAt": 1779926232965,
+          "increment": true
+        },
+        {
+          "id": "61",
+          "name": "id_user",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779927184879
+        },
+        {
+          "id": "62",
+          "name": "id_reward",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779927195364
+        },
+        {
+          "id": "63",
+          "name": "points_cost_snapshot",
+          "type": {
+            "id": "int",
+            "name": "int"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779928053419
+        },
+        {
+          "id": "64",
+          "name": "code",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779927331799
+        },
+        {
+          "id": "65",
+          "name": "status",
+          "type": {
+            "id": "REWARD_REDEMPTION_STATUS",
+            "name": "REWARD_REDEMPTION_STATUS"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779936581513
+        },
+        {
+          "id": "66",
+          "name": "created_at",
+          "type": {
+            "id": "timestamptz",
+            "name": "timestamptz"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779936595982,
+          "default": "now()"
+        },
+        {
+          "id": "67",
+          "name": "expires_at",
+          "type": {
+            "id": "timestamptz",
+            "name": "timestamptz"
+          },
+          "unique": false,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1779936587586
+        }
+      ],
+      "indexes": [
+        {
+          "id": "68",
+          "name": "",
+          "fieldIds": [
+            "60"
+          ],
+          "unique": true,
+          "isPrimaryKey": true,
+          "createdAt": 1779926232965
+        },
+        {
+          "id": "69",
+          "name": "reward_redemption_code_unique",
+          "fieldIds": [
+            "64"
+          ],
+          "unique": true,
+          "createdAt": 1779939486423
+        },
+        {
+          "id": "70",
+          "name": "reward_redemption_user_created_at_idx",
+          "fieldIds": [
+            "61",
+            "66"
+          ],
+          "unique": false,
+          "createdAt": 1779939500382
+        },
+        {
+          "id": "71",
+          "name": "reward_redemption_reward_created_at_idx",
+          "fieldIds": [
+            "62",
+            "66"
+          ],
+          "unique": false,
+          "createdAt": 1779939512005
+        }
+      ],
+      "color": "#42e0c0",
+      "createdAt": 1779926232965,
+      "isView": false,
+      "order": 6,
+      "schema": "public",
+      "checkConstraints": [
+        {
+          "id": "uhj8y6h0bin859640bgwmv0xm",
+          "expression": "points_cost_snapshop > 0",
+          "createdAt": 1779938215328
+        },
+        {
+          "id": "mx8e2sgd67srrvrl9scrd7tf0",
+          "expression": "char_length(btrim(code)) > 0",
+          "createdAt": 1779939215427
+        }
+      ],
+      "width": 337,
+      "parentAreaId": "gpq414frdtqe1yjsxnddf89o5"
+    },
+    {
+      "id": "72",
+      "name": "Points_Transaction",
+      "x": -3665.7701770178355,
+      "y": -1826.532154392676,
+      "fields": [
+        {
+          "id": "73",
+          "name": "id",
+          "type": {
+            "id": "bigserial",
+            "name": "bigserial"
+          },
+          "unique": true,
+          "nullable": false,
+          "primaryKey": true,
+          "createdAt": 1779940285084,
+          "increment": true
+        },
+        {
+          "id": "74",
+          "name": "id_user",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779940303087
+        },
+        {
+          "id": "75",
+          "name": "amount",
+          "type": {
+            "id": "int",
+            "name": "int"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779940316599
+        },
+        {
+          "id": "76",
+          "name": "kind",
+          "type": {
+            "id": "POINTS_TRANSACTION_KIND",
+            "name": "POINTS_TRANSACTION_KIND"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779940323553
+        },
+        {
+          "id": "77",
+          "name": "id_disposal",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": false,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1779940328378
+        },
+        {
+          "id": "78",
+          "name": "id_redemption",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": false,
+          "nullable": true,
+          "primaryKey": false,
+          "createdAt": 1779940333881
+        },
+        {
+          "id": "79",
+          "name": "created_at",
+          "type": {
+            "id": "timestamptz",
+            "name": "timestamptz"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779940338331,
+          "default": "now()"
+        }
+      ],
+      "indexes": [
+        {
+          "id": "80",
+          "name": "",
+          "fieldIds": [
+            "73"
+          ],
+          "unique": true,
+          "isPrimaryKey": true,
+          "createdAt": 1779940285084
+        },
+        {
+          "id": "81",
+          "name": "points_transaction_user_created_at_idx",
+          "fieldIds": [
+            "74",
+            "79"
+          ],
+          "unique": false,
+          "createdAt": 1779940496884
+        },
+        {
+          "id": "82",
+          "name": "points_transaction_disposal_unique",
+          "fieldIds": [
+            "77"
+          ],
+          "unique": true,
+          "createdAt": 1779940510147,
+          "comments": "WHERE id_disposal IS NOT NULL"
+        },
+        {
+          "id": "83",
+          "name": "points_transaction_redemption_unique",
+          "fieldIds": [
+            "78"
+          ],
+          "unique": true,
+          "createdAt": 1779940525125,
+          "comments": "WHERE id_redemption IS NOT NULL"
+        }
+      ],
+      "color": "#8eb7ff",
+      "createdAt": 1779940285084,
+      "isView": false,
+      "order": 7,
+      "schema": "public",
+      "checkConstraints": [
+        {
+          "id": "o48hq5pm75nbalqimgduj7pvh",
+          "expression": "amount <> 0",
+          "createdAt": 1779940388143
+        },
+        {
+          "id": "bimo4rgcbj76jsfjofvr984m4",
+          "expression": "(kind = 'disposal' AND id_disposal IS NOT NULL AND id_redemption IS NULL AND amount > 0) OR (kind = 'redemption' AND id_redemption IS NOT NULL AND id_disposal IS NULL AND amount < 0) OR (kind = 'adjustment' AND id_disposal IS NULL AND id_redemption IS NULL)",
+          "createdAt": 1779940389262
+        }
+      ],
+      "width": 337,
+      "parentAreaId": "e827i1g5zlll6t33ddtfcz8u3"
+    },
+    {
+      "id": "84",
+      "name": "Achievement",
+      "x": -5014.065537705906,
+      "y": -1763.585331992908,
+      "fields": [
+        {
+          "id": "85",
+          "name": "id",
+          "type": {
+            "id": "bigserial",
+            "name": "bigserial"
+          },
+          "unique": true,
+          "nullable": false,
+          "primaryKey": true,
+          "createdAt": 1779940724480,
+          "increment": true
+        },
+        {
+          "id": "86",
+          "name": "code",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779940752410
+        },
+        {
+          "id": "87",
+          "name": "name",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779940761935
+        },
+        {
+          "id": "88",
+          "name": "description",
+          "type": {
+            "id": "text",
+            "name": "text"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779940766258
+        },
+        {
+          "id": "89",
+          "name": "criteria",
+          "type": {
+            "id": "jsonb",
+            "name": "jsonb"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779940777079
+        },
+        {
+          "id": "90",
+          "name": "is_active",
+          "type": {
+            "id": "boolean",
+            "name": "boolean"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779940783979,
+          "default": "TRUE"
+        },
+        {
+          "id": "91",
+          "name": "created_at",
+          "type": {
+            "id": "timestamptz",
+            "name": "timestamptz"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779940793665,
+          "default": "now()"
+        }
+      ],
+      "indexes": [
+        {
+          "id": "92",
+          "name": "",
+          "fieldIds": [
+            "85"
+          ],
+          "unique": true,
+          "isPrimaryKey": true,
+          "createdAt": 1779940724480
+        },
+        {
+          "id": "93",
+          "name": "achievement_code_unique",
+          "fieldIds": [
+            "86"
+          ],
+          "unique": true,
+          "createdAt": 1779940853696
+        },
+        {
+          "id": "94",
+          "name": "achievement_is_active_idx",
+          "fieldIds": [
+            "90"
+          ],
+          "unique": false,
+          "createdAt": 1779940867975
+        }
+      ],
+      "color": "#ffe374",
+      "createdAt": 1779940724480,
+      "isView": false,
+      "order": 8,
+      "schema": "public",
+      "checkConstraints": [
+        {
+          "id": "x7q8zxt3nqt2t9g4omldna3yl",
+          "expression": "char_length(btrim(code)) > 0",
+          "createdAt": 1779940825716
+        },
+        {
+          "id": "h2zlhca22r8x2fcgs9c2ax1gf",
+          "expression": "char_length(btrim(name)) > 0",
+          "createdAt": 1779940826721
+        },
+        {
+          "id": "uwp0350de30yft0j8dqy7ap30",
+          "expression": "char_length(btrim(description)) > 0",
+          "createdAt": 1779940827066
+        }
+      ],
+      "parentAreaId": "9gmgjgdtzr6bxrk58v8zrznke"
+    },
+    {
+      "id": "95",
+      "name": "User_Achievement",
+      "x": -4608.247627609863,
+      "y": -1775.9470624556911,
+      "fields": [
+        {
+          "id": "96",
+          "name": "id_user",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": true,
+          "createdAt": 1779940927662
+        },
+        {
+          "id": "97",
+          "name": "id_achievement",
+          "type": {
+            "id": "bigint",
+            "name": "bigint"
+          },
+          "unique": true,
+          "nullable": false,
+          "primaryKey": true,
+          "createdAt": 1779940933509
+        },
+        {
+          "id": "98",
+          "name": "unlocked_at",
+          "type": {
+            "id": "timestamptz",
+            "name": "timestamptz"
+          },
+          "unique": false,
+          "nullable": false,
+          "primaryKey": false,
+          "createdAt": 1779940936965,
+          "default": "now()"
+        }
+      ],
+      "indexes": [
+        {
+          "id": "99",
+          "name": "",
+          "fieldIds": [
+            "96",
+            "97"
+          ],
+          "unique": true,
+          "isPrimaryKey": true,
+          "createdAt": 1779940944307
+        }
+      ],
+      "color": "#ffe374",
+      "createdAt": 1779940916387,
+      "isView": false,
+      "order": 9,
+      "schema": "public",
+      "parentAreaId": "9gmgjgdtzr6bxrk58v8zrznke"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "100",
+      "name": "Reward_id_partner_fk",
+      "sourceSchema": "public",
+      "sourceTableId": "26",
+      "targetSchema": "public",
+      "targetTableId": "20",
+      "sourceFieldId": "28",
+      "targetFieldId": "21",
+      "sourceCardinality": "one",
+      "targetCardinality": "one",
+      "createdAt": 1779937463118
+    },
+    {
+      "id": "101",
+      "name": "Disposal_Token_id_pev_fk",
+      "sourceSchema": "public",
+      "sourceTableId": "39",
+      "targetSchema": "public",
+      "targetTableId": "15",
+      "sourceFieldId": "41",
+      "targetFieldId": "16",
+      "sourceCardinality": "one",
+      "targetCardinality": "one",
+      "createdAt": 1779937689059
+    },
+    {
+      "id": "102",
+      "name": "Disposal_Token_id_user_used_by_fk",
+      "sourceSchema": "public",
+      "sourceTableId": "39",
+      "targetSchema": "public",
+      "targetTableId": "1",
+      "sourceFieldId": "45",
+      "targetFieldId": "2",
+      "sourceCardinality": "one",
+      "targetCardinality": "one",
+      "createdAt": 1779937710686
+    },
+    {
+      "id": "103",
+      "name": "Disposal_id_user_fk",
+      "sourceSchema": "public",
+      "sourceTableId": "49",
+      "targetSchema": "public",
+      "targetTableId": "1",
+      "sourceFieldId": "53",
+      "targetFieldId": "2",
+      "sourceCardinality": "one",
+      "targetCardinality": "one",
+      "createdAt": 1779938337422
+    },
+    {
+      "id": "104",
+      "name": "Disposal_id_pev_fk",
+      "sourceSchema": "public",
+      "sourceTableId": "49",
+      "targetSchema": "public",
+      "targetTableId": "15",
+      "sourceFieldId": "51",
+      "targetFieldId": "16",
+      "sourceCardinality": "one",
+      "targetCardinality": "one",
+      "createdAt": 1779938340408
+    },
+    {
+      "id": "105",
+      "name": "Disposal_jti_token_fk",
+      "sourceSchema": "public",
+      "sourceTableId": "49",
+      "targetSchema": "public",
+      "targetTableId": "39",
+      "sourceFieldId": "52",
+      "targetFieldId": "40",
+      "sourceCardinality": "one",
+      "targetCardinality": "one",
+      "createdAt": 1779938342485
+    },
+    {
+      "id": "106",
+      "name": "Reward_Redemption_id_user_fk",
+      "sourceSchema": "public",
+      "sourceTableId": "59",
+      "targetSchema": "public",
+      "targetTableId": "1",
+      "sourceFieldId": "61",
+      "targetFieldId": "2",
+      "sourceCardinality": "one",
+      "targetCardinality": "one",
+      "createdAt": 1779939594161
+    },
+    {
+      "id": "107",
+      "name": "Reward_Redemption_id_reward_fk",
+      "sourceSchema": "public",
+      "sourceTableId": "59",
+      "targetSchema": "public",
+      "targetTableId": "26",
+      "sourceFieldId": "62",
+      "targetFieldId": "27",
+      "sourceCardinality": "one",
+      "targetCardinality": "one",
+      "createdAt": 1779939627928
+    },
+    {
+      "id": "108",
+      "name": "Points_Transaction_id_user_fk",
+      "sourceSchema": "public",
+      "sourceTableId": "72",
+      "targetSchema": "public",
+      "targetTableId": "1",
+      "sourceFieldId": "74",
+      "targetFieldId": "2",
+      "sourceCardinality": "one",
+      "targetCardinality": "one",
+      "createdAt": 1779940593094
+    },
+    {
+      "id": "109",
+      "name": "Points_Transaction_id_disposal_fk",
+      "sourceSchema": "public",
+      "sourceTableId": "72",
+      "targetSchema": "public",
+      "targetTableId": "49",
+      "sourceFieldId": "77",
+      "targetFieldId": "50",
+      "sourceCardinality": "one",
+      "targetCardinality": "one",
+      "createdAt": 1779940684405
+    },
+    {
+      "id": "110",
+      "name": "Points_Transaction_id_redemption_fk",
+      "sourceSchema": "public",
+      "sourceTableId": "72",
+      "targetSchema": "public",
+      "targetTableId": "59",
+      "sourceFieldId": "78",
+      "targetFieldId": "60",
+      "sourceCardinality": "one",
+      "targetCardinality": "one",
+      "createdAt": 1779940688984
+    },
+    {
+      "id": "111",
+      "name": "User_Achievement_id_achievement_fk",
+      "sourceSchema": "public",
+      "sourceTableId": "95",
+      "targetSchema": "public",
+      "targetTableId": "84",
+      "sourceFieldId": "97",
+      "targetFieldId": "85",
+      "sourceCardinality": "one",
+      "targetCardinality": "one",
+      "createdAt": 1779940980928
+    },
+    {
+      "id": "112",
+      "name": "User_Achievement_id_user_fk",
+      "sourceSchema": "public",
+      "sourceTableId": "95",
+      "targetSchema": "public",
+      "targetTableId": "1",
+      "sourceFieldId": "96",
+      "targetFieldId": "2",
+      "sourceCardinality": "one",
+      "targetCardinality": "one",
+      "createdAt": 1779940983098
+    }
+  ],
+  "dependencies": [],
+  "areas": [
+    {
+      "id": "113",
+      "name": "Achievement",
+      "x": -5066.171624205169,
+      "y": -1822.6330256764008,
+      "width": 730,
+      "height": 363,
+      "color": "#ffe374"
+    },
+    {
+      "id": "114",
+      "name": "Disposal",
+      "x": -4291.012349558581,
+      "y": -2633.7223635006403,
+      "width": 1042,
+      "height": 665,
+      "color": "#ff6b8a"
+    },
+    {
+      "id": "115",
+      "name": "User",
+      "x": -4208.685688616031,
+      "y": -1888.1330803538387,
+      "width": 1004,
+      "height": 463,
+      "color": "#8eb7ff"
+    },
+    {
+      "id": "116",
+      "name": "Reward",
+      "x": -4247.631046433782,
+      "y": -1348.502730640199,
+      "width": 1063,
+      "height": 651,
+      "color": "#42e0c0"
+    }
+  ],
+  "customTypes": [
+    {
+      "id": "117",
+      "name": "PARTNER_TYPE",
+      "kind": "enum",
+      "values": [
+        "NGO",
+        "COMMERCIAL"
+      ],
+      "fields": []
+    },
+    {
+      "id": "118",
+      "name": "REWARD_TYPE",
+      "kind": "enum",
+      "values": [
+        "COUPON",
+        "BENEFIT",
+        "PRIZE"
+      ],
+      "fields": []
+    },
+    {
+      "id": "119",
+      "name": "REWARD_REDEMPTION_STATUS",
+      "kind": "enum",
+      "values": [
+        "ISSUED",
+        "CANCELLED",
+        "USED"
+      ],
+      "fields": []
+    },
+    {
+      "id": "120",
+      "name": "POINTS_TRANSACTION_KIND",
+      "kind": "enum",
+      "values": [
+        "DISPOSAL",
+        "REDEMPTION",
+        "ADJUSTMENT"
+      ],
+      "fields": []
+    }
+  ],
+  "notes": []
+}
