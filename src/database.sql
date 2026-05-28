@@ -135,3 +135,19 @@ CREATE TABLE points_transaction (
 CREATE INDEX points_transaction_user_created_at_idx ON points_transaction (id_user, created_at DESC);
 CREATE UNIQUE INDEX points_transaction_disposal_unique ON points_transaction (id_disposal) WHERE id_disposal IS NOT NULL;
 CREATE UNIQUE INDEX points_transaction_redemption_unique ON points_transaction (id_reward_redemption) WHERE id_reward_redemption IS NOT NULL;
+
+CREATE TABLE achievement (
+	id BIGSERIAL PRIMARY KEY,
+	code TEXT NOT NULL,
+	name TEXT NOT NULL,
+	description TEXT NOT NULL,
+	criteria JSONB NOT NULL,
+	is_active BOOLEAN NOT NULL DEFAULT TRUE,
+	created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+	CONSTRAINT achievement_code_not_empty CHECK (char_length(btrim(code)) > 0),
+	CONSTRAINT achievement_name_not_empty CHECK (char_length(btrim(name)) > 0),
+	CONSTRAINT achievement_description_not_empty CHECK (char_length(btrim(description)) > 0)
+);
+
+CREATE UNIQUE INDEX achievement_code_unique ON achievement (code);
+CREATE INDEX achievement_is_active_idx ON achievement (is_active);
