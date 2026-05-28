@@ -111,3 +111,27 @@ CREATE TABLE reward_redemption (
 CREATE UNIQUE INDEX reward_redemption_code_unique ON reward_redemption (code);
 CREATE INDEX reward_redemption_user_created_at_idx ON reward_redemption (id_user, created_at DESC);
 CREATE INDEX reward_redemption_reward_created_at_idx ON reward_redemption (id_reward, created_at DESC);
+
+CREATE TYPE points_transaction_kind AS ENUM ('DISPOSAL', 'REDEMPTION', 'ADJUSTMENT');
+
+CREATE TABLE points_transaction (
+	id BIGSERIAL PRIMARY KEY,
+	id_user BIGINT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+	amount INTEGER NOT NULL,
+	kind points_transaction_kind NOT NULL,
+	id_disposal BIGINT REFERENCES disposal(id) ON DELETE CASCADE,
+	id_reward_redemption BIGINT REFERENCES reward_redemption(id) ON DELETE CASCADE,
+	created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+	CONSTRAINT points_transaction_amount_non_zero CHECK (amount <> 0),
+	CONSTRAINT points_transaction_kind_reference CHECK (
+		(kind = 'disposal' AND id_disposal IS NOT NULL AND id_reward_redemption IS NULL AND amount > 0)
+		OR
+		(kind = 'redemption' AND id_reward_redemption IS NOT NULL AND id_disposal IS NULL AND amount < 0)
+		OR
+		(kind = 'adjustment' AND id_disposal IS NULL AND id_reward_redemption IS NULL)
+	)
+);
+
+CREATE INDEX points_transaction_user_created_at_idx ON points_transaction (id_user, created_at DESC);
+CREATE UNIQUE INDEX points_transaction_disposal_unique ON points_transaction (id_disposal) WHERE id_disposal IS NOT NULL;
+CREATE UNIQUE INDEX points_transaction_redemption_unique ON points_transaction (id_reward_redemption) WHERE id_reward_redemption IS NOT NULL;
