@@ -62,3 +62,21 @@ CREATE TABLE reward (
 CREATE INDEX rewards_is_active_idx ON rewards (is_active);
 CREATE INDEX rewards_partner_id_idx ON rewards (partner_id);
 
+CREATE TABLE disposal_token (
+	jti UUID PRIMARY KEY,
+	id_pev BIGINT NOT NULL REFERENCES pev(id) ON DELETE RESTRICT,
+	issued_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+	expires_at TIMESTAMPTZ NOT NULL,
+	used_at TIMESTAMPTZ,
+	id_user_used_by BIGINT REFERENCES users(id) ON DELETE RESTRICT,
+	CONSTRAINT disposal_tokens_expires_after_issue CHECK (expires_at > issued_at),
+	CONSTRAINT disposal_tokens_used_consistency CHECK (
+		(used_at IS NULL AND used_by_user_id IS NULL)
+		OR
+		(used_at IS NOT NULL AND used_by_user_id IS NOT NULL)
+	)
+);
+
+CREATE INDEX disposal_tokens_pev_expires_idx ON disposal_tokens (pev_id, expires_at);
+CREATE INDEX disposal_tokens_unused_idx ON disposal_tokens (expires_at) WHERE used_at IS NULL;
+
