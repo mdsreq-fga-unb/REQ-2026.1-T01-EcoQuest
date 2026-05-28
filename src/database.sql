@@ -42,18 +42,19 @@ CREATE TABLE partner (
 	-- CONSTRAINT partners_external_ref_not_empty CHECK (external_ref IS NULL OR char_length(btrim(external_ref)) > 0)
 );
 
+CREATE TYPE reward_type AS ENUM ('COUPON', 'BENEFIT', 'PRIZE');
+
 CREATE TABLE reward (
 	id BIGSERIAL PRIMARY KEY,
-	partner_id BIGINT NOT NULL REFERENCES partners(id) ON DELETE RESTRICT,
+	id_partner BIGINT NOT NULL REFERENCES partner(id) ON DELETE RESTRICT,
 	name TEXT NOT NULL,
 	description TEXT,
-	reward_type TEXT NOT NULL,
+	reward_type reward_type NOT NULL,
 	points_cost INTEGER NOT NULL,
 	stock INTEGER,
 	is_active BOOLEAN NOT NULL DEFAULT TRUE,
 	created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
 	CONSTRAINT rewards_name_not_empty CHECK (char_length(btrim(name)) > 0),
-	CONSTRAINT rewards_reward_type_valid CHECK (reward_type IN ('coupon', 'benefit', 'prize')),
 	CONSTRAINT rewards_points_cost_positive CHECK (points_cost > 0),
 	CONSTRAINT rewards_stock_non_negative CHECK (stock IS NULL OR stock >= 0)
 );
