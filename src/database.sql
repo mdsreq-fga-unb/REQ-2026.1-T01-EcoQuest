@@ -60,7 +60,7 @@ CREATE TABLE reward (
 );
 
 CREATE INDEX rewards_is_active_idx ON reward (is_active);
-CREATE INDEX rewards_partner_id_idx ON reward (partner_id);
+CREATE INDEX rewards_partner_id_idx ON reward (id_partner);
 
 CREATE TABLE disposal_token (
 	jti UUID PRIMARY KEY,
@@ -77,7 +77,7 @@ CREATE TABLE disposal_token (
 	)
 );
 
-CREATE INDEX disposal_token_pev_expires_idx ON disposal_token (pev_id, expires_at);
+CREATE INDEX disposal_token_pev_expires_idx ON disposal_token (id_pev, expires_at);
 CREATE INDEX disposal_token_unused_idx ON disposal_token (expires_at) WHERE used_at IS NULL;
 
 CREATE TABLE disposal (
@@ -90,5 +90,5 @@ CREATE TABLE disposal (
 	CONSTRAINT disposal_points_awarded_non_negative CHECK (points_awarded >= 0)
 );
 
-CREATE INDEX disposal_user_created_at_idx ON disposal (user_id, created_at DESC);
-CREATE INDEX disposal_pev_created_at_idx ON disposal (pev_id, created_at DESC);
+CREATE INDEX disposal_user_created_at_idx ON disposal (id_user, created_at DESC);
+CREATE INDEX disposal_pev_created_at_idx ON disposal (id_pev, created_at DESC);
