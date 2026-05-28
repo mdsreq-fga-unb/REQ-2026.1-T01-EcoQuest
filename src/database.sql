@@ -151,3 +151,10 @@ CREATE TABLE achievement (
 
 CREATE UNIQUE INDEX achievement_code_unique ON achievement (code);
 CREATE INDEX achievement_is_active_idx ON achievement (is_active);
+
+CREATE TABLE user_achievement (
+	id_user BIGINT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+	id_achievement BIGINT NOT NULL REFERENCES achievement(id) ON DELETE RESTRICT,
+	unlocked_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+	PRIMARY KEY (id_user, id_achievement)
+);
