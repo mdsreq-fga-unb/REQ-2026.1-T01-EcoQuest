@@ -17,3 +17,6 @@ CREATE TABLE users (
 	CONSTRAINT users_points_balance_non_negative CHECK (points_balance >= 0),
 	CONSTRAINT users_points_total_earned_non_negative CHECK (points_total_earned >= 0)
 );
+
+CREATE UNIQUE INDEX users_email_lower_unique ON users (lower(email));
+CREATE UNIQUE INDEX users_cpf_unique ON users (cpf);
