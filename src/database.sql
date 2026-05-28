@@ -1,4 +1,4 @@
-CREATE TABLE users (
+CREATE TABLE user (
 	id BIGSERIAL PRIMARY KEY,
 	email VARCHAR(256) NOT NULL,
 	name VARCHAR(256) NOT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE users (
 CREATE UNIQUE INDEX users_email_lower_unique ON users (lower(email));
 CREATE UNIQUE INDEX users_cpf_unique ON users (cpf);
 
-CREATE TABLE pevs (
+CREATE TABLE pev (
 	id BIGSERIAL PRIMARY KEY,
 	name TEXT NOT NULL,
 	-- code TEXT UNIQUE,
@@ -30,7 +30,7 @@ CREATE TABLE pevs (
 	-- CONSTRAINT pevs_code_not_empty CHECK (code IS NULL OR char_length(btrim(code)) > 0)
 );
 
-CREATE TABLE partners (
+CREATE TABLE partner (
 	id BIGSERIAL PRIMARY KEY,
 	name TEXT NOT NULL,
 	partner_type TEXT NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE partners (
 	CONSTRAINT partners_external_ref_not_empty CHECK (external_ref IS NULL OR char_length(btrim(external_ref)) > 0)
 );
 
-CREATE TABLE rewards (
+CREATE TABLE reward (
 	id BIGSERIAL PRIMARY KEY,
 	partner_id BIGINT NOT NULL REFERENCES partners(id) ON DELETE RESTRICT,
 	name TEXT NOT NULL,
