@@ -93,7 +93,7 @@ CREATE TABLE disposal (
 CREATE INDEX disposal_user_created_at_idx ON disposal (id_user, created_at DESC);
 CREATE INDEX disposal_pev_created_at_idx ON disposal (id_pev, created_at DESC);
 
-CREATE TYPE reward_redemption_status AS ENUM ('issued', 'cancelled', 'used');
+CREATE TYPE reward_redemption_status AS ENUM ('ISSUED', 'CANCELLED', 'USED');
 
 CREATE TABLE reward_redemption (
 	id BIGSERIAL PRIMARY KEY,
@@ -101,7 +101,7 @@ CREATE TABLE reward_redemption (
 	id_reward BIGINT NOT NULL REFERENCES reward(id) ON DELETE RESTRICT,
 	points_cost_snapshot INTEGER NOT NULL,
 	code TEXT NOT NULL,
-	status reward_redemption_status NOT NULL DEFAULT 'issued',
+	status reward_redemption_status NOT NULL DEFAULT 'ISSUED',
 	created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
 	expires_at TIMESTAMPTZ,
 	CONSTRAINT reward_redemption_points_cost_snapshot_positive CHECK (points_cost_snapshot > 0),
