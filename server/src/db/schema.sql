@@ -136,7 +136,7 @@ CREATE INDEX points_transaction_user_created_at_idx ON points_transaction (id_us
 CREATE UNIQUE INDEX points_transaction_disposal_unique ON points_transaction (id_disposal) WHERE id_disposal IS NOT NULL;
 CREATE UNIQUE INDEX points_transaction_redemption_unique ON points_transaction (id_reward_redemption) WHERE id_reward_redemption IS NOT NULL;
 
-CREATE TABLE achievement (
+CREATE TABLE insignia (
 	id BIGSERIAL PRIMARY KEY,
 	code TEXT NOT NULL,
 	name TEXT NOT NULL,
@@ -144,19 +144,19 @@ CREATE TABLE achievement (
 	criteria JSONB NOT NULL,
 	is_active BOOLEAN NOT NULL DEFAULT TRUE,
 	created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
-	CONSTRAINT achievement_code_not_empty CHECK (char_length(btrim(code)) > 0),
-	CONSTRAINT achievement_name_not_empty CHECK (char_length(btrim(name)) > 0),
-	CONSTRAINT achievement_description_not_empty CHECK (char_length(btrim(description)) > 0)
+	CONSTRAINT insignia_code_not_empty CHECK (char_length(btrim(code)) > 0),
+	CONSTRAINT insignia_name_not_empty CHECK (char_length(btrim(name)) > 0),
+	CONSTRAINT insignia_description_not_empty CHECK (char_length(btrim(description)) > 0)
 );
 
-CREATE UNIQUE INDEX achievement_code_unique ON achievement (code);
-CREATE INDEX achievement_is_active_idx ON achievement (is_active);
+CREATE UNIQUE INDEX insignia_code_unique ON insignia (code);
+CREATE INDEX insignia_is_active_idx ON insignia (is_active);
 
-CREATE TABLE user_achievement (
+CREATE TABLE user_insignia (
 	id_user BIGINT NOT NULL REFERENCES user(id) ON DELETE CASCADE,
-	id_achievement BIGINT NOT NULL REFERENCES achievement(id) ON DELETE RESTRICT,
+	id_insignia BIGINT NOT NULL REFERENCES insignia(id) ON DELETE RESTRICT,
 	unlocked_at TIMESTAMPTZ NOT NULL DEFAULT now(),
-	PRIMARY KEY (id_user, id_achievement)
+	PRIMARY KEY (id_user, id_insignia)
 );
 
 -- Documentação (comentários curtos por tabela/coluna)
@@ -231,16 +231,16 @@ COMMENT ON COLUMN points_transaction.id_disposal IS 'Descarte associado (apenas 
 COMMENT ON COLUMN points_transaction.id_reward_redemption IS 'Resgate associado (apenas kind=REDEMPTION).';
 COMMENT ON COLUMN points_transaction.created_at IS 'Data/hora do lançamento.';
 
-COMMENT ON TABLE achievement IS 'Catálogo de conquistas (definições e critérios).';
-COMMENT ON COLUMN achievement.id IS 'Identificador da conquista.';
-COMMENT ON COLUMN achievement.code IS 'Código único da conquista. Exemplo: "first_disposal", "recycler_level_2".';
-COMMENT ON COLUMN achievement.name IS 'Nome da conquista.';
-COMMENT ON COLUMN achievement.description IS 'Descrição/condição apresentada ao usuário.';
-COMMENT ON COLUMN achievement.criteria IS 'Critério em JSON para avaliação no backend.';
-COMMENT ON COLUMN achievement.is_active IS 'Conquista ativa para desbloqueio/exibição.';
-COMMENT ON COLUMN achievement.created_at IS 'Data/hora de criação da conquista.';
+COMMENT ON TABLE insignia IS 'Catálogo de conquistas (definições e critérios).';
+COMMENT ON COLUMN insignia.id IS 'Identificador da conquista.';
+COMMENT ON COLUMN insignia.code IS 'Código único da conquista. Exemplo: "first_disposal", "recycler_level_2".';
+COMMENT ON COLUMN insignia.name IS 'Nome da conquista.';
+COMMENT ON COLUMN insignia.description IS 'Descrição/condição apresentada ao usuário.';
+COMMENT ON COLUMN insignia.criteria IS 'Critério em JSON para avaliação no backend.';
+COMMENT ON COLUMN insignia.is_active IS 'Conquista ativa para desbloqueio/exibição.';
+COMMENT ON COLUMN insignia.created_at IS 'Data/hora de criação da conquista.';
 
-COMMENT ON TABLE user_achievement IS 'Conquistas desbloqueadas por usuário.';
-COMMENT ON COLUMN user_achievement.id_user IS 'Usuário que desbloqueou.';
-COMMENT ON COLUMN user_achievement.id_achievement IS 'Conquista desbloqueada.';
-COMMENT ON COLUMN user_achievement.unlocked_at IS 'Data/hora do desbloqueio.';
+COMMENT ON TABLE user_insignia IS 'Conquistas desbloqueadas por usuário.';
+COMMENT ON COLUMN user_insignia.id_user IS 'Usuário que desbloqueou.';
+COMMENT ON COLUMN user_insignia.id_insignia IS 'Conquista desbloqueada.';
+COMMENT ON COLUMN user_insignia.unlocked_at IS 'Data/hora do desbloqueio.';
