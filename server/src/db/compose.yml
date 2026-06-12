@@ -1,0 +1,16 @@
+services:
+    postgres:
+        image: postgres:latest
+        container_name: ecoquest_postgres
+        environment:
+            POSTGRES_USER: ${POSTGRES_USER}
+            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+            POSTGRES_DB: ${POSTGRES_DB}
+            TZ: ${TZ}
+        ports:
+            - "5432:5432"
+        volumes:
+            - ecoquest_data:/var/lib/postgresql
+
+volumes:
+    ecoquest_data:
