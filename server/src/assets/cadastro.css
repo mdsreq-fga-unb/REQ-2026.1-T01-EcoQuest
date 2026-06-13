@@ -6,11 +6,17 @@
   padding: 0;
 }
 
+html {}
+
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
 body {
   background-color: #D0EFD6;
   font-family: 'Poppins', sans-serif;
   color: #1F1F1F;
-  min-height: 100vh;
 }
 
 .header {
@@ -33,8 +39,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  padding: 104px 24px 64px;
+  height: 100%;
 }
 
 .title {
@@ -52,8 +57,7 @@ body {
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   padding: 40px;
-  width: 100%;
-  max-width: 720px;
+  width: 50%;
 }
 
 .form-grid {
