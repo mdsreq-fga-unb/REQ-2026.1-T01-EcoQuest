@@ -3,7 +3,10 @@
   "version": "1.0.50",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.tsx"
+    "dev": "bun run --watch src/index.tsx",
+    "docker:up": "docker compose -f src/db/compose.yml --env-file .env up -d",
+    "docker:down": "docker compose -f src/db/compose.yml --env-file .env down",
+    "docker:logs": "docker compose -f src/db/compose.yml --env-file .env logs -f"
   },
   "dependencies": {
     "@elysia/html": "^1.4.1",

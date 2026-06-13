@@ -292,7 +292,81 @@ document.addEventListener('DOMContentLoaded', () => {
       'aria-invalid',
       String(!valido)
     );
+
+    if (valido) {
+      verificarCpfNoServidor(cpf);
+    }
   }
+
+  function debounce(fn, delay) {
+    let timer = null;
+    return function (...args) {
+      clearTimeout(timer);
+      timer = setTimeout(() => fn.apply(this, args), delay);
+    };
+  }
+
+  const verificarCpfNoServidor = debounce(async (cpfRaw) => {
+    try {
+      const resp = await fetch('/auth/check-cpf?cpf=' + encodeURIComponent(cpfRaw));
+      const data = await resp.json();
+
+      if (data.status === 'vazio') return;
+
+      const icone = cpfStatus.querySelector('.icone');
+      const texto = cpfStatus.querySelector('.texto');
+
+      cpfLista.hidden = false;
+      cpfStatus.classList.remove('cumprido', 'pendente');
+      cpfStatus.classList.add(data.status);
+
+      icone.textContent = data.status === 'cumprido' ? '✓' : '✗';
+      texto.textContent = data.message;
+
+      cpfInput.classList.toggle('input-error', data.status !== 'cumprido');
+      cpfInput.setAttribute('aria-invalid', String(data.status !== 'cumprido'));
+    } catch (err) {
+      // Falha silenciosa: validação client-side já cobre o caso básico
+    }
+  }, 400);
+
+  const emailInput = document.getElementById('email');
+  const emailLista = document.getElementById('email-requisitos');
+  const emailStatus = document.getElementById('email-status');
+
+  const verificarEmailNoServidor = debounce(async (emailValor) => {
+    try {
+      const resp = await fetch('/auth/check-email?email=' + encodeURIComponent(emailValor));
+      const data = await resp.json();
+
+      const icone = emailStatus.querySelector('.icone');
+      const texto = emailStatus.querySelector('.texto');
+
+      if (data.status === 'vazio') {
+        emailLista.hidden = true;
+        emailStatus.classList.remove('cumprido', 'pendente');
+        emailInput.classList.remove('input-error');
+        emailInput.removeAttribute('aria-invalid');
+        return;
+      }
+
+      emailLista.hidden = false;
+      emailStatus.classList.remove('cumprido', 'pendente');
+      emailStatus.classList.add(data.status);
+
+      icone.textContent = data.status === 'cumprido' ? '✓' : '✗';
+      texto.textContent = data.message;
+
+      emailInput.classList.toggle('input-error', data.status !== 'cumprido');
+      emailInput.setAttribute('aria-invalid', String(data.status !== 'cumprido'));
+    } catch (err) {
+      // Falha silenciosa: validação client-side já cobre o caso básico
+    }
+  }, 400);
+
+  emailInput.addEventListener('input', (e) => {
+    verificarEmailNoServidor(e.target.value.trim());
+  });
 
   function senhaForte(senha) {
     const temMaiuscula = /[A-Z]/.test(senha);
