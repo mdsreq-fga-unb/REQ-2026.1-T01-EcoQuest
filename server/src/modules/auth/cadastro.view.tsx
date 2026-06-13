@@ -47,6 +47,12 @@ export function CadastroView() {
               <div class="field">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" />
+                <ul class="senha-requisitos" id="email-requisitos" hidden>
+                  <li id="email-status">
+                    <span class="icone">✗</span>
+                    <span class="texto">Email inválido</span>
+                  </li>
+                </ul>
               </div>
 
               <div class="field">
