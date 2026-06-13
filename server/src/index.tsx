@@ -1,5 +1,6 @@
 import { Html, html } from "@elysia/html";
 import { Elysia } from "elysia";
+import { CadastroView, LoginView } from "./modules/auth/views";
 
 const app = new Elysia()
 	.use(html())
@@ -36,13 +37,60 @@ const app = new Elysia()
 			</body>
 		</html>
 	))
-
-	// 3. HTMX Endpoint: Returns raw hypermedia fragments (not full pages)
+	.get('/auth/login', () => <LoginView />)
+	.get('/auth/cadastro', () => <CadastroView />)
 	.post("/clicked", () => (
 		<div id="result" style="color: green; font-weight: bold;">
 			⚡ Content swapped instantly by HTMX from Elysia!
 		</div>
 	))
+	.get("/assets/*", async ({ path, set }) => {
+		const file = Bun.file(`./src${path}`);
+		if (!(await file.exists())) {
+			set.status = 404;
+			return "Not found";
+		}
+		
+		return file;
+	})
+	.post("/auth/cadastro", ({ body }) => {
+		const { nome, cpf, telefone, email, senha, confirmarSenha } = body as Record<string, string>;
+		const cpfDigits = (cpf ?? "").replace(/\D/g, "");
+
+		// Validação do dígito verificador do CPF
+		function cpfValido(digits: string) {
+			if (digits.length !== 11) return false;
+			if (/^(\d)\1{10}$/.test(digits)) return false;
+
+			let soma = 0;
+			for (let i = 0; i < 9; i++) soma += parseInt(digits[i]) * (10 - i);
+			let resto = (soma * 10) % 11;
+			if (resto === 10 || resto === 11) resto = 0;
+			if (resto !== parseInt(digits[9])) return false;
+
+			soma = 0;
+			for (let i = 0; i < 10; i++) soma += parseInt(digits[i]) * (11 - i);
+			resto = (soma * 10) % 11;
+			if (resto === 10 || resto === 11) resto = 0;
+			if (resto !== parseInt(digits[10])) return false;
+
+			return true;
+		}
+
+		if (!cpfValido(cpfDigits)) {
+			return <div class="erro">CPF inválido. Verifique os números digitados.</div>;
+		}
+
+		// substituir por consulta real ao banco
+		const cpfJaExiste = false;
+
+		if (cpfJaExiste) {
+			return <div class="erro">Este CPF já está cadastrado no sistema.</div>;
+		}
+
+		return <div class="sucesso">Conta criada com sucesso!</div>;
+	})
+
 
 	.listen(3000);
 

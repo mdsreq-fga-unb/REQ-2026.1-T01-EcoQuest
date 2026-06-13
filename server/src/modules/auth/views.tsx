@@ -1,1 +1,2 @@
-// Feature-specific HTMX/JSX components
+export { LoginView } from "./login.view";
+export { CadastroView } from "./cadastro.view";
