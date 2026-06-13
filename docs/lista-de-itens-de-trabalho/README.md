@@ -1,27 +1,41 @@
 
 # 10. Lista de Itens de Trabalho
+# 10. Lista de Itens de Trabalho
 
-## 10.1. Lista de Itens de Trabalho
+## 10.1. Regras de negócio
 
-| ID | Nome | ID UC | Objetivo UC | RNFs Relacionados |
-| :--- | :--- | :--- | :--- | :--- |
-| **RF01** | Cadastrar usuário | **UC01** | Permitir a criação de uma conta no sistema | **RNF01** — Responsividade Mobile<br>**RNF03** — Acessibilidade Digital<br>**RNF05** — Segurança de Dados |
-| **RF02** | Autenticar usuário | **UC02** | Permitir acesso seguro ao sistema | **RNF02** — Desempenho de Resposta<br>**RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados<br>**RNF06** — Integridade de Tokens |
-| **RF03** | Recuperar senha | **UC03** | Permitir redefinição da senha | **RNF02** — Desempenho de Resposta<br>**RNF05** — Segurança de Dados<br>**RNF06** — Integridade de Tokens |
-| **RF04** | Gerenciar Perfil | **UC04** | Permitir edição de dados pessoais e preferências | **RNF01** — Responsividade Mobile<br>**RNF03** — Acessibilidade Digital<br>**RNF05** — Segurança de Dados |
-| **RF05** | Excluir conta | **UC05** | Permitir exclusão da conta conforme LGPD | **RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados |
-| **RF06** | Localizar PEVs | **UC06** | Exibir pontos de coleta próximos | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade |
-| **RF07** | Consultar detalhes do PEV | **UC07** | Exibir informações detalhadas de um ponto de coleta | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital |
-| **RF08** | Ler Token para Descarte | **UC08** | Permitir leitura de QR Code para descarte | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados<br>**RNF06** — Integridade de Tokens |
-| **RF09** | Consultar Extrato | **UC09** | Exibir histórico de descartes e saldo de créditos disponível | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados |
-| **RF10** | Exibir Catálogo de Recompensas | **UC10** | Exibir benefícios, cupons e prêmios disponíveis para resgate | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade |
-| **RF11** | Resgatar Recompensas | **UC11** | Processar o resgate de uma recompensa do catálogo | **RNF02** — Desempenho de Resposta<br>**RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados<br>**RNF06** — Integridade de Tokens |
-| **RF12** | Exibir Vitrine de Conquistas | **UC12** | Exibir marcos e medalhas conquistados pelo usuário | **RNF01** — Responsividade Mobile<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade |
-| **RF13** | Exibir Progresso da Sequência | **UC13** | Mostrar o status atual da sequência de descartes e proximidade de bônus | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF04** — Alta Disponibilidade |
-| **RF14** | Configurar Anonimato | **UC14** | Permitir que o usuário oculte sua identidade no ranking social | **RNF03** — Acessibilidade Digital<br>**RNF05** — Segurança de Dados |
-| **RF15** | Visualizar Ranking | **UC15** | Exibir ranking social com pontuação dos usuários | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade |
-| **RF16** | Visualizar Painel de Impacto Pessoal | **UC16** | Exibir métricas de impacto ambiental geradas pelo usuário | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade |
-| **RF17** | Consultar Estatísticas do Impacto da Comunidade | **UC17** | Exibir o impacto ambiental acumulado por todos os usuários da plataforma | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade |
+| ID  | Nome da Regra de Negócio                  | Descrição |
+| :--- | :--- | :--- |
+| **RN1** | Extensibilidade Modular | O backend deve ser desenvolvido via API desacoplada para permitir inclusão de novos tipos de resíduos e hardware IoT |
+| **RN2** | Gestão das Pontuações e Recompensas | A quantidade de pontos atribuída a cada tipo ou volume de resíduo poderá ser configurada pelos administradores do sistema |
+| **RN3** | Validação do Descarte | Um descarte somente será considerado válido após a leitura e validação do token emitido pelo PEV. |
+| **RN4** | Pontuação por Descarte | O sistema deve converter o volume e/ou tipo de resíduo descartado em pontos creditados na conta do usuário, conforme tabela de pontuação vigente |
+| **RN5** | Insígnias de Conquista | O sistema deve conceder insígnias automaticamente quando o usuário atingir critérios de engajamento previamente definidos |
+| **RN6** | Elegibilidade para Resgate | O usuário somente poderá resgatar recompensas quando possuir saldo de pontos igual ou superior ao valor exigido para o benefício selecionado |
+| **RN7** | Unicidade do Token | Cada token emitido para validação de descarte poderá ser utilizado apenas uma única vez |
+| **RN8** | Progresso das Conquistas | O sistema deve calcular e exibir o percentual de progresso do usuário em relação aos critérios necessários para obtenção de cada insígnia disponível |
+
+## 10.2. Lista de Itens de Trabalho
+
+| ID | Nome | ID UC | Objetivo UC | RNFs Relacionados | RNs Relacionadas |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **RF01** | Cadastrar usuário | **UC01** | Permitir a criação de uma conta no sistema | **RNF01** — Responsividade Mobile<br>**RNF03** — Acessibilidade Digital<br>**RNF05** — Segurança de Dados | — |
+| **RF02** | Autenticar usuário | **UC02** | Permitir acesso seguro ao sistema | **RNF02** — Desempenho de Resposta<br>**RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados<br>**RNF06** — Integridade de Tokens | — |
+| **RF03** | Recuperar senha | **UC03** | Permitir redefinição da senha | **RNF02** — Desempenho de Resposta<br>**RNF05** — Segurança de Dados<br>**RNF06** — Integridade de Tokens | — |
+| **RF04** | Gerenciar Perfil | **UC04** | Permitir edição de dados pessoais e preferências | **RNF01** — Responsividade Mobile<br>**RNF03** — Acessibilidade Digital<br>**RNF05** — Segurança de Dados | — |
+| **RF05** | Excluir conta | **UC05** | Permitir exclusão da conta conforme LGPD | **RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados | — |
+| **RF06** | Localizar PEVs | **UC06** | Exibir pontos de coleta próximos | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade | — |
+| **RF07** | Consultar detalhes do PEV | **UC07** | Exibir informações detalhadas de um ponto de coleta | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital | — |
+| **RF08** | Ler Token para Descarte | **UC08** | Permitir leitura de QR Code para descarte | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados<br>**RNF06** — Integridade de Tokens | **RN3** — Validação do Descarte <br>**RN4** — Pontuação por descarte<br>**RN5** — Insígnias de conquistas |
+| **RF09** | Consultar Extrato | **UC09** | Exibir histórico de descartes e saldo de créditos disponível | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados | **RN4** — Pontuação por descarte |
+| **RF10** | Exibir Catálogo de Recompensas | **UC10** | Exibir benefícios, cupons e prêmios disponíveis para resgate | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade | **RN2** — Gestão das pontuções e recompensas |
+| **RF11** | Resgatar Recompensas | **UC11** | Processar o resgate de uma recompensa do catálogo | **RNF02** — Desempenho de Resposta<br>**RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados<br>**RNF06** — Integridade de Tokens | **RN2** — Gestão das pontuções e recompensas |
+| **RF12** | Exibir Vitrine de Conquistas | **UC12** | Exibir marcos e medalhas conquistados pelo usuário | **RNF01** — Responsividade Mobile<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade | **RN5** — Insígnias de conquistas |
+| **RF13** | Exibir Progresso das Insígnias | **UC13** | Mostrar o status atual do progresso da conquista das insignias e proximidade de bônus | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF04** — Alta Disponibilidade | **RN8** — Progresso das Conquistas |
+| **RF14** | Configurar Anonimato | **UC14** | Permitir que o usuário oculte sua identidade no ranking social | **RNF03** — Acessibilidade Digital<br>**RNF05** — Segurança de Dados | — |
+| **RF15** | Visualizar Ranking | **UC15** | Exibir ranking social com pontuação dos usuários | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade | **RN4** — Pontuação por descarte |
+| **RF16** | Visualizar Painel de Impacto Pessoal | **UC16** | Exibir métricas de impacto ambiental geradas pelo usuário | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade | **RN4** — Pontuação por descarte |
+| **RF17** | Consultar Estatísticas do Impacto da Comunidade | **UC17** | Exibir o impacto ambiental acumulado por todos os usuários da plataforma | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade | — |
 
 ### UC01 — Cadastrar Usuário
 
@@ -367,30 +381,36 @@
 
 - Pós-condições: Vitrine de conquistas exibida ao usuário.
 
-### UC13 — Exibir Progresso da Sequência
+### UC13 — Exibir Progresso das Insígnias
 
 - Atores: Usuário
 
-- Objetivo: Mostrar o status atual da sequência de descartes e proximidade de bônus.
+- Objetivo: Mostrar o status atual do progresso do usuário em relação aos critérios necessários para obtenção das insígnias disponíveis e sua proximidade para conquistá-las.
 
 - Pré-condições: Usuário autenticado.
 
 - Fluxo Principal
 
-1. Usuário acessa o painel de sequência.
-2. Sistema recupera o histórico de sequência do usuário.
-3. Sistema calcula o progresso atual.
-4. Sistema exibe visualmente o status da sequência e o próximo bônus.
-5. Usuário visualiza seu progresso.
+1. Usuário acessa o painel de progresso das insígnias.
+2. Sistema recupera o histórico de descartes e demais dados relevantes do usuário.
+3. Sistema identifica as insígnias disponíveis e seus respectivos critérios de conquista.
+4. Sistema calcula o percentual de progresso do usuário para cada insígnia, com base nos critérios definidos.
+5. Sistema exibe visualmente o progresso das insígnias, indicando o percentual concluído e o que falta para sua obtenção.
+6. Usuário visualiza seu progresso e as próximas conquistas que poderá desbloquear.
 
 - Fluxos Alternativos
 
-    - 2A — Sequência zerada
+    - 2A — Nenhum progresso registrado
 
-        - 2A.1 Sistema identifica ausência de sequência ativa.
-        - 2A.2 Sistema exibe status inicial com incentivo para começar.
+        - 2A.1 Sistema identifica que o usuário ainda não possui progresso em relação aos critérios das insígnias.
+        - 2A.2 Sistema exibe todas as insígnias com progresso inicial (0%) e incentiva o usuário a realizar seu primeiro descarte responsável.
 
-- Pós-condições: Progresso da sequência exibido ao usuário.
+    - 4A — Insígnia já conquistada
+
+        - 4A.1 Sistema identifica que os critérios de determinada insígnia já foram integralmente atendidos.
+        - 4A.2 Sistema exibe a insígnia como conquistada, com progresso de 100%.
+
+- Pós-condições: O progresso atualizado das insígnias é exibido ao usuário, incluindo o percentual concluído e as conquistas já obtidas.
 
 ### UC14 — Configurar Anonimato
 
@@ -603,6 +623,7 @@ Após o cálculo da prioridade final, os Casos de Uso foram posicionados em uma 
 
 | Data | Versão | Descrição da Alteração | Autor(a) |
 |-------|-------|------|------|
-| 13/05/2026 | 1.0 | Criação do documento e estruturação dos tópicos iniciais, bem como seu conteúdo. | Joaquim e Nayla |
+| 13/05/2026 | 1.0 | Criação do documento e estruturação dos tópicos iniciais, bem como seu conteúdo. | Joaquim e Nayra |
 | 17/04/2026 | 2.0 | Correção da priorização conforme feedback do professor. | Yasmim e Joaquim |
 | 18/04/2026 | 2.1 | Corrigindo template das tabelas, adicionando os Casos de Uso e definição do MVP. | Yasmim e Joaquim |
+| 13/06/2026 | 2.2 | Adicionando regras de negócio e removendo critérios de aceitação | Yasmim |
