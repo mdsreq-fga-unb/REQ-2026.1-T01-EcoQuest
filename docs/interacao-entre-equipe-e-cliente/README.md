@@ -52,11 +52,11 @@ A cliente principal é a Prof. Dra. Juliana Dalbone, que atua como orientadora e
 | Artefato (OpenUP) | Como aparece no EcoQuest | Onde é mantido | Quando é validado |
 |---|---|---|---|
 | **Visão (Vision)** | Objetivo do produto, OE, CP | [Solução Proposta](/solucao-proposta/) | Revisões quinzenais |
-| **Stakeholder Requests** | Feedback/decisões/solicitações | [Atas](#atas) | Contínuo |
+| **Stakeholder Requests** | Feedback/decisões/solicitações | [Atas](/atas/) | Contínuo |
 | **Work Items List** | Backlog (Kanban) | GitHub Projects + [Backlog do Produto](/backlog-de-produto/) | Planejamento quinzenal |
 | **Requisitos** | User stories + Critério de Aceitação | [Requisitos de Software](/requisitos-de-software/) | Refinamento semanal |
 | **Protótipos de IU** | Wireframes/fluxos | Ferramenta/artefatos de design | Refinamento quinzenal |
-| **Change Request (CR)** | Solicitações de mudança | [Atas](#atas) + backlog | Contínuo |
+| **Change Request (CR)** | Solicitações de mudança | [Atas](/atas/) + backlog | Contínuo |
 | **Critérios de aceite** | DoR/DoD + testes | [DoR e DoD](/dor-e-dod/) | Entrada (DoR) / saída (DoD) |
 | **Plano da iteração** | Escopo e prioridades | Kanban + cronograma | Quinzenal |
 	
@@ -64,7 +64,7 @@ A cliente principal é a Prof. Dra. Juliana Dalbone, que atua como orientadora e
 
 Fluxo de CR:
 
-1. Registrar na ata ([Atas](#atas)) (CR + motivação).
+1. Registrar na ata ([Atas](/atas/)) (CR + motivação).
 2. Analisar impacto (esforço, riscos, dependências, OE/CP).
 3. Decidir/priorizar (MoSCoW) e atualizar backlog/artefatos.
 4. Validar com a cliente (assíncrono ou reunião quinzenal).
@@ -102,13 +102,23 @@ Esta seção centraliza as **atas**, **decisões** e **Change Requests (CR)** le
 
 #### Histórico de atas
 
-> [08/05/2026 - Reunião de Alinhamento e clarificação de escopo com a cliente](/interacao-entre-equipe-e-cliente/atas/08-05.md)
+> [08/05/2026 - Entrevista inicial e clarificação de escopo](/atas/08-05.md)
 > 
-> [11/05/2026 - Reunião de Alinhamento e Mudança com a equipe](/interacao-entre-equipe-e-cliente/atas/11-05.md)
+> [11/05/2026 - Reunião de Alinhamento e Mudança com a equipe](/atas/11-05.md)
 > 
-> [16/05/2026 - Validação Assíncrona dos Requisitos e Regras de Negócio](/interacao-entre-equipe-e-cliente/atas/16-05.md)
+> [13/05/2026 - Brainstorming de fluxo de simulação e recompensas](/atas/13-05.md)
 > 
-> Adicione novas atas acima desta linha.
+> [16/05/2026 - Validação Assíncrona dos Requisitos e Regras de Negócio](/atas/16-05.md)
+> 
+> [17/05/2026 - Validação de wireframe de simulação de descarte](/atas/17-05.md)
+> 
+> [04/06/2026 - Brainstorming de identidade visual](/atas/04-06-brainstorming.md)
+> 
+> [04/06/2026 - Validação de wireframes](/atas/04-06-validacao.md)
+> 
+> [12/06/2026 - Validação de identidade visual](/atas/12-06.md)
+> 
+> Histórico completo em [Atas](/atas/).
 
 
 ## Histórico de Versão
@@ -121,3 +131,4 @@ Esta seção centraliza as **atas**, **decisões** e **Change Requests (CR)** le
 | 18/05/2026 | 1.1 | Adicionar registro de feedback e decisões, validação, e tratamento de mudanças. | João Victor |
 | 18/05/2026 | 1.2 | Adicionar histórico de reuniões e atas. | João Victor |
 | 18/05/2026 | 1.3 | Simplificação e formato mais adequado ao template. | João Victor |
+| 12/06/2026 | 1.4 | Atualização dos links e centralização das evidências em /atas. | João Victor |

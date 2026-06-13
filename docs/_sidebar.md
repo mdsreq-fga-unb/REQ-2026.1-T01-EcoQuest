@@ -17,6 +17,7 @@
   * 
 
 * **Acompanhamento**
+  * [Ata - Reuniões](atas/)
   * [Cronograma e Entregas](cronograma-e-entregas/)
   * [Lições Aprendidas](licoes-aprendidas/)
   * [Entregas de Unidade](entregas/)
