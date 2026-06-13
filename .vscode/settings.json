@@ -1,6 +1,7 @@
 {
     "livePreview.defaultPreviewPath": "/docs/index.html",
     "editor.codeActionsOnSave": {
-        "source.organizeImports.biome": "explicit"
+        "source.organizeImports.biome": "explicit",
+        "source.fixAll.biome": "explicit"
     }
 }
