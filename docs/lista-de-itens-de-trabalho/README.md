@@ -1,5 +1,3 @@
-
-# 10. Lista de Itens de Trabalho
 # 10. Lista de Itens de Trabalho
 
 ## 10.1. Regras de negócio
@@ -65,6 +63,15 @@
         - 3B.1 Sistema detecta campos inválidos ou vazios.
         - 3B.2 Sistema solicita correção.
 
+* Fluxos de Exceção
+
+    - E1 — Falha ao salvar cadastro
+
+        - E1.1 Sistema tenta persistir os dados do usuário.
+        - E1.2 Ocorre erro de comunicação com o banco de dados.
+        - E1.3 Sistema cancela a operação.
+        - E1.4 Sistema exibe mensagem informando que o cadastro não pôde ser concluído e para tentar novamente mais tarde.
+
 - Pós-condições: Conta criada no sistema.
 
 ### UC02 — Autenticar Usuário
@@ -89,6 +96,15 @@
 
         - 3A.1 Sistema rejeita autenticação.
         - 3A.2 Sistema exibe mensagem de erro.
+
+- Fluxos de Exceção
+
+    - E1 — Serviço de autenticação indisponível
+
+        - E1.1 Sistema tenta validar as credenciais.
+        - E1.2 O serviço de autenticação não responde.
+        - E1.3 Sistema impede o acesso.
+        - E1.4 Sistema informa indisponibilidade temporária e para tentar novamente mais tarde.
 
 - Pós-condições: Usuário autenticado no sistema.
 
@@ -122,6 +138,17 @@
         - 5A.1 Sistema detecta expiração do link.
         - 5A.2 Sistema solicita nova recuperação.
 
+- Fluxos de Exceção
+    - E1 — Falha no envio do link de redefinição
+
+        - E1.1 Sistema não confirma a solicitação de recuperação.
+        - E1.2 Sistema informa que o envio não foi concluído.
+
+    - E2 — Falha ao atualizar a nova senha
+
+        - E2.1 Sistema mantém a senha anterior ativa.
+        - E2.2 Sistema informa que a redefinição não foi concluída.
+
 - Pós-condições: Senha redefinida com sucesso.
 
 ### UC04 — Gerenciar Perfil
@@ -148,8 +175,18 @@
         - 5A.1 Sistema detecta inconsistências.
         - 5A.2 Sistema solicita correção.
 
-- Pós-condições: Perfil atualizado no sistema.
+- Fluxos de Exceção
 
+    - E1 — Falha ao carregar dados do perfil
+        - E1.1 Sistema não exibe informações incompletas como definitivas.
+        - E1.2 Sistema informa indisponibilidade temporária dos dados.
+
+    - E2 — Falha ao salvar alterações
+
+        - E2.1 Sistema mantém os dados anteriores do perfil.
+        - E2.2 Sistema informa que a atualização não foi concluída.
+
+- Pós-condições: Perfil atualizado no sistema.
 
 ### UC05 — Excluir Conta
 
@@ -174,6 +211,17 @@
 
         - 3A.1 Usuário cancela a operação.
         - 3A.2 Sistema mantém a conta ativa.
+
+- Fluxos de Exceção
+
+    - E1 — Falha ao remover dados da conta
+        - E1.1 Sistema não encerra a operação como concluída.
+        - E1.2 Sistema informa que a exclusão não foi realizada.
+
+    - E2 — Falha ao encerrar sessão após exclusão
+
+        - E2.1 Sistema invalida o acesso da conta removida.
+        - E2.2 Sistema informa necessidade de novo acesso caso a operação não finalize corretamente.
 
 - Pós-condições: Conta removida do sistema.
 
@@ -205,6 +253,18 @@
         - 3A.1 Sistema não encontra pontos próximos.
         - 3A.2 Sistema informa indisponibilidade.
 
+- Fluxos de Exceção
+
+    - E1 — Falha no serviço de geolocalização
+
+        - E1.1 Sistema não obtém a localização automaticamente.
+        - E1.2 Sistema oferece busca manual por endereço ou região.
+
+    - E2 — Falha ao carregar mapa ou lista de PEVs
+
+        - E2.1 Sistema informa indisponibilidade temporária.
+        - E2.2 Sistema permite nova tentativa de carregamento.
+
 - Pós-condições: Lista ou mapa de PEVs exibido ao usuário.
 
 ### UC07 — Consultar Detalhes do PEV
@@ -232,6 +292,18 @@
 
         - 2A.1 Sistema não consegue acessar os dados do ponto.
         - 2A.2 Sistema informa indisponibilidade temporária.
+
+- Fluxos de Exceção
+
+    - E1 — Falha ao recuperar detalhes do PEV
+
+        - E1.1 Sistema não exibe dados desatualizados como confirmados.
+        - E1.2 Sistema informa indisponibilidade temporária das informações.
+
+    - E2 — PEV removido ou inexistente
+
+        - E2.1 Sistema impede a consulta do ponto inválido.
+        - E2.2 Sistema orienta o usuário a selecionar outro PEV.
 
 - Pós-condições: Informações do PEV apresentadas ao usuário.
 
@@ -267,6 +339,18 @@
         - 5A.1 Sistema detecta token inválido ou expirado.
         - 5A.2 Sistema bloqueia a operação.
 
+- Fluxos de Exceção
+
+    - E1 — Falha ao acessar a câmera
+
+        - E1.1 Sistema não inicia a leitura do QR Code.
+        - E1.2 Sistema informa que a permissão ou o recurso de câmera está indisponível.
+
+    - E2 — Falha ao registrar o descarte
+
+        - E2.1 Sistema não credita pontos ao usuário.
+        - E2.2 Sistema informa que a operação não foi concluída.
+
 - Pós-condições: Descarte registrado no sistema.
 
 ### UC09 — Consultar Extrato
@@ -291,6 +375,18 @@
 
         - 2A.1 Sistema não encontra registros.
         - 2A.2 Sistema informa ausência de histórico.
+
+- Fluxos de Exceção
+
+    - E1 — Falha ao carregar histórico financeiro
+
+        - E1.1 Sistema não exibe saldo ou movimentações incompletas como definitivas.
+        - E1.2 Sistema informa indisponibilidade temporária do extrato.
+
+    - E2 — Falha ao calcular saldo atualizado
+
+        - E2.1 Sistema mantém o último saldo confiável.
+        - E2.2 Sistema informa que a atualização do saldo não foi concluída.
 
 - Pós-condições: Extrato exibido ao usuário.
 
@@ -320,6 +416,18 @@
 
         - 3A.1 Sistema não encontra recompensas cadastradas.
         - 3A.2 Sistema informa ausência de itens.
+
+- Fluxos de Exceção
+
+    - E1 — Falha ao carregar catálogo
+
+        - E1.1 Sistema não exibe lista parcial como catálogo completo.
+        - E1.2 Sistema informa indisponibilidade temporária dos itens.
+
+    - E2 — Falha ao consultar saldo do usuário
+
+        - E2.1 Sistema exibe o catálogo sem habilitar resgate dependente de saldo.
+        - E2.2 Sistema informa que a disponibilidade por pontos não pôde ser verificada.
 
 - Pós-condições: Catálogo exibido ao usuário.
 
@@ -354,6 +462,18 @@
         - 4A.1 Sistema identifica item indisponível.
         - 4A.2 Sistema informa indisponibilidade.
 
+- Fluxos de Exceção
+
+    - E1 — Falha ao debitar pontos
+
+        - E1.1 Sistema não gera cupom de benefício.
+        - E1.2 Sistema informa que o resgate não foi concluído.
+
+    - E2 — Falha ao gerar código ou cupom
+
+        - E2.1 Sistema reverte ou não confirma o débito de pontos.
+        - E2.2 Sistema informa indisponibilidade temporária do resgate.
+
 - Pós-condições: Pontos debitados e cupom gerado para o usuário.
 
 ### UC12 — Exibir Vitrine de Conquistas
@@ -378,6 +498,18 @@
 
         - 2A.1 Sistema não encontra conquistas registradas.
         - 2A.2 Sistema exibe vitrine vazia com conquistas disponíveis para obter.
+
+- Fluxos de Exceção
+
+    - E1 — Falha ao carregar conquistas
+
+        - E1.1 Sistema não exibe progresso incompleto como definitivo.
+        - E1.2 Sistema informa indisponibilidade temporária da vitrine.
+
+    - E2 — Falha ao identificar conquistas bloqueadas
+
+        - E2.1 Sistema exibe somente informações confiáveis.
+        - E2.2 Sistema informa que parte do progresso não pôde ser calculada.
 
 - Pós-condições: Vitrine de conquistas exibida ao usuário.
 
@@ -410,6 +542,29 @@
         - 4A.1 Sistema identifica que os critérios de determinada insígnia já foram integralmente atendidos.
         - 4A.2 Sistema exibe a insígnia como conquistada, com progresso de 100%.
 
+- Fluxos de Exceção
+
+    - E1 — Falha ao recuperar os dados do usuário
+
+        - E1.1 Sistema tenta recuperar o histórico de descartes e demais dados necessários para o cálculo das insígnias.
+        - E1.2 Ocorre falha na comunicação com o banco de dados ou serviço responsável.
+        - E1.3 Sistema interrompe o processamento do progresso das insígnias.
+        - E1.4 Sistema informa ao usuário que não foi possível carregar o progresso naquele momento e orienta a tentar novamente mais tarde.
+
+    - E2 — Erro no cálculo do progresso das insígnias
+
+        - E2.1 Sistema recupera os dados do usuário com sucesso.
+        - E2.2 Ocorre falha ao processar os critérios de uma ou mais insígnias.
+        - E2.3 Sistema não exibe informações inconsistentes ou incompletas.
+        - E2.4 Sistema registra o erro para auditoria e informa ao usuário que houve um problema ao calcular o progresso das insígnias.
+
+    - E3 — Falha ao carregar a interface de exibição das insígnias
+
+        - E3.1 Sistema conclui o processamento do progresso das insígnias.
+        - E3.2 Ocorre erro ao renderizar ou carregar os componentes visuais do painel.
+        - E3.3 Sistema não apresenta o painel de progresso.
+        - E3.4 Sistema exibe mensagem de indisponibilidade temporária e permite que o usuário tente recarregar a página.
+
 - Pós-condições: O progresso atualizado das insígnias é exibido ao usuário, incluindo o percentual concluído e as conquistas já obtidas.
 
 ### UC14 — Configurar Anonimato
@@ -434,6 +589,18 @@
 
         - 3A.1 Sistema identifica conflito de pseudônimo.
         - 3A.2 Sistema solicita novo pseudônimo.
+
+- Fluxos de Exceção
+
+    - E1 — Falha ao salvar preferência de anonimato
+
+        - E1.1 Sistema mantém a configuração anterior.
+        - E1.2 Sistema informa que a alteração não foi aplicada.
+
+    - E2 — Falha ao atualizar exibição no ranking
+
+        - E2.1 Sistema não confirma a aplicação da nova preferência.
+        - E2.2 Sistema informa indisponibilidade temporária da atualização.
 
 - Pós-condições: Preferência de anonimato salva e aplicada no ranking.
 
@@ -460,6 +627,18 @@
         - 2A.1 Sistema não consegue carregar os dados.
         - 2A.2 Sistema informa indisponibilidade temporária.
 
+- Fluxos de Exceção
+
+    - E1 — Falha ao carregar ranking
+
+        - E1.1 Sistema não exibe classificação incompleta como definitiva.
+        - E1.2 Sistema informa indisponibilidade temporária do ranking.
+
+    - E2 — Falha ao aplicar preferências de anonimato
+
+        - E2.1 Sistema preserva a privacidade configurada pelos usuários.
+        - E2.2 Sistema informa que o ranking não pôde ser exibido no momento.
+
 - Pós-condições: Ranking exibido ao usuário.
 
 ### UC16 — Visualizar Painel de Impacto Pessoal
@@ -485,6 +664,18 @@
         - 2A.1 Sistema não encontra histórico.
         - 2A.2 Sistema exibe painel zerado com incentivo ao primeiro descarte.
 
+- Fluxos de Exceção
+
+    - E1 — Falha ao carregar dados de descarte
+
+        - E1.1 Sistema não calcula métricas com dados incompletos.
+        - E1.2 Sistema informa indisponibilidade temporária do painel.
+
+    - E2 — Falha ao atualizar métricas após novo descarte
+
+        - E2.1 Sistema mantém as últimas métricas confiáveis.
+        - E2.2 Sistema informa que a atualização ainda não foi concluída.
+
 - Pós-condições: Métricas de impacto exibidas ao usuário.
 
 ### UC17 — Consultar Estatísticas do Impacto da Comunidade
@@ -509,6 +700,18 @@
 
         - 2A.1 Sistema não consegue carregar os dados agregados.
         - 2A.2 Sistema informa indisponibilidade temporária.
+
+- Fluxos de Exceção
+
+    - E1 — Falha ao carregar dados agregados
+
+        - E1.1 Sistema não exibe contador global incompleto como definitivo.
+        - E1.2 Sistema informa indisponibilidade temporária das estatísticas.
+
+    - E2 — Falha ao atualizar dados periódicos
+
+        - E2.1 Sistema mantém o último conjunto de dados confiável.
+        - E2.2 Sistema informa que a atualização mais recente não foi concluída.
 
 - Pós-condições: Painel de impacto da comunidade exibido ao usuário.
 
@@ -627,3 +830,4 @@ Após o cálculo da prioridade final, os Casos de Uso foram posicionados em uma 
 | 17/04/2026 | 2.0 | Correção da priorização conforme feedback do professor. | Yasmim e Joaquim |
 | 18/04/2026 | 2.1 | Corrigindo template das tabelas, adicionando os Casos de Uso e definição do MVP. | Yasmim e Joaquim |
 | 13/06/2026 | 2.2 | Adicionando regras de negócio e removendo critérios de aceitação | Yasmim |
+| 13/06/2026 | 2.3 | Adicionando fluxos de exceção | Nayra |
