@@ -98,6 +98,7 @@ export function CadastroView() {
 											fill="none"
 											xmlns="http://www.w3.org/2000/svg"
 										>
+											<title>Olho fechado</title>
 											<path
 												d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z"
 												stroke="currentColor"
@@ -129,6 +130,7 @@ export function CadastroView() {
 											xmlns="http://www.w3.org/2000/svg"
 											style="display:none;"
 										>
+											<title>Olho aberto</title>
 											<path
 												d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z"
 												stroke="currentColor"
@@ -187,6 +189,7 @@ export function CadastroView() {
 											fill="none"
 											xmlns="http://www.w3.org/2000/svg"
 										>
+											<title>Olho fechado</title>
 											<path
 												d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z"
 												stroke="currentColor"
@@ -218,6 +221,7 @@ export function CadastroView() {
 											xmlns="http://www.w3.org/2000/svg"
 											style="display:none;"
 										>
+											<title>Olho aberto</title>
 											<path
 												d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z"
 												stroke="currentColor"
