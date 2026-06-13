@@ -1,7 +1,7 @@
 
-# 10. Backlog do Produto
+# 10. Lista de Itens de Trabalho
 
-## 10.1. Backlog Geral
+## 10.1. Lista de Itens de Trabalho
 
 | ID | Nome | ID UC | Objetivo UC | RNFs Relacionados |
 | :--- | :--- | :--- | :--- | :--- |
@@ -629,7 +629,7 @@
 
 ## 10.2 Priorização
 
-A priorização do backlog foi realizada com base no modelo MoSCoW (Must Have, Should Have, Could Have e Won’t Have). Esse modelo orienta o desenvolvimento conforme os objetivos do projeto, garantindo que as funcionalidades mais relevantes sejam priorizadas durante o planejamento das entregas.
+A priorização da lista de itens de trabalho foi realizada com base no modelo MoSCoW (Must Have, Should Have, Could Have e Won’t Have). Esse modelo orienta o desenvolvimento conforme os objetivos do projeto, garantindo que as funcionalidades mais relevantes sejam priorizadas durante o planejamento das entregas.
 
 A priorização dos Casos de Uso (UC) foi definida considerando sua relevância para o funcionamento da solução, impacto no usuário e esforço técnico necessário para implementação. Para isso, foi adotado um modelo baseado em Valor Funcional (VF) e Complexidade Técnica (CT).
 
@@ -686,7 +686,7 @@ A prioridade final de cada Caso de Uso foi definida pela seguinte fórmula:
 Valor Final = Peso - Complexidade Técnica (CT)
 ```
 
-Quanto maior o valor final obtido, maior a prioridade do Caso de Uso dentro do backlog do projeto.
+Quanto maior o valor final obtido, maior a prioridade do Caso de Uso dentro da lista de itens de trabalho  do projeto.
 
 ### Classificação na Matriz de Esforço
 

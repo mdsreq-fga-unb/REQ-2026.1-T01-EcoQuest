@@ -14,9 +14,9 @@
 
 ### Declaração de Requisitos
 
-- **User Stories:** utilizadas para registrar os requisitos de forma clara, objetiva e orientada ao valor entregue ao usuário.
+- **Casos de Uso:** utilizados para registrar os requisitos de forma clara, objetiva e orientada ao valor entregue ao usuário.
 - **Casos de Uso de alto nível:** utilizados para complementar a descrição das funcionalidades principais do sistema e representar as interações mais relevantes.
-- **Critérios de aceitação:** utilizados para detalhar as condições que cada requisito deve atender para ser considerado válido e pronto para desenvolvimento.
+- **Critérios de DoR e DoD:** utilizados para detalhar as condições que cada requisito deve atender para ser considerado válido e pronto para desenvolvimento.
 
 Para manter consistência entre ER e desenvolvimento, o projeto utiliza **DoR/DoD** como critérios de prontidão e conclusão dos requisitos, conectando cada história aos objetivos (OE) e às características do produto (CP). As checklists estão em [DoR e DoD](../dor-e-dod/).
 
@@ -28,8 +28,7 @@ Para manter consistência entre ER e desenvolvimento, o projeto utiliza **DoR/Do
 
 ### Verificação e Validação de Requisitos
 
-- **DoR (Definition of Ready):** utilizado para verificar se os requisitos estão claros, completos, consistentes, rastreáveis e prontos para seguir no fluxo de desenvolvimento. O DoR confirma se cada item possui objetivo, ator, prioridade, critérios de aceitação, regras de negócio e relação com OE e CP antes de ser assumido pela equipe.
-- **Revisão de critérios de aceitação:** utilizada para verificar se os critérios definidos são claros, verificáveis e coerentes com os objetivos do projeto.
+- **DoR (Definition of Ready):** utilizado para verificar se os requisitos estão claros, completos, consistentes, rastreáveis e prontos para seguir no fluxo de desenvolvimento. O DoR confirma se cada item possui objetivo, ator, prioridade, regras de negócio e relação com OE e CP antes de ser assumido pela equipe.
 - **Feedback com stakeholders:** utilizado para validar se os requisitos refletem corretamente as necessidades da cliente e dos demais stakeholders do EcoQuest.
 - **Testes:** utilizados posteriormente para verificar se as funcionalidades implementadas atendem aos requisitos e critérios de aceitação definidos.
 
@@ -45,29 +44,37 @@ A tabela a seguir apresenta o mapeamento entre as fases do OpenUP, as atividades
 |------------------|--------------|--------|--------|-------------------|
 | **Concepção** | Elicitação e Descoberta | Levantamento inicial de requisitos | Entrevistas com cliente, Brainstorming | Identificação do problema (baixo engajamento) e definição dos requisitos iniciais |
 |  | Análise e Consenso | Alinhamento com stakeholders | Discussões em equipe, Priorização MoSCoW | Definição das funcionalidades essenciais para o MVP |
-|  | Declaração de Requisitos | Formalização inicial | User Stories, Casos de Uso de alto nível | Registro inicial das funcionalidades (missões, pontuação, validação) |
-|  | Organização e Atualização | Estruturação inicial | Criação do backlog | Backlog inicial priorizado e alinhado com os objetivos do projeto |
+|  | Declaração de Requisitos | Formalização inicial | Casos de Uso, Casos de Uso de alto nível | Registro inicial das funcionalidades (missões, pontuação, validação) |
+|  | Organização e Atualização | Estruturação inicial | Criação da lista de itens de trabalho| Lista de itens de trabalho inicial priorizado e alinhado com os objetivos do projeto |
 |  | Verificação e Validação | Avaliação inicial dos requisitos | DoR, revisão de critérios de aceitação, feedback com stakeholders | Confirmação inicial de clareza, consistência, rastreabilidade e alinhamento dos requisitos |
 | **Elaboração** | Elicitação e Descoberta | Refinamento dos requisitos | Entrevistas detalhadas, Análise de domínio | Requisitos mais claros e alinhados ao contexto acadêmico e ambiental |
 |  | Análise e Consenso | Avaliação de viabilidade | Análise de custo-benefício, Discussões técnicas | Definição do escopo viável (MVP) |
 |  | Representação de Requisitos | Modelagem da solução | Protótipos, Wireframes, Diagramas UML | Visualização das funcionalidades (quests, ranking, progresso) |
 |  | Declaração de Requisitos | Detalhamento | Critérios de aceitação, Especificação de requisitos | Requisitos prontos para desenvolvimento |
 |  | Verificação e Validação | Revisão dos requisitos refinados | DoR, revisão de critérios de aceitação, feedback com stakeholders | Confirmação de que os requisitos refinados estão claros, verificáveis e alinhados às necessidades dos stakeholders |
-|  | Organização e Atualização | Refinamento e controle dos requisitos | Atualização do backlog, versionamento, DoR | Requisitos refinados, priorizados e preparados para avançar no desenvolvimento |
+|  | Organização e Atualização | Refinamento e controle dos requisitos | Atualização da lista de itens de trabalho, versionamento, DoR | Requisitos refinados, priorizados e preparados para avançar no desenvolvimento |
 | **Construção** | Representação de Requisitos | Apoio à implementação | Protótipos evolutivos | Melhor entendimento das funcionalidades pela equipe |
 |  | Elicitação e Descoberta | Descoberta de ajustes durante a construção | Feedback de uso, revisões com stakeholders, análise de novas necessidades | Identificação de ajustes, lacunas e novas informações surgidas durante a implementação |
 |  | Declaração de Requisitos | Atualização da especificação durante a implementação | Ajuste de requisitos, critérios de aceitação e regras de negócio | Requisitos mantidos consistentes com as decisões e aprendizados da construção |
 |  | Verificação da implementação | Conferência do incremento | Testes funcionais e testes de aceitação | Garantia de que a implementação atende aos requisitos especificados |
-|  | Organização e Atualização | Controle de mudanças | Atualização do backlog, versionamento | Ajustes contínuos com base no feedback |
+|  | Organização e Atualização | Controle de mudanças | Atualização da lista de itens de trabalho, versionamento | Ajustes contínuos com base no feedback |
 |  | Análise e Consenso | Ajustes incrementais | Reuniões de acompanhamento | Correção de problemas e melhoria do sistema |
 | **Transição** | Validação com stakeholder | Aceite final | Feedback e aceite do cliente | Confirmação de que o sistema atende aos objetivos |
 |  | Organização e Atualização | Ajustes finais | Correções baseadas em feedback | Sistema refinado e pronto para uso |
 |  | Declaração de Requisitos | Consolidação | Documentação final | Requisitos formalizados e rastreáveis |
 |  | Representação de Requisitos | Documentação final | Diagramas atualizados | Visão final consistente do sistema |
 
+<iframe 
+style="border: 1px solid rgba(0, 0, 0, 0.1);"
+width="800" 
+height="450" 
+src="https://embed.figma.com/board/f6CjlyYaVd3bPZBigmWU9o/Untitled?node-id=0-1&embed-host=share" 
+allowfullscreen>
+</iframe>
+
 ## DoR e DoD
 
-Checklists de **Definition of Ready (DoR)** e **Definition of Done (DoD)** para itens do backlog (*Work Items List*).
+Checklists de **Definition of Ready (DoR)** e **Definition of Done (DoD)** para a lista de itens de trabalho.
 
 Cada requisito deve indicar **OE** e **CP** (ver [Solução Proposta](/solucao-proposta/)).
 
@@ -80,7 +87,7 @@ Um item só cruza o Commitment Point do Kanban se todas as perguntas abaixo fore
 _Verifica se o "o quê" e o "por quê" estão absolutamente claros para toda a equipe._
 
 > - O ator, qualquer entidade externa ao sistema que interage com ele para atingir um objetivo, está nomeado, seu papel está descrito e seu objetivo de negócio está explícito no Caso de Uso?
-> - O IP foi calculado, o quadrante definido e a classificação MoSCoW registrada no backlog?
+> - O IP foi calculado, o quadrante definido e a classificação MoSCoW registrada na lista de itens de trabalho ?
 > - Os critérios de aceitação — condições verificáveis que definem as formas de uso das funcionalidades implementadas no UC, existem e estão ligados ao OE e CP correspondentes?
 > - As regras de negócio estão devidamente verificadas dentro do contexto? _(Critério de completude do contexto de negócio, especialmente para lógicas de gamificação: missões, tokens, progressão e recompensas.)_
 > - O validador, o canal de validação e o critério de aprovação estão definidos e registrados no UC?
@@ -131,7 +138,7 @@ _Atesta que o código foi construído com excelência técnica, integrado sem qu
 
 ##### Dimensão de Integração e Documentação
 
-- [ ] A rastreabilidade bidirecional (OE → CP → UC → Backlog → AC) foi mapeada e atualizada na ferramenta de gestão.
+- [ ] A rastreabilidade bidirecional (OE → CP → UC → Lista de itens de trabalho → AC) foi mapeada e atualizada na ferramenta de gestão.
 - [ ] A documentação técnica relevante (decisões de arquitetura, diagramas UML, mudanças de banco de dados) foi atualizada na GitHub Pages oficial do projeto.
 - [ ] O código da _feature branch_ foi integrado na branch principal sem conflitos e o _build_ no servidor de CI passou integralmente.
 - [ ] O incremento de software foi implantado (_deploy_) com sucesso no ambiente de Homologação/Staging.
@@ -158,7 +165,7 @@ _Atestado de forma síncrona ou assíncrona junto à cliente. É o gatilho final
 flowchart TD
     OKR(["🎯 OKR Semanal Definido"])
     DOR{"Item passa\npelo DoR?"}
-    REFINE["↩️ Refinamento de Backlog"]
+    REFINE["↩️ Refinamento da lista de itens de trabalho"]
     CP["📌 Commitment Point — Kanban"]
     WIP["⚙️ Desenvolvimento com WIP Controlado"]
     DOD1{"DoD Nível 1\nDone Técnico?"}

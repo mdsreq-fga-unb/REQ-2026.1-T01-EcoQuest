@@ -22,12 +22,12 @@ A cliente principal é a Prof. Dra. Juliana Dalbone, que atua como orientadora e
 - **WhatsApp**: alinhamentos rápidos (decisões vão para ata).
 - **E-mail**: validação assíncrona e envio de artefatos.
 - **GitHub**: versionamento e documentação.
-- **GitHub Projects (Kanban)**: *Work Items List* (backlog).
+- **GitHub Projects (Kanban)**: *Work Items List*.
 - **GitHub Pages**: publicação da documentação.
 
 ### Frequência de Reuniões
 
-**Iteração = Sprint semanal.**
+**Iteração possui duração semanal.**
 
 | Cerimônia | Cadência | Objetivo | Registro |
 |---|---|---|---|
@@ -53,10 +53,10 @@ A cliente principal é a Prof. Dra. Juliana Dalbone, que atua como orientadora e
 |---|---|---|---|
 | **Visão (Vision)** | Objetivo do produto, OE, CP | [Solução Proposta](/solucao-proposta/) | Revisões quinzenais |
 | **Stakeholder Requests** | Feedback/decisões/solicitações | [Atas](#atas) | Contínuo |
-| **Work Items List** | Backlog (Kanban) | GitHub Projects + [Backlog do Produto](/backlog-de-produto/) | Planejamento quinzenal |
-| **Requisitos** | User stories + Critério de Aceitação | [Requisitos de Software](/requisitos-de-software/) | Refinamento semanal |
+| **Work Items List** | Backlog (Kanban) | GitHub Projects + [Lista de Itens de Trabalho](/lista-de-itens-de-trabalho/) | Planejamento quinzenal |
+| **Requisitos** | Casos de Uso + Critérios de Dor e DoD | [Requisitos de Software](/requisitos-de-software/) | Refinamento semanal |
 | **Protótipos de IU** | Wireframes/fluxos | Ferramenta/artefatos de design | Refinamento quinzenal |
-| **Change Request (CR)** | Solicitações de mudança | [Atas](#atas) + backlog | Contínuo |
+| **Change Request (CR)** | Solicitações de mudança | [Atas](#atas) + Lista de Itens de Trabalho | Contínuo |
 | **Critérios de aceite** | DoR/DoD + testes | [DoR e DoD](/dor-e-dod/) | Entrada (DoR) / saída (DoD) |
 | **Plano da iteração** | Escopo e prioridades | Kanban + cronograma | Quinzenal |
 	
@@ -66,14 +66,14 @@ Fluxo de CR:
 
 1. Registrar na ata ([Atas](#atas)) (CR + motivação).
 2. Analisar impacto (esforço, riscos, dependências, OE/CP).
-3. Decidir/priorizar (MoSCoW) e atualizar backlog/artefatos.
+3. Decidir/priorizar (MoSCoW) e atualizar artefatos.
 4. Validar com a cliente (assíncrono ou reunião quinzenal).
 
 ### Resolução de conflitos e divergências
 
 1. Analista de Requisitos media e propõe alternativas.
 2. Decisão por critérios: OE/CP, valor, riscos, prazo.
-3. Impasse: cliente principal decide; registrar em ata e backlog.
+3. Impasse: cliente principal decide; registrar em ata e .
 
 ### Atas
 
