@@ -35,31 +35,42 @@
 
 1. Usuário acessa a tela de cadastro.
 2. Usuário informa e-mail, senha e dados básicos.
-3. Sistema valida os dados informados.
-4. Sistema cria a conta do usuário.
-5. Sistema confirma o cadastro realizado.
+3. Sistema valida os campos obrigatórios e o formato dos dados informados (RN01, RN02).
+4. Sistema verifica se o e-mail informado ainda não possui cadastro ativo (RN03).
+5. Sistema cria a conta do usuário, armazenando os dados de forma segura.
+6. Sistema confirma o cadastro realizado.
 
 - Fluxos Alternativos
 
-    - 3A — E-mail já cadastrado
+    - 4A — E-mail já cadastrado
 
-        - 3A.1 Sistema identifica e-mail existente.
-        - 3A.2 Sistema exibe mensagem de erro.
+        - 4A.1 Sistema identifica e-mail existente.
+        - 4A.2 Sistema informa que o e-mail já está vinculado a uma conta (RN03).
 
     - 3B — Dados inválidos
 
-        - 3B.1 Sistema detecta campos inválidos ou vazios.
+        - 3B.1 Sistema detecta campos inválidos ou vazios (RN01, RN02).
         - 3B.2 Sistema solicita correção.
 
 - Pós-condições: Conta criada no sistema.
 
-- Critérios de aceitação
+- Fluxos de Exceção
 
-    - O sistema deve permitir cadastro com e-mail, senha e dados básicos.
-    - O sistema deve validar campos obrigatórios.
-    - O sistema não deve permitir e-mails duplicados.
-    - O sistema deve exibir mensagem de sucesso após cadastro.
-    - O sistema deve armazenar os dados do usuário com segurança.
+    - E1 — Falha de comunicação com o servidor
+
+        - E1.1 Sistema não conclui a criação da conta.
+        - E1.2 Sistema informa a falha e orienta o usuário a tentar novamente.
+
+    - E2 — Falha ao armazenar os dados do usuário
+
+        - E2.1 Sistema cancela a operação de cadastro.
+        - E2.2 Sistema não cria conta parcial ou inconsistente.
+
+- Regras de Negócio
+
+    - RN01 — O cadastro deve conter e-mail, senha e dados básicos obrigatórios.
+    - RN02 — Os dados informados devem respeitar formatos válidos para cadastro.
+    - RN03 — O e-mail do usuário deve ser único entre contas ativas.
 
 
 ### UC02 — Autenticar Usuário
@@ -74,26 +85,36 @@
 
 1. Usuário acessa a tela de login.
 2. Usuário informa e-mail e senha.
-3. Sistema valida as credenciais.
-4. Sistema inicia sessão autenticada.
+3. Sistema valida as credenciais informadas (RN01, RN02).
+4. Sistema inicia sessão autenticada protegida (RN03).
 5. Sistema libera acesso às funcionalidades.
 
 - Fluxos Alternativos
 
     - 3A — Credenciais inválidas
 
-        - 3A.1 Sistema rejeita autenticação.
+        - 3A.1 Sistema rejeita autenticação para credenciais inválidas (RN02).
         - 3A.2 Sistema exibe mensagem de erro.
 
 - Pós-condições: Usuário autenticado no sistema.
 
-- Critérios de aceitação
+- Fluxos de Exceção
 
-    - O sistema deve permitir login com e-mail e senha válidos.
-    - O sistema deve negar acesso para credenciais inválidas.
-    - O sistema deve iniciar sessão autenticada após login bem-sucedido.
-    - O sistema deve exibir mensagem de erro em caso de falha.
-    - O sistema deve proteger a sessão do usuário.
+    - E1 — Serviço de autenticação indisponível
+
+        - E1.1 Sistema não inicia a sessão do usuário.
+        - E1.2 Sistema informa indisponibilidade temporária.
+
+    - E2 — Sessão não pôde ser criada
+
+        - E2.1 Sistema bloqueia o acesso às funcionalidades autenticadas.
+        - E2.2 Sistema orienta o usuário a realizar nova tentativa de login.
+
+- Regras de Negócio
+
+    - RN01 — O login deve ser realizado com e-mail e senha cadastrados.
+    - RN02 — Credenciais inválidas não devem conceder acesso ao sistema.
+    - RN03 — Toda sessão autenticada deve ser protegida contra uso indevido.
 
 ### UC03 — Recuperar Senha
 
@@ -108,32 +129,45 @@
 1. Usuário solicita recuperação de senha.
 2. Sistema solicita e-mail cadastrado.
 3. Usuário informa o e-mail.
-4. Sistema envia link seguro de redefinição.
-5. Usuário acessa o link recebido.
-6. Usuário informa nova senha.
-7. Sistema atualiza a senha.
+4. Sistema verifica se o e-mail pertence a uma conta cadastrada (RN01).
+5. Sistema envia link seguro de redefinição com prazo de validade (RN02).
+6. Usuário acessa o link recebido.
+7. Sistema valida se o link ainda está vigente (RN02).
+8. Usuário informa nova senha.
+9. Sistema valida a nova senha (RN03).
+10. Sistema atualiza a senha.
 
 - Fluxos Alternativos
 
-    - 3A — E-mail não encontrado
+    - 4A — E-mail não encontrado
 
-        - 3A.1 Sistema não localiza cadastro.
-        - 3A.2 Sistema informa erro.
+        - 4A.1 Sistema não localiza cadastro para o e-mail informado (RN01).
+        - 4A.2 Sistema informa erro.
 
-    - 5A — Link expirado
+    - 7A — Link expirado
 
-        - 5A.1 Sistema detecta expiração do link.
-        - 5A.2 Sistema solicita nova recuperação.
+        - 7A.1 Sistema detecta expiração do link (RN02).
+        - 7A.2 Sistema solicita nova recuperação.
 
 - Pós-condições: Senha redefinida com sucesso.
 
-- Critérios de aceitação
+- Fluxos de Exceção
 
-    - O sistema deve permitir solicitação de recuperação via e-mail.
-    - O sistema deve enviar link seguro para redefinição.
-    - O sistema deve permitir cadastro de nova senha válida.
-    - O sistema deve invalidar links expirados.
-    - O sistema deve informar quando o e-mail não estiver cadastrado.
+    - E1 — Falha no envio do link de redefinição
+
+        - E1.1 Sistema não confirma a solicitação de recuperação.
+        - E1.2 Sistema informa que o envio não foi concluído.
+
+    - E2 — Falha ao atualizar a nova senha
+
+        - E2.1 Sistema mantém a senha anterior ativa.
+        - E2.2 Sistema informa que a redefinição não foi concluída.
+
+- Regras de Negócio
+
+    - RN01 — A recuperação de senha deve estar vinculada a um e-mail cadastrado.
+    - RN02 — O link de redefinição deve ser seguro, individual e possuir prazo de validade.
+    - RN03 — A nova senha deve atender aos critérios mínimos de validade definidos para cadastro.
 
 ### UC04 — Gerenciar Perfil
 
@@ -149,25 +183,35 @@
 2. Sistema exibe os dados atuais.
 3. Usuário altera as informações desejadas.
 4. Usuário salva as alterações.
-5. Sistema valida os novos dados.
+5. Sistema valida os novos dados e preferências informadas (RN01, RN02, RN03).
 6. Sistema atualiza o perfil.
 
 - Fluxos Alternativos
 
     - 5A — Dados inválidos
 
-        - 5A.1 Sistema detecta inconsistências.
+        - 5A.1 Sistema detecta inconsistências nos dados informados (RN01).
         - 5A.2 Sistema solicita correção.
 
 - Pós-condições: Perfil atualizado no sistema.
 
-- Critérios de aceitação
+- Fluxos de Exceção
 
-    - O sistema deve exibir os dados atuais do usuário.
-    - O sistema deve permitir edição dos dados pessoais.
-    - O sistema deve validar os dados informados.
-    - O sistema deve salvar as alterações realizadas.
-    - O sistema deve permitir atualização das preferências de privacidade.
+    - E1 — Falha ao carregar dados do perfil
+
+        - E1.1 Sistema não exibe informações incompletas como definitivas.
+        - E1.2 Sistema informa indisponibilidade temporária dos dados.
+
+    - E2 — Falha ao salvar alterações
+
+        - E2.1 Sistema mantém os dados anteriores do perfil.
+        - E2.2 Sistema informa que a atualização não foi concluída.
+
+- Regras de Negócio
+
+    - RN01 — Dados pessoais editáveis devem respeitar formatos válidos.
+    - RN02 — Preferências de privacidade só podem ser alteradas pelo próprio usuário autenticado.
+    - RN03 — Dados restritos do perfil não devem ser alterados sem permissão.
 
 ### UC05 — Excluir Conta
 
@@ -180,10 +224,10 @@
 - Fluxo Principal
 
 1. Usuário acessa a opção de exclusão da conta.
-2. Sistema solicita confirmação da operação.
+2. Sistema solicita confirmação explícita da operação (RN01).
 3. Usuário confirma a exclusão.
-4. Sistema remove os dados do usuário.
-5. Sistema encerra a sessão ativa.
+4. Sistema remove ou anonimiza os dados do usuário conforme a LGPD (RN02).
+5. Sistema encerra a sessão ativa e invalida o acesso da conta removida (RN03).
 6. Sistema confirma exclusão da conta.
 
 - Fluxos Alternativos
@@ -195,13 +239,23 @@
 
 - Pós-condições: Conta removida do sistema.
 
-- Critérios de aceitação
+- Fluxos de Exceção
 
-    - O sistema deve solicitar confirmação antes da exclusão.
-    - O sistema deve remover os dados do usuário conforme LGPD.
-    - O sistema deve encerrar a sessão após exclusão.
-    - O sistema deve impedir acesso à conta excluída.
-    - O sistema deve informar sucesso da operação.
+    - E1 — Falha ao remover dados da conta
+
+        - E1.1 Sistema não encerra a operação como concluída.
+        - E1.2 Sistema informa que a exclusão não foi realizada.
+
+    - E2 — Falha ao encerrar sessão após exclusão
+
+        - E2.1 Sistema invalida o acesso da conta removida.
+        - E2.2 Sistema informa necessidade de novo acesso caso a operação não finalize corretamente.
+
+- Regras de Negócio
+
+    - RN01 — A exclusão da conta exige confirmação explícita do usuário autenticado.
+    - RN02 — A remoção ou anonimização dos dados deve seguir as diretrizes da LGPD.
+    - RN03 — Conta excluída não deve permitir novo acesso ao sistema.
 
 ### UC06 — Localizar PEVs
 
@@ -214,8 +268,8 @@
 - Fluxo Principal
 
 1. Usuário acessa o mapa de PEVs.
-2. Sistema obtém a geolocalização do usuário.
-3. Sistema busca os PEVs próximos.
+2. Sistema obtém a geolocalização do usuário mediante permissão (RN01).
+3. Sistema busca os PEVs próximos conforme raio ou região definida (RN02, RN03).
 4. Sistema exibe mapa interativo com os pontos disponíveis.
 5. Usuário visualiza os PEVs disponíveis.
 
@@ -224,7 +278,7 @@
     - 2A — Localização negada
 
         - 2A.1 Usuário nega acesso à localização.
-        - 2A.2 Sistema solicita localização manual.
+        - 2A.2 Sistema solicita localização manual (RN01).
 
     - 3A — Nenhum PEV encontrado
 
@@ -233,13 +287,23 @@
 
 - Pós-condições: Lista ou mapa de PEVs exibido ao usuário.
 
-- Critérios de aceitação
+- Fluxos de Exceção
 
-    - O sistema deve exibir mapa interativo dos PEVs.
-    - O sistema deve utilizar geolocalização do usuário.
-    - O sistema deve exibir os PEVs mais próximos.
-    - O sistema deve permitir localização manual caso a permissão seja negada.
-    - O sistema deve informar quando não houver PEVs disponíveis.
+    - E1 — Falha no serviço de geolocalização
+
+        - E1.1 Sistema não obtém a localização automaticamente.
+        - E1.2 Sistema oferece busca manual por endereço ou região.
+
+    - E2 — Falha ao carregar mapa ou lista de PEVs
+
+        - E2.1 Sistema informa indisponibilidade temporária.
+        - E2.2 Sistema permite nova tentativa de carregamento.
+
+- Regras de Negócio
+
+    - RN01 — A geolocalização automática depende da permissão do usuário.
+    - RN02 — A busca deve considerar PEVs próximos à localização atual ou informada manualmente.
+    - RN03 — Apenas PEVs ativos devem ser exibidos nos resultados.
 
 ### UC07 — Consultar Detalhes do PEV
 
@@ -252,7 +316,7 @@
 - Fluxo Principal
 
 1. Usuário seleciona um PEV no mapa.
-2. Sistema recupera as informações do ponto.
+2. Sistema recupera as informações do ponto selecionado (RN01).
 3. Sistema exibe:
     - horários;
     - materiais aceitos;
@@ -264,18 +328,28 @@
 
     - 2A — PEV indisponível
 
-        - 2A.1 Sistema não consegue acessar os dados do ponto.
+        - 2A.1 Sistema não consegue acessar os dados do ponto selecionado (RN03).
         - 2A.2 Sistema informa indisponibilidade temporária.
 
 - Pós-condições: Informações do PEV apresentadas ao usuário.
 
-- Critérios de aceitação
+- Fluxos de Exceção
 
-    - O sistema deve exibir horários de funcionamento do PEV.
-    - O sistema deve informar materiais aceitos.
-    - O sistema deve exibir capacidade de coleta.
-    - O sistema deve exibir endereço do ponto.
-    - O sistema deve informar indisponibilidade caso os dados não possam ser carregados.
+    - E1 — Falha ao recuperar detalhes do PEV
+
+        - E1.1 Sistema não exibe dados desatualizados como confirmados.
+        - E1.2 Sistema informa indisponibilidade temporária das informações.
+
+    - E2 — PEV removido ou inexistente
+
+        - E2.1 Sistema impede a consulta do ponto inválido.
+        - E2.2 Sistema orienta o usuário a selecionar outro PEV.
+
+- Regras de Negócio
+
+    - RN01 — Um PEV consultável deve possuir cadastro ativo no sistema.
+    - RN02 — Os detalhes do PEV devem incluir endereço, horários, materiais aceitos e capacidade de coleta.
+    - RN03 — PEV indisponível ou removido não deve ser apresentado como opção válida para descarte.
 
 ### UC08 — Ler Token para Descarte
 
@@ -293,32 +367,41 @@
 2. Sistema ativa a câmera do dispositivo.
 3. Usuário aponta a câmera para o QR Code.
 4. Sistema realiza leitura do token.
-5. Sistema valida o token recebido.
-6. Sistema registra a operação de descarte.
+5. Sistema valida o token recebido (RN01, RN02).
+6. Sistema registra a operação de descarte vinculada ao usuário e ao PEV (RN03).
 7. Sistema confirma leitura realizada.
 
 - Fluxos Alternativos
 
     - 4A — QR Code inválido
 
-        - 4A.1 Sistema não reconhece o código.
+        - 4A.1 Sistema não reconhece o código (RN01).
         - 4A.2 Sistema solicita nova leitura.
 
     - 5A — Token expirado
 
-        - 5A.1 Sistema detecta token inválido ou expirado.
+        - 5A.1 Sistema detecta token inválido ou expirado (RN02).
         - 5A.2 Sistema bloqueia a operação.
 
 - Pós-condições: Descarte registrado no sistema.
 
-- Critérios de aceitação
+- Fluxos de Exceção
 
-    - O sistema deve permitir leitura do QR Code pela câmera.
-    - O sistema deve validar o token recebido.
-    - O sistema deve registrar a operação de descarte.
-    - O sistema deve rejeitar QR Codes inválidos.
-    - O sistema deve bloquear tokens expirados.
-    - O sistema deve confirmar descarte realizado com sucesso.
+    - E1 — Falha ao acessar a câmera
+
+        - E1.1 Sistema não inicia a leitura do QR Code.
+        - E1.2 Sistema informa que a permissão ou o recurso de câmera está indisponível.
+
+    - E2 — Falha ao registrar o descarte
+
+        - E2.1 Sistema não credita pontos ao usuário.
+        - E2.2 Sistema informa que a operação não foi concluída.
+
+- Regras de Negócio
+
+    - RN01 — O QR Code deve conter token reconhecido pelo sistema.
+    - RN02 — Tokens expirados, inválidos ou já utilizados não devem gerar descarte.
+    - RN03 — Todo descarte válido deve ser vinculado ao usuário autenticado e ao PEV correspondente.
 
 ### UC09 — Consultar Extrato
 
@@ -331,10 +414,11 @@
 - Fluxo Principal
 
 1. Usuário acessa a área de extrato.
-2. Sistema recupera o histórico de descartes do usuário.
-3. Sistema exibe lista de operações realizadas.
-4. Sistema exibe saldo de créditos disponível.
-5. Usuário consulta as informações.
+2. Sistema recupera o histórico de descartes do usuário autenticado (RN03).
+3. Sistema ordena o histórico por data, da operação mais recente para a mais antiga (RN01).
+4. Sistema exibe lista de operações realizadas.
+5. Sistema calcula e exibe saldo de créditos disponível (RN02).
+6. Usuário consulta as informações.
 
 - Fluxos Alternativos
 
@@ -345,12 +429,23 @@
 
 - Pós-condições: Extrato exibido ao usuário.
 
-- Critérios de aceitação
+- Fluxos de Exceção
 
-    - O sistema deve exibir histórico detalhado de descartes realizados.
-    - O sistema deve exibir saldo de créditos disponível.
-    - O sistema deve ordenar o histórico por data.
-    - O sistema deve informar quando não houver registros.
+    - E1 — Falha ao carregar histórico financeiro
+
+        - E1.1 Sistema não exibe saldo ou movimentações incompletas como definitivas.
+        - E1.2 Sistema informa indisponibilidade temporária do extrato.
+
+    - E2 — Falha ao calcular saldo atualizado
+
+        - E2.1 Sistema mantém o último saldo confiável.
+        - E2.2 Sistema informa que a atualização do saldo não foi concluída.
+
+- Regras de Negócio
+
+    - RN01 — O extrato deve ser apresentado em ordem cronológica decrescente.
+    - RN02 — O saldo deve considerar apenas operações válidas e confirmadas.
+    - RN03 — O extrato exibido deve pertencer somente ao usuário autenticado.
 
 ### UC10 — Exibir Catálogo de Recompensas
 
@@ -364,8 +459,9 @@
 
 1. Usuário acessa o catálogo de recompensas.
 2. Sistema recupera os itens disponíveis.
-3. Sistema exibe catálogo com benefícios, cupons e prêmios.
-4. Usuário visualiza as recompensas disponíveis.
+3. Sistema verifica custo em pontos, disponibilidade de cada item e compatibilidade com o saldo do usuário (RN01, RN02, RN03).
+4. Sistema exibe catálogo com benefícios, cupons e prêmios.
+5. Usuário visualiza as recompensas disponíveis.
 
 - Fluxos Alternativos
 
@@ -381,12 +477,23 @@
 
 - Pós-condições: Catálogo exibido ao usuário.
 
-- Critérios de aceitação
+- Fluxos de Exceção
 
-    - O sistema deve exibir todos os itens disponíveis para resgate.
-    - O sistema deve indicar o custo em pontos de cada recompensa.
-    - O sistema deve indicar recompensas indisponíveis por saldo insuficiente.
-    - O sistema deve informar indisponibilidade caso o catálogo não possa ser carregado.
+    - E1 — Falha ao carregar catálogo
+
+        - E1.1 Sistema não exibe lista parcial como catálogo completo.
+        - E1.2 Sistema informa indisponibilidade temporária dos itens.
+
+    - E2 — Falha ao consultar saldo do usuário
+
+        - E2.1 Sistema exibe o catálogo sem habilitar resgate dependente de saldo.
+        - E2.2 Sistema informa que a disponibilidade por pontos não pôde ser verificada.
+
+- Regras de Negócio
+
+    - RN01 — Cada recompensa deve possuir custo em pontos definido.
+    - RN02 — Recompensas sem estoque ou inativas não devem ser disponibilizadas para resgate.
+    - RN03 — Recompensas cujo custo excede o saldo do usuário devem ser indicadas como indisponíveis para aquele usuário.
 
 ### UC11 — Resgatar Recompensas
 
@@ -401,34 +508,45 @@
 - Fluxo Principal
 
 1. Usuário seleciona uma recompensa no catálogo.
-2. Sistema exibe detalhes e custo em pontos.
+2. Sistema exibe detalhes e custo em pontos (RN01).
 3. Usuário confirma o resgate.
-4. Sistema debita os pontos do saldo.
-5. Sistema gera o código ou cupom de benefício.
-6. Sistema confirma o resgate realizado.
+4. Sistema verifica se o usuário possui saldo suficiente e se a recompensa está disponível (RN02, RN03).
+5. Sistema debita os pontos do saldo.
+6. Sistema gera o código ou cupom de benefício (RN04).
+7. Sistema confirma o resgate realizado.
 
 - Fluxos Alternativos
 
-    - 3A — Saldo insuficiente
+    - 4A — Saldo insuficiente
 
-        - 3A.1 Sistema identifica pontos insuficientes.
-        - 3A.2 Sistema bloqueia a operação e informa o usuário.
+        - 4A.1 Sistema identifica pontos insuficientes (RN02).
+        - 4A.2 Sistema bloqueia a operação e informa o usuário.
 
-    - 4A — Recompensa esgotada
+    - 4B — Recompensa esgotada
 
-        - 4A.1 Sistema identifica item indisponível.
-        - 4A.2 Sistema informa indisponibilidade.
+        - 4B.1 Sistema identifica item indisponível (RN03).
+        - 4B.2 Sistema informa indisponibilidade.
 
 - Pós-condições: Pontos debitados e cupom gerado para o usuário.
 
-- Critérios de aceitação
+- Fluxos de Exceção
 
-    - O sistema deve exibir custo em pontos antes da confirmação.
-    - O sistema deve debitar os pontos após confirmação.
-    - O sistema deve gerar código ou cupom válido para uso externo.
-    - O sistema deve bloquear resgate com saldo insuficiente.
-    - O sistema deve informar quando a recompensa estiver esgotada.
-    - O sistema deve confirmar o resgate com sucesso.
+    - E1 — Falha ao debitar pontos
+
+        - E1.1 Sistema não gera cupom de benefício.
+        - E1.2 Sistema informa que o resgate não foi concluído.
+
+    - E2 — Falha ao gerar código ou cupom
+
+        - E2.1 Sistema reverte ou não confirma o débito de pontos.
+        - E2.2 Sistema informa indisponibilidade temporária do resgate.
+
+- Regras de Negócio
+
+    - RN01 — O custo em pontos da recompensa deve ser apresentado antes da confirmação.
+    - RN02 — O usuário deve possuir saldo suficiente para concluir o resgate.
+    - RN03 — Apenas recompensas disponíveis em estoque podem ser resgatadas.
+    - RN04 — O código ou cupom gerado deve ser único e válido para uso externo.
 
 ### UC12 — Exibir Vitrine de Conquistas
 
@@ -442,9 +560,10 @@
 
 1. Usuário acessa a vitrine de conquistas.
 2. Sistema recupera as conquistas do usuário.
-3. Sistema exibe medalhas e marcos obtidos.
-4. Sistema exibe conquistas ainda não desbloqueadas.
-5. Usuário visualiza seu progresso.
+3. Sistema classifica conquistas entre desbloqueadas e bloqueadas (RN01, RN03).
+4. Sistema exibe medalhas e marcos obtidos.
+5. Sistema exibe conquistas ainda não desbloqueadas com suas descrições (RN02).
+6. Usuário visualiza seu progresso.
 
 - Fluxos Alternativos
 
@@ -455,12 +574,23 @@
 
 - Pós-condições: Vitrine de conquistas exibida ao usuário.
 
-- Critérios de aceitação
+- Fluxos de Exceção
 
-    - O sistema deve exibir todas as conquistas desbloqueadas pelo usuário.
-    - O sistema deve exibir conquistas ainda não obtidas.
-    - O sistema deve diferenciar visualmente conquistas obtidas das bloqueadas.
-    - O sistema deve exibir descrição de cada conquista.
+    - E1 — Falha ao carregar conquistas
+
+        - E1.1 Sistema não exibe progresso incompleto como definitivo.
+        - E1.2 Sistema informa indisponibilidade temporária da vitrine.
+
+    - E2 — Falha ao identificar conquistas bloqueadas
+
+        - E2.1 Sistema exibe somente informações confiáveis.
+        - E2.2 Sistema informa que parte do progresso não pôde ser calculada.
+
+- Regras de Negócio
+
+    - RN01 — Conquistas devem ser classificadas conforme progresso do usuário.
+    - RN02 — Cada conquista deve possuir descrição e critério de desbloqueio.
+    - RN03 — Conquistas bloqueadas não devem ser apresentadas como já obtidas.
 
 ### UC13 — Exibir Progresso da Sequência
 
@@ -474,9 +604,10 @@
 
 1. Usuário acessa o painel de sequência.
 2. Sistema recupera o histórico de sequência do usuário.
-3. Sistema calcula o progresso atual.
-4. Sistema exibe visualmente o status da sequência e o próximo bônus.
-5. Usuário visualiza seu progresso.
+3. Sistema calcula o progresso atual conforme regularidade de descartes (RN01, RN03).
+4. Sistema verifica a proximidade do próximo bônus (RN02).
+5. Sistema exibe visualmente o status da sequência e o próximo bônus.
+6. Usuário visualiza seu progresso.
 
 - Fluxos Alternativos
 
@@ -487,13 +618,23 @@
 
 - Pós-condições: Progresso da sequência exibido ao usuário.
 
-- Critérios de aceitação
+- Fluxos de Exceção
 
-    - O sistema deve exibir o número atual de descartes na sequência.
-    - O sistema deve indicar quantos descartes faltam para o próximo bônus.
-    - O sistema deve exibir o bônus que será desbloqueado.
-    - O sistema deve reiniciar a sequência caso o usuário perca a regularidade.
-    - O sistema deve notificar visualmente quando a sequência estiver próxima de quebrar.
+    - E1 — Falha ao recuperar histórico da sequência
+
+        - E1.1 Sistema não calcula progresso com dados incompletos.
+        - E1.2 Sistema informa indisponibilidade temporária da sequência.
+
+    - E2 — Falha ao calcular bônus
+
+        - E2.1 Sistema não apresenta bônus incorreto ao usuário.
+        - E2.2 Sistema informa que o próximo bônus não pôde ser calculado.
+
+- Regras de Negócio
+
+    - RN01 — A sequência deve considerar apenas descartes válidos dentro da regularidade definida.
+    - RN02 — O bônus deve ser calculado conforme quantidade de descartes válidos na sequência.
+    - RN03 — A sequência deve ser reiniciada quando o usuário perder a regularidade exigida.
 
 ### UC14 — Configurar Anonimato
 
@@ -507,26 +648,37 @@
 
 1. Usuário acessa as configurações de privacidade.
 2. Sistema exibe opções de anonimato disponíveis.
-3. Usuário escolhe ocultar posição ou definir pseudônimo.
-4. Sistema salva a preferência.
-5. Sistema aplica a configuração no ranking.
+3. Usuário escolhe ocultar posição, definir pseudônimo ou reverter a configuração de anonimato (RN01, RN03).
+4. Sistema valida a preferência selecionada e a unicidade do pseudônimo, quando aplicável (RN01, RN02).
+5. Sistema salva a preferência.
+6. Sistema aplica a configuração no ranking.
 
 - Fluxos Alternativos
 
     - 3A — Pseudônimo já utilizado
 
-        - 3A.1 Sistema identifica conflito de pseudônimo.
+        - 3A.1 Sistema identifica conflito de pseudônimo (RN02).
         - 3A.2 Sistema solicita novo pseudônimo.
 
 - Pós-condições: Preferência de anonimato salva e aplicada no ranking.
 
-- Critérios de aceitação
+- Fluxos de Exceção
 
-    - O sistema deve permitir ocultar a posição do usuário no ranking.
-    - O sistema deve permitir uso de pseudônimo no lugar do nome real.
-    - O sistema deve validar unicidade do pseudônimo.
-    - O sistema deve aplicar a configuração imediatamente no ranking.
-    - O sistema deve permitir reverter a configuração a qualquer momento.
+    - E1 — Falha ao salvar preferência de anonimato
+
+        - E1.1 Sistema mantém a configuração anterior.
+        - E1.2 Sistema informa que a alteração não foi aplicada.
+
+    - E2 — Falha ao atualizar exibição no ranking
+
+        - E2.1 Sistema não confirma a aplicação da nova preferência.
+        - E2.2 Sistema informa indisponibilidade temporária da atualização.
+
+- Regras de Negócio
+
+    - RN01 — O usuário pode ocultar sua posição ou usar pseudônimo no ranking.
+    - RN02 — Pseudônimos devem ser únicos entre usuários ativos no ranking.
+    - RN03 — O usuário pode reverter a configuração de anonimato a qualquer momento.
 
 ### UC15 — Visualizar Ranking
 
@@ -540,9 +692,11 @@
 
 1. Usuário acessa o ranking.
 2. Sistema recupera a classificação dos usuários.
-3. Sistema exibe lista ordenada por pontuação.
-4. Sistema destaca a posição do usuário no ranking.
-5. Usuário visualiza o ranking.
+3. Sistema aplica preferências de anonimato dos usuários, exibindo pseudônimos quando configurados (RN01, RN03).
+4. Sistema ordena a lista por pontuação (RN02).
+5. Sistema exibe lista ordenada por pontuação.
+6. Sistema destaca a posição do usuário no ranking quando permitido pela preferência de privacidade (RN01).
+7. Usuário visualiza o ranking.
 
 - Fluxos Alternativos
 
@@ -553,13 +707,23 @@
 
 - Pós-condições: Ranking exibido ao usuário.
 
-- Critérios de aceitação
+- Fluxos de Exceção
 
-    - O sistema deve exibir ranking ordenado por pontuação.
-    - O sistema deve destacar a posição do usuário logado.
-    - O sistema deve respeitar as configurações de anonimato de cada usuário.
-    - O sistema deve exibir nome ou pseudônimo conforme preferência do usuário.
-    - O sistema deve informar indisponibilidade caso os dados não possam ser carregados.
+    - E1 — Falha ao carregar ranking
+
+        - E1.1 Sistema não exibe classificação incompleta como definitiva.
+        - E1.2 Sistema informa indisponibilidade temporária do ranking.
+
+    - E2 — Falha ao aplicar preferências de anonimato
+
+        - E2.1 Sistema preserva a privacidade configurada pelos usuários.
+        - E2.2 Sistema informa que o ranking não pôde ser exibido no momento.
+
+- Regras de Negócio
+
+    - RN01 — O ranking deve respeitar a configuração de anonimato de cada usuário.
+    - RN02 — A classificação deve ser ordenada pela pontuação dos usuários.
+    - RN03 — Usuários com pseudônimo devem ser exibidos pelo pseudônimo, não pelo nome real.
 
 ### UC16 — Visualizar Painel de Impacto Pessoal
 
@@ -573,7 +737,7 @@
 
 1. Usuário acessa o painel de impacto pessoal.
 2. Sistema recupera os dados de descarte do usuário.
-3. Sistema calcula as métricas de impacto ambiental.
+3. Sistema calcula as métricas de impacto ambiental com base em descartes válidos (RN01, RN02).
 4. Sistema exibe indicadores como kg de CO2 evitado e resíduos desviados.
 5. Usuário visualiza seu impacto.
 
@@ -586,12 +750,22 @@
 
 - Pós-condições: Métricas de impacto exibidas ao usuário.
 
-- Critérios de aceitação
+- Fluxos de Exceção
 
-    - O sistema deve exibir kg de CO2 evitado pelo usuário.
-    - O sistema deve exibir volume de resíduos desviados do descarte irregular.
-    - O sistema deve atualizar as métricas após cada novo descarte.
-    - O sistema deve exibir painel inicial quando não houver descartes registrados.
+    - E1 — Falha ao carregar dados de descarte
+
+        - E1.1 Sistema não calcula métricas com dados incompletos.
+        - E1.2 Sistema informa indisponibilidade temporária do painel.
+
+    - E2 — Falha ao atualizar métricas após novo descarte
+
+        - E2.1 Sistema mantém as últimas métricas confiáveis.
+        - E2.2 Sistema informa que a atualização ainda não foi concluída.
+
+- Regras de Negócio
+
+    - RN01 — Métricas pessoais devem considerar apenas descartes válidos do usuário autenticado.
+    - RN02 — O impacto ambiental do usuário é mensurado em kg de CO2 evitado e volume de resíduos desviados do descarte irregular.
 
 ### UC17 — Consultar Estatísticas do Impacto da Comunidade
 
@@ -603,9 +777,9 @@
 
 - Fluxo Principal
 
-1. Usuário acessa o painel de impacto da comunidade.
-2. Sistema recupera os dados agregados de todos os usuários.
-3. Sistema calcula o impacto ambiental coletivo.
+1. Usuário acessa o painel de impacto da comunidade sem necessidade de autenticação (RN03).
+2. Sistema recupera os dados agregados de todos os usuários conforme a última atualização periódica.
+3. Sistema calcula o impacto ambiental coletivo com base em descartes válidos (RN01, RN02).
 4. Sistema exibe contador global com as métricas acumuladas.
 5. Usuário visualiza o impacto da comunidade.
 
@@ -618,13 +792,23 @@
 
 - Pós-condições: Painel de impacto da comunidade exibido ao usuário.
 
-- Critérios de aceitação
+- Fluxos de Exceção
 
-    - O sistema deve exibir contador global de resíduos descartados corretamente.
-    - O sistema deve exibir total de CO2 evitado pela comunidade.
-    - O sistema deve atualizar os dados periodicamente.
-    - O sistema deve ser acessível sem necessidade de autenticação.
-    - O sistema deve informar indisponibilidade caso os dados não possam ser carregados.
+    - E1 — Falha ao carregar dados agregados
+
+        - E1.1 Sistema não exibe contador global incompleto como definitivo.
+        - E1.2 Sistema informa indisponibilidade temporária das estatísticas.
+
+    - E2 — Falha ao atualizar dados periódicos
+
+        - E2.1 Sistema mantém o último conjunto de dados confiável.
+        - E2.2 Sistema informa que a atualização mais recente não foi concluída.
+
+- Regras de Negócio
+
+    - RN01 — Estatísticas da comunidade devem considerar apenas descartes válidos.
+    - RN02 — O impacto coletivo deve consolidar resíduos descartados corretamente e CO2 evitado.
+    - RN03 — O painel de impacto da comunidade deve ser acessível sem autenticação.
 
 
 ## 10.2 Priorização
@@ -741,3 +925,4 @@ Após o cálculo da prioridade final, os Casos de Uso foram posicionados em uma 
 | 13/05/2026 | 1.0 | Criação do documento e estruturação dos tópicos iniciais, bem como seu conteúdo. | Joaquim e Nayla |
 | 17/04/2026 | 2.0 | Correção da priorização conforme feedback do professor. | Yasmim e Joaquim |
 | 18/04/2026 | 2.1 | Corrigindo template das tabelas, adicionando os Casos de Uso e definição do MVP. | Yasmim e Joaquim |
+| 13/06/2026 | 2.2 | Inclusão de fluxos de exceção e regras de negócio nos Casos de Uso, com remoção dos critérios de aceitação. | Nayra Nery |
