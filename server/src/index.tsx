@@ -55,7 +55,7 @@ const app = new Elysia()
 		return file;
 	})
 	.use(authController)
-	.listen(8080);
+	.listen(3000);
 
 console.log(
 	`🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`,

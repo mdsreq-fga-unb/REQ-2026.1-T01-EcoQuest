@@ -6,6 +6,8 @@ import {
 	cpfJaCadastrado,
 	criarUsuario,
 	emailJaCadastrado,
+	ErroPersistenciaCadastro,
+	ErroAutenticacaoIndisponivel,
 } from "./service";
 
 function cpfValido(digits: string): boolean {
@@ -26,7 +28,6 @@ function cpfValido(digits: string): boolean {
 
 	return true;
 }
-
 
 function popupHeader(set: any, ok: boolean, message: string, redirect?: string) {
 	const detail: Record<string, unknown> = { ok, message };
@@ -63,14 +64,16 @@ export const authController = new Elysia({ prefix: "/auth" })
 			return { status: "pendente", message: "Informe um email válido" };
 		}
 
-		const jaExiste = await emailJaCadastrado(email);
-
-		if (jaExiste) {
-			return { status: "pendente", message: `Já existe uma conta com este email` };
+		try {
+			const jaExiste = await emailJaCadastrado(email);
+			if (jaExiste) {
+				return { status: "pendente", message: `Já existe uma conta com este email` };
+			}
+		} catch {
+			return { status: "vazio", message: "" };
 		}
 	})
 
-	// Checagem em tempo real: usado no campo de CPF do cadastro.
 	.get("/check-cpf", async ({ query }) => {
 		const cpfRaw = (query.cpf ?? "").trim();
 		const cpfDigits = cpfRaw.replace(/\D/g, "");
@@ -87,10 +90,13 @@ export const authController = new Elysia({ prefix: "/auth" })
 			return { status: "pendente", message: "CPF inválido" };
 		}
 
-		const jaExiste = await cpfJaCadastrado(cpfDigits);
-
-		if (jaExiste) {
-			return { status: "pendente", message: `Já existe uma conta com este CPF` };
+		try {
+			const jaExiste = await cpfJaCadastrado(cpfDigits);
+			if (jaExiste) {
+				return { status: "pendente", message: `Já existe uma conta com este CPF` };
+			}
+		} catch {
+			return { status: "vazio", message: "" };
 		}
 
 		return { status: "cumprido", message: "CPF válido" };
@@ -145,42 +151,51 @@ export const authController = new Elysia({ prefix: "/auth" })
 			return <div class="erro">As senhas não coincidem. Verifique e tente novamente.</div>;
 		}
 
-		const [cpfExiste, emailExiste] = await Promise.all([
-			cpfJaCadastrado(cpfDigits),
-			emailJaCadastrado(emailTrim),
-		]);
+		try {
+			const [cpfExiste, emailExiste] = await Promise.all([
+				cpfJaCadastrado(cpfDigits),
+				emailJaCadastrado(emailTrim),
+			]);
 
-		if (cpfExiste && emailExiste) {
-			set.status = 400;
-			return (
-				<div class="erro">
-					Já existe uma conta com este email e este CPF. Verifique os campos
-					destacados.
-				</div>
-			);
+			if (cpfExiste && emailExiste) {
+				set.status = 400;
+				return (
+					<div class="erro">
+						Já existe uma conta com este email e este CPF. Verifique os campos
+						destacados.
+					</div>
+				);
+			}
+
+			if (cpfExiste) {
+				set.status = 400;
+				return <div class="erro">Já existe uma conta com o CPF {cpf}. Verifique o campo destacado.</div>;
+			}
+
+			if (emailExiste) {
+				set.status = 400;
+				return (
+					<div class="erro">
+						Já existe uma conta com este email. Verifique o campo destacado.
+					</div>
+				);
+			}
+
+			await criarUsuario({
+				nome: nomeTrim,
+				cpf: cpfDigits,
+				telefone: telefoneDigits,
+				email: emailTrim,
+				senha,
+			});
+		} catch (err) {
+			if (err instanceof ErroPersistenciaCadastro) {
+				set.status = 503;
+				popupHeader(set, false, err.message);
+				return <div class="erro">{err.message}</div>;
+			}
+			throw err;
 		}
-
-		if (cpfExiste) {
-			set.status = 400;
-			return <div class="erro">Já existe uma conta com o CPF {cpf}. Verifique o campo destacado.</div>;
-		}
-
-		if (emailExiste) {
-			set.status = 400;
-			return (
-				<div class="erro">
-					Já existe uma conta com este email. Verifique o campo destacado.
-				</div>
-			);
-		}
-
-		await criarUsuario({
-			nome: nomeTrim,
-			cpf: cpfDigits,
-			telefone: telefoneDigits,
-			email: emailTrim,
-			senha,
-		});
 
 		popupHeader(set, true, "Conta criada com sucesso!", "/auth/login");
 		return <div class="sucesso">Conta criada com sucesso! Você já pode entrar.</div>;
@@ -195,7 +210,17 @@ export const authController = new Elysia({ prefix: "/auth" })
 			return <div class="erro">Informe email e senha.</div>;
 		}
 
-		const resultado = await autenticarUsuario(email.trim(), senha);
+		let resultado: Awaited<ReturnType<typeof autenticarUsuario>>;
+		try {
+			resultado = await autenticarUsuario(email.trim(), senha);
+		} catch (err) {
+			if (err instanceof ErroAutenticacaoIndisponivel) {
+				set.status = 503;
+				popupHeader(set, false, err.message);
+				return <div class="erro">{err.message}</div>;
+			}
+			throw err;
+		}
 
 		if (resultado.status === "usuario_nao_encontrado") {
 			set.status = 401;
@@ -209,7 +234,6 @@ export const authController = new Elysia({ prefix: "/auth" })
 			return <div class="erro">Senha incorreta. Verifique e tente novamente.</div>;
 		}
 
-		// Login OK
 		popupHeader(set, true, `Login realizado com sucesso! Bem-vindo(a), ${resultado.usuario.nome}.`, "/");
 		return <div class="sucesso">Login realizado com sucesso! Bem-vindo(a), {resultado.usuario.nome}.</div>;
 	});

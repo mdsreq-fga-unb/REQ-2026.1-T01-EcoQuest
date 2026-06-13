@@ -1,9 +1,8 @@
-// Business logic & native Postgres queries
 import { db } from "../../db";
 
 export interface NovoUsuario {
 	nome: string;
-	cpf: string; // apenas digitos (11 caracteres)
+	cpf: string;
 	telefone: string;
 	email: string;
 	senha: string;
@@ -19,92 +18,104 @@ export interface UsuarioPublico {
 	pointsTotalEarned: number;
 }
 
-/**
- * Verifica se já existe um usuário cadastrado com o e-mail informado.
- * A comparação é case-insensitive (mesmo critério do índice único do banco).
- */
+export class ErroPersistenciaCadastro extends Error {
+	constructor(causa?: unknown) {
+		super("Não foi possível concluir o cadastro. Tente novamente mais tarde.");
+		this.name = "ErroPersistenciaCadastro";
+		if (causa instanceof Error) this.cause = causa;
+	}
+}
+
+export class ErroAutenticacaoIndisponivel extends Error {
+	constructor(causa?: unknown) {
+		super("Serviço de autenticação temporariamente indisponível. Tente novamente mais tarde.");
+		this.name = "ErroAutenticacaoIndisponivel";
+		if (causa instanceof Error) this.cause = causa;
+	}
+}
+
 export async function emailJaCadastrado(email: string): Promise<boolean> {
-	const rows = await db`
-		SELECT 1
-		FROM "user"
-		WHERE lower(email) = lower(${email})
-		LIMIT 1
-	`;
-
-	return rows.length > 0;
+	try {
+		const rows = await db`
+			SELECT 1
+			FROM "user"
+			WHERE lower(email) = lower(${email})
+			LIMIT 1
+		`;
+		return rows.length > 0;
+	} catch (causa) {
+		throw new ErroPersistenciaCadastro(causa);
+	}
 }
 
-/**
- * Verifica se já existe um usuário cadastrado com o CPF informado.
- * Espera o CPF apenas com dígitos (11 caracteres).
- */
 export async function cpfJaCadastrado(cpf: string): Promise<boolean> {
-	const rows = await db`
-		SELECT 1
-		FROM "user"
-		WHERE cpf = ${cpf}
-		LIMIT 1
-	`;
-
-	return rows.length > 0;
+	try {
+		const rows = await db`
+			SELECT 1
+			FROM "user"
+			WHERE cpf = ${cpf}
+			LIMIT 1
+		`;
+		return rows.length > 0;
+	} catch (causa) {
+		throw new ErroPersistenciaCadastro(causa);
+	}
 }
 
-/**
- * Cria um novo usuário no banco, salvando o hash da senha (nunca em texto puro).
- * Retorna o usuário criado (sem o hash da senha).
- */
 export async function criarUsuario(dados: NovoUsuario): Promise<UsuarioPublico> {
 	const passwordHash = await Bun.password.hash(dados.senha, {
 		algorithm: "bcrypt",
 		cost: 12,
 	});
 
-	const [usuario] = await db`
-		INSERT INTO "user" (email, name, cpf, phone, password_hash)
-		VALUES (${dados.email}, ${dados.nome}, ${dados.cpf}, ${dados.telefone}, ${passwordHash})
-		RETURNING
-			id,
-			name AS nome,
-			email,
-			cpf,
-			phone AS telefone,
-			points_balance AS "pointsBalance",
-			points_total_earned AS "pointsTotalEarned"
-	`;
-
-	return usuario as UsuarioPublico;
+	try {
+		const [usuario] = await db`
+			INSERT INTO "user" (email, name, cpf, phone, password_hash)
+			VALUES (${dados.email}, ${dados.nome}, ${dados.cpf}, ${dados.telefone}, ${passwordHash})
+			RETURNING
+				id,
+				name AS nome,
+				email,
+				cpf,
+				phone AS telefone,
+				points_balance AS "pointsBalance",
+				points_total_earned AS "pointsTotalEarned"
+		`;
+		return usuario as UsuarioPublico;
+	} catch (causa) {
+		throw new ErroPersistenciaCadastro(causa);
+	}
 }
 
-/**
- * Resultado da tentativa de login.
- * - "ok": credenciais válidas, retorna o usuário.
- * - "usuario_nao_encontrado": não existe usuário com esse e-mail.
- * - "senha_invalida": usuário existe, mas a senha não confere.
- */
 export type LoginResultado =
 	| { status: "ok"; usuario: UsuarioPublico }
 	| { status: "usuario_nao_encontrado" }
 	| { status: "senha_invalida" };
 
-/**
- * Autentica um usuário pelo e-mail e senha.
- * A senha informada é comparada com o hash salvo via Bun.password.verify.
- */
-export async function autenticarUsuario(email: string, senha: string): Promise<LoginResultado> {
-	const rows = await db`
-		SELECT
-			id,
-			name AS nome,
-			email,
-			cpf,
-			phone AS telefone,
-			password_hash AS "passwordHash",
-			points_balance AS "pointsBalance",
-			points_total_earned AS "pointsTotalEarned"
-		FROM "user"
-		WHERE lower(email) = lower(${email})
-		LIMIT 1
-	`;
+export async function autenticarUsuario(
+	email: string,
+	senha: string,
+): Promise<LoginResultado> {
+	let rows: any[];
+
+	try {
+		rows = await db`
+			SELECT
+				id,
+				name AS nome,
+				email,
+				cpf,
+				phone AS telefone,
+				password_hash AS "passwordHash",
+				points_balance AS "pointsBalance",
+				points_total_earned AS "pointsTotalEarned"
+			FROM "user"
+			WHERE lower(email) = lower(${email})
+			LIMIT 1
+		`;
+	} catch (causa) {
+		throw new ErroAutenticacaoIndisponivel(causa);
+	}
 
 	if (rows.length === 0) {
 		return { status: "usuario_nao_encontrado" };
