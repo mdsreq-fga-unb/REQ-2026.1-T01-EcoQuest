@@ -53,15 +53,6 @@
 
 - Pós-condições: Conta criada no sistema.
 
-- Critérios de aceitação
-
-    - O sistema deve permitir cadastro com e-mail, senha e dados básicos.
-    - O sistema deve validar campos obrigatórios.
-    - O sistema não deve permitir e-mails duplicados.
-    - O sistema deve exibir mensagem de sucesso após cadastro.
-    - O sistema deve armazenar os dados do usuário com segurança.
-
-
 ### UC02 — Autenticar Usuário
 
 - Atores: Usuário
@@ -86,14 +77,6 @@
         - 3A.2 Sistema exibe mensagem de erro.
 
 - Pós-condições: Usuário autenticado no sistema.
-
-- Critérios de aceitação
-
-    - O sistema deve permitir login com e-mail e senha válidos.
-    - O sistema deve negar acesso para credenciais inválidas.
-    - O sistema deve iniciar sessão autenticada após login bem-sucedido.
-    - O sistema deve exibir mensagem de erro em caso de falha.
-    - O sistema deve proteger a sessão do usuário.
 
 ### UC03 — Recuperar Senha
 
@@ -127,14 +110,6 @@
 
 - Pós-condições: Senha redefinida com sucesso.
 
-- Critérios de aceitação
-
-    - O sistema deve permitir solicitação de recuperação via e-mail.
-    - O sistema deve enviar link seguro para redefinição.
-    - O sistema deve permitir cadastro de nova senha válida.
-    - O sistema deve invalidar links expirados.
-    - O sistema deve informar quando o e-mail não estiver cadastrado.
-
 ### UC04 — Gerenciar Perfil
 
 - Atores: Usuário
@@ -161,13 +136,6 @@
 
 - Pós-condições: Perfil atualizado no sistema.
 
-- Critérios de aceitação
-
-    - O sistema deve exibir os dados atuais do usuário.
-    - O sistema deve permitir edição dos dados pessoais.
-    - O sistema deve validar os dados informados.
-    - O sistema deve salvar as alterações realizadas.
-    - O sistema deve permitir atualização das preferências de privacidade.
 
 ### UC05 — Excluir Conta
 
@@ -194,14 +162,6 @@
         - 3A.2 Sistema mantém a conta ativa.
 
 - Pós-condições: Conta removida do sistema.
-
-- Critérios de aceitação
-
-    - O sistema deve solicitar confirmação antes da exclusão.
-    - O sistema deve remover os dados do usuário conforme LGPD.
-    - O sistema deve encerrar a sessão após exclusão.
-    - O sistema deve impedir acesso à conta excluída.
-    - O sistema deve informar sucesso da operação.
 
 ### UC06 — Localizar PEVs
 
@@ -233,14 +193,6 @@
 
 - Pós-condições: Lista ou mapa de PEVs exibido ao usuário.
 
-- Critérios de aceitação
-
-    - O sistema deve exibir mapa interativo dos PEVs.
-    - O sistema deve utilizar geolocalização do usuário.
-    - O sistema deve exibir os PEVs mais próximos.
-    - O sistema deve permitir localização manual caso a permissão seja negada.
-    - O sistema deve informar quando não houver PEVs disponíveis.
-
 ### UC07 — Consultar Detalhes do PEV
 
 - Atores: Usuário
@@ -268,14 +220,6 @@
         - 2A.2 Sistema informa indisponibilidade temporária.
 
 - Pós-condições: Informações do PEV apresentadas ao usuário.
-
-- Critérios de aceitação
-
-    - O sistema deve exibir horários de funcionamento do PEV.
-    - O sistema deve informar materiais aceitos.
-    - O sistema deve exibir capacidade de coleta.
-    - O sistema deve exibir endereço do ponto.
-    - O sistema deve informar indisponibilidade caso os dados não possam ser carregados.
 
 ### UC08 — Ler Token para Descarte
 
@@ -311,15 +255,6 @@
 
 - Pós-condições: Descarte registrado no sistema.
 
-- Critérios de aceitação
-
-    - O sistema deve permitir leitura do QR Code pela câmera.
-    - O sistema deve validar o token recebido.
-    - O sistema deve registrar a operação de descarte.
-    - O sistema deve rejeitar QR Codes inválidos.
-    - O sistema deve bloquear tokens expirados.
-    - O sistema deve confirmar descarte realizado com sucesso.
-
 ### UC09 — Consultar Extrato
 
 - Atores: Usuário
@@ -344,13 +279,6 @@
         - 2A.2 Sistema informa ausência de histórico.
 
 - Pós-condições: Extrato exibido ao usuário.
-
-- Critérios de aceitação
-
-    - O sistema deve exibir histórico detalhado de descartes realizados.
-    - O sistema deve exibir saldo de créditos disponível.
-    - O sistema deve ordenar o histórico por data.
-    - O sistema deve informar quando não houver registros.
 
 ### UC10 — Exibir Catálogo de Recompensas
 
@@ -380,13 +308,6 @@
         - 3A.2 Sistema informa ausência de itens.
 
 - Pós-condições: Catálogo exibido ao usuário.
-
-- Critérios de aceitação
-
-    - O sistema deve exibir todos os itens disponíveis para resgate.
-    - O sistema deve indicar o custo em pontos de cada recompensa.
-    - O sistema deve indicar recompensas indisponíveis por saldo insuficiente.
-    - O sistema deve informar indisponibilidade caso o catálogo não possa ser carregado.
 
 ### UC11 — Resgatar Recompensas
 
@@ -421,15 +342,6 @@
 
 - Pós-condições: Pontos debitados e cupom gerado para o usuário.
 
-- Critérios de aceitação
-
-    - O sistema deve exibir custo em pontos antes da confirmação.
-    - O sistema deve debitar os pontos após confirmação.
-    - O sistema deve gerar código ou cupom válido para uso externo.
-    - O sistema deve bloquear resgate com saldo insuficiente.
-    - O sistema deve informar quando a recompensa estiver esgotada.
-    - O sistema deve confirmar o resgate com sucesso.
-
 ### UC12 — Exibir Vitrine de Conquistas
 
 - Atores: Usuário
@@ -454,13 +366,6 @@
         - 2A.2 Sistema exibe vitrine vazia com conquistas disponíveis para obter.
 
 - Pós-condições: Vitrine de conquistas exibida ao usuário.
-
-- Critérios de aceitação
-
-    - O sistema deve exibir todas as conquistas desbloqueadas pelo usuário.
-    - O sistema deve exibir conquistas ainda não obtidas.
-    - O sistema deve diferenciar visualmente conquistas obtidas das bloqueadas.
-    - O sistema deve exibir descrição de cada conquista.
 
 ### UC13 — Exibir Progresso da Sequência
 
@@ -487,14 +392,6 @@
 
 - Pós-condições: Progresso da sequência exibido ao usuário.
 
-- Critérios de aceitação
-
-    - O sistema deve exibir o número atual de descartes na sequência.
-    - O sistema deve indicar quantos descartes faltam para o próximo bônus.
-    - O sistema deve exibir o bônus que será desbloqueado.
-    - O sistema deve reiniciar a sequência caso o usuário perca a regularidade.
-    - O sistema deve notificar visualmente quando a sequência estiver próxima de quebrar.
-
 ### UC14 — Configurar Anonimato
 
 - Atores: Usuário
@@ -519,14 +416,6 @@
         - 3A.2 Sistema solicita novo pseudônimo.
 
 - Pós-condições: Preferência de anonimato salva e aplicada no ranking.
-
-- Critérios de aceitação
-
-    - O sistema deve permitir ocultar a posição do usuário no ranking.
-    - O sistema deve permitir uso de pseudônimo no lugar do nome real.
-    - O sistema deve validar unicidade do pseudônimo.
-    - O sistema deve aplicar a configuração imediatamente no ranking.
-    - O sistema deve permitir reverter a configuração a qualquer momento.
 
 ### UC15 — Visualizar Ranking
 
@@ -553,14 +442,6 @@
 
 - Pós-condições: Ranking exibido ao usuário.
 
-- Critérios de aceitação
-
-    - O sistema deve exibir ranking ordenado por pontuação.
-    - O sistema deve destacar a posição do usuário logado.
-    - O sistema deve respeitar as configurações de anonimato de cada usuário.
-    - O sistema deve exibir nome ou pseudônimo conforme preferência do usuário.
-    - O sistema deve informar indisponibilidade caso os dados não possam ser carregados.
-
 ### UC16 — Visualizar Painel de Impacto Pessoal
 
 - Atores: Usuário
@@ -586,13 +467,6 @@
 
 - Pós-condições: Métricas de impacto exibidas ao usuário.
 
-- Critérios de aceitação
-
-    - O sistema deve exibir kg de CO2 evitado pelo usuário.
-    - O sistema deve exibir volume de resíduos desviados do descarte irregular.
-    - O sistema deve atualizar as métricas após cada novo descarte.
-    - O sistema deve exibir painel inicial quando não houver descartes registrados.
-
 ### UC17 — Consultar Estatísticas do Impacto da Comunidade
 
 - Atores: Usuário
@@ -617,15 +491,6 @@
         - 2A.2 Sistema informa indisponibilidade temporária.
 
 - Pós-condições: Painel de impacto da comunidade exibido ao usuário.
-
-- Critérios de aceitação
-
-    - O sistema deve exibir contador global de resíduos descartados corretamente.
-    - O sistema deve exibir total de CO2 evitado pela comunidade.
-    - O sistema deve atualizar os dados periodicamente.
-    - O sistema deve ser acessível sem necessidade de autenticação.
-    - O sistema deve informar indisponibilidade caso os dados não possam ser carregados.
-
 
 ## 10.2 Priorização
 
