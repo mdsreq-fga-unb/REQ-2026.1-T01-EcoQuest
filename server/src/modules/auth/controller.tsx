@@ -1,14 +1,14 @@
 import { Html } from "@elysia/html";
 import { Elysia } from "elysia";
-import { CadastroView, LoginView } from "./views";
 import {
 	autenticarUsuario,
 	cpfJaCadastrado,
 	criarUsuario,
-	emailJaCadastrado,
-	ErroPersistenciaCadastro,
 	ErroAutenticacaoIndisponivel,
+	ErroPersistenciaCadastro,
+	emailJaCadastrado,
 } from "./service";
+import { CadastroView, LoginView } from "./views";
 
 function cpfValido(digits: string): boolean {
 	if (digits.length !== 11) return false;
