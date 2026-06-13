@@ -57,7 +57,6 @@ const app = new Elysia()
 		const { nome, cpf, telefone, email, senha, confirmarSenha } = body as Record<string, string>;
 		const cpfDigits = (cpf ?? "").replace(/\D/g, "");
 
-		// Validação do dígito verificador do CPF
 		function cpfValido(digits: string) {
 			if (digits.length !== 11) return false;
 			if (/^(\d)\1{10}$/.test(digits)) return false;
@@ -92,7 +91,7 @@ const app = new Elysia()
 	})
 
 
-	.listen(3000);
+	.listen(8080);
 
 console.log(
 	`🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`,
