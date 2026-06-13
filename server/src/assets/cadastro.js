@@ -326,7 +326,6 @@ document.addEventListener('DOMContentLoaded', () => {
       cpfInput.classList.toggle('input-error', data.status !== 'cumprido');
       cpfInput.setAttribute('aria-invalid', String(data.status !== 'cumprido'));
     } catch (err) {
-      // Falha silenciosa: validação client-side já cobre o caso básico
     }
   }, 400);
 
@@ -360,11 +359,15 @@ document.addEventListener('DOMContentLoaded', () => {
       emailInput.classList.toggle('input-error', data.status !== 'cumprido');
       emailInput.setAttribute('aria-invalid', String(data.status !== 'cumprido'));
     } catch (err) {
-      // Falha silenciosa: validação client-side já cobre o caso básico
     }
   }, 400);
 
   emailInput.addEventListener('input', (e) => {
+    emailLista.hidden = true;
+    emailStatus.classList.remove('cumprido', 'pendente');
+    emailInput.classList.remove('input-error');
+    emailInput.removeAttribute('aria-invalid');
+
     verificarEmailNoServidor(e.target.value.trim());
   });
 
