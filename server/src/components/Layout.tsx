@@ -1,12 +1,19 @@
 import { Html } from '@elysia/html'
 
 
-export function Layout({ children, title }: { children: Html; title: string }) {
+export function Layout({ children, title }: { children: any; title: string }) {
   return (
     <html>
       <head>
+        <meta charset="UTF-8" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1.0"
+        />
+
         <title>{title}</title>
-        <link rel="stylesheet" href="" />
+
+        <link rel="icon" href="../assets/img/favicon.ico" />
       </head>
       <body>
         {children}

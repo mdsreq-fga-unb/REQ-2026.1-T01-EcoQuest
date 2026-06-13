@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     confirmarSenha: 'Confirme a senha',
   };
 
-  // Máscara de CPF: 000.000.000-00
   cpfInput.addEventListener('input', (e) => {
     let value = e.target.value.replace(/\D/g, '').slice(0, 11);
 
@@ -31,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
     e.target.classList.remove('input-error');
   });
 
-  // Máscara de telefone: (00) 00000-0000
   telefoneInput.addEventListener('input', (e) => {
     let value = e.target.value.replace(/\D/g, '').slice(0, 11);
 
@@ -49,14 +47,12 @@ document.addEventListener('DOMContentLoaded', () => {
     e.target.classList.remove('input-error');
   });
 
-  // Remove highlight de erro ao digitar nos demais campos
   ['nome', 'email', 'senha', 'confirmarSenha'].forEach((id) => {
     document.getElementById(id).addEventListener('input', (e) => {
       e.target.classList.remove('input-error');
     });
   });
 
-  // Mostrar/ocultar senha (olhinho)
   document.querySelectorAll('.toggle-senha').forEach((btn) => {
     btn.addEventListener('click', () => {
       const targetId = btn.dataset.target;
@@ -68,19 +64,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (visivel) {
         input.type = 'password';
-        aberto.style.display = '';
-        fechado.style.display = 'none';
+        aberto.style.display = 'none';
+        fechado.style.display = '';
         btn.setAttribute('aria-label', 'Mostrar senha');
       } else {
         input.type = 'text';
-        aberto.style.display = 'none';
-        fechado.style.display = '';
+        aberto.style.display = '';
+        fechado.style.display = 'none';
         btn.setAttribute('aria-label', 'Ocultar senha');
       }
     });
   });
 
-  // Atualização em tempo real dos critérios de senha
   const senhaInput = document.getElementById('senha');
   const confirmarSenhaInput = document.getElementById('confirmarSenha');
   const listaRequisitos = document.getElementById('senha-requisitos');
@@ -139,13 +134,12 @@ document.addEventListener('DOMContentLoaded', () => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
 
-  // Validação de CPF (dígitos verificadores)
+  // Validação de CPF
   function cpfValido(cpf) {
     const digits = cpf.replace(/\D/g, '');
 
     if (digits.length !== 11) return false;
 
-    // Rejeita CPFs com todos os dígitos iguais (ex: 111.111.111-11)
     if (/^(\d)\1{10}$/.test(digits)) return false;
 
     let soma = 0;
@@ -167,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return true;
   }
 
-  // Validação de força da senha
+  // Validação da senha
   function senhaForte(senha) {
     const temMaiuscula = /[A-Z]/.test(senha);
     const temMinuscula = /[a-z]/.test(senha);
