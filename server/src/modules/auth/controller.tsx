@@ -29,10 +29,15 @@ function cpfValido(digits: string): boolean {
 	return true;
 }
 
-function popupHeader(set: any, ok: boolean, message: string, redirect?: string) {
+function popupHeader(
+	set: any,
+	ok: boolean,
+	message: string,
+	redirect?: string,
+) {
 	const detail: Record<string, unknown> = { ok, message };
 	if (redirect) detail.redirect = redirect;
-	set.headers["HX-Trigger"] = JSON.stringify({ "popup": detail });
+	set.headers["HX-Trigger"] = JSON.stringify({ popup: detail });
 }
 
 function emailValido(email: string): boolean {
@@ -67,7 +72,10 @@ export const authController = new Elysia({ prefix: "/auth" })
 		try {
 			const jaExiste = await emailJaCadastrado(email);
 			if (jaExiste) {
-				return { status: "pendente", message: `Já existe uma conta com este email` };
+				return {
+					status: "pendente",
+					message: `Já existe uma conta com este email`,
+				};
 			}
 		} catch {
 			return { status: "vazio", message: "" };
@@ -93,7 +101,10 @@ export const authController = new Elysia({ prefix: "/auth" })
 		try {
 			const jaExiste = await cpfJaCadastrado(cpfDigits);
 			if (jaExiste) {
-				return { status: "pendente", message: `Já existe uma conta com este CPF` };
+				return {
+					status: "pendente",
+					message: `Já existe uma conta com este CPF`,
+				};
 			}
 		} catch {
 			return { status: "vazio", message: "" };
@@ -103,7 +114,8 @@ export const authController = new Elysia({ prefix: "/auth" })
 	})
 
 	.post("/cadastro", async ({ body, set }) => {
-		const { nome, cpf, telefone, email, senha, confirmarSenha } = body as Record<string, string>;
+		const { nome, cpf, telefone, email, senha, confirmarSenha } =
+			body as Record<string, string>;
 
 		const cpfDigits = (cpf ?? "").replace(/\D/g, "");
 		const telefoneDigits = (telefone ?? "").replace(/\D/g, "");
@@ -119,13 +131,23 @@ export const authController = new Elysia({ prefix: "/auth" })
 		if (!cpfValido(cpfDigits)) {
 			set.status = 400;
 			popupHeader(set, false, "CPF inválido. Verifique os números digitados.");
-			return <div class="erro">CPF inválido. Verifique os números digitados.</div>;
+			return (
+				<div class="erro">CPF inválido. Verifique os números digitados.</div>
+			);
 		}
 
 		if (telefoneDigits.length !== 11) {
 			set.status = 400;
-			popupHeader(set, false, "Telefone inválido. Verifique os números digitados.");
-			return <div class="erro">Telefone inválido. Verifique os números digitados.</div>;
+			popupHeader(
+				set,
+				false,
+				"Telefone inválido. Verifique os números digitados.",
+			);
+			return (
+				<div class="erro">
+					Telefone inválido. Verifique os números digitados.
+				</div>
+			);
 		}
 
 		if (!emailValido(emailTrim)) {
@@ -136,19 +158,31 @@ export const authController = new Elysia({ prefix: "/auth" })
 
 		if (!senha || !senhaForte(senha)) {
 			set.status = 400;
-			popupHeader(set, false, "A senha deve ter no mínimo 8 caracteres, com letra maiúscula, minúscula, número e caractere especial.");
+			popupHeader(
+				set,
+				false,
+				"A senha deve ter no mínimo 8 caracteres, com letra maiúscula, minúscula, número e caractere especial.",
+			);
 			return (
 				<div class="erro">
-					A senha deve ter no mínimo 8 caracteres, com letra maiúscula, minúscula, número e
-					caractere especial.
+					A senha deve ter no mínimo 8 caracteres, com letra maiúscula,
+					minúscula, número e caractere especial.
 				</div>
 			);
 		}
 
 		if (senha !== confirmarSenha) {
 			set.status = 400;
-			popupHeader(set, false, "As senhas não coincidem. Verifique e tente novamente.");
-			return <div class="erro">As senhas não coincidem. Verifique e tente novamente.</div>;
+			popupHeader(
+				set,
+				false,
+				"As senhas não coincidem. Verifique e tente novamente.",
+			);
+			return (
+				<div class="erro">
+					As senhas não coincidem. Verifique e tente novamente.
+				</div>
+			);
 		}
 
 		try {
@@ -169,7 +203,11 @@ export const authController = new Elysia({ prefix: "/auth" })
 
 			if (cpfExiste) {
 				set.status = 400;
-				return <div class="erro">Já existe uma conta com o CPF {cpf}. Verifique o campo destacado.</div>;
+				return (
+					<div class="erro">
+						Já existe uma conta com o CPF {cpf}. Verifique o campo destacado.
+					</div>
+				);
 			}
 
 			if (emailExiste) {
@@ -198,7 +236,9 @@ export const authController = new Elysia({ prefix: "/auth" })
 		}
 
 		popupHeader(set, true, "Conta criada com sucesso!", "/auth/login");
-		return <div class="sucesso">Conta criada com sucesso! Você já pode entrar.</div>;
+		return (
+			<div class="sucesso">Conta criada com sucesso! Você já pode entrar.</div>
+		);
 	})
 
 	.post("/login", async ({ body, set }) => {
@@ -225,15 +265,28 @@ export const authController = new Elysia({ prefix: "/auth" })
 		if (resultado.status === "usuario_nao_encontrado") {
 			set.status = 401;
 			popupHeader(set, false, "Não existe conta cadastrada com este email.");
-			return <div class="erro">Não existe conta cadastrada com este email.</div>;
+			return (
+				<div class="erro">Não existe conta cadastrada com este email.</div>
+			);
 		}
 
 		if (resultado.status === "senha_invalida") {
 			set.status = 401;
 			popupHeader(set, false, "Senha incorreta. Verifique e tente novamente.");
-			return <div class="erro">Senha incorreta. Verifique e tente novamente.</div>;
+			return (
+				<div class="erro">Senha incorreta. Verifique e tente novamente.</div>
+			);
 		}
 
-		popupHeader(set, true, `Login realizado com sucesso! Bem-vindo(a), ${resultado.usuario.nome}.`, "/");
-		return <div class="sucesso">Login realizado com sucesso! Bem-vindo(a), {resultado.usuario.nome}.</div>;
+		popupHeader(
+			set,
+			true,
+			`Login realizado com sucesso! Bem-vindo(a), ${resultado.usuario.nome}.`,
+			"/",
+		);
+		return (
+			<div class="sucesso">
+				Login realizado com sucesso! Bem-vindo(a), {resultado.usuario.nome}.
+			</div>
+		);
 	});
