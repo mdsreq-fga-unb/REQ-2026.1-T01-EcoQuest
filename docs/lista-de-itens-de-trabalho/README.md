@@ -24,10 +24,10 @@
 | **RF05** | Excluir conta | **UC05** | Permitir exclusão da conta conforme LGPD | **RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados | — |
 | **RF06** | Localizar PEVs | **UC06** | Exibir pontos de coleta próximos | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade | — |
 | **RF07** | Consultar detalhes do PEV | **UC07** | Exibir informações detalhadas de um ponto de coleta | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital | — |
-| **RF08** | Ler Token para Descarte | **UC08** | Permitir leitura de QR Code para descarte | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados<br>**RNF06** — Integridade de Tokens | **RN3** — Validação do Descarte <br>**RN4** — Pontuação por descarte<br>**RN5** — Insígnias de conquistas |
+| **RF08** | Ler Token para Descarte | **UC08** | Permitir leitura de QR Code para descarte | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados<br>**RNF06** — Integridade de Tokens | **RN3** — Validação do Descarte<br>**RN4** — Pontuação por descarte<br>**RN5** — Insígnias de conquistas<br>**RN7** — Unicidade do Token |
 | **RF09** | Consultar Extrato | **UC09** | Exibir histórico de descartes e saldo de créditos disponível | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados | **RN4** — Pontuação por descarte |
 | **RF10** | Exibir Catálogo de Recompensas | **UC10** | Exibir benefícios, cupons e prêmios disponíveis para resgate | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade | **RN2** — Gestão das pontuções e recompensas |
-| **RF11** | Resgatar Recompensas | **UC11** | Processar o resgate de uma recompensa do catálogo | **RNF02** — Desempenho de Resposta<br>**RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados<br>**RNF06** — Integridade de Tokens | **RN2** — Gestão das pontuções e recompensas |
+| **RF11** | Resgatar Recompensas | **UC11** | Processar o resgate de uma recompensa do catálogo | **RNF02** — Desempenho de Resposta<br>**RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados<br>**RNF06** — Integridade de Tokens | **RN2** — Gestão das Pontuações e Recompensas<br>**RN6** — Elegibilidade para Resgate |
 | **RF12** | Exibir Vitrine de Conquistas | **UC12** | Exibir marcos e medalhas conquistados pelo usuário | **RNF01** — Responsividade Mobile<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade | **RN5** — Insígnias de conquistas |
 | **RF13** | Exibir Progresso das Insígnias | **UC13** | Mostrar o status atual do progresso da conquista das insignias e proximidade de bônus | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF04** — Alta Disponibilidade | **RN8** — Progresso das Conquistas |
 | **RF14** | Configurar Anonimato | **UC14** | Permitir que o usuário oculte sua identidade no ranking social | **RNF03** — Acessibilidade Digital<br>**RNF05** — Segurança de Dados | — |
@@ -323,9 +323,12 @@
 2. Sistema ativa a câmera do dispositivo.
 3. Usuário aponta a câmera para o QR Code.
 4. Sistema realiza leitura do token.
-5. Sistema valida o token recebido.
-6. Sistema registra a operação de descarte.
-7. Sistema confirma leitura realizada.
+5. Sistema valida o token recebido. (RN3)
+6. Sistema verifica se o token já foi utilizado anteriormente. (RN7)
+7. Sistema registra a operação de descarte.
+8. Sistema converte o volume e/ou tipo de resíduo descartado em pontos e credita o saldo do usuário, conforme tabela de pontuação vigente. (RN4)
+9. Sistema verifica automaticamente se o usuário atingiu critérios para obtenção de novas insígnias. (RN5)
+10. Sistema confirma leitura realizada.
 
 - Fluxos Alternativos
 
@@ -339,6 +342,12 @@
         - 5A.1 Sistema detecta token inválido ou expirado.
         - 5A.2 Sistema bloqueia a operação.
 
+    - 5B — Token já utilizado
+
+        - 5B.1 Sistema identifica reutilização do token. (RN7)
+        - 5B.2 Sistema impede o registro do descarte.
+        - 5B.3 Sistema informa que o token já foi utilizado anteriormente.
+
 - Fluxos de Exceção
 
     - E1 — Falha ao acessar a câmera
@@ -348,8 +357,10 @@
 
     - E2 — Falha ao registrar o descarte
 
-        - E2.1 Sistema não credita pontos ao usuário.
-        - E2.2 Sistema informa que a operação não foi concluída.
+        - E2.1 Sistema não registra a operação de descarte.
+        - E2.2 Sistema não credita pontos ao usuário. (RN4)
+        - E2.3 Sistema não realiza a verificação de novas insígnias. (RN5)
+        - E2.4 Sistema informa que a operação não foi concluída.
 
 - Pós-condições: Descarte registrado no sistema.
 
@@ -366,7 +377,7 @@
 1. Usuário acessa a área de extrato.
 2. Sistema recupera o histórico de descartes do usuário.
 3. Sistema exibe lista de operações realizadas.
-4. Sistema exibe saldo de créditos disponível.
+4. Sistema exibe saldo de créditos disponível, calculado a partir das pontuações obtidas pelos descartes realizados. (RN4)
 5. Usuário consulta as informações.
 
 - Fluxos Alternativos
@@ -401,7 +412,7 @@
 - Fluxo Principal
 
 1. Usuário acessa o catálogo de recompensas.
-2. Sistema recupera os itens disponíveis.
+2. Sistema recupera os itens disponíveis e seus respectivos custos em pontos configurados pelos administradores do sistema. (RN2)
 3. Sistema exibe catálogo com benefícios, cupons e prêmios.
 4. Usuário visualiza as recompensas disponíveis.
 
@@ -444,17 +455,18 @@
 - Fluxo Principal
 
 1. Usuário seleciona uma recompensa no catálogo.
-2. Sistema exibe detalhes e custo em pontos.
+2. Sistema exibe detalhes e custo em pontos da recompensa conforme configuração vigente. (RN2)
 3. Usuário confirma o resgate.
-4. Sistema debita os pontos do saldo.
-5. Sistema gera o código ou cupom de benefício.
-6. Sistema confirma o resgate realizado.
+4. Sistema verifica se o usuário possui saldo igual ou superior ao valor exigido para a recompensa selecionada. (RN6)
+5. Sistema debita os pontos do saldo.
+6. Sistema gera o código ou cupom de benefício.
+7. Sistema confirma o resgate realizado.
 
 - Fluxos Alternativos
 
     - 3A — Saldo insuficiente
 
-        - 3A.1 Sistema identifica pontos insuficientes.
+        - 3A.1 Sistema identifica que o usuário não atende ao requisito mínimo de pontos para o resgate. (RN6)
         - 3A.2 Sistema bloqueia a operação e informa o usuário.
 
     - 4A — Recompensa esgotada
@@ -487,7 +499,7 @@
 - Fluxo Principal
 
 1. Usuário acessa a vitrine de conquistas.
-2. Sistema recupera as conquistas do usuário.
+2. Sistema recupera as conquistas obtidas automaticamente a partir dos critérios definidos para cada insígnia. (RN5)
 3. Sistema exibe medalhas e marcos obtidos.
 4. Sistema exibe conquistas ainda não desbloqueadas.
 5. Usuário visualiza seu progresso.
@@ -526,8 +538,8 @@
 1. Usuário acessa o painel de progresso das insígnias.
 2. Sistema recupera o histórico de descartes e demais dados relevantes do usuário.
 3. Sistema identifica as insígnias disponíveis e seus respectivos critérios de conquista.
-4. Sistema calcula o percentual de progresso do usuário para cada insígnia, com base nos critérios definidos.
-5. Sistema exibe visualmente o progresso das insígnias, indicando o percentual concluído e o que falta para sua obtenção.
+4. Sistema calcula o percentual de progresso do usuário para cada insígnia, com base nos critérios definidos. (RN8)
+5. Sistema exibe visualmente o progresso das insígnias, indicando o percentual concluído e o que falta para sua obtenção. (RN8)
 6. Usuário visualiza seu progresso e as próximas conquistas que poderá desbloquear.
 
 - Fluxos Alternativos
@@ -615,7 +627,7 @@
 - Fluxo Principal
 
 1. Usuário acessa o ranking.
-2. Sistema recupera a classificação dos usuários.
+2. Sistema recupera a classificação dos usuários com base na pontuação acumulada pelos descartes realizados. (RN4)
 3. Sistema exibe lista ordenada por pontuação.
 4. Sistema destaca a posição do usuário no ranking.
 5. Usuário visualiza o ranking.
@@ -652,7 +664,7 @@
 - Fluxo Principal
 
 1. Usuário acessa o painel de impacto pessoal.
-2. Sistema recupera os dados de descarte do usuário.
+2. Sistema recupera os dados de descarte e as pontuações associadas ao usuário. (RN4)
 3. Sistema calcula as métricas de impacto ambiental.
 4. Sistema exibe indicadores como kg de CO2 evitado e resíduos desviados.
 5. Usuário visualiza seu impacto.
