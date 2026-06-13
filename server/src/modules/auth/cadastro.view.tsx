@@ -4,7 +4,7 @@ import { Layout } from '../../components/Layout'
 export function CadastroView() {
   return (
     <Layout title="Cadastro - EcoQuest">
-      <link rel="stylesheet" href="/assets/cadastro.css" />
+      <link rel="stylesheet" href="../assets/cadastro.css" />
 
       <header class="header">
         <img src="../assets/img/logo.png" alt="EcoQuest" class="logo" />
@@ -29,7 +29,15 @@ export function CadastroView() {
               <div class="field">
                 <label for="cpf">CPF</label>
                 <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" inputmode="numeric" maxlength="14" />
+                <ul class="senha-requisitos" id="cpf-requisitos" hidden >
+                  <li id="cpf-status">
+                    <span class="icone">✗</span>
+                    <span class="texto">CPF inválido</span>
+                  </li>
+                </ul>
               </div>
+
+              
 
               <div class="field">
                 <label for="telefone">Telefone</label>
