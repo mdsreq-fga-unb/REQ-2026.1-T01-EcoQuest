@@ -1,32 +1,124 @@
-# 5. Cronograma e Entregas
+# 6. Cronograma e Entregas 
 
-A partir da estratégia de desenvolvimento estabelecida e utilizando o framework OpenUP, o projeto EcoQuest adota um ciclo de vida adaptativo. O fluxo de trabalho é estruturado em iterações semanais, garantindo entregas contínuas e mitigação precoce de riscos, com definição clara das fases e de suas transições.
+O cronograma do projeto EcoQuest opera em dois níveis de abstração distintos e complementares, garantindo a governança metodológica sem engessar a agilidade de desenvolvimento:
 
-Para que o processo não gere sobrecarga na agenda da cliente, as validações ocorrerão de forma síncrona e assíncrona, ancoradas em um *Acordo de Nível de Serviço* de feedback:
+*   **Nível Macro (Este Documento):** Define a visão estratégica baseada nas fases do ciclo de vida do OpenUP. Estabelece os critérios de entrada, as condições de saída e os marcos de transição formais. Este nível é atualizado apenas na virada de fases ou mediante uma mudança de escopo aprovada.
+    
+*   **Nível Micro (GitHub Projects):** A gestão operacional do tempo e do esforço. Cada ciclo semanal é planejado, executado e rastreado diretamente no quadro Kanban do repositório, governado pelas regras de _Definition of Ready (DoR)_ e _Definition of Done (DoD)_. O detalhamento tático de iterações não é replicado neste documento para evitar desatualização e redundância.
+    
 
-**Terças-feiras:** Envio dos incrementos (documentais ou de software) para a cliente.
+> 🔗 **Acompanhamento:**
+> 
+> As iterações ativas, o burn rate de horas e o status de cada Caso de Uso podem ser auditados no nosso [Quadro de Iterações — GitHub Projects](https://github.com/orgs/mdsreq-fga-unb/projects/108).
 
-**Segundas-feiras:** Reuniões síncronas internas da equipe de desenvolvimento para processamento do feedback, análise de viabilidade e planejamento da próxima iteração.
+6.1. Visão Geral do Ciclo de Vida (OpenUP)
+------------------------------------------
+| Fase | Ciclos | Critério de Saída (Marco Arquitetural) | Status |
+| :--- | :---: | :--- | :---: |
+| **Concepção** | 1 – 5 | Escopo do MVP acordado com a cliente, Objetivos Específicos e Características de Produto (CPs) definidos, viabilidade técnica confirmada. | Concluída |
+| **Elaboração** | 6 – 7 | Arquitetura técnica estabilizada, Casos de Uso prioritários especificados com priorização validada, riscos mitigados. | Em andamento |
+| **Construção** | 8 – 11 | Incrementos funcionais cruzando o DoD Nível 2 (validação da cliente), cobertura de testes ≥ 70%, versão Release Candidate em homologação. | Pendente |
+| **Transição** | 12 | Homologação final aprovada pela cliente, Deploy finalizado, Matriz de Rastreabilidade consolidada. | Pendente|
 
-As iterações iniciais da Fase de Iniciação têm ênfase em elicitação e análise do domínio e dos requisitos. Contudo, em conformidade com o ciclo de vida do OpenUP, o refinamento dos requisitos ocorre ao longo de todo o projeto, com especial atenção à mitigação de riscos arquiteturais antes do avanço para a Fase de Construção. A seguir, apresenta-se o cronograma com suas fases, objetivos e resultados esperados:
+6.2. Detalhamento e Governança das Fases
+----------------------------------------
 
-| Iteração | Início | Fim | Objetivo Principal (Fase OpenUP / Atividade ER) | Entregas Esperadas | Validação do Cliente |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **Iteração 1** | 13/04/2026 | 19/04/2026 | **Fase de Iniciação** Levantamento profundo do domínio de sustentabilidade e perfil de usuários. | Identificação clara do problema. Esboço inicial das missões e perfil de usuários. | Validação inicial do entendimento do problema e domínio ambiental. |
-| **Iteração 2** | 20/04/2026 | 26/04/2026 | **Fase de Iniciação** Alinhamento com stakeholders e priorização de requisitos (MoSCoW). | Definição das funcionalidades essenciais para o MVP (Mínimo Produto Viável). | Revisão do escopo e confirmação das prioridades essenciais. |
-| **Iteração 3** | 27/04/2026 | 03/05/2026 | **Fase de Elaboração** Formalização inicial de requisitos e definição da arquitetura técnica. | Backlog inicial estruturado. Configuração da arquitetura técnica e ambiente de desenvolvimento. | Cliente valida a baseline inicial de requisitos priorizados. |
-| **Iteração 4** | 04/05/2026 | 10/05/2026 | **Fase de Elaboração** Modelagem da solução e início da codificação sobre a arquitetura estabelecida. | Protótipos visuais de interface. Inicialização da produção de código e banco de dados; criação do CRUD básico para usuário e administrador. | Feedback sobre navegação e usabilidade das telas desenhadas. |
-| **Iteração 5** | 11/05/2026 | 17/05/2026 | **Fase de Elaboração** Detalhamento de requisitos e apoio à implementação dos módulos de acesso. | Módulo de Autenticação e Perfis de Usuário. Alterações nos protótipos baseadas nos feedbacks. | Avaliação da fluidez do processo de cadastro e acesso ao sistema. |
-| **Iteração 6** | 18/05/2026 | 24/05/2026 | **Fase de Elaboração** Implementação do núcleo funcional e execução dos primeiros testes de integração para mitigação de riscos técnicos. | Implementação do Motor de Missões (Quests diárias/semanais). | Validação do fluxo de aceite e leitura das missões sustentáveis. |
-| **Iteração 7** | 25/05/2026 | 31/05/2026 | **Fase de Construção** Primeira Entrega Parcial: integração do módulo de validação de missões. | Entrega Parcial 1: Integração do sistema de captura de imagens para validação de missões concluídas. | Teste de uso e do sistema de captura em tempo real para validação das atividades. |
-| **Iteração 8** | 01/06/2026 | 07/06/2026 | **Fase de Construção** Verificação e validação contínua do fluxo incremental desenvolvido. | Especificação comportamental técnica finalizada e testes integrados do fluxo desenvolvido até aqui. | Feedback sobre possíveis inconsistências encontradas no fluxo de missões. |
-| **Iteração 9** | 08/06/2026 | 14/06/2026 | **Fase de Construção** Desenvolvimento do Módulo de Gamificação e mecanismos de engajamento do usuário. | Módulo de Gamificação. Mecanismos de progressão e engajamento do usuário (detalhamento no Backlog). | Validação do balanceamento de pontos e sensação de recompensa. |
-| **Iteração 10** | 15/06/2026 | 21/06/2026 | **Fase de Construção** Segunda Entrega Parcial: componentes sociais e de reconhecimento da plataforma. | Entrega Parcial 2: Módulo Social e de Conquistas. Placar de líderes e painel de conquistas (detalhamento no Backlog). | Avaliação da interface do ranking e da competitividade saudável gerada. |
-| **Iteração 11** | 22/06/2026 | 28/06/2026 | **Fase de Construção** Ajustes incrementais com foco em usabilidade, correção de defeitos e testes ponta a ponta. | Consolidação dos diagramas arquiteturais. Testes ponta a ponta realizados pela equipe. | Validação final de interface do MVP com o usuário em ambiente de homologação. |
-| **Iteração 12** | 29/06/2026 | 05/07/2026 | **Fase de Transição** Publicação, homologação final e encerramento do projeto. | Entrega Final: MVP funcional, documentado, codificado, testado e publicado. | Homologação Final: Confirmação de que o sistema atende aos objetivos traçados. |
+### Fase de Concepção — 13 de Abril – 18 de Maio (Iteração 1 a 5)
+
+**Foco Estratégico:** Entendimento do domínio, definição do problema e viabilidade de negócio.
+
+*   **Gatilho de Entrada:** Problema de negócio identificado e engajamento inicial da cliente.
+    
+*   **Artefatos de Saída (DoD da Fase):**
+    
+    *   Documento de Visão aprovado.
+        
+    *   Objetivos Específicos (OEs) e Características de Produto (CPs) documentados.
+        
+    *   Lista de Itens de Trabalho Geral inicial estabelecido com priorização MoSCoW.
+  
+>   **Registro Histórico de Mudança de Escopo:** Essa fase precisou ser extendida como consequência de uma mudança de escopo grande, que mudou o direcionamento do projeto e ideação feita inicialmente para o projeto, explicitado em documentação anterior (cenário atual do cliente e do negócio) os respectivos critérios de mudanças.
+        
+*   **Marco de Transição:** Deadline da Unidade 2, juntamente com uma estabilização de escopo e definição de critérios de trabalho e priorização.
+    
+
+### Fase de Elaboração — 19 de Maio - 30 de Maio (Iteração 6 e 7)
+
+**Foco Estratégico:** Estabilização da arquitetura, modelagem da interface e mitigação dos maiores riscos técnicos.
+
+*   **Gatilho de Entrada:** Marco da Concepção validado.
+    
+*   **Artefatos de Saída (DoD da Fase):**
+    
+    *   Arquitetura técnica estável e integrada ao pipeline.
+        
+    *   Casos de Uso prioritários detalhados com priorização validada.
+        
+    *   Protótipos visuais de interface aprovados.
+        
+    *   Filtros arquiteturais (_Definition of Ready_ e _Definition of Done_) testados no fluxo de trabalho.
+        
+*   **Marco de Transição:** Marco de Arquitetura do Ciclo de Vida — A fundação técnica suporta a escala da construção, validação sobre os protótipos visuais e fluxo de trabalho bem definido.
+    
+
+
+### Fase de Construção — 01 de Junho - 29 de Junho (Iteração 8 a 11)
+
+**Foco Estratégico:** Desenvolvimento em fluxo contínuo governado por Kanban, garantindo qualidade técnica e validação incremental.
+
+*   **Gatilho de Entrada:** Arquitetura validada no Marco de Elaboração e itens do topo do backlog cruzando o ponto de compromisso (_DoR_).
+    
+*   **Artefatos de Saída (DoD da Fase):**
+    
+    *   100% dos Casos de Uso compromissados para o MVP no status _Done de Negócio_ (DoD Nível 2).
+        
+    *   Taxa de cobertura de testes unitários atingindo a restrição arquitetural 70%.
+        
+    *   Versão _Release Candidate_ (RC) implantada em ambiente de homologação.
+        
+*   **Marco de Transição:** Marco de Capacidade Operacional Inicial — O software é capaz de executar seus fluxos críticos na mão dos primeiros usuáriose possível fluxo validado pelos stackholders.
+    
+
+### Fase de Transição — 30 de Junho - 5 de Julho (Iteração 12)
+
+**Foco Estratégico:** Homologação em campo, polimento final, correção de anomalias e entrega de valor.
+
+*   **Gatilho de Entrada:** _Release Candidate_ operando sem bugs críticos impeditivos.
+    
+*   **Artefatos de Saída (DoD da Fase):**
+    
+    *   Termo de aceite/homologação final validado com a cliente.
+        
+    *   Sistema já funcional em espaço de teste e pronto para deploy.
+        
+    *   Documentação técnica final e Matriz de Rastreabilidade atualizadas.
+        
+*   **Marco de Transição:** Marco de Liberação do Produto — Encerramento técnico da versão atual do projeto.
+    
+
+6.3. Política de Gerenciamento de Mudanças
+------------------------------------------
+
+Para proteger a integridade desta documentação e evitar o engessamento gerencial, este cronograma macro é atualizado mediante os seguintes eventos:
+
+1.  Conclusão formal de uma fase e passagem pelo seu respectivo marco.
+    
+2.  Alteração profunda de escopo de negócio ou pivotamento de estratégia validado pela cliente.
+    
+3.  Replanejamento estrutural de fase gerado pela materialização de um risco crítico.
+    
+
+_(Nota: Atualizações micro, como o repasse de tarefas, correção de bugs iterativos ou reordenação da lista de itens de trabalho, serão tratados apenas na camada do Kanban e nos relatórios de iteração do repositório)._
+
 
 
 **Considerações sobre o cronograma:**
-O projeto é guiado por liberações progressivas de valor. As funcionalidades de núcleo, o motor de missões sustentáveis, a validação por mecanismo de captura em tempo real e a estrutura de gamificação, serão entregues e testadas em produção ou ambiente de homologação de forma incremental (Iterações 7, 10 e 12).
+O projeto é guiado por liberações progressivas de valor. Essa estratégia de fatiamento garante que a mitigação de riscos operacionais, especialmente no que tange ao engajamento prático do jovem na plataforma, seja aferida continuamente através do uso real da aplicação, permitindo ajustes de rota e refinamentos na Lista de Itens de Trabalho antes do lançamento final do MVP.
 
-Essa estratégia de fatiamento garante que a mitigação de riscos operacionais, especialmente no que tange ao engajamento prático do jovem na plataforma, seja aferida continuamente através do uso real da aplicação, permitindo ajustes de rota e refinamentos no backlog antes do lançamento final do MVP.
+
+## Histórico de Versão
+
+| Data | Versão | Descrição da Alteração | Autor(a) |
+|-------|-------|------|------|
+| 12/04/2026 | 1.0 | Criação do documento e estruturação dos inicial. | Paulo Vitor |
+| 26/05/2026 | 2.0 | Mudanças na estrutura pensando numa melhor conformidade com o andamento do projeto.| Paulo Vitor |

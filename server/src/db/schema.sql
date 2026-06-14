@@ -1,4 +1,4 @@
-CREATE TABLE user (
+CREATE TABLE "user" (
 	id BIGSERIAL PRIMARY KEY,
 	email VARCHAR(256) NOT NULL,
 	name VARCHAR(256) NOT NULL,
@@ -18,8 +18,8 @@ CREATE TABLE user (
 	CONSTRAINT user_points_total_earned_non_negative CHECK (points_total_earned >= 0)
 );
 
-CREATE UNIQUE INDEX user_email_lower_unique ON user (lower(email));
-CREATE UNIQUE INDEX user_cpf_unique ON user (cpf);
+CREATE UNIQUE INDEX user_email_lower_unique ON "user" (lower(email));
+CREATE UNIQUE INDEX user_cpf_unique ON "user" (cpf);
 
 CREATE TABLE pev (
 	id BIGSERIAL PRIMARY KEY,
@@ -68,7 +68,7 @@ CREATE TABLE disposal_token (
 	issued_at TIMESTAMPTZ NOT NULL DEFAULT now(),
 	expires_at TIMESTAMPTZ NOT NULL,
 	used_at TIMESTAMPTZ,
-	id_user_used_by BIGINT REFERENCES user(id) ON DELETE RESTRICT,
+	id_user_used_by BIGINT REFERENCES "user"(id) ON DELETE RESTRICT,
 	CONSTRAINT disposal_token_expires_after_issue CHECK (expires_at > issued_at),
 	CONSTRAINT disposal_token_used_consistency CHECK (
 		(used_at IS NULL AND id_user_used_by IS NULL)
@@ -82,7 +82,7 @@ CREATE INDEX disposal_token_unused_idx ON disposal_token (expires_at) WHERE used
 
 CREATE TABLE disposal (
 	id BIGSERIAL PRIMARY KEY,
-	id_user BIGINT NOT NULL REFERENCES user(id) ON DELETE CASCADE,
+	id_user BIGINT NOT NULL REFERENCES "user"(id) ON DELETE CASCADE,
 	id_pev BIGINT NOT NULL REFERENCES pev(id) ON DELETE RESTRICT,
 	jti_token UUID NOT NULL UNIQUE REFERENCES disposal_token(jti) ON DELETE RESTRICT,
 	points_awarded INTEGER NOT NULL,
@@ -97,7 +97,7 @@ CREATE TYPE reward_redemption_status AS ENUM ('ISSUED', 'CANCELLED', 'USED');
 
 CREATE TABLE reward_redemption (
 	id BIGSERIAL PRIMARY KEY,
-	id_user BIGINT NOT NULL REFERENCES user(id) ON DELETE CASCADE,
+	id_user BIGINT NOT NULL REFERENCES "user"(id) ON DELETE CASCADE,
 	id_reward BIGINT NOT NULL REFERENCES reward(id) ON DELETE RESTRICT,
 	points_cost_snapshot INTEGER NOT NULL,
 	code TEXT NOT NULL,
@@ -116,7 +116,7 @@ CREATE TYPE points_transaction_kind AS ENUM ('DISPOSAL', 'REDEMPTION', 'ADJUSTME
 
 CREATE TABLE points_transaction (
 	id BIGSERIAL PRIMARY KEY,
-	id_user BIGINT NOT NULL REFERENCES user(id) ON DELETE CASCADE,
+	id_user BIGINT NOT NULL REFERENCES "user"(id) ON DELETE CASCADE,
 	amount INTEGER NOT NULL,
 	kind points_transaction_kind NOT NULL,
 	id_disposal BIGINT REFERENCES disposal(id) ON DELETE CASCADE,
@@ -153,24 +153,24 @@ CREATE UNIQUE INDEX insignia_code_unique ON insignia (code);
 CREATE INDEX insignia_is_active_idx ON insignia (is_active);
 
 CREATE TABLE user_insignia (
-	id_user BIGINT NOT NULL REFERENCES user(id) ON DELETE CASCADE,
+	id_user BIGINT NOT NULL REFERENCES "user"(id) ON DELETE CASCADE,
 	id_insignia BIGINT NOT NULL REFERENCES insignia(id) ON DELETE RESTRICT,
 	unlocked_at TIMESTAMPTZ NOT NULL DEFAULT now(),
 	PRIMARY KEY (id_user, id_insignia)
 );
 
 -- Documentação (comentários curtos por tabela/coluna)
-COMMENT ON TABLE user IS 'Usuários cadastrados (autenticação e pontos).';
-COMMENT ON COLUMN user.id IS 'Identificador do usuário.';
-COMMENT ON COLUMN user.email IS 'E-mail de login (único via índice em lower(email)).';
-COMMENT ON COLUMN user.name IS 'Nome do usuário.';
-COMMENT ON COLUMN user.cpf IS 'CPF do usuário (11 dígitos, único).';
-COMMENT ON COLUMN user.phone IS 'Telefone do usuário.';
-COMMENT ON COLUMN user.password_hash IS 'Hash da senha (ex: Argon2/BCrypt).';
-COMMENT ON COLUMN user.points_balance IS 'Saldo atual de pontos disponível para resgate.';
-COMMENT ON COLUMN user.points_total_earned IS 'Total de pontos ganhos (base para ranking).';
-COMMENT ON COLUMN user.created_at IS 'Data/hora de criação do registro.';
-COMMENT ON COLUMN user.updated_at IS 'Data/hora da última atualização do registro.';
+COMMENT ON TABLE "user" IS 'Usuários cadastrados (autenticação e pontos).';
+COMMENT ON COLUMN "user".id IS 'Identificador do usuário.';
+COMMENT ON COLUMN "user".email IS 'E-mail de login (único via índice em lower(email)).';
+COMMENT ON COLUMN "user".name IS 'Nome do usuário.';
+COMMENT ON COLUMN "user".cpf IS 'CPF do usuário (11 dígitos, único).';
+COMMENT ON COLUMN "user".phone IS 'Telefone do usuário.';
+COMMENT ON COLUMN "user".password_hash IS 'Hash da senha (ex: Argon2/BCrypt).';
+COMMENT ON COLUMN "user".points_balance IS 'Saldo atual de pontos disponível para resgate.';
+COMMENT ON COLUMN "user".points_total_earned IS 'Total de pontos ganhos (base para ranking).';
+COMMENT ON COLUMN "user".created_at IS 'Data/hora de criação do registro.';
+COMMENT ON COLUMN "user".updated_at IS 'Data/hora da última atualização do registro.';
 
 COMMENT ON TABLE pev IS 'Pontos de Entrega Voluntária (PEVs) para descarte.';
 COMMENT ON COLUMN pev.id IS 'Identificador do PEV.';
