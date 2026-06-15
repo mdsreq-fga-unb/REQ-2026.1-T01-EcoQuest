@@ -6,7 +6,8 @@
     "dev": "bun run --watch src/index.tsx",
     "docker:up": "docker compose -f src/db/compose.yml --env-file .env up -d",
     "docker:down": "docker compose -f src/db/compose.yml --env-file .env down",
-    "docker:logs": "docker compose -f src/db/compose.yml --env-file .env logs -f"
+    "docker:logs": "docker compose -f src/db/compose.yml --env-file .env logs -f",
+    "docker:delete": "docker compose -f src/db/compose.yml --env-file .env down -v --rmi all --remove-orphans"
   },
   "dependencies": {
     "@elysia/html": "^1.4.1",
