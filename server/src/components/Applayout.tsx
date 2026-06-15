@@ -275,6 +275,7 @@ function BotaoCamera() {
 			type="button"
 			class="btn-camera"
 			id="btn-camera-scan"
+			data-open-qr-scanner="true"
 			aria-label="Escanear QR Code para novo descarte"
 		>
 			<IcoCamera />
@@ -500,6 +501,14 @@ body {
 	word-break: break-all;
 }
 
+.qr-modal_result-destaque {
+	display: inline-block;
+	font-size: 1.35rem;
+	font-weight: 700;
+	color: #1f6d2f;
+	margin-bottom: .4rem;
+}
+
 .qr-modal_actions {
 	display: flex;
 	flex-wrap: wrap;
@@ -690,31 +699,83 @@ export function AppLayout({
 })();
 
 (function(){
-	var btnAbrir = document.getElementById('btn-camera-scan');
+	var botoesAbrir = document.querySelectorAll('[data-open-qr-scanner="true"]');
 	var btnFechar = document.getElementById('btn-fechar-qr');
-	var btnPermissao = document.getElementById('btn-permissao-camera');
-	var fileInput = document.getElementById('qr-file-input');
 	var modal = document.getElementById('qr-modal');
+	var modalCard = modal ? modal.querySelector('.qr-modal_card') : null;
 	var resultado = document.getElementById('qr-modal-result');
-	if(!btnAbrir || !btnFechar || !btnPermissao || !fileInput || !modal || !resultado) return;
+	if(!botoesAbrir.length || !btnFechar || !modal || !modalCard || !resultado) return;
 
-	fileInput.setAttribute('capture', 'environment');
+	var btnPermissao = null;
+	var fileInput = null;
 
 	var qr = null;
 	var lendo = false;
 	var validando = false;
+
+	function capturarControlesLeitura() {
+		btnPermissao = document.getElementById('btn-permissao-camera');
+		fileInput = document.getElementById('qr-file-input');
+		if (fileInput) {
+			fileInput.setAttribute('capture', 'environment');
+		}
+	}
+
+	function registrarEventosControlesLeitura() {
+		if (btnPermissao && !btnPermissao.dataset.bound) {
+			btnPermissao.addEventListener('click', function(){
+				pedirPermissaoCamera();
+			});
+			btnPermissao.dataset.bound = '1';
+		}
+		if (fileInput && !fileInput.dataset.bound) {
+			fileInput.addEventListener('change', function(ev){
+				var file = ev && ev.target && ev.target.files ? ev.target.files[0] : null;
+				if (file) lerPorFoto(file);
+			});
+			fileInput.dataset.bound = '1';
+		}
+	}
+
+	function restaurarElementosDeLeitura() {
+		if (!document.getElementById('reader')) {
+			var reader = document.createElement('div');
+			reader.id = 'reader';
+			reader.className = 'qr-reader';
+			modalCard.insertBefore(reader, resultado);
+		}
+
+		if (!modalCard.querySelector('.qr-modal_actions')) {
+			var actions = document.createElement('div');
+			actions.className = 'qr-modal_actions';
+			actions.innerHTML =
+				'<button type="button" id="btn-permissao-camera" class="qr-modal_btn">Permitir c\u00e2mera</button>' +
+				'<label for="qr-file-input" class="qr-modal_btn secundario">Ler por foto</label>' +
+				'<input id="qr-file-input" class="qr-file-input" type="file" accept="image/*" />';
+			modalCard.appendChild(actions);
+		}
+
+		capturarControlesLeitura();
+		registrarEventosControlesLeitura();
+	}
 
 	function mostrarMensagem(texto) {
 		resultado.textContent = texto;
 	}
 
 	function mostrarResultadoSucesso(payload) {
-		mostrarMensagem(
-			'Descarte validado com sucesso. Pontos: ' +
-				payload.pointsAwarded +
-				' | Saldo: ' +
-				payload.pointsBalanceAfter,
-		);
+		var reader = document.getElementById('reader');
+		var actions = modalCard.querySelector('.qr-modal_actions');
+		if (reader) reader.remove();
+		if (actions) actions.remove();
+
+		var titulo = document.getElementById('qr-modal-title');
+		if (titulo) titulo.textContent = 'Validação concluída';
+
+		resultado.innerHTML =
+			'<span class="qr-modal_result-destaque">+' + payload.pointsAwarded + ' pontos</span>' +
+			'<br>Descarte validado com sucesso.' +
+			'<br>Saldo atual: ' + payload.pointsBalanceAfter;
 	}
 
 	function mostrarResultadoErro(mensagem) {
@@ -826,6 +887,11 @@ export function AppLayout({
 	}
 
 	function abrirModal() {
+		restaurarElementosDeLeitura();
+		var titulo = document.getElementById('qr-modal-title');
+		if (titulo) titulo.textContent = 'Ler Token de Descarte';
+		qr = null;
+		lendo = false;
 		modal.classList.add('aberto');
 		modal.setAttribute('aria-hidden', 'false');
 		resultado.textContent = 'Permita o uso da câmera ou escolha Ler por foto.';
@@ -842,16 +908,13 @@ export function AppLayout({
 		if (fileInput) fileInput.value = '';
 	}
 
-	btnAbrir.addEventListener('click', function(){
-		abrirModal();
+	botoesAbrir.forEach(function(btn){
+		btn.addEventListener('click', function(ev){
+			ev.preventDefault();
+			abrirModal();
+		});
 	});
-	btnPermissao.addEventListener('click', function(){
-		pedirPermissaoCamera();
-	});
-	fileInput.addEventListener('change', function(ev){
-		var file = ev && ev.target && ev.target.files ? ev.target.files[0] : null;
-		if (file) lerPorFoto(file);
-	});
+	restaurarElementosDeLeitura();
 	btnFechar.addEventListener('click', fecharModal);
 	modal.addEventListener('click', function(ev){
 		if (ev.target === modal) fecharModal();
