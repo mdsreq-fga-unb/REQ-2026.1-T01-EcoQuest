@@ -85,6 +85,8 @@ CREATE TABLE disposal (
 	id_user BIGINT NOT NULL REFERENCES "user"(id) ON DELETE CASCADE,
 	id_pev BIGINT NOT NULL REFERENCES pev(id) ON DELETE RESTRICT,
 	jti_token UUID NOT NULL UNIQUE REFERENCES disposal_token(jti) ON DELETE RESTRICT,
+	material_type TEXT,
+	weight_kg NUMERIC,
 	points_awarded INTEGER NOT NULL,
 	created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
 	CONSTRAINT disposal_points_awarded_non_negative CHECK (points_awarded >= 0)
@@ -209,6 +211,8 @@ COMMENT ON COLUMN disposal.id IS 'Identificador do descarte.';
 COMMENT ON COLUMN disposal.id_user IS 'Usuário que realizou o descarte.';
 COMMENT ON COLUMN disposal.id_pev IS 'PEV onde o descarte ocorreu.';
 COMMENT ON COLUMN disposal.jti_token IS 'Token consumido (único por descarte).';
+COMMENT ON COLUMN disposal.material_type IS 'Material ou conjunto de materiais descartados.';
+COMMENT ON COLUMN disposal.weight_kg IS 'Peso total simulado do descarte em kg.';
 COMMENT ON COLUMN disposal.points_awarded IS 'Pontos concedidos pelo descarte.';
 COMMENT ON COLUMN disposal.created_at IS 'Data/hora do registro do descarte.';
 

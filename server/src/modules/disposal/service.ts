@@ -138,7 +138,12 @@ export async function validarTokenERegistrarDescarte(
 	rawJti: string,
 ): Promise<ResultadoValidacaoDescarte> {
 	const jti = extrairJtiValido(rawJti);
+	const simulacao = obterSimulacaoEmitidaPorJti(jti);
 	const pointsAwarded = calcularPontosSimulados(jti);
+	const materialTipo = simulacao
+		? simulacao.itensSelecionados.map((item) => item.nome).join(", ")
+		: null;
+	const pesoKg = simulacao?.totalPesoKg ?? null;
 
 	try {
 		const rows = await db`
@@ -150,8 +155,15 @@ export async function validarTokenERegistrarDescarte(
 					AND expires_at > now()
 				RETURNING id_pev
 			), descarte_criado AS (
-				INSERT INTO disposal (id_user, id_pev, jti_token, points_awarded)
-				SELECT ${idUsuario}, id_pev, ${jti}::uuid, ${pointsAwarded}
+				INSERT INTO disposal (
+					id_user,
+					id_pev,
+					jti_token,
+					material_type,
+					weight_kg,
+					points_awarded
+				)
+				SELECT ${idUsuario}, id_pev, ${jti}::uuid, ${materialTipo}, ${pesoKg}, ${pointsAwarded}
 				FROM token_consumido
 				RETURNING id
 			), transacao_criada AS (

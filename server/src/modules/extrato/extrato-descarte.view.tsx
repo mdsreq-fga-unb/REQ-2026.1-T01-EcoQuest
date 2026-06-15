@@ -234,7 +234,7 @@ export function ExtratoView({
 				) : (
 					<section class="extrato-lista" aria-label="Histórico de descartes">
 						{registros.map((r) => (
-							<CardExtrato registro={r} />
+							<CardExtrato key={r.id} registro={r} />
 						))}
 					</section>
 				)}
