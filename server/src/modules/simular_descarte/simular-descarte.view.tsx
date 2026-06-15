@@ -146,7 +146,7 @@ export function SimularDescarteView({
 		>
 			<main class="simular-conteudo" id="conteudo-principal">
 				<header class="simular-topo">
-					<h1>Simulação de descarte (UC08)</h1>
+					<h1>Simulação de descarte</h1>
 					<p>
 						Esta tela gera um QR Code simulado com os itens e o peso do descarte
 						selecionado.
