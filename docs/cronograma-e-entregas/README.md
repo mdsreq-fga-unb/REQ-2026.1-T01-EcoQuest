@@ -134,4 +134,5 @@ O projeto é guiado por liberações progressivas de valor. Essa estratégia de 
 |-------|-------|------|------|
 | 12/04/2026 | 1.0 | Criação do documento e estruturação dos inicial. | Paulo Vitor |
 | 26/05/2026 | 2.0 | Mudanças na estrutura pensando numa melhor conformidade com o andamento do projeto.| Paulo Vitor |
-| 15/06/2026 | 2.1 | Adição do andamento do projeto em relação ao cronograma. | Paulo Vitor |
+| 14/06/2026 | 2.1 | Ajuste terminológico para Lista de Itens de Trabalho e alinhamento com o processo praticado. | João Victor |
+| 15/06/2026 | 2.2 | Adição do andamento do projeto em relação ao cronograma. | Paulo Vitor |
