@@ -639,10 +639,10 @@ Cada Caso de Uso foi avaliado em dois eixos principais: Valor Funcional e Comple
 
 Os critérios abaixo foram utilizados para analisar a importância do Caso de Uso para o produto e para os objetivos do projeto:
 
-- (+1) O Caso de Uso é essencial para o funcionamento principal da plataforma?
-- (+1) O Caso de Uso impacta diretamente a experiência ou engajamento do usuário?
-- (+1) O Caso de Uso contribui para os objetivos estratégicos do produto?
-- (+1) O Caso de Uso reduz problemas identificados na análise de negócio?
+- C1 (+1) O Caso de Uso é essencial para o funcionamento principal da plataforma?
+- C2 (+1) O Caso de Uso impacta diretamente a experiência ou engajamento do usuário?
+- C3 (+1) O Caso de Uso contribui para os objetivos estratégicos do produto?
+- C4 (+1) O Caso de Uso reduz problemas identificados na análise de negócio?
 
 Com base na pontuação obtida, os Casos de Uso foram classificados conforme o modelo MoSCoW:
 
@@ -701,25 +701,48 @@ Após o cálculo da prioridade final, os Casos de Uso foram posicionados em uma 
 
 ### Tabela de Priorização
 
-| ID | Nome | VF | Peso | CT | Valor Final (Peso - CT) | MoSCoW | Matriz de Esforço | MVP |
-|---|---|---|---|---|---|---|---|---|
-| **UC01** | Cadastrar usuário | 4 | 10 | 1 | 9 | Must Have | Quadrante 1 | X |
-| **UC02** | Autenticar usuário | 4 | 10 | 1 | 9 | Must Have | Quadrante 1 | X |
-| **UC03** | Recuperar senha | 3 | 7 | 2 | 5 | Should Have | Quadrante 3 | -- |
-| **UC04** | Gerenciar Perfil | 3 | 7 | 1 | 6 | Should Have | Quadrante 3 | -- |
-| **UC05** | Excluir conta | 3 | 7 | 1 | 6 | Should Have | Quadrante 3 | -- |
-| **UC06** | Localizar PEVs | 2 | 4 | 3 | 1 | Could Have | Quadrante 4 | -- |
-| **UC07** | Consultar detalhes do PEV | 2 | 4 | 2 | 2 | Could Have | Quadrante 3 | -- |
-| **UC08** | Ler Token para Descarte | 4 | 10 | 4 | 6 | Must Have | Quadrante 2 | X |
-| **UC09** | Consultar Extrato | 4 | 10 | 3 | 7 | Must Have | Quadrante 2 | X |
-| **UC10** | Exibir Catálogo de Recompensas | 4 | 10 | 3 | 7 | Must Have | Quadrante 2 | X |
-| **UC11** | Resgatar Recompensas | 4 | 10 | 4 | 6 | Must Have | Quadrante 2 | X |
-| **UC12** | Exibir Vitrine de Conquistas | 4 | 10 | 3 | 7 | Must Have | Quadrante 2 | X |
-| **UC13** | Exibir Progresso da Sequência | 2 | 4 | 3 | 1 | Could Have | Quadrante 4 | -- |
-| **UC14** | Configurar Anonimato | 2 | 4 | 2 | 2 | Could Have | Quadrante 3 | -- |
-| **UC15** | Visualizar Ranking | 4 | 10 | 3 | 7 | Must Have | Quadrante 2 | X |
-| **UC16** | Visualizar Painel de Impacto Pessoal | 2 | 4 | 3 | 1 | Could Have | Quadrante 4 | -- |
-| **UC17** | Consultar Estatísticas do Impacto da Comunidade | 2 | 4 | 3 | 1 | Could Have | Quadrante 4 | -- |
+| ID       | Nome                                            | VF | Peso | CT | Valor Final (Peso - CT) | MoSCoW      | Matriz de Esforço | MVP |
+| -------- | ----------------------------------------------- | -- | ---- | -- | ----------------------- | ----------- | ----------------- | --- |
+| **UC01** | Cadastrar usuário                               | 3  | 7    | 1  | 6                       | Should Have | Quadrante 3       | X   |
+| **UC02** | Autenticar usuário                              | 3  | 7    | 1  | 6                       | Should Have | Quadrante 3       | X   |
+| **UC03** | Recuperar senha                                 | 2  | 4    | 2  | 2                       | Could Have  | Quadrante 3       | --  |
+| **UC04** | Gerenciar Perfil                                | 2  | 4    | 1  | 3                       | Could Have  | Quadrante 3       | --  |
+| **UC05** | Excluir conta                                   | 2  | 4    | 1  | 3                       | Could Have  | Quadrante 3       | --  |
+| **UC06** | Localizar PEVs                                  | 2  | 4    | 3  | 1                       | Could Have  | Quadrante 4       | --  |
+| **UC07** | Consultar detalhes do PEV                       | 2  | 4    | 2  | 2                       | Could Have  | Quadrante 3       | --  |
+| **UC08** | Ler Token para Descarte                         | 4  | 10   | 4  | 6                       | Must Have   | Quadrante 2       | X   |
+| **UC09** | Consultar Extrato                               | 4  | 10   | 3  | 7                       | Must Have   | Quadrante 2       | X   |
+| **UC10** | Exibir Catálogo de Recompensas                  | 4  | 10   | 3  | 7                       | Must Have   | Quadrante 2       | X   |
+| **UC11** | Resgatar Recompensas                            | 4  | 10   | 4  | 6                       | Must Have   | Quadrante 2       | X   |
+| **UC12** | Exibir Vitrine de Conquistas                    | 4  | 10   | 3  | 7                       | Must Have   | Quadrante 2       | X   |
+| **UC13** | Exibir Progresso da Sequência                   | 2  | 4    | 3  | 1                       | Could Have  | Quadrante 4       | --  |
+| **UC14** | Configurar Anonimato                            | 2  | 4    | 2  | 2                       | Could Have  | Quadrante 3       | --  |
+| **UC15** | Visualizar Ranking                              | 4  | 10   | 3  | 7                       | Must Have   | Quadrante 2       | X   |
+| **UC16** | Visualizar Painel de Impacto Pessoal            | 2  | 4    | 3  | 1                       | Could Have  | Quadrante 4       | --  |
+| **UC17** | Consultar Estatísticas do Impacto da Comunidade | 2  | 4    | 3  | 1                       | Could Have  | Quadrante 4       | --  |
+
+
+### Justificativa de valor atribuido
+
+|    ID    |                      Nome                       | C1 | C2 | C3 | C4 | VF |
+|----------|-------------------------------------------------|----|----|----|----|----|
+| **UC01** | Cadastrar usuário                               | V  | -- | V  | V  | 3  |
+| **UC02** | Autenticar usuário                              | V  | -- | V  | V  | 3  |
+| **UC03** | Recuperar senha                                 | V  | -- | V  | -- | 2  |
+| **UC04** | Gerenciar Perfil                                | -- | V  | -- | V  | 2  |
+| **UC05** | Excluir conta                                   | -- | -- | V  | V  | 2  |
+| **UC06** | Localizar PEVs                                  | -- | V  | V  | -- | 2  |
+| **UC07** | Consultar detalhes do PEV                       | -- | V  | V  | -- | 2  |
+| **UC08** | Ler Token para Descarte                         | V  | V  | V  | V  | 4  |
+| **UC09** | Consultar Extrato                               | V  | V  | V  | V  | 4  |
+| **UC10** | Exibir Catálogo de Recompensas                  | V  | V  | V  | V  | 4  |
+| **UC11** | Resgatar Recompensas                            | V  | V  | V  | V  | 4  |
+| **UC12** | Exibir Vitrine de Conquistas                    | V  | V  | V  | V  | 4  |
+| **UC13** | Exibir Progresso da Sequência                   | -- | V  | V  | -- | 2  |
+| **UC14** | Configurar Anonimato                            | -- | V  | -- | V  | 2  |
+| **UC15** | Visualizar Ranking                              | V  | V  | V  | V  | 4  |
+| **UC16** | Visualizar Painel de Impacto Pessoal            | -- | V  | V  | -- | 2  |
+| **UC17** | Consultar Estatísticas do Impacto da Comunidade | -- | V  | V  | -- | 2  |
 
 
 ## 10.3. Matriz de esforço
@@ -736,8 +759,9 @@ Após o cálculo da prioridade final, os Casos de Uso foram posicionados em uma 
 
 ## Histórico de versões
 
-| Data | Versão | Descrição da Alteração | Autor(a) |
-|-------|-------|------|------|
-| 13/05/2026 | 1.0 | Criação do documento e estruturação dos tópicos iniciais, bem como seu conteúdo. | Joaquim e Nayla |
-| 17/04/2026 | 2.0 | Correção da priorização conforme feedback do professor. | Yasmim e Joaquim |
-| 18/04/2026 | 2.1 | Corrigindo template das tabelas, adicionando os Casos de Uso e definição do MVP. | Yasmim e Joaquim |
+|    Data    | Versão |                               Descrição da Alteração                             |     Autor(a)     |
+|------------|--------|----------------------------------------------------------------------------------|------------------|
+| 13/05/2026 |   1.0  | Criação do documento e estruturação dos tópicos iniciais, bem como seu conteúdo. | Joaquim e Nayla  |
+| 17/04/2026 |   2.0  | Correção da priorização conforme feedback do professor.                          | Yasmim e Joaquim |
+| 18/04/2026 |   2.1  | Corrigindo template das tabelas, adicionando os Casos de Uso e definição do MVP. | Yasmim e Joaquim |
+| 14/06/2026 |   3.1  | Revisão e correção da priorização.                                               | Joaquim          |
