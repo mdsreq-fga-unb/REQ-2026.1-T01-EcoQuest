@@ -66,7 +66,7 @@ O cronograma do projeto EcoQuest opera em dois níveis de abstração distintos 
 
 **Foco Estratégico:** Desenvolvimento em fluxo contínuo governado por Kanban, garantindo qualidade técnica e validação incremental.
 
-*   **Gatilho de Entrada:** Arquitetura validada no Marco de Elaboração e itens do topo do backlog cruzando o ponto de compromisso (_DoR_).
+*   **Gatilho de Entrada:** Arquitetura validada no Marco de Elaboração e itens prioritários da Lista de Itens de Trabalho cruzando o ponto de compromisso (_DoR_).
     
 *   **Artefatos de Saída (DoD da Fase):**
     
@@ -122,3 +122,4 @@ O projeto é guiado por liberações progressivas de valor. Essa estratégia de 
 |-------|-------|------|------|
 | 12/04/2026 | 1.0 | Criação do documento e estruturação dos inicial. | Paulo Vitor |
 | 26/05/2026 | 2.0 | Mudanças na estrutura pensando numa melhor conformidade com o andamento do projeto.| Paulo Vitor |
+| 14/06/2026 | 2.1 | Ajuste terminológico para Lista de Itens de Trabalho e alinhamento com o processo praticado. | João Victor |

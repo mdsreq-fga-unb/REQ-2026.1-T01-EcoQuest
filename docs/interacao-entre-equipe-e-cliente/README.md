@@ -35,15 +35,19 @@ A cliente principal é a Prof. Dra. Juliana Dalbone, que atua como orientadora e
 | Revisão/Avaliação (Iteration Review/Assessment) | Semanal | Validar incremento internamente | Registro de status |
 | Retrospectiva | Semanal | Ajustes de processo | Ações de melhoria |
 | Revisão com stakeholders | Quinzenal (síncrona) | Decisões de escopo/artefatos | Ata |
-| Validação assíncrona | Semanal (e-mail) | Feedback sobre incrementos | Ata + backlog |
+| Validação assíncrona | Semanal (e-mail) | Feedback sobre incrementos | Ata + lista de itens de trabalho |
 
-**SLA (cronograma):** envio terça; triagem/processamento segunda.
+**SLA (ciclo de validação):**
+
+- Envio de incrementos e artefatos para revisão: terça-feira.
+- Triagem e consolidação de feedback: até a segunda-feira seguinte.
+- Responsável pela triagem: Analista de Requisitos.
 
 ## 7.3 Processo de Validação
 
 - **Elicitação/descoberta:** entrevistas e regras do domínio.
 - **Análise/consenso:** escopo, MoSCoW, trade-offs.
-- **Especificação:** histórias + critérios de aceitação (AC).
+- **Especificação:** casos de uso + critérios de aceitação (AC).
 - **Modelagem:** protótipos e fluxos.
 - **Verificação/validação:** aceite de incrementos e confirmação de AC.
 
@@ -52,13 +56,15 @@ A cliente principal é a Prof. Dra. Juliana Dalbone, que atua como orientadora e
 | Artefato (OpenUP) | Como aparece no EcoQuest | Onde é mantido | Quando é validado |
 |---|---|---|---|
 | **Visão (Vision)** | Objetivo do produto, OE, CP | [Solução Proposta](/solucao-proposta/) | Revisões quinzenais |
-| **Stakeholder Requests** | Feedback/decisões/solicitações | [Atas](#atas) | Contínuo |
-| **Work Items List** | Lista de Itens de Trabalho (Kanban) | GitHub Projects + [Lista de Itens de Trabalho](/lista-de-itens-de-trabalho/) | Planejamento quinzenal |
-| **Requisitos** | Casos de Uso + Critérios de Dor e DoD | [Requisitos de Software](/requisitos-de-software/) | Refinamento semanal |
+| **Stakeholder Requests** | Feedback, decisões e solicitações | [Atas](/atas/) | Contínuo |
+| **Work Items List** | Lista de Itens de Trabalho priorizada no Kanban | GitHub Projects + [Lista de Itens de Trabalho](/lista-de-itens-de-trabalho/) | Refinamento semanal e planejamento quinzenal |
+| **Requisitos** | Casos de Uso + Critérios de Aceitação + DoR/DoD | [Requisitos de Software](/requisitos-de-software/) | Refinamento semanal |
 | **Protótipos de IU** | Wireframes/fluxos | Ferramenta/artefatos de design | Refinamento quinzenal |
-| **Change Request (CR)** | Solicitações de mudança | [Atas](#atas) + Lista de Itens de Trabalho | Contínuo |
+| **Change Request (CR)** | Solicitações de mudança | [Atas](/atas/) + Lista de Itens de Trabalho | Contínuo |
 | **Critérios de aceite** | DoR/DoD + testes | [DoR e DoD](/dor-e-dod/) | Entrada (DoR) / saída (DoD) |
 | **Plano da iteração** | Escopo e prioridades | Kanban + cronograma | Quinzenal |
+
+Adaptação adotada pela equipe: o termo utilizado é **Lista de Itens de Trabalho** como o processo OpenUP se refere.
 	
 ### Tratamento de mudanças de requisitos (Change Management)
 
@@ -73,7 +79,7 @@ Fluxo de CR:
 
 1. Analista de Requisitos media e propõe alternativas.
 2. Decisão por critérios: OE/CP, valor, riscos, prazo.
-3. Impasse: cliente principal decide; registrar em ata e .
+3. Impasse: cliente principal decide; registrar em ata e atualizar a lista de itens de trabalho.
 
 ### Atas
 
@@ -132,3 +138,4 @@ Esta seção centraliza as **atas**, **decisões** e **Change Requests (CR)** le
 | 18/05/2026 | 1.2 | Adicionar histórico de reuniões e atas. | João Victor |
 | 18/05/2026 | 1.3 | Simplificação e formato mais adequado ao template. | João Victor |
 | 12/06/2026 | 1.4 | Atualização dos links e centralização das evidências em /atas. | João Victor |
+| 14/06/2026 | 1.5 | Ajuste de terminologia e adequação do processo documentado ao fluxo real da equipe. | João Victor |
