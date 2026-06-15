@@ -271,14 +271,14 @@ function MenuMobile({
 
 function BotaoCamera() {
 	return (
-		<a
-			href="/"
+		<button
+			type="button"
 			class="btn-camera"
+			id="btn-camera-scan"
 			aria-label="Escanear QR Code para novo descarte"
-			role="button"
 		>
 			<IcoCamera />
-		</a>
+		</button>
 	);
 }
 
@@ -441,6 +441,92 @@ body {
   box-shadow: 0 6px 20px rgba(43,86,51,.50);
 }
 
+.qr-modal {
+	position: fixed;
+	inset: 0;
+	z-index: 1000;
+	background: rgba(0,0,0,.55);
+	display: none;
+	align-items: center;
+	justify-content: center;
+	padding: 1rem;
+}
+
+.qr-modal.aberto {
+	display: flex;
+}
+
+.qr-modal_card {
+	width: min(95vw, 420px);
+	background: #fff;
+	border-radius: 14px;
+	padding: 1rem;
+	box-shadow: 0 10px 35px rgba(0,0,0,.25);
+	display: grid;
+	gap: .75rem;
+}
+
+.qr-modal_header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.qr-modal_header h3 {
+	font-family: 'Oxanium', sans-serif;
+	color: var(--color-primary);
+	font-size: 1.15rem;
+}
+
+.qr-modal_close {
+	border: none;
+	background: transparent;
+	color: #5f5f5f;
+	font-size: 1.2rem;
+	cursor: pointer;
+	padding: .2rem .4rem;
+}
+
+.qr-reader {
+	min-height: 280px;
+	border: 1px solid rgba(43,86,51,.18);
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.qr-modal_result {
+	font-size: .9rem;
+	color: #1e3d24;
+	word-break: break-all;
+}
+
+.qr-modal_actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .5rem;
+}
+
+.qr-modal_btn {
+	border: none;
+	border-radius: 8px;
+	padding: .5rem .75rem;
+	font-size: .9rem;
+	font-weight: 600;
+	cursor: pointer;
+	background: var(--color-primary);
+	color: #fff;
+}
+
+.qr-modal_btn.secundario {
+	background: #eaf5ec;
+	color: #1e3d24;
+	border: 1px solid rgba(43,86,51,.25);
+}
+
+.qr-file-input {
+	display: none;
+}
+
 /* ── Menu overlay ── */
 .menu-overlay {
   display: none; position: fixed; inset: 0;
@@ -526,8 +612,52 @@ export function AppLayout({
 				</div>
 			</div>
 
+			<div class="qr-modal" id="qr-modal" aria-hidden="true">
+				<div
+					class="qr-modal_card"
+					role="dialog"
+					aria-modal="true"
+					aria-labelledby="qr-modal-title"
+				>
+					<div class="qr-modal_header">
+						<h3 id="qr-modal-title">Ler Token de Descarte</h3>
+						<button
+							type="button"
+							class="qr-modal_close"
+							id="btn-fechar-qr"
+							aria-label="Fechar leitor"
+						>
+							✕
+						</button>
+					</div>
+					<div id="reader" class="qr-reader"></div>
+					<p id="qr-modal-result" class="qr-modal_result">
+						Aponte a câmera para o QR Code.
+					</p>
+					<div class="qr-modal_actions">
+						<button
+							type="button"
+							id="btn-permissao-camera"
+							class="qr-modal_btn"
+						>
+							Permitir câmera
+						</button>
+						<label for="qr-file-input" class="qr-modal_btn secundario">
+							Ler por foto
+						</label>
+						<input
+							id="qr-file-input"
+							class="qr-file-input"
+							type="file"
+							accept="image/*"
+						/>
+					</div>
+				</div>
+			</div>
+
 			<MenuMobile rotaAtiva={rotaAtiva} nomeUsuario={nomeUsuario} />
 
+			<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
 			<script>{`
 (function(){
   var btn    = document.getElementById('btn-menu-mobile');
@@ -557,6 +687,127 @@ export function AppLayout({
   document.addEventListener('keydown', function(e){
     if(e.key==='Escape' && menu.classList.contains('aberto')) fecharFn();
   });
+})();
+
+(function(){
+	var btnAbrir = document.getElementById('btn-camera-scan');
+	var btnFechar = document.getElementById('btn-fechar-qr');
+	var btnPermissao = document.getElementById('btn-permissao-camera');
+	var fileInput = document.getElementById('qr-file-input');
+	var modal = document.getElementById('qr-modal');
+	var resultado = document.getElementById('qr-modal-result');
+	if(!btnAbrir || !btnFechar || !btnPermissao || !fileInput || !modal || !resultado) return;
+
+	fileInput.setAttribute('capture', 'environment');
+
+	var qr = null;
+	var lendo = false;
+
+	function qrCodeSuccessCallback(decodedText, decodedResult) {
+		resultado.textContent = 'Token lido: ' + decodedText;
+		if (qr && lendo) {
+			qr.stop().catch(function(){});
+			lendo = false;
+		}
+		// TODO: na próxima etapa, enviar decodedText para endpoint de validação do backend.
+	}
+
+	function obterLeitor() {
+		if (!window.Html5Qrcode || !window.Html5QrcodeSupportedFormats) {
+			resultado.textContent = 'Não foi possível carregar o leitor de QR Code.';
+			return null;
+		}
+
+		if (!qr) {
+			qr = new window.Html5Qrcode('reader', {
+				formatsToSupport: [window.Html5QrcodeSupportedFormats.QR_CODE]
+			});
+		}
+
+		return qr;
+	}
+
+	function iniciarLeituraCamera() {
+		if (lendo) return;
+		var leitor = obterLeitor();
+		if (!leitor) return;
+
+		if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || !window.isSecureContext) {
+			resultado.textContent = 'Streaming de câmera indisponível neste navegador. Use Ler por foto.';
+			return;
+		}
+
+		var config = { fps: 10, qrbox: { width: 250, height: 250 } };
+		leitor.start({ facingMode: 'environment' }, config, qrCodeSuccessCallback).then(function(){
+			lendo = true;
+			resultado.textContent = 'Câmera iniciada. Aponte para o QR Code.';
+		}).catch(function(err){
+			resultado.textContent = 'Falha ao iniciar câmera: ' + (err && err.message ? err.message : String(err));
+		});
+	}
+
+	function pedirPermissaoCamera() {
+		if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+			resultado.textContent = 'Permissão de câmera indisponível. Use Ler por foto.';
+			return;
+		}
+
+		navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } }).then(function(stream){
+			resultado.textContent = 'Permissão concedida. Iniciando leitor...';
+			stream.getTracks().forEach(function(track){ track.stop(); });
+			iniciarLeituraCamera();
+		}).catch(function(err){
+			resultado.textContent = 'Permissão negada ou indisponível: ' + (err && err.message ? err.message : String(err));
+		});
+	}
+
+	function lerPorFoto(file) {
+		if (!file) return;
+		var leitor = obterLeitor();
+		if (!leitor) return;
+
+		resultado.textContent = 'Lendo QR Code da imagem...';
+		leitor.scanFile(file, true).then(function(decodedText){
+			qrCodeSuccessCallback(decodedText, null);
+		}).catch(function(err){
+			resultado.textContent = 'Não foi possível ler QR da imagem: ' + (err && err.message ? err.message : String(err));
+		});
+	}
+
+	function abrirModal() {
+		modal.classList.add('aberto');
+		modal.setAttribute('aria-hidden', 'false');
+		resultado.textContent = 'Permita o uso da câmera ou escolha Ler por foto.';
+		pedirPermissaoCamera();
+	}
+
+	function fecharModal() {
+		modal.classList.remove('aberto');
+		modal.setAttribute('aria-hidden', 'true');
+		if (qr && lendo) {
+			qr.stop().catch(function(){});
+			lendo = false;
+		}
+		if (fileInput) fileInput.value = '';
+	}
+
+	btnAbrir.addEventListener('click', function(){
+		abrirModal();
+	});
+	btnPermissao.addEventListener('click', function(){
+		pedirPermissaoCamera();
+	});
+	fileInput.addEventListener('change', function(ev){
+		var file = ev && ev.target && ev.target.files ? ev.target.files[0] : null;
+		if (file) lerPorFoto(file);
+	});
+	btnFechar.addEventListener('click', fecharModal);
+	modal.addEventListener('click', function(ev){
+		if (ev.target === modal) fecharModal();
+	});
+	document.addEventListener('keydown', function(e){
+		if (e.key === 'Escape' && modal.classList.contains('aberto')) fecharModal();
+	});
 })();
 
 `}</script>
