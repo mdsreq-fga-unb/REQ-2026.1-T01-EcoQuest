@@ -12,6 +12,7 @@
     "@elysia/html": "^1.4.1",
     "@elysiajs/cors": "^1.4.2",
     "@kitajs/ts-html-plugin": "^4.1.4",
+    "@paulmillr/qr": "^0.3.0",
     "better-auth": "^1.6.18",
     "elysia": "latest",
     "react": "^19.2.6",

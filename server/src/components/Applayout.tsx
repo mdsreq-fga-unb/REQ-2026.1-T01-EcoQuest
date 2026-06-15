@@ -110,6 +110,7 @@ function IcoCamera() {
 
 const NAV_ITEMS = [
 	{ href: "/", label: "Extrato", Icone: IcoDescarte },
+	// { href: "/simular_descarte", label: "Simular descarte", Icone: IcoDescarte },
 	{ href: "/insignias", label: "Insígnias", Icone: IcoInsignia },
 	{ href: "/ranking", label: "Ranking", Icone: IcoRanking },
 ] as const;
@@ -159,7 +160,11 @@ function Sidebar({
 			<div class="sidebar_rodape">
 				<div class="sidebar_avatar" aria-hidden="true"></div>
 				<span class="sidebar_perfil-nome">{primeiroNome}</span>
-				<a href="/auth/logout" class="sidebar_logout" aria-label="Sair da conta">
+				<a
+					href="/auth/logout"
+					class="sidebar_logout"
+					aria-label="Sair da conta"
+				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 24 24"
@@ -202,7 +207,6 @@ function HeaderMobile() {
 					class="header-mobile_logo-img"
 				/>
 			</a>
-
 		</header>
 	);
 }

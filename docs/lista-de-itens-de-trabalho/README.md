@@ -326,8 +326,8 @@
 6. Sistema verifica se o token já foi utilizado anteriormente. (RN6)
 7. Sistema registra a operação de descarte.
 8. Sistema converte o volume e/ou tipo de resíduo descartado em pontos e credita o saldo do usuário, conforme tabela de pontuação vigente. (RN3)
-9. Sistema verifica automaticamente se o usuário atingiu critérios para obtenção de novas insígnias. (RN4)
-10. Sistema confirma leitura realizada.
+9. Sistema confirma leitura realizada.
+10. Sistema verifica se o usuário atingiu critérios para obtenção de novas insígnias. (RN4)
 
 - Fluxos Alternativos
 
