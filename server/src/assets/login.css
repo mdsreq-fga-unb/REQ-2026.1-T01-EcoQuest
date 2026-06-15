@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@700&family=Poppins:wght@400;500;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #D0EFD6;
+  font-family: 'Poppins', sans-serif;
+  color: #1F1F1F;
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 40px 24px;
+}
+
+.login-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.login-logo {
+  display: block;
+  width: min(300px, 55vw);
+  height: 150px;
+  margin-bottom: 28px;
+  object-fit: contain;
+}
+
+.card {
+  background: #F0FAF2;
+  border: 1px solid #2B5633;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 40px;
+  width: 100%;
+  max-width: 480px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.field label {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #1F1F1F;
+}
+
+.field input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #2B5633;
+  border-radius: 8px;
+  background: transparent;
+  color: #1F1F1F;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.field input::placeholder {
+  color: #7A7A7A;
+}
+
+.field input:focus {
+  outline: none;
+  border-color: #2B5633;
+  box-shadow: 0 0 0 3px rgba(43, 86, 51, 0.15);
+}
+
+.input-senha-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-senha-wrapper input {
+  flex: 1;
+  padding-right: 44px;
+}
+
+.toggle-senha {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #7A7A7A;
+}
+
+.toggle-senha:hover,
+.toggle-senha:focus-visible {
+  color: #2B5633;
+}
+
+.icone-olho {
+  width: 20px;
+  height: 20px;
+}
+
+.login-link {
+  margin-left: 8px;
+  margin-top: 4px;
+  font-size: 0.8rem;
+}
+
+.login-link a {
+  color: #2B5633;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+.mensagem {
+  margin-top: 16px;
+  min-height: 1.2em;
+  font-size: 0.9rem;
+}
+
+.mensagem .erro {
+  color: #c0392b;
+}
+
+.mensagem .sucesso {
+  color: #2B5633;
+  font-weight: 500;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 14px 24px;
+  background: #2B5633;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-submit:hover {
+  opacity: 0.95;
+  transform: translateY(-2px);
+}
+
+.btn-submit:active {
+  transform: translateY(0);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Tablet */
+@media (max-width: 1023px) {
+  .login-logo {
+    width: min(280px, 65vw);
+    height: 140px;
+    margin-bottom: 32px;
+  }
+
+  .card {
+    max-width: 420px;
+    padding: 32px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .container {
+    padding: 32px 20px;
+  }
+
+  .login-logo {
+    width: min(220px, 72vw);
+    height: 110px;
+    margin-bottom: 24px;
+  }
+
+  .card {
+    max-width: 340px;
+    padding: 20px;
+  }
+
+  .field {
+    margin-bottom: 16px;
+  }
+
+  .field input {
+    padding: 10px 14px;
+  }
+
+  .button-wrapper {
+    width: 100%;
+  }
+
+  .btn-submit {
+    width: 100%;
+    padding: 14px 0;
+  }
+}
+
+@media (max-height: 600px) {
+  .container {
+    align-items: flex-start;
+  }
+}

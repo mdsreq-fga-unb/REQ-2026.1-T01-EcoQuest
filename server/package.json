@@ -3,7 +3,10 @@
   "version": "1.0.50",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.tsx"
+    "dev": "bun run --watch src/index.tsx",
+    "docker:up": "docker compose -f src/db/compose.yml --env-file .env up -d",
+    "docker:down": "docker compose -f src/db/compose.yml --env-file .env down",
+    "docker:logs": "docker compose -f src/db/compose.yml --env-file .env logs -f"
   },
   "dependencies": {
     "@elysia/html": "^1.4.1",
@@ -16,7 +19,13 @@
     "@types/react": "^19.2.15",
     "@types/react-dom": "^19.2.3",
     "bun-types": "latest",
-    "typed-htmx": "^0.3.1"
+    "typed-htmx": "^0.3.1",
+    "@types/bun": "latest"
   },
-  "module": "src/index.js"
+  "module": "src/index.js",
+  "type": "module",
+  "private": true,
+  "peerDependencies": {
+    "typescript": "^5"
+  }
 }

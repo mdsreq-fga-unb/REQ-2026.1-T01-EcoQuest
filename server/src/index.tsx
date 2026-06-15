@@ -1,5 +1,9 @@
 import { Html, html } from "@elysia/html";
 import { Elysia } from "elysia";
+import { authController } from "./modules/auth/controller";
+import { ensureSchema } from "./db";
+
+await ensureSchema();
 
 const app = new Elysia()
 	.use(html())
@@ -36,14 +40,21 @@ const app = new Elysia()
 			</body>
 		</html>
 	))
-
-	// 3. HTMX Endpoint: Returns raw hypermedia fragments (not full pages)
 	.post("/clicked", () => (
 		<div id="result" style="color: green; font-weight: bold;">
 			⚡ Content swapped instantly by HTMX from Elysia!
 		</div>
 	))
+	.get("/assets/*", async ({ path, set }) => {
+		const file = Bun.file(`./src${path}`);
+		if (!(await file.exists())) {
+			set.status = 404;
+			return "Not found";
+		}
 
+		return file;
+	})
+	.use(authController)
 	.listen(3000);
 
 console.log(
