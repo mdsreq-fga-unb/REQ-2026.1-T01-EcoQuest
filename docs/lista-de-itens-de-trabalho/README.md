@@ -1,27 +1,38 @@
-
 # 10. Lista de Itens de Trabalho
 
-## 10.1. Lista de Itens de Trabalho
+## 10.1. Regras de negócio
 
-| ID | Nome | ID UC | Objetivo UC | RNFs Relacionados |
-| :--- | :--- | :--- | :--- | :--- |
-| **RF01** | Cadastrar usuário | **UC01** | Permitir a criação de uma conta no sistema | **RNF01** — Responsividade Mobile<br>**RNF03** — Acessibilidade Digital<br>**RNF05** — Segurança de Dados |
-| **RF02** | Autenticar usuário | **UC02** | Permitir acesso seguro ao sistema | **RNF02** — Desempenho de Resposta<br>**RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados<br>**RNF06** — Integridade de Tokens |
-| **RF03** | Recuperar senha | **UC03** | Permitir redefinição da senha | **RNF02** — Desempenho de Resposta<br>**RNF05** — Segurança de Dados<br>**RNF06** — Integridade de Tokens |
-| **RF04** | Gerenciar Perfil | **UC04** | Permitir edição de dados pessoais e preferências | **RNF01** — Responsividade Mobile<br>**RNF03** — Acessibilidade Digital<br>**RNF05** — Segurança de Dados |
-| **RF05** | Excluir conta | **UC05** | Permitir exclusão da conta conforme LGPD | **RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados |
-| **RF06** | Localizar PEVs | **UC06** | Exibir pontos de coleta próximos | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade |
-| **RF07** | Consultar detalhes do PEV | **UC07** | Exibir informações detalhadas de um ponto de coleta | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital |
-| **RF08** | Ler Token para Descarte | **UC08** | Permitir leitura de QR Code para descarte | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados<br>**RNF06** — Integridade de Tokens |
-| **RF09** | Consultar Extrato | **UC09** | Exibir histórico de descartes e saldo de créditos disponível | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados |
-| **RF10** | Exibir Catálogo de Recompensas | **UC10** | Exibir benefícios, cupons e prêmios disponíveis para resgate | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade |
-| **RF11** | Resgatar Recompensas | **UC11** | Processar o resgate de uma recompensa do catálogo | **RNF02** — Desempenho de Resposta<br>**RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados<br>**RNF06** — Integridade de Tokens |
-| **RF12** | Exibir Vitrine de Conquistas | **UC12** | Exibir marcos e medalhas conquistados pelo usuário | **RNF01** — Responsividade Mobile<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade |
-| **RF13** | Exibir Progresso da Sequência | **UC13** | Mostrar o status atual da sequência de descartes e proximidade de bônus | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF04** — Alta Disponibilidade |
-| **RF14** | Configurar Anonimato | **UC14** | Permitir que o usuário oculte sua identidade no ranking social | **RNF03** — Acessibilidade Digital<br>**RNF05** — Segurança de Dados |
-| **RF15** | Visualizar Ranking | **UC15** | Exibir ranking social com pontuação dos usuários | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade |
-| **RF16** | Visualizar Painel de Impacto Pessoal | **UC16** | Exibir métricas de impacto ambiental geradas pelo usuário | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade |
-| **RF17** | Consultar Estatísticas do Impacto da Comunidade | **UC17** | Exibir o impacto ambiental acumulado por todos os usuários da plataforma | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade |
+| ID  | Nome da Regra de Negócio | Descrição |
+| :--- | :--- | :--- |
+| **RN1** | Gestão das Pontuações e Recompensas | A quantidade de pontos atribuída a cada tipo ou volume de resíduo poderá ser configurada pelos administradores do sistema |
+| **RN2** | Validação do Descarte | Um descarte somente será considerado válido após a leitura e validação do token emitido pelo PEV. |
+| **RN3** | Pontuação por Descarte | O sistema deve converter o volume e/ou tipo de resíduo descartado em pontos creditados na conta do usuário, conforme tabela de pontuação vigente |
+| **RN4** | Insígnias de Conquista | O sistema deve conceder insígnias automaticamente quando o usuário atingir critérios de engajamento previamente definidos |
+| **RN5** | Elegibilidade para Resgate | O usuário somente poderá resgatar recompensas quando possuir saldo de pontos igual ou superior ao valor exigido para o benefício selecionado |
+| **RN6** | Unicidade do Token | Cada token emitido para validação de descarte poderá ser utilizado apenas uma única vez |
+| **RN7** | Progresso das Conquistas | O sistema deve calcular e exibir o percentual de progresso do usuário em relação aos critérios necessários para obtenção de cada insígnia disponível |
+
+## 10.2. Lista de Itens de Trabalho
+
+| ID | Nome | ID UC | Objetivo UC | RNFs Relacionados | RNs Relacionadas |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **RF01** | Cadastrar usuário | **UC01** | Permitir a criação de uma conta no sistema | **RNF01** — Responsividade Mobile<br>**RNF03** — Acessibilidade Digital<br>**RNF05** — Segurança de Dados | — |
+| **RF02** | Autenticar usuário | **UC02** | Permitir acesso seguro ao sistema | **RNF02** — Desempenho de Resposta<br>**RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados<br>**RNF06** — Integridade de Tokens | — |
+| **RF03** | Recuperar senha | **UC03** | Permitir redefinição da senha | **RNF02** — Desempenho de Resposta<br>**RNF05** — Segurança de Dados<br>**RNF06** — Integridade de Tokens | — |
+| **RF04** | Gerenciar Perfil | **UC04** | Permitir edição de dados pessoais e preferências | **RNF01** — Responsividade Mobile<br>**RNF03** — Acessibilidade Digital<br>**RNF05** — Segurança de Dados | — |
+| **RF05** | Excluir conta | **UC05** | Permitir exclusão da conta conforme LGPD | **RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados | — |
+| **RF06** | Localizar PEVs | **UC06** | Exibir pontos de coleta próximos | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade | — |
+| **RF07** | Consultar detalhes do PEV | **UC07** | Exibir informações detalhadas de um ponto de coleta | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital | — |
+| **RF08** | Ler Token para Descarte | **UC08** | Permitir leitura de QR Code para descarte | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados<br>**RNF06** — Integridade de Tokens | **RN2** — Validação do Descarte<br>**RN3** — Pontuação por descarte<br>**RN4** — Insígnias de conquistas<br>**RN6** — Unicidade do Token |
+| **RF09** | Consultar Extrato | **UC09** | Exibir histórico de descartes e saldo de créditos disponível | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados | **RN3** — Pontuação por descarte |
+| **RF10** | Exibir Catálogo de Recompensas | **UC10** | Exibir benefícios, cupons e prêmios disponíveis para resgate | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade | **RN1** — Gestão das pontuções e recompensas |
+| **RF11** | Resgatar Recompensas | **UC11** | Processar o resgate de uma recompensa do catálogo | **RNF02** — Desempenho de Resposta<br>**RNF04** — Alta Disponibilidade<br>**RNF05** — Segurança de Dados<br>**RNF06** — Integridade de Tokens | **RN1** — Gestão das Pontuações e Recompensas<br>**RN5** — Elegibilidade para Resgate |
+| **RF12** | Exibir Vitrine de Conquistas | **UC12** | Exibir marcos e medalhas conquistados pelo usuário | **RNF01** — Responsividade Mobile<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade | **RN4** — Insígnias de conquistas |
+| **RF13** | Exibir Progresso das Insígnias | **UC13** | Mostrar o status atual do progresso da conquista das insignias e proximidade de bônus | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF04** — Alta Disponibilidade | **RN7** — Progresso das Conquistas |
+| **RF14** | Configurar Anonimato | **UC14** | Permitir que o usuário oculte sua identidade no ranking social | **RNF03** — Acessibilidade Digital<br>**RNF05** — Segurança de Dados | — |
+| **RF15** | Visualizar Ranking | **UC15** | Exibir ranking social com pontuação dos usuários | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade | **RN3** — Pontuação por descarte |
+| **RF16** | Visualizar Painel de Impacto Pessoal | **UC16** | Exibir métricas de impacto ambiental geradas pelo usuário | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade | **RN3** — Pontuação por descarte |
+| **RF17** | Consultar Estatísticas do Impacto da Comunidade | **UC17** | Exibir o impacto ambiental acumulado por todos os usuários da plataforma | **RNF01** — Responsividade Mobile<br>**RNF02** — Desempenho de Resposta<br>**RNF03** — Acessibilidade Digital<br>**RNF04** — Alta Disponibilidade | — |
 
 ### UC01 — Cadastrar Usuário
 
@@ -51,16 +62,16 @@
         - 3B.1 Sistema detecta campos inválidos ou vazios.
         - 3B.2 Sistema solicita correção.
 
+* Fluxos de Exceção
+
+    - E1 — Falha ao salvar cadastro
+
+        - E1.1 Sistema tenta persistir os dados do usuário.
+        - E1.2 Ocorre erro de comunicação com o banco de dados.
+        - E1.3 Sistema cancela a operação.
+        - E1.4 Sistema exibe mensagem informando que o cadastro não pôde ser concluído e para tentar novamente mais tarde.
+
 - Pós-condições: Conta criada no sistema.
-
-- Critérios de aceitação
-
-    - O sistema deve permitir cadastro com e-mail, senha e dados básicos.
-    - O sistema deve validar campos obrigatórios.
-    - O sistema não deve permitir e-mails duplicados.
-    - O sistema deve exibir mensagem de sucesso após cadastro.
-    - O sistema deve armazenar os dados do usuário com segurança.
-
 
 ### UC02 — Autenticar Usuário
 
@@ -85,15 +96,16 @@
         - 3A.1 Sistema rejeita autenticação.
         - 3A.2 Sistema exibe mensagem de erro.
 
+- Fluxos de Exceção
+
+    - E1 — Serviço de autenticação indisponível
+
+        - E1.1 Sistema tenta validar as credenciais.
+        - E1.2 O serviço de autenticação não responde.
+        - E1.3 Sistema impede o acesso.
+        - E1.4 Sistema informa indisponibilidade temporária e para tentar novamente mais tarde.
+
 - Pós-condições: Usuário autenticado no sistema.
-
-- Critérios de aceitação
-
-    - O sistema deve permitir login com e-mail e senha válidos.
-    - O sistema deve negar acesso para credenciais inválidas.
-    - O sistema deve iniciar sessão autenticada após login bem-sucedido.
-    - O sistema deve exibir mensagem de erro em caso de falha.
-    - O sistema deve proteger a sessão do usuário.
 
 ### UC03 — Recuperar Senha
 
@@ -125,15 +137,18 @@
         - 5A.1 Sistema detecta expiração do link.
         - 5A.2 Sistema solicita nova recuperação.
 
+- Fluxos de Exceção
+    - E1 — Falha no envio do link de redefinição
+
+        - E1.1 Sistema não confirma a solicitação de recuperação.
+        - E1.2 Sistema informa que o envio não foi concluído.
+
+    - E2 — Falha ao atualizar a nova senha
+
+        - E2.1 Sistema mantém a senha anterior ativa.
+        - E2.2 Sistema informa que a redefinição não foi concluída.
+
 - Pós-condições: Senha redefinida com sucesso.
-
-- Critérios de aceitação
-
-    - O sistema deve permitir solicitação de recuperação via e-mail.
-    - O sistema deve enviar link seguro para redefinição.
-    - O sistema deve permitir cadastro de nova senha válida.
-    - O sistema deve invalidar links expirados.
-    - O sistema deve informar quando o e-mail não estiver cadastrado.
 
 ### UC04 — Gerenciar Perfil
 
@@ -159,15 +174,18 @@
         - 5A.1 Sistema detecta inconsistências.
         - 5A.2 Sistema solicita correção.
 
+- Fluxos de Exceção
+
+    - E1 — Falha ao carregar dados do perfil
+        - E1.1 Sistema não exibe informações incompletas como definitivas.
+        - E1.2 Sistema informa indisponibilidade temporária dos dados.
+
+    - E2 — Falha ao salvar alterações
+
+        - E2.1 Sistema mantém os dados anteriores do perfil.
+        - E2.2 Sistema informa que a atualização não foi concluída.
+
 - Pós-condições: Perfil atualizado no sistema.
-
-- Critérios de aceitação
-
-    - O sistema deve exibir os dados atuais do usuário.
-    - O sistema deve permitir edição dos dados pessoais.
-    - O sistema deve validar os dados informados.
-    - O sistema deve salvar as alterações realizadas.
-    - O sistema deve permitir atualização das preferências de privacidade.
 
 ### UC05 — Excluir Conta
 
@@ -193,15 +211,18 @@
         - 3A.1 Usuário cancela a operação.
         - 3A.2 Sistema mantém a conta ativa.
 
+- Fluxos de Exceção
+
+    - E1 — Falha ao remover dados da conta
+        - E1.1 Sistema não encerra a operação como concluída.
+        - E1.2 Sistema informa que a exclusão não foi realizada.
+
+    - E2 — Falha ao encerrar sessão após exclusão
+
+        - E2.1 Sistema invalida o acesso da conta removida.
+        - E2.2 Sistema informa necessidade de novo acesso caso a operação não finalize corretamente.
+
 - Pós-condições: Conta removida do sistema.
-
-- Critérios de aceitação
-
-    - O sistema deve solicitar confirmação antes da exclusão.
-    - O sistema deve remover os dados do usuário conforme LGPD.
-    - O sistema deve encerrar a sessão após exclusão.
-    - O sistema deve impedir acesso à conta excluída.
-    - O sistema deve informar sucesso da operação.
 
 ### UC06 — Localizar PEVs
 
@@ -231,15 +252,19 @@
         - 3A.1 Sistema não encontra pontos próximos.
         - 3A.2 Sistema informa indisponibilidade.
 
+- Fluxos de Exceção
+
+    - E1 — Falha no serviço de geolocalização
+
+        - E1.1 Sistema não obtém a localização automaticamente.
+        - E1.2 Sistema oferece busca manual por endereço ou região.
+
+    - E2 — Falha ao carregar mapa ou lista de PEVs
+
+        - E2.1 Sistema informa indisponibilidade temporária.
+        - E2.2 Sistema permite nova tentativa de carregamento.
+
 - Pós-condições: Lista ou mapa de PEVs exibido ao usuário.
-
-- Critérios de aceitação
-
-    - O sistema deve exibir mapa interativo dos PEVs.
-    - O sistema deve utilizar geolocalização do usuário.
-    - O sistema deve exibir os PEVs mais próximos.
-    - O sistema deve permitir localização manual caso a permissão seja negada.
-    - O sistema deve informar quando não houver PEVs disponíveis.
 
 ### UC07 — Consultar Detalhes do PEV
 
@@ -267,15 +292,19 @@
         - 2A.1 Sistema não consegue acessar os dados do ponto.
         - 2A.2 Sistema informa indisponibilidade temporária.
 
+- Fluxos de Exceção
+
+    - E1 — Falha ao recuperar detalhes do PEV
+
+        - E1.1 Sistema não exibe dados desatualizados como confirmados.
+        - E1.2 Sistema informa indisponibilidade temporária das informações.
+
+    - E2 — PEV removido ou inexistente
+
+        - E2.1 Sistema impede a consulta do ponto inválido.
+        - E2.2 Sistema orienta o usuário a selecionar outro PEV.
+
 - Pós-condições: Informações do PEV apresentadas ao usuário.
-
-- Critérios de aceitação
-
-    - O sistema deve exibir horários de funcionamento do PEV.
-    - O sistema deve informar materiais aceitos.
-    - O sistema deve exibir capacidade de coleta.
-    - O sistema deve exibir endereço do ponto.
-    - O sistema deve informar indisponibilidade caso os dados não possam ser carregados.
 
 ### UC08 — Ler Token para Descarte
 
@@ -293,9 +322,12 @@
 2. Sistema ativa a câmera do dispositivo.
 3. Usuário aponta a câmera para o QR Code.
 4. Sistema realiza leitura do token.
-5. Sistema valida o token recebido.
-6. Sistema registra a operação de descarte.
-7. Sistema confirma leitura realizada.
+5. Sistema valida o token recebido. (RN2)
+6. Sistema verifica se o token já foi utilizado anteriormente. (RN6)
+7. Sistema registra a operação de descarte.
+8. Sistema converte o volume e/ou tipo de resíduo descartado em pontos e credita o saldo do usuário, conforme tabela de pontuação vigente. (RN3)
+9. Sistema verifica automaticamente se o usuário atingiu critérios para obtenção de novas insígnias. (RN4)
+10. Sistema confirma leitura realizada.
 
 - Fluxos Alternativos
 
@@ -309,16 +341,27 @@
         - 5A.1 Sistema detecta token inválido ou expirado.
         - 5A.2 Sistema bloqueia a operação.
 
+    - 5B — Token já utilizado
+
+        - 5B.1 Sistema identifica reutilização do token. (RN6)
+        - 5B.2 Sistema impede o registro do descarte.
+        - 5B.3 Sistema informa que o token já foi utilizado anteriormente.
+
+- Fluxos de Exceção
+
+    - E1 — Falha ao acessar a câmera
+
+        - E1.1 Sistema não inicia a leitura do QR Code.
+        - E1.2 Sistema informa que a permissão ou o recurso de câmera está indisponível.
+
+    - E2 — Falha ao registrar o descarte
+
+        - E2.1 Sistema não registra a operação de descarte.
+        - E2.2 Sistema não credita pontos ao usuário. (RN3)
+        - E2.3 Sistema não realiza a verificação de novas insígnias. (RN4)
+        - E2.4 Sistema informa que a operação não foi concluída.
+
 - Pós-condições: Descarte registrado no sistema.
-
-- Critérios de aceitação
-
-    - O sistema deve permitir leitura do QR Code pela câmera.
-    - O sistema deve validar o token recebido.
-    - O sistema deve registrar a operação de descarte.
-    - O sistema deve rejeitar QR Codes inválidos.
-    - O sistema deve bloquear tokens expirados.
-    - O sistema deve confirmar descarte realizado com sucesso.
 
 ### UC09 — Consultar Extrato
 
@@ -333,7 +376,7 @@
 1. Usuário acessa a área de extrato.
 2. Sistema recupera o histórico de descartes do usuário.
 3. Sistema exibe lista de operações realizadas.
-4. Sistema exibe saldo de créditos disponível.
+4. Sistema exibe saldo de créditos disponível, calculado a partir das pontuações obtidas pelos descartes realizados. (RN3)
 5. Usuário consulta as informações.
 
 - Fluxos Alternativos
@@ -343,14 +386,19 @@
         - 2A.1 Sistema não encontra registros.
         - 2A.2 Sistema informa ausência de histórico.
 
+- Fluxos de Exceção
+
+    - E1 — Falha ao carregar histórico financeiro
+
+        - E1.1 Sistema não exibe saldo ou movimentações incompletas como definitivas.
+        - E1.2 Sistema informa indisponibilidade temporária do extrato.
+
+    - E2 — Falha ao calcular saldo atualizado
+
+        - E2.1 Sistema mantém o último saldo confiável.
+        - E2.2 Sistema informa que a atualização do saldo não foi concluída.
+
 - Pós-condições: Extrato exibido ao usuário.
-
-- Critérios de aceitação
-
-    - O sistema deve exibir histórico detalhado de descartes realizados.
-    - O sistema deve exibir saldo de créditos disponível.
-    - O sistema deve ordenar o histórico por data.
-    - O sistema deve informar quando não houver registros.
 
 ### UC10 — Exibir Catálogo de Recompensas
 
@@ -363,7 +411,7 @@
 - Fluxo Principal
 
 1. Usuário acessa o catálogo de recompensas.
-2. Sistema recupera os itens disponíveis.
+2. Sistema recupera os itens disponíveis e seus respectivos custos em pontos configurados pelos administradores do sistema. (RN1)
 3. Sistema exibe catálogo com benefícios, cupons e prêmios.
 4. Usuário visualiza as recompensas disponíveis.
 
@@ -379,14 +427,19 @@
         - 3A.1 Sistema não encontra recompensas cadastradas.
         - 3A.2 Sistema informa ausência de itens.
 
+- Fluxos de Exceção
+
+    - E1 — Falha ao carregar catálogo
+
+        - E1.1 Sistema não exibe lista parcial como catálogo completo.
+        - E1.2 Sistema informa indisponibilidade temporária dos itens.
+
+    - E2 — Falha ao consultar saldo do usuário
+
+        - E2.1 Sistema exibe o catálogo sem habilitar resgate dependente de saldo.
+        - E2.2 Sistema informa que a disponibilidade por pontos não pôde ser verificada.
+
 - Pós-condições: Catálogo exibido ao usuário.
-
-- Critérios de aceitação
-
-    - O sistema deve exibir todos os itens disponíveis para resgate.
-    - O sistema deve indicar o custo em pontos de cada recompensa.
-    - O sistema deve indicar recompensas indisponíveis por saldo insuficiente.
-    - O sistema deve informar indisponibilidade caso o catálogo não possa ser carregado.
 
 ### UC11 — Resgatar Recompensas
 
@@ -401,17 +454,18 @@
 - Fluxo Principal
 
 1. Usuário seleciona uma recompensa no catálogo.
-2. Sistema exibe detalhes e custo em pontos.
+2. Sistema exibe detalhes e custo em pontos da recompensa conforme configuração vigente. (RN1)
 3. Usuário confirma o resgate.
-4. Sistema debita os pontos do saldo.
-5. Sistema gera o código ou cupom de benefício.
-6. Sistema confirma o resgate realizado.
+4. Sistema verifica se o usuário possui saldo igual ou superior ao valor exigido para a recompensa selecionada. (RN5)
+5. Sistema debita os pontos do saldo.
+6. Sistema gera o código ou cupom de benefício.
+7. Sistema confirma o resgate realizado.
 
 - Fluxos Alternativos
 
     - 3A — Saldo insuficiente
 
-        - 3A.1 Sistema identifica pontos insuficientes.
+        - 3A.1 Sistema identifica que o usuário não atende ao requisito mínimo de pontos para o resgate. (RN5)
         - 3A.2 Sistema bloqueia a operação e informa o usuário.
 
     - 4A — Recompensa esgotada
@@ -419,16 +473,19 @@
         - 4A.1 Sistema identifica item indisponível.
         - 4A.2 Sistema informa indisponibilidade.
 
+- Fluxos de Exceção
+
+    - E1 — Falha ao debitar pontos
+
+        - E1.1 Sistema não gera cupom de benefício.
+        - E1.2 Sistema informa que o resgate não foi concluído.
+
+    - E2 — Falha ao gerar código ou cupom
+
+        - E2.1 Sistema reverte ou não confirma o débito de pontos.
+        - E2.2 Sistema informa indisponibilidade temporária do resgate.
+
 - Pós-condições: Pontos debitados e cupom gerado para o usuário.
-
-- Critérios de aceitação
-
-    - O sistema deve exibir custo em pontos antes da confirmação.
-    - O sistema deve debitar os pontos após confirmação.
-    - O sistema deve gerar código ou cupom válido para uso externo.
-    - O sistema deve bloquear resgate com saldo insuficiente.
-    - O sistema deve informar quando a recompensa estiver esgotada.
-    - O sistema deve confirmar o resgate com sucesso.
 
 ### UC12 — Exibir Vitrine de Conquistas
 
@@ -441,7 +498,7 @@
 - Fluxo Principal
 
 1. Usuário acessa a vitrine de conquistas.
-2. Sistema recupera as conquistas do usuário.
+2. Sistema recupera as conquistas obtidas automaticamente a partir dos critérios definidos para cada insígnia. (RN4)
 3. Sistema exibe medalhas e marcos obtidos.
 4. Sistema exibe conquistas ainda não desbloqueadas.
 5. Usuário visualiza seu progresso.
@@ -453,47 +510,73 @@
         - 2A.1 Sistema não encontra conquistas registradas.
         - 2A.2 Sistema exibe vitrine vazia com conquistas disponíveis para obter.
 
+- Fluxos de Exceção
+
+    - E1 — Falha ao carregar conquistas
+
+        - E1.1 Sistema não exibe progresso incompleto como definitivo.
+        - E1.2 Sistema informa indisponibilidade temporária da vitrine.
+
+    - E2 — Falha ao identificar conquistas bloqueadas
+
+        - E2.1 Sistema exibe somente informações confiáveis.
+        - E2.2 Sistema informa que parte do progresso não pôde ser calculada.
+
 - Pós-condições: Vitrine de conquistas exibida ao usuário.
 
-- Critérios de aceitação
-
-    - O sistema deve exibir todas as conquistas desbloqueadas pelo usuário.
-    - O sistema deve exibir conquistas ainda não obtidas.
-    - O sistema deve diferenciar visualmente conquistas obtidas das bloqueadas.
-    - O sistema deve exibir descrição de cada conquista.
-
-### UC13 — Exibir Progresso da Sequência
+### UC13 — Exibir Progresso das Insígnias
 
 - Atores: Usuário
 
-- Objetivo: Mostrar o status atual da sequência de descartes e proximidade de bônus.
+- Objetivo: Mostrar o status atual do progresso do usuário em relação aos critérios necessários para obtenção das insígnias disponíveis e sua proximidade para conquistá-las.
 
 - Pré-condições: Usuário autenticado.
 
 - Fluxo Principal
 
-1. Usuário acessa o painel de sequência.
-2. Sistema recupera o histórico de sequência do usuário.
-3. Sistema calcula o progresso atual.
-4. Sistema exibe visualmente o status da sequência e o próximo bônus.
-5. Usuário visualiza seu progresso.
+1. Usuário acessa o painel de progresso das insígnias.
+2. Sistema recupera o histórico de descartes e demais dados relevantes do usuário.
+3. Sistema identifica as insígnias disponíveis e seus respectivos critérios de conquista.
+4. Sistema calcula o percentual de progresso do usuário para cada insígnia, com base nos critérios definidos. (RN7)
+5. Sistema exibe visualmente o progresso das insígnias, indicando o percentual concluído e o que falta para sua obtenção. (RN7)
+6. Usuário visualiza seu progresso e as próximas conquistas que poderá desbloquear.
 
 - Fluxos Alternativos
 
-    - 2A — Sequência zerada
+    - 2A — Nenhum progresso registrado
 
-        - 2A.1 Sistema identifica ausência de sequência ativa.
-        - 2A.2 Sistema exibe status inicial com incentivo para começar.
+        - 2A.1 Sistema identifica que o usuário ainda não possui progresso em relação aos critérios das insígnias.
+        - 2A.2 Sistema exibe todas as insígnias com progresso inicial (0%) e incentiva o usuário a realizar seu primeiro descarte responsável.
 
-- Pós-condições: Progresso da sequência exibido ao usuário.
+    - 4A — Insígnia já conquistada
 
-- Critérios de aceitação
+        - 4A.1 Sistema identifica que os critérios de determinada insígnia já foram integralmente atendidos.
+        - 4A.2 Sistema exibe a insígnia como conquistada, com progresso de 100%.
 
-    - O sistema deve exibir o número atual de descartes na sequência.
-    - O sistema deve indicar quantos descartes faltam para o próximo bônus.
-    - O sistema deve exibir o bônus que será desbloqueado.
-    - O sistema deve reiniciar a sequência caso o usuário perca a regularidade.
-    - O sistema deve notificar visualmente quando a sequência estiver próxima de quebrar.
+- Fluxos de Exceção
+
+    - E1 — Falha ao recuperar os dados do usuário
+
+        - E1.1 Sistema tenta recuperar o histórico de descartes e demais dados necessários para o cálculo das insígnias.
+        - E1.2 Ocorre falha na comunicação com o banco de dados ou serviço responsável.
+        - E1.3 Sistema interrompe o processamento do progresso das insígnias.
+        - E1.4 Sistema informa ao usuário que não foi possível carregar o progresso naquele momento e orienta a tentar novamente mais tarde.
+
+    - E2 — Erro no cálculo do progresso das insígnias
+
+        - E2.1 Sistema recupera os dados do usuário com sucesso.
+        - E2.2 Ocorre falha ao processar os critérios de uma ou mais insígnias.
+        - E2.3 Sistema não exibe informações inconsistentes ou incompletas.
+        - E2.4 Sistema registra o erro para auditoria e informa ao usuário que houve um problema ao calcular o progresso das insígnias.
+
+    - E3 — Falha ao carregar a interface de exibição das insígnias
+
+        - E3.1 Sistema conclui o processamento do progresso das insígnias.
+        - E3.2 Ocorre erro ao renderizar ou carregar os componentes visuais do painel.
+        - E3.3 Sistema não apresenta o painel de progresso.
+        - E3.4 Sistema exibe mensagem de indisponibilidade temporária e permite que o usuário tente recarregar a página.
+
+- Pós-condições: O progresso atualizado das insígnias é exibido ao usuário, incluindo o percentual concluído e as conquistas já obtidas.
 
 ### UC14 — Configurar Anonimato
 
@@ -518,15 +601,19 @@
         - 3A.1 Sistema identifica conflito de pseudônimo.
         - 3A.2 Sistema solicita novo pseudônimo.
 
+- Fluxos de Exceção
+
+    - E1 — Falha ao salvar preferência de anonimato
+
+        - E1.1 Sistema mantém a configuração anterior.
+        - E1.2 Sistema informa que a alteração não foi aplicada.
+
+    - E2 — Falha ao atualizar exibição no ranking
+
+        - E2.1 Sistema não confirma a aplicação da nova preferência.
+        - E2.2 Sistema informa indisponibilidade temporária da atualização.
+
 - Pós-condições: Preferência de anonimato salva e aplicada no ranking.
-
-- Critérios de aceitação
-
-    - O sistema deve permitir ocultar a posição do usuário no ranking.
-    - O sistema deve permitir uso de pseudônimo no lugar do nome real.
-    - O sistema deve validar unicidade do pseudônimo.
-    - O sistema deve aplicar a configuração imediatamente no ranking.
-    - O sistema deve permitir reverter a configuração a qualquer momento.
 
 ### UC15 — Visualizar Ranking
 
@@ -539,7 +626,7 @@
 - Fluxo Principal
 
 1. Usuário acessa o ranking.
-2. Sistema recupera a classificação dos usuários.
+2. Sistema recupera a classificação dos usuários com base na pontuação acumulada pelos descartes realizados. (RN3)
 3. Sistema exibe lista ordenada por pontuação.
 4. Sistema destaca a posição do usuário no ranking.
 5. Usuário visualiza o ranking.
@@ -551,15 +638,19 @@
         - 2A.1 Sistema não consegue carregar os dados.
         - 2A.2 Sistema informa indisponibilidade temporária.
 
+- Fluxos de Exceção
+
+    - E1 — Falha ao carregar ranking
+
+        - E1.1 Sistema não exibe classificação incompleta como definitiva.
+        - E1.2 Sistema informa indisponibilidade temporária do ranking.
+
+    - E2 — Falha ao aplicar preferências de anonimato
+
+        - E2.1 Sistema preserva a privacidade configurada pelos usuários.
+        - E2.2 Sistema informa que o ranking não pôde ser exibido no momento.
+
 - Pós-condições: Ranking exibido ao usuário.
-
-- Critérios de aceitação
-
-    - O sistema deve exibir ranking ordenado por pontuação.
-    - O sistema deve destacar a posição do usuário logado.
-    - O sistema deve respeitar as configurações de anonimato de cada usuário.
-    - O sistema deve exibir nome ou pseudônimo conforme preferência do usuário.
-    - O sistema deve informar indisponibilidade caso os dados não possam ser carregados.
 
 ### UC16 — Visualizar Painel de Impacto Pessoal
 
@@ -572,7 +663,7 @@
 - Fluxo Principal
 
 1. Usuário acessa o painel de impacto pessoal.
-2. Sistema recupera os dados de descarte do usuário.
+2. Sistema recupera os dados de descarte e as pontuações associadas ao usuário. (RN3)
 3. Sistema calcula as métricas de impacto ambiental.
 4. Sistema exibe indicadores como kg de CO2 evitado e resíduos desviados.
 5. Usuário visualiza seu impacto.
@@ -584,14 +675,19 @@
         - 2A.1 Sistema não encontra histórico.
         - 2A.2 Sistema exibe painel zerado com incentivo ao primeiro descarte.
 
+- Fluxos de Exceção
+
+    - E1 — Falha ao carregar dados de descarte
+
+        - E1.1 Sistema não calcula métricas com dados incompletos.
+        - E1.2 Sistema informa indisponibilidade temporária do painel.
+
+    - E2 — Falha ao atualizar métricas após novo descarte
+
+        - E2.1 Sistema mantém as últimas métricas confiáveis.
+        - E2.2 Sistema informa que a atualização ainda não foi concluída.
+
 - Pós-condições: Métricas de impacto exibidas ao usuário.
-
-- Critérios de aceitação
-
-    - O sistema deve exibir kg de CO2 evitado pelo usuário.
-    - O sistema deve exibir volume de resíduos desviados do descarte irregular.
-    - O sistema deve atualizar as métricas após cada novo descarte.
-    - O sistema deve exibir painel inicial quando não houver descartes registrados.
 
 ### UC17 — Consultar Estatísticas do Impacto da Comunidade
 
@@ -616,16 +712,19 @@
         - 2A.1 Sistema não consegue carregar os dados agregados.
         - 2A.2 Sistema informa indisponibilidade temporária.
 
+- Fluxos de Exceção
+
+    - E1 — Falha ao carregar dados agregados
+
+        - E1.1 Sistema não exibe contador global incompleto como definitivo.
+        - E1.2 Sistema informa indisponibilidade temporária das estatísticas.
+
+    - E2 — Falha ao atualizar dados periódicos
+
+        - E2.1 Sistema mantém o último conjunto de dados confiável.
+        - E2.2 Sistema informa que a atualização mais recente não foi concluída.
+
 - Pós-condições: Painel de impacto da comunidade exibido ao usuário.
-
-- Critérios de aceitação
-
-    - O sistema deve exibir contador global de resíduos descartados corretamente.
-    - O sistema deve exibir total de CO2 evitado pela comunidade.
-    - O sistema deve atualizar os dados periodicamente.
-    - O sistema deve ser acessível sem necessidade de autenticação.
-    - O sistema deve informar indisponibilidade caso os dados não possam ser carregados.
-
 
 ## 10.2 Priorização
 
@@ -764,4 +863,6 @@ Após o cálculo da prioridade final, os Casos de Uso foram posicionados em uma 
 | 13/05/2026 |   1.0  | Criação do documento e estruturação dos tópicos iniciais, bem como seu conteúdo. | Joaquim e Nayla  |
 | 17/04/2026 |   2.0  | Correção da priorização conforme feedback do professor.                          | Yasmim e Joaquim |
 | 18/04/2026 |   2.1  | Corrigindo template das tabelas, adicionando os Casos de Uso e definição do MVP. | Yasmim e Joaquim |
+| 13/06/2026 |   2.2  | Adicionando regras de negócio e removendo critérios de aceitação                 | Yasmim           |
+| 13/06/2026 |   2.3  | Adicionando fluxos de exceção                                                    | Nayra            |
 | 15/06/2026 |   3.0  | Revisão e correção da priorização.                                               | Joaquim          |
