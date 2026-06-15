@@ -1,5 +1,20 @@
 const COOKIE_NAME = "eq_session";
 const MAX_AGE_SECONDS = 60 * 60 * 24 * 7; 
+const SESSION_DEBUG = process.env.SESSION_DEBUG === "1";
+
+function sessionDebug(evento: string, detalhes?: Record<string, unknown>) {
+	if (!SESSION_DEBUG) return;
+	if (detalhes) {
+		console.log(`[session] ${evento}`, detalhes);
+		return;
+	}
+	console.log(`[session] ${evento}`);
+}
+
+function resumirToken(token: string): string {
+	if (token.length <= 14) return token;
+	return `${token.slice(0, 8)}...${token.slice(-6)}`;
+}
 
 export interface SessaoUsuario {
 	id: number;
@@ -60,13 +75,24 @@ export async function criarToken(sessao: Omit<SessaoUsuario, "iat">): Promise<st
 		chave,
 		new TextEncoder().encode(partePayload),
 	);
-	return `${partePayload}.${b64Encode(sig)}`;
+	const token = `${partePayload}.${b64Encode(sig)}`;
+	sessionDebug("token-criado", {
+		usuarioId: sessao.id,
+		email: sessao.email,
+		token: resumirToken(token),
+	});
+	return token;
 }
 
 export async function verificarToken(token: string): Promise<SessaoUsuario | null> {
 	try {
 		const ponto = token.lastIndexOf(".");
-		if (ponto === -1) return null;
+		if (ponto === -1) {
+			sessionDebug("token-invalido-sem-assinatura", {
+				token: resumirToken(token),
+			});
+			return null;
+		}
 
 		const partePayload = token.slice(0, ponto);
 		const parteSig = token.slice(ponto + 1);
@@ -78,7 +104,12 @@ export async function verificarToken(token: string): Promise<SessaoUsuario | nul
 			b64Decode(parteSig),
 			new TextEncoder().encode(partePayload),
 		);
-		if (!valido) return null;
+		if (!valido) {
+			sessionDebug("token-assinatura-invalida", {
+				token: resumirToken(token),
+			});
+			return null;
+		}
 
 		const sessao: SessaoUsuario = JSON.parse(
 			new TextDecoder().decode(b64Decode(partePayload)),
@@ -86,20 +117,47 @@ export async function verificarToken(token: string): Promise<SessaoUsuario | nul
 
 		// Expiração de 7 dias
 		const agora = Math.floor(Date.now() / 1000);
-		if (agora - sessao.iat > MAX_AGE_SECONDS) return null;
+		if (agora - sessao.iat > MAX_AGE_SECONDS) {
+			sessionDebug("token-expirado", {
+				usuarioId: sessao.id,
+				iat: sessao.iat,
+				agora,
+			});
+			return null;
+		}
+
+		sessionDebug("token-valido", {
+			usuarioId: sessao.id,
+			email: sessao.email,
+		});
 
 		return sessao;
-	} catch {
+	} catch (erro) {
+		sessionDebug("erro-verificar-token", {
+			erro: erro instanceof Error ? erro.message : String(erro),
+		});
 		return null;
 	}
 }
 
 export function lerCookieDeRequest(cookieHeader: string | null | undefined): string | null {
-	if (!cookieHeader) return null;
+	if (!cookieHeader) {
+		sessionDebug("cookie-header-ausente");
+		return null;
+	}
 	for (const parte of cookieHeader.split(";")) {
 		const [chave, ...resto] = parte.trim().split("=");
-		if (chave?.trim() === COOKIE_NAME) return decodeURIComponent(resto.join("="));
+		if (chave?.trim() === COOKIE_NAME) {
+			const token = decodeURIComponent(resto.join("="));
+			sessionDebug("cookie-encontrado", {
+				token: resumirToken(token),
+			});
+			return token;
+		}
 	}
+	sessionDebug("cookie-nao-encontrado", {
+		cookies: cookieHeader.split(";").map((parte) => parte.trim().split("=")[0]),
+	});
 	return null;
 }
 
@@ -107,14 +165,26 @@ export async function obterSessao(
 	cookieHeader: string | null | undefined,
 ): Promise<SessaoUsuario | null> {
 	const token = lerCookieDeRequest(cookieHeader);
-	if (!token) return null;
-	return verificarToken(token);
+	if (!token) {
+		sessionDebug("sessao-ausente");
+		return null;
+	}
+	const sessao = await verificarToken(token);
+	if (!sessao) {
+		sessionDebug("sessao-invalida", { token: resumirToken(token) });
+		return null;
+	}
+	sessionDebug("sessao-resolvida", {
+		usuarioId: sessao.id,
+		email: sessao.email,
+	});
+	return sessao;
 }
 
 export async function cookieDeLogin(sessao: Omit<SessaoUsuario, "iat">): Promise<string> {
 	const token = await criarToken(sessao);
 	const dominio = process.env.DOMAIN ? `; Domain=${process.env.DOMAIN}` : "";
-	return (
+	const cookie = (
 		`${COOKIE_NAME}=${encodeURIComponent(token)}` +
 		`; Path=/` +
 		`; HttpOnly` +
@@ -122,6 +192,14 @@ export async function cookieDeLogin(sessao: Omit<SessaoUsuario, "iat">): Promise
 		`; Max-Age=${MAX_AGE_SECONDS}` +
 		dominio
 	);
+	sessionDebug("cookie-login-gerado", {
+		usuarioId: sessao.id,
+		domain: process.env.DOMAIN ?? null,
+		sameSite: "Lax",
+		maxAge: MAX_AGE_SECONDS,
+		token: resumirToken(token),
+	});
+	return cookie;
 }
 
 export function cookieDeLogout(): string {

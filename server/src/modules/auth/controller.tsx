@@ -1,6 +1,12 @@
 import { Html } from "@elysia/html";
 import { Elysia } from "elysia";
 import {
+	cookieDeLogin,
+	cookieDeLogout,
+	obterSessao,
+} from "../../../lib/session";
+import { sessionPlugin } from "../../plugins/session";
+import {
 	autenticarUsuario,
 	cpfJaCadastrado,
 	criarUsuario,
@@ -9,7 +15,17 @@ import {
 	emailJaCadastrado,
 } from "./service";
 import { CadastroView, LoginView } from "./views";
-import { cookieDeLogin, cookieDeLogout, obterSessao } from "../../../lib/session";
+
+const SESSION_DEBUG = process.env.SESSION_DEBUG === "1";
+
+function authDebug(evento: string, detalhes?: Record<string, unknown>) {
+	if (!SESSION_DEBUG) return;
+	if (detalhes) {
+		console.log(`[auth] ${evento}`, detalhes);
+		return;
+	}
+	console.log(`[auth] ${evento}`);
+}
 
 function cpfValido(digits: string): boolean {
 	if (digits.length !== 11) return false;
@@ -56,10 +72,15 @@ function popupHeader(
 }
 
 export const authController = new Elysia({ prefix: "/auth" })
+	.use(sessionPlugin)
 
 	.get("/login", async ({ request, set }) => {
-		const sessao = await obterSessao(request.headers.get("cookie"));
-		if (sessao) {
+		const sessaoAtual = await obterSessao(request.headers.get("cookie"));
+		authDebug("get-login", {
+			temSessao: !!sessaoAtual,
+			usuarioId: sessaoAtual?.id ?? null,
+		});
+		if (sessaoAtual) {
 			set.status = 302;
 			set.headers["Location"] = "/";
 			return;
@@ -68,8 +89,12 @@ export const authController = new Elysia({ prefix: "/auth" })
 	})
 
 	.get("/cadastro", async ({ request, set }) => {
-		const sessao = await obterSessao(request.headers.get("cookie"));
-		if (sessao) {
+		const sessaoAtual = await obterSessao(request.headers.get("cookie"));
+		authDebug("get-cadastro", {
+			temSessao: !!sessaoAtual,
+			usuarioId: sessaoAtual?.id ?? null,
+		});
+		if (sessaoAtual) {
 			set.status = 302;
 			set.headers["Location"] = "/";
 			return;
@@ -78,6 +103,7 @@ export const authController = new Elysia({ prefix: "/auth" })
 	})
 
 	.get("/logout", ({ set }) => {
+		authDebug("logout");
 		set.status = 302;
 		set.headers["Set-Cookie"] = cookieDeLogout();
 		set.headers["Location"] = "/auth/login";
@@ -90,7 +116,10 @@ export const authController = new Elysia({ prefix: "/auth" })
 			return { status: "pendente", message: "Informe um email válido" };
 		try {
 			if (await emailJaCadastrado(email))
-				return { status: "pendente", message: "Já existe uma conta com este email" };
+				return {
+					status: "pendente",
+					message: "Já existe uma conta com este email",
+				};
 		} catch {
 			return { status: "vazio", message: "" };
 		}
@@ -106,13 +135,15 @@ export const authController = new Elysia({ prefix: "/auth" })
 			return { status: "pendente", message: "CPF inválido" };
 		try {
 			if (await cpfJaCadastrado(cpfDigits))
-				return { status: "pendente", message: "Já existe uma conta com este CPF" };
+				return {
+					status: "pendente",
+					message: "Já existe uma conta com este CPF",
+				};
 		} catch {
 			return { status: "vazio", message: "" };
 		}
 		return { status: "cumprido", message: "CPF válido" };
 	})
-
 
 	.post("/cadastro", async ({ body, set }) => {
 		const { nome, cpf, telefone, email, senha, confirmarSenha } =
@@ -131,12 +162,22 @@ export const authController = new Elysia({ prefix: "/auth" })
 		if (!cpfValido(cpfDigits)) {
 			set.status = 400;
 			popupHeader(set, false, "CPF inválido. Verifique os números digitados.");
-			return <div class="erro">CPF inválido. Verifique os números digitados.</div>;
+			return (
+				<div class="erro">CPF inválido. Verifique os números digitados.</div>
+			);
 		}
 		if (telefoneDigits.length !== 11) {
 			set.status = 400;
-			popupHeader(set, false, "Telefone inválido. Verifique os números digitados.");
-			return <div class="erro">Telefone inválido. Verifique os números digitados.</div>;
+			popupHeader(
+				set,
+				false,
+				"Telefone inválido. Verifique os números digitados.",
+			);
+			return (
+				<div class="erro">
+					Telefone inválido. Verifique os números digitados.
+				</div>
+			);
 		}
 		if (!emailValido(emailTrim)) {
 			set.status = 400;
@@ -145,13 +186,30 @@ export const authController = new Elysia({ prefix: "/auth" })
 		}
 		if (!senha || !senhaForte(senha)) {
 			set.status = 400;
-			popupHeader(set, false, "A senha deve ter no mínimo 8 caracteres, com letra maiúscula, minúscula, número e caractere especial.");
-			return <div class="erro">A senha deve ter no mínimo 8 caracteres, com letra maiúscula, minúscula, número e caractere especial.</div>;
+			popupHeader(
+				set,
+				false,
+				"A senha deve ter no mínimo 8 caracteres, com letra maiúscula, minúscula, número e caractere especial.",
+			);
+			return (
+				<div class="erro">
+					A senha deve ter no mínimo 8 caracteres, com letra maiúscula,
+					minúscula, número e caractere especial.
+				</div>
+			);
 		}
 		if (senha !== confirmarSenha) {
 			set.status = 400;
-			popupHeader(set, false, "As senhas não coincidem. Verifique e tente novamente.");
-			return <div class="erro">As senhas não coincidem. Verifique e tente novamente.</div>;
+			popupHeader(
+				set,
+				false,
+				"As senhas não coincidem. Verifique e tente novamente.",
+			);
+			return (
+				<div class="erro">
+					As senhas não coincidem. Verifique e tente novamente.
+				</div>
+			);
 		}
 
 		try {
@@ -161,7 +219,9 @@ export const authController = new Elysia({ prefix: "/auth" })
 			]);
 			if (cpfExiste && emailExiste) {
 				set.status = 400;
-				return <div class="erro">Já existe uma conta com este email e este CPF.</div>;
+				return (
+					<div class="erro">Já existe uma conta com este email e este CPF.</div>
+				);
 			}
 			if (cpfExiste) {
 				set.status = 400;
@@ -171,7 +231,13 @@ export const authController = new Elysia({ prefix: "/auth" })
 				set.status = 400;
 				return <div class="erro">Já existe uma conta com este email.</div>;
 			}
-			await criarUsuario({ nome: nomeTrim, cpf: cpfDigits, telefone: telefoneDigits, email: emailTrim, senha });
+			await criarUsuario({
+				nome: nomeTrim,
+				cpf: cpfDigits,
+				telefone: telefoneDigits,
+				email: emailTrim,
+				senha,
+			});
 		} catch (err) {
 			if (err instanceof ErroPersistenciaCadastro) {
 				set.status = 503;
@@ -182,11 +248,17 @@ export const authController = new Elysia({ prefix: "/auth" })
 		}
 
 		popupHeader(set, true, "Conta criada com sucesso!", "/auth/login");
-		return <div class="sucesso">Conta criada com sucesso! Você já pode entrar.</div>;
+		return (
+			<div class="sucesso">Conta criada com sucesso! Você já pode entrar.</div>
+		);
 	})
 
 	.post("/login", async ({ body, set }) => {
 		const { email, senha } = body as Record<string, string>;
+		authDebug("post-login-inicio", {
+			email: email?.trim() || null,
+			temSenha: !!senha,
+		});
 
 		if (!email || !senha) {
 			set.status = 400;
@@ -207,14 +279,24 @@ export const authController = new Elysia({ prefix: "/auth" })
 		}
 
 		if (resultado.status === "usuario_nao_encontrado") {
+			authDebug("post-login-usuario-nao-encontrado", {
+				email: email.trim(),
+			});
 			set.status = 401;
 			popupHeader(set, false, "Não existe conta cadastrada com este email.");
-			return <div class="erro">Não existe conta cadastrada com este email.</div>;
+			return (
+				<div class="erro">Não existe conta cadastrada com este email.</div>
+			);
 		}
 		if (resultado.status === "senha_invalida") {
+			authDebug("post-login-senha-invalida", {
+				email: email.trim(),
+			});
 			set.status = 401;
 			popupHeader(set, false, "Senha incorreta. Verifique e tente novamente.");
-			return <div class="erro">Senha incorreta. Verifique e tente novamente.</div>;
+			return (
+				<div class="erro">Senha incorreta. Verifique e tente novamente.</div>
+			);
 		}
 
 		const { usuario } = resultado;
@@ -223,8 +305,19 @@ export const authController = new Elysia({ prefix: "/auth" })
 			nome: usuario.nome,
 			email: usuario.email,
 		});
+		authDebug("post-login-sucesso-cookie-gerado", {
+			usuarioId: usuario.id,
+			email: usuario.email,
+			cookieTemHttpOnly: cookie.includes("HttpOnly"),
+			cookieTemSameSiteLax: cookie.includes("SameSite=Lax"),
+			cookieTemDomain: cookie.includes("Domain="),
+		});
 		set.headers["Set-Cookie"] = cookie;
 		set.headers["HX-Redirect"] = "/";
+		authDebug("post-login-headers-definidos", {
+			hxRedirect: set.headers["HX-Redirect"],
+			temSetCookie: !!set.headers["Set-Cookie"],
+		});
 
 		return (
 			<div class="sucesso">
