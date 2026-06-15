@@ -36,10 +36,6 @@ const app = new Elysia({
 	.use(simularDescarteController)
 	.listen(3000);
 
-console.log(
-	`🔋 EcoQuest rodando em http://${app.server?.hostname}:${app.server?.port}`,
-);
-
 function getLocalIP() {
 	const nets = networkInterfaces();
 	for (const name of Object.keys(nets)) {
@@ -53,5 +49,6 @@ function getLocalIP() {
 	}
 	return "127.0.0.1";
 }
-
-console.log("Local IP Address:", getLocalIP());
+console.log(
+	`🔋 EcoQuest rodando em https://${getLocalIP()}:${app.server?.port}`,
+);
