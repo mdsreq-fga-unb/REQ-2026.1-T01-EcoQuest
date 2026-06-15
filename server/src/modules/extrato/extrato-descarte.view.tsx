@@ -21,7 +21,17 @@ function IconeMaterial({ tipo }: { tipo: string | null }) {
 	const t = (tipo ?? "").toLowerCase();
 	if (t.includes("pilha")) {
 		return (
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" class="extrato-card_icone-svg">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				strokeWidth="1.8"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+				aria-hidden="true"
+				class="extrato-card_icone-svg"
+			>
 				<rect x="6" y="4" width="12" height="16" rx="2" />
 				<line x1="10" y1="2" x2="14" y2="2" />
 				<line x1="10" y1="8" x2="14" y2="8" />
@@ -30,7 +40,17 @@ function IconeMaterial({ tipo }: { tipo: string | null }) {
 	}
 	if (t.includes("bateria")) {
 		return (
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" class="extrato-card_icone-svg">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				strokeWidth="1.8"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+				aria-hidden="true"
+				class="extrato-card_icone-svg"
+			>
 				<rect x="2" y="7" width="18" height="10" rx="2" />
 				<line x1="22" y1="10" x2="22" y2="14" />
 				<line x1="6" y1="12" x2="10" y2="12" />
@@ -38,9 +58,19 @@ function IconeMaterial({ tipo }: { tipo: string | null }) {
 			</svg>
 		);
 	}
-	if ( t.includes("telefone")) {
+	if (t.includes("telefone")) {
 		return (
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" class="extrato-card_icone-svg">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				strokeWidth="1.8"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+				aria-hidden="true"
+				class="extrato-card_icone-svg"
+			>
 				<rect x="7" y="2" width="10" height="20" rx="2" />
 				<line x1="11" y1="18" x2="13" y2="18" />
 			</svg>
@@ -48,7 +78,17 @@ function IconeMaterial({ tipo }: { tipo: string | null }) {
 	}
 	if (t.includes("computador")) {
 		return (
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" class="extrato-card_icone-svg">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				strokeWidth="1.8"
+				strokeLinecap="round"
+				strokeLinejoin="round"
+				aria-hidden="true"
+				class="extrato-card_icone-svg"
+			>
 				<rect x="2" y="3" width="20" height="14" rx="2" />
 				<line x1="8" y1="21" x2="16" y2="21" />
 				<line x1="12" y1="17" x2="12" y2="21" />
@@ -57,14 +97,35 @@ function IconeMaterial({ tipo }: { tipo: string | null }) {
 	}
 	if (t.includes("outros")) {
 		return (
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="extrato-card_icone-svg">
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="1.8"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				aria-hidden="true"
+				class="extrato-card_icone-svg"
+			>
 				<rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-				<line x1="8" y1="21" x2="16" y2="21" /><line x1="12" y1="17" x2="12" y2="21" />
+				<line x1="8" y1="21" x2="16" y2="21" />
+				<line x1="12" y1="17" x2="12" y2="21" />
 			</svg>
 		);
 	}
 	return (
-		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="extrato-card_icone-svg">
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			stroke-width="1.8"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			aria-hidden="true"
+			class="extrato-card_icone-svg"
+		>
 			<polyline points="1 4 1 10 7 10" />
 			<polyline points="23 20 23 14 17 14" />
 			<path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15" />
@@ -73,11 +134,15 @@ function IconeMaterial({ tipo }: { tipo: string | null }) {
 }
 
 function CardExtrato({ registro }: { registro: RegistroExtrato }) {
-	const label =
-		registro.materialTipo?.trim() ? registro.materialTipo : registro.nomePev;
+	const label = registro.materialTipo?.trim()
+		? registro.materialTipo
+		: registro.nomePev;
 
 	return (
-		<article class="extrato-card" aria-label={`Descarte em ${registro.nomePev}`}>
+		<article
+			class="extrato-card"
+			aria-label={`Descarte em ${registro.nomePev}`}
+		>
 			<div class="extrato-card_icone" aria-hidden="true">
 				<IconeMaterial tipo={registro.materialTipo} />
 			</div>
@@ -88,7 +153,9 @@ function CardExtrato({ registro }: { registro: RegistroExtrato }) {
 				</p>
 				<p class="extrato-card_meta">
 					Peso: <span>{formatarPeso(registro.pesoKg)}</span>
-					<span class="extrato-card_sep" aria-hidden="true">·</span>
+					<span class="extrato-card_sep" aria-hidden="true">
+						·
+					</span>
 					<time datetime={new Date(registro.criadoEm).toISOString()}>
 						{formatarData(registro.criadoEm)}
 					</time>
@@ -97,6 +164,7 @@ function CardExtrato({ registro }: { registro: RegistroExtrato }) {
 
 			<div
 				class="extrato-card_pontos"
+				role="note"
 				aria-label={`${registro.pontosGanhos} pontos ganhos`}
 			>
 				+{registro.pontosGanhos} pontos
@@ -124,8 +192,18 @@ export function ExtratoView({
 				<h1 class="extrato-titulo">Extrato</h1>
 
 				{registros.length === 0 ? (
-					<div class="extrato-vazio" role="status" aria-live="polite">
-						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="extrato-vazio_icone" aria-hidden="true">
+					<div class="extrato-vazio" role="note" aria-live="polite">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="1.5"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							class="extrato-vazio_icone"
+							aria-hidden="true"
+						>
 							<polyline points="1 4 1 10 7 10" />
 							<polyline points="23 20 23 14 17 14" />
 							<path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15" />
@@ -152,7 +230,6 @@ export function ExtratoView({
 						>
 							Fazer meu primeiro descarte
 						</button>
-							
 					</div>
 				) : (
 					<section class="extrato-lista" aria-label="Histórico de descartes">

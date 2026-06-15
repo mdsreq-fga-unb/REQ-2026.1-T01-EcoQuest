@@ -1,17 +1,12 @@
 import { Html } from "@elysia/html";
 import { Elysia } from "elysia";
-import { obterSessao } from "../../../lib/session";
+import { sessionPlugin } from "../../plugins/session";
 import { buscarExtratoPorUsuario, ErroExtratoIndisponivel } from "./service";
 import { ExtratoView } from "./views";
 
-export const extratoController = new Elysia().get(
+export const extratoController = new Elysia().use(sessionPlugin).get(
 	"/",
-	async ({ request, set }) => {
-		const cookieHeader = request.headers.get("cookie");
-
-		console.log("COOKIE RECEBIDO:", cookieHeader);
-		const sessao = await obterSessao(cookieHeader);
-
+	async ({ sessao, set }) => {
 		if (!sessao) {
 			set.status = 302;
 			set.headers["Location"] = "/auth/login";
@@ -19,9 +14,7 @@ export const extratoController = new Elysia().get(
 		}
 		try {
 			const registros = await buscarExtratoPorUsuario(sessao.id);
-			return (
-				<ExtratoView registros={registros} nomeUsuario={sessao.nome} />
-			);
+			return <ExtratoView registros={registros} nomeUsuario={sessao.nome} />;
 		} catch (err) {
 			if (err instanceof ErroExtratoIndisponivel) {
 				set.status = 503;
@@ -34,4 +27,5 @@ export const extratoController = new Elysia().get(
 			throw err;
 		}
 	},
+	{ auth: true },
 );
