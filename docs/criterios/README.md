@@ -12,7 +12,7 @@ critério descrito neste documento.
 flowchart TD
     A(["🎯 Objetivo Específico do Produto (OE)"]) --> B(["📦 Característica de Produto (CP)"])
     B --> C(["📋 Caso de Uso (UC)"])
-    C --> D(["🗂️ Backlog"])
+    C --> D(["🗂️ Itens de trabalho"])
     D --> E(["✅ Casos de Uso Priorizados"])
 
     classDef objetivo fill:#2E7D32,stroke:#1b5e20,stroke-width:2px,color:#fff
