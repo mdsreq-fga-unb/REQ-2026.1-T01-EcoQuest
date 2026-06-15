@@ -708,7 +708,7 @@ Após o cálculo da prioridade final, os Casos de Uso foram posicionados em uma 
 | **UC03** | Recuperar senha                                 | 2  | 4    | 2  | 2                       | Could Have  | Quadrante 3       | --  |
 | **UC04** | Gerenciar Perfil                                | 2  | 4    | 1  | 3                       | Could Have  | Quadrante 3       | --  |
 | **UC05** | Excluir conta                                   | 2  | 4    | 1  | 3                       | Could Have  | Quadrante 3       | --  |
-| **UC06** | Localizar PEVs                                  | 2  | 4    | 3  | 1                       | Could Have  | Quadrante 4       | --  |
+| **UC06** | Localizar PEVs                                  | 4  | 10   | 3  | 7                       | Must Have   | Quadrante 2       | X   |
 | **UC07** | Consultar detalhes do PEV                       | 2  | 4    | 2  | 2                       | Could Have  | Quadrante 3       | --  |
 | **UC08** | Ler Token para Descarte                         | 4  | 10   | 4  | 6                       | Must Have   | Quadrante 2       | X   |
 | **UC09** | Consultar Extrato                               | 4  | 10   | 3  | 7                       | Must Have   | Quadrante 2       | X   |
@@ -731,7 +731,7 @@ Após o cálculo da prioridade final, os Casos de Uso foram posicionados em uma 
 | **UC03** | Recuperar senha                                 | V  | -- | V  | -- | 2  |
 | **UC04** | Gerenciar Perfil                                | -- | V  | -- | V  | 2  |
 | **UC05** | Excluir conta                                   | -- | -- | V  | V  | 2  |
-| **UC06** | Localizar PEVs                                  | -- | V  | V  | -- | 2  |
+| **UC06** | Localizar PEVs                                  | V  | V  | V  | V  | 4  |
 | **UC07** | Consultar detalhes do PEV                       | -- | V  | V  | -- | 2  |
 | **UC08** | Ler Token para Descarte                         | V  | V  | V  | V  | 4  |
 | **UC09** | Consultar Extrato                               | V  | V  | V  | V  | 4  |
@@ -764,4 +764,4 @@ Após o cálculo da prioridade final, os Casos de Uso foram posicionados em uma 
 | 13/05/2026 |   1.0  | Criação do documento e estruturação dos tópicos iniciais, bem como seu conteúdo. | Joaquim e Nayla  |
 | 17/04/2026 |   2.0  | Correção da priorização conforme feedback do professor.                          | Yasmim e Joaquim |
 | 18/04/2026 |   2.1  | Corrigindo template das tabelas, adicionando os Casos de Uso e definição do MVP. | Yasmim e Joaquim |
-| 14/06/2026 |   3.1  | Revisão e correção da priorização.                                               | Joaquim          |
+| 15/06/2026 |   3.0  | Revisão e correção da priorização.                                               | Joaquim          |
