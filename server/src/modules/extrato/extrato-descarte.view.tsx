@@ -215,18 +215,19 @@ export function ExtratoView({
 							Visite um Ponto de Entrega Voluntária (PEV) e escaneie o QR Code
 							para começar a acumular pontos!
 						</p>
-						<a
-							href="/descarte"
+						<button
+							type="button"
+							data-open-qr-scanner="true"
 							class="extrato-vazio_cta extrato-vazio_cta-mobile"
 						>
 							Fazer meu primeiro descarte
-						</a>
+						</button>
 
 						<button
 							type="button"
-							title="Apenas é possível fazer descarte em dispositivos móveis."
+							data-open-qr-scanner="true"
 							class="extrato-vazio_cta-desktop"
-							disabled
+							title="Abrir leitor de QR Code"
 						>
 							Fazer meu primeiro descarte
 						</button>
@@ -234,7 +235,7 @@ export function ExtratoView({
 				) : (
 					<section class="extrato-lista" aria-label="Histórico de descartes">
 						{registros.map((r) => (
-							<CardExtrato key={r.id} registro={r} />
+							<CardExtrato registro={r} />
 						))}
 					</section>
 				)}
