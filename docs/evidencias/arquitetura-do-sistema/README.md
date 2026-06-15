@@ -14,7 +14,7 @@ Este documento centraliza a visão arquitetural do **EcoQuest (MVP)**, servindo 
 
 ## 2. Diagrama
 
-![Arquitetura](../assets/Arquitetura.png)
+![Arquitetura](../../assets/Arquitetura.png)
 
 Legenda:
 - <div style="display:inline-block; width:1rem; height:1rem; background-color:#fff; border:1px solid #000; margin-right:0.4rem; margin-bottom:-0.25rem;"></div>: Componentes em preto e branco são parte do MVP.
