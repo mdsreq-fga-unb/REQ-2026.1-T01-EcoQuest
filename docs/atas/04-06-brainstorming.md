@@ -13,9 +13,9 @@
 - Construir dois protótipos de identidade visual com variações de cor para decisão da cliente.
 
 **Artefatos influenciados:**
-- Logo e banner verdes: [/assets/logo_banner_verde_branco.png](/assets/logo_banner_verde_branco.png)
-- Logo e banner laranja: [/assets/logo_banner_laranja_branco.png](/assets/logo_banner_laranja_branco.png)
-- Protótipo de alta fidelidade de recompensa (versão verde): [/assets/recompensas_wireframe_verde.png](/assets/recompensas_wireframe_verde.png)
+- Logo e banner verdes: ![Logo Banner Verde](../assets/logo_banner_verde_branco.png)
+- Logo e banner laranja: ![Logo Banner Laranja](../assets/logo_banner_laranja_branco.png)
+- Protótipo de alta fidelidade de recompensa (versão verde): ![Wireframe Recompensas com cor Verde](../assets/recompensas_wireframe_verde.png)
 
 **Resultados incorporados aos requisitos/artefatos:**
 - Consolidação de decisões de interface e identidade visual para validação com stakeholder.

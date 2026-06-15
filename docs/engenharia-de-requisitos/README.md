@@ -14,17 +14,26 @@
 
 ### Declaração de Requisitos
 
-- **Casos de Uso:** utilizados para registrar os requisitos de forma clara, objetiva e orientada ao valor entregue ao usuário.
-- **Casos de Uso de alto nível:** utilizados para complementar a descrição das funcionalidades principais do sistema e representar as interações mais relevantes.
-- **Critérios de DoR e DoD:** utilizados para detalhar as condições que cada requisito deve atender para ser considerado válido e pronto para desenvolvimento.
+- **Casos de Uso:** utilizados como artefato principal para descrever comportamento do sistema por meio de fluxo principal, alternativos e de exceção.
+- **Casos de Uso de alto nível:** utilizados para consolidar o entendimento funcional e orientar o detalhamento incremental dos requisitos.
+- **Critérios de Aceitação + DoR/DoD:** utilizados para definir condições verificáveis de prontidão, implementação e validação junto aos stakeholders.
 
-Para manter consistência entre ER e desenvolvimento, o projeto utiliza **DoR/DoD** como critérios de prontidão e conclusão dos requisitos, conectando cada história aos objetivos (OE) e às características do produto (CP). As checklists estão em [DoR e DoD](../dor-e-dod/).
+O projeto não adota Histórias de Usuário como artefato principal. A equipe optou por trabalhar com **Casos de Uso + Critérios de Aceitação**, por aderência a terminologia correta do processo e à necessidade de explicitar regras de negócio com maior detalhamento.
+
+Para manter consistência entre ER e desenvolvimento, o projeto utiliza **DoR/DoD** como critérios de prontidão e conclusão dos requisitos, conectando cada caso de uso aos objetivos (OE) e às características do produto (CP). As checklists estão em [DoR e DoD](../dor-e-dod/).
 
 ### Representação de Requisitos
 
 - **Protótipos:** utilizados para representar visualmente as principais funcionalidades do sistema antes da implementação.
 - **Wireframes:** utilizados para estruturar as telas e os fluxos de navegação do EcoQuest.
-- **Diagramas UML:** utilizados para complementar a representação dos requisitos e facilitar a comunicação entre os membros da equipe.
+- **Fluxos em Casos de Uso:** utilizados para explicitar cenários principal, alternativos e de exceção, reduzindo ambiguidades na implementação.
+
+Foi feito um ajuste para que ao invés de usar Diagrama UML, a equipe optou por utilizar **protótipos e wireframes** como artefatos de representação visual, por serem mais adequados para validar a interface e a experiência do usuário, além de facilitar a comunicação com stakeholders não técnicos.
+
+### Organização e Atualização de Requisitos
+
+- **Checklist:** garantir que os itens da lista de itens de trabalho estejam claros, sem ambiguidade, completos, verificáveis, consistentes, rastreáveis e com entendimento compartilhado entre equipe e cliente.
+- **Refinamento e controle dos requisitos:** realizado de forma contínua durante as iterações, com revisão de prioridade (MoSCoW), análise de impacto em OE/CP, ajuste de critérios de aceitação e atualização da documentação/atas sempre que houver mudança aprovada.
 
 ### Verificação e Validação de Requisitos
 
@@ -42,27 +51,46 @@ A tabela a seguir apresenta o mapeamento entre as fases do OpenUP, as atividades
 
 | Fases do Processo | Atividades ER | Prática | Técnica | Resultado Esperado |
 |------------------|--------------|--------|--------|-------------------|
-| **Concepção** | Elicitação e Descoberta | Levantamento inicial de requisitos | Entrevistas com cliente, Brainstorming | Identificação do problema (baixo engajamento) e definição dos requisitos iniciais |
-|  | Análise e Consenso | Alinhamento com stakeholders | Discussões em equipe, Priorização MoSCoW | Definição das funcionalidades essenciais para o MVP |
-|  | Declaração de Requisitos | Formalização inicial | Casos de Uso, Casos de Uso de alto nível | Registro inicial das funcionalidades (missões, pontuação, validação) |
-|  | Organização e Atualização | Estruturação inicial | Criação da lista de itens de trabalho| Lista de itens de trabalho inicial priorizado e alinhado com os objetivos do projeto |
-|  | Verificação e Validação | Avaliação inicial dos requisitos | DoR, revisão de critérios de aceitação, feedback com stakeholders | Confirmação inicial de clareza, consistência, rastreabilidade e alinhamento dos requisitos |
-| **Elaboração** | Elicitação e Descoberta | Refinamento dos requisitos | Entrevistas detalhadas, Análise de domínio | Requisitos mais claros e alinhados ao contexto acadêmico e ambiental |
-|  | Análise e Consenso | Avaliação de viabilidade | Análise de custo-benefício, Discussões técnicas | Definição do escopo viável (MVP) |
-|  | Representação de Requisitos | Modelagem da solução | Protótipos, Wireframes, Diagramas UML | Visualização das funcionalidades (quests, ranking, progresso) |
-|  | Declaração de Requisitos | Detalhamento | Critérios de aceitação, Especificação de requisitos | Requisitos prontos para desenvolvimento |
-|  | Verificação e Validação | Revisão dos requisitos refinados | DoR, revisão de critérios de aceitação, feedback com stakeholders | Confirmação de que os requisitos refinados estão claros, verificáveis e alinhados às necessidades dos stakeholders |
-|  | Organização e Atualização | Refinamento e controle dos requisitos | Atualização da lista de itens de trabalho, versionamento, DoR | Requisitos refinados, priorizados e preparados para avançar no desenvolvimento |
-| **Construção** | Representação de Requisitos | Apoio à implementação | Protótipos evolutivos | Melhor entendimento das funcionalidades pela equipe |
-|  | Elicitação e Descoberta | Descoberta de ajustes durante a construção | Feedback de uso, revisões com stakeholders, análise de novas necessidades | Identificação de ajustes, lacunas e novas informações surgidas durante a implementação |
-|  | Declaração de Requisitos | Atualização da especificação durante a implementação | Ajuste de requisitos, critérios de aceitação e regras de negócio | Requisitos mantidos consistentes com as decisões e aprendizados da construção |
-|  | Verificação da implementação | Conferência do incremento | Testes funcionais e testes de aceitação | Garantia de que a implementação atende aos requisitos especificados |
-|  | Organização e Atualização | Controle de mudanças | Atualização da lista de itens de trabalho, versionamento | Ajustes contínuos com base no feedback |
-|  | Análise e Consenso | Ajustes incrementais | Reuniões de acompanhamento | Correção de problemas e melhoria do sistema |
-| **Transição** | Validação com stakeholder | Aceite final | Feedback e aceite do cliente | Confirmação de que o sistema atende aos objetivos |
-|  | Organização e Atualização | Ajustes finais | Correções baseadas em feedback | Sistema refinado e pronto para uso |
-|  | Declaração de Requisitos | Consolidação | Documentação final | Requisitos formalizados e rastreáveis |
-|  | Representação de Requisitos | Documentação final | Diagramas atualizados | Visão final consistente do sistema |
+| **Concepção** | Elicitação e Descoberta | Levantamento inicial de requisitos | Entrevistas com cliente, Brainstorming | Identificação do problema dos requisitos iniciais |
+|  | Análise e Consenso | Alinhamento com stakeholders | Discussões em equipe, Priorização MoSCoW | Priorização das funcionalidades essenciais |
+|  | Declaração de Requisitos | Formalização inicial | Casos de Uso de alto nível, critérios de aceitação iniciais | Registro inicial de funcionalidades e regras principais |
+|  | Organização e Atualização | Estruturação inicial | Criação da lista de itens de trabalho | Lista de itens de trabalho inicial alinhada a OE/CP |
+|  | Verificação e Validação | Avaliação inicial dos requisitos | Revisão interna + feedback com stakeholder | Confirmação de entendimento compartilhado e viabilidade inicial |
+| **Elaboração** | Representação de Requisitos | Modelagem da solução | Protótipos e wireframes | Visualização dos fluxos de navegação e interação |
+|  | Declaração de Requisitos | Detalhamento funcional | Casos de Uso com fluxos principal, alternativos e de exceção | Requisitos aptos para implementação incremental |
+|  | Organização e Atualização | Refinamento contínuo | Atualização da lista de itens de trabalho, versionamento e critérios | Requisitos refinados e priorizados para construção |
+|  | Verificação e Validação | Validação incremental | Feedback assíncrono/síncrono com stakeholders | Ajustes incorporados com evidência em atas |
+| **Construção** | Elicitação e Descoberta | Descoberta de ajustes durante implementação | Feedback de uso e revisões com stakeholder | Identificação de lacunas e novos ajustes de requisito |
+|  | Declaração de Requisitos | Atualização da especificação | Ajuste de casos de uso, critérios e regras de negócio | Requisitos mantidos coerentes com decisões da iteração |
+|  | Verificação e Validação | Conferência de incrementos | DoR/DoD, testes funcionais e validação com cliente | Garantia de aderência entre requisito e incremento entregue |
+|  | Organização e Atualização | Controle de mudanças | Atualização da lista de itens de trabalho e atas | Evolução rastreável das decisões e mudanças |
+| **Transição** | Validação com stakeholder |Aceite final |  Revisão final com cliente e validação de artefatos | Confirmação de aderência da solução aos objetivos do projeto |
+|  | Organização e Atualização | Consolidação final | Consolidação documental de requisitos e evidências | Requisitos formalizados, rastreáveis e auditáveis |
+
+## 4.3 Evidências de Execução das Técnicas de ER
+
+As evidências das técnicas previstas na estratégia estão registradas no diretório [Atas](/atas/), com participantes, data, objetivo, decisões e resultados vinculados aos artefatos.
+
+### Entrevistas
+
+- Evidência: [08/05/2026 - Entrevista inicial e definição de fluxo de comunicação](/atas/08-05.md)
+- Resultado incorporado: definição do canal assíncrono para validação, ajuste de escopo e alinhamento da estratégia do MVP.
+
+### Brainstorming
+
+- Evidências: [13/05/2026 - Brainstorming de fluxo de simulação e recompensas](/atas/13-05.md), [04/06/2026 - Brainstorming de identidade visual](/atas/04-06-brainstorming.md)
+- Resultado incorporado: definição e refinamento de fluxos funcionais e variações visuais para validação com stakeholder.
+
+### Análise de domínio e análise de custo-benefício
+
+- Adaptação realizada: essas técnicas não foram conduzidas como atividades isoladas com documento próprio.
+- Forma praticada pela equipe: foram incorporadas às validações e discussões de priorização (MoSCoW) registradas nas atas.
+- Evidência de decisão de escopo/priorização: [16/05/2026 - Validação de terminologia, regras de negócio e foco do MVP](/atas/16-05.md).
+
+### Validação e Feedback com Stakeholders
+
+- Evidências: [16/05/2026 - Validação de terminologia, regras de negócio e foco do MVP](/atas/16-05.md), [17/05/2026 - Validação de wireframe de simulação de descarte](/atas/17-05.md), [04/06/2026 - Validação de wireframes](/atas/04-06-validacao.md), [12/06/2026 - Validação final de identidade visual](/atas/12-06.md)
+- Resultado incorporado: ajustes de terminologia, priorização da lista de itens de trabalho, validação dos protótipos e consolidação de decisões de interface.
 
 ## 4.3 Evidências de Execução das Técnicas de ER
 
@@ -94,6 +122,30 @@ height="450"
 src="https://embed.figma.com/board/f6CjlyYaVd3bPZBigmWU9o/Untitled?node-id=0-1&embed-host=share" 
 allowfullscreen>
 </iframe>
+
+## Monitoramento da Execução de Engenharia de Requisitos
+
+Cadência definida: a cada 14 dias.
+
+Objetivo do monitoramento: verificar se as atividades previstas de ER foram executadas, se houve resultado incorporado aos requisitos e se existe evidência auditável no repositório.
+
+Template de registro quinzenal:
+
+- **Período:**
+- **Atividade prevista:** monitoramento da execução das atividades de Engenharia de Requisitos na quinzena.
+- **Técnica utilizada:** revisão técnica documental e verificação de completude das atas/evidências.
+- **Responsável:**
+- **Resultado obtido:**
+- **Evidência produzida:**
+
+### Registro Q1 (13/06/2026)
+
+- **Período:** 08/05/2026 a 13/06/2026.
+- **Atividade prevista:** monitoramento da execução das atividades de Engenharia de Requisitos na quinzena.
+- **Técnica utilizada:** revisão técnica documental e completude das atas.
+- **Responsável:** João Victor.
+- **Resultado obtido:** inclusão e consolidação de evidências de ER com foco em validação, brainstorming e entrevista.
+- **Evidência produzida:** atas de entrevista, brainstorming e validação; artefatos visuais (protótipos e wireframes) vinculados às decisões registradas
 
 ## DoR e DoD
 
@@ -162,7 +214,7 @@ _Atesta que o código foi construído com excelência técnica, integrado sem qu
 ##### Dimensão de Integração e Documentação
 
 - [ ] A rastreabilidade bidirecional (OE → CP → UC → Lista de itens de trabalho → AC) foi mapeada e atualizada na ferramenta de gestão.
-- [ ] A documentação técnica relevante (decisões de arquitetura, diagramas UML, mudanças de banco de dados) foi atualizada na GitHub Pages oficial do projeto.
+- [ ] A documentação técnica relevante (decisões de arquitetura, modelos de fluxo e mudanças de banco de dados) foi atualizada na GitHub Pages oficial do projeto.
 - [ ] O código da _feature branch_ foi integrado na branch principal sem conflitos e o _build_ no servidor de CI passou integralmente.
 - [ ] O incremento de software foi implantado (_deploy_) com sucesso no ambiente de Homologação/Staging.
 
@@ -239,3 +291,4 @@ flowchart TD
 | 02/05/2026 | 0.1 | Criação do documento e estruturação dos tópicos iniciais. | Nayra |
 | 18/05/2026 | 1.1 | Inclusão das dimensões e domínios do DoD.| Paulo Vitor |
 | 12/06/2026 | 1.2 | Inclusão de evidências verificáveis de entrevistas, brainstorming e validação com stakeholders. | João Victor |
+| 14/06/2026 | 1.3 | Adequação da estratégia ao processo real, inclusão de organização/atualização de requisitos e explicitação das adaptações metodológicas. | João Victor |
