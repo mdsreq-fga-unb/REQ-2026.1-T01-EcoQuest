@@ -21,7 +21,7 @@
   * [Cronograma e Entregas](cronograma-e-entregas/)
   * [Lições Aprendidas](licoes-aprendidas/)
   * [Entregas de Unidade](entregas/)
-  * [Evidências](evidencias/)
+  * [Evidências de Software](evidencias/)
 
 * **Documentos de Base**
   * [Referências Bibliográficas](referencias-bibliograficas/)

@@ -55,7 +55,18 @@ gantt
 ### Fase de Elaboração
 **19 de Maio a 30 de Maio | Iterações 6 e 7**
 
-> **Foco Estratégico:** Estabilização da arquitetura, modelagem da interface e mitigação dos maiores riscos técnicos.
+*   **Gatilho de Entrada:** Arquitetura validada no Marco de Elaboração e itens prioritários da Lista de Itens de Trabalho cruzando o ponto de compromisso (_DoR_).
+    
+*   **Artefatos de Saída (DoD da Fase):**
+    
+    *   100% dos Casos de Uso compromissados para o MVP no status _Done de Negócio_ (DoD Nível 2).
+        
+    *   Taxa de cobertura de testes unitários atingindo a restrição arquitetural 70%.
+        
+    *   Versão _Release Candidate_ (RC) implantada em ambiente de homologação.
+        
+*   **Marco de Transição:** Marco de Capacidade Operacional Inicial — O software é capaz de executar seus fluxos críticos na mão dos primeiros usuáriose possível fluxo validado pelos stackholders.
+    
 
 | Gatilho de Entrada | Artefatos de Saída (DoD da Fase) |
 | :--- | :--- |
