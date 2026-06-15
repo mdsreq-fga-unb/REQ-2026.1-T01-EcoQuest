@@ -9,7 +9,14 @@ import { sessionPlugin } from "./plugins/session";
 
 await ensureSchema();
 
-const app = new Elysia()
+const app = new Elysia({
+	serve: {
+		tls: {
+			key: Bun.file("./localhost-key.pem"),
+			cert: Bun.file("./localhost.pem"),
+		},
+	},
+})
 	.use(html())
 	.use(sessionPlugin)
 
@@ -25,7 +32,6 @@ const app = new Elysia()
 	.use(authController)
 	.use(extratoController)
 	.use(simularDescarteController)
-
 	.listen(3000);
 
 console.log(
