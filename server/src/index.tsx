@@ -3,6 +3,7 @@ import { Elysia } from "elysia";
 import { networkInterfaces } from "os";
 import { ensureSchema } from "./db";
 import { authController } from "./modules/auth/controller";
+import { disposalController } from "./modules/disposal/controller";
 import { extratoController } from "./modules/extrato/controller";
 import { simularDescarteController } from "./modules/simular_descarte/controller";
 import { sessionPlugin } from "./plugins/session";
@@ -30,6 +31,7 @@ const app = new Elysia({
 	})
 
 	.use(authController)
+	.use(disposalController)
 	.use(extratoController)
 	.use(simularDescarteController)
 	.listen(3000);

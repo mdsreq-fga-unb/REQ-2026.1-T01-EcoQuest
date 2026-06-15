@@ -33,6 +33,15 @@ export interface SimulacaoQrGerada {
 	itensSelecionados: ItemResumoGerado[];
 }
 
+export interface SimulacaoEmitida {
+	jti: string;
+	createdAt: Date;
+	expiresAt: Date;
+	totalItens: number;
+	totalPesoKg: number;
+	itensSelecionados: ItemResumoGerado[];
+}
+
 export class ErroSimulacaoDescarte extends Error {
 	constructor(message: string, causa?: unknown) {
 		super(message);
@@ -93,6 +102,12 @@ const ITENS_POR_CHAVE = new Map(
 		categoria.itens.map((item) => [item.chave, item] as const),
 	),
 );
+
+const SIMULACOES_EMITIDAS = new Map<string, SimulacaoEmitida>();
+
+export function obterSimulacaoEmitidaPorJti(jti: string): SimulacaoEmitida | null {
+	return SIMULACOES_EMITIDAS.get(jti) ?? null;
+}
 
 function parseQuantidade(raw: string | undefined): number {
 	if (!raw) return 0;
@@ -185,6 +200,15 @@ export async function gerarSimulacaoQr(
 			INSERT INTO disposal_token (jti, id_pev, expires_at)
 			VALUES (${jti}::uuid, ${idPev}, ${expiresAt})
 		`;
+
+		SIMULACOES_EMITIDAS.set(jti, {
+			jti,
+			createdAt: new Date(),
+			expiresAt,
+			totalItens,
+			totalPesoKg,
+			itensSelecionados,
+		});
 
 		return {
 			jti,
