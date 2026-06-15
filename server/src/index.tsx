@@ -1,8 +1,10 @@
 import { Html, html } from "@elysia/html";
 import { Elysia } from "elysia";
+import { networkInterfaces } from "os";
 import { ensureSchema } from "./db";
 import { authController } from "./modules/auth/controller";
 import { extratoController } from "./modules/extrato/controller";
+import { simularDescarteController } from "./modules/simular_descarte/controller";
 import { sessionPlugin } from "./plugins/session";
 
 await ensureSchema();
@@ -22,11 +24,12 @@ const app = new Elysia()
 
 	.use(authController)
 	.use(extratoController)
+	.use(simularDescarteController)
 
 	.listen(3000);
 
 console.log(
-	`🦊 Elysia rodando em http://${app.server?.hostname}:${app.server?.port}`,
+	`🔋 EcoQuest rodando em http://${app.server?.hostname}:${app.server?.port}`,
 );
 
 function getLocalIP() {

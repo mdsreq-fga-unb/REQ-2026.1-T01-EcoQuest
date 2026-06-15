@@ -1,0 +1,1 @@
+export { simularDescarteController } from "./controller.tsx";
