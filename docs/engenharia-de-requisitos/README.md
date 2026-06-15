@@ -90,7 +90,30 @@ As evidências das técnicas previstas na estratégia estão registradas no dire
 - Evidências: [16/05/2026 - Validação de terminologia, regras de negócio e foco do MVP](/atas/16-05.md), [17/05/2026 - Validação de wireframe de simulação de descarte](/atas/17-05.md), [04/06/2026 - Validação de wireframes](/atas/04-06-validacao.md), [12/06/2026 - Validação final de identidade visual](/atas/12-06.md)
 - Resultado incorporado: ajustes de terminologia, priorização da lista de itens de trabalho, validação dos protótipos e consolidação de decisões de interface.
 
-<iframe 
+## 4.3 Evidências de Execução das Técnicas de ER
+
+As evidências das técnicas previstas na estratégia estão registradas no diretório [Atas](/atas/), com participantes, data, objetivo, decisões e resultados vinculados aos artefatos.
+
+### Entrevistas
+
+- [08/05/2026 - Entrevista inicial e definição de fluxo de comunicação](/atas/08-05.md)
+- Resultado incorporado: formalização do canal assíncrono de validação com stakeholders e ajustes de escopo do MVP.
+
+### Brainstorming
+
+- [13/05/2026 - Brainstorming de fluxo de simulação de descarte e recompensas](/atas/13-05.md)
+- [04/06/2026 - Brainstorming de identidade visual](/atas/04-06-brainstorming.md)
+- Resultado incorporado: produção de protótipos e variações visuais que alimentaram os artefatos de wireframe e as decisões de interface.
+
+### Validação e Feedback com Stakeholders
+
+- [16/05/2026 - Validação de terminologia, regras de negócio e foco do MVP](/atas/16-05.md)
+- [17/05/2026 - Validação de wireframe de simulação de descarte](/atas/17-05.md)
+- [04/06/2026 - Validação de wireframes de insígnias, prêmios, navegação e ranking](/atas/04-06-validacao.md)
+- [12/06/2026 - Validação final de identidade visual (logo/banner)](/atas/12-06.md)
+- Resultado incorporado: refinamento de requisitos, terminologia e priorização no backlog, além de aprovação de artefatos visuais usados no projeto.
+
+<iframe
 style="border: 1px solid rgba(0, 0, 0, 0.1);"
 width="800" 
 height="450" 
