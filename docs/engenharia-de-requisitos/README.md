@@ -49,13 +49,13 @@ A tabela a seguir apresenta o mapeamento entre as fases do OpenUP, as atividades
 |  | Verificação e Validação | Avaliação inicial dos requisitos | DoR, revisão de critérios de aceitação, feedback com stakeholders | Confirmação inicial de clareza, consistência, rastreabilidade e alinhamento dos requisitos |
 | **Elaboração** | Elicitação e Descoberta | Refinamento dos requisitos | Entrevistas detalhadas, Análise de domínio | Requisitos mais claros e alinhados ao contexto acadêmico e ambiental |
 |  | Análise e Consenso | Avaliação de viabilidade | Análise de custo-benefício, Discussões técnicas | Definição do escopo viável (MVP) |
-|  | Representação de Requisitos | Modelagem da solução | Protótipos, Wireframes, Diagramas UML | Visualização das funcionalidades (quests, ranking, progresso) |
-|  | Declaração de Requisitos | Detalhamento | Critérios de aceitação, Especificação de requisitos | Requisitos prontos para desenvolvimento |
-|  | Verificação e Validação | Revisão dos requisitos refinados | DoR, revisão de critérios de aceitação, feedback com stakeholders | Confirmação de que os requisitos refinados estão claros, verificáveis e alinhados às necessidades dos stakeholders |
+|  | Representação de Requisitos | Modelagem da solução | Protótipos, Wireframes, Diagramas | Visualização das funcionalidades (quests, ranking, progresso) |
+|  | Declaração de Requisitos | Detalhamento | Especificação de requisitos | Requisitos prontos para desenvolvimento |
+|  | Verificação e Validação | Revisão dos requisitos refinados | DoR, revisão de critérios, feedback com stakeholders | Confirmação de que os requisitos refinados estão claros, verificáveis e alinhados às necessidades dos stakeholders |
 |  | Organização e Atualização | Refinamento e controle dos requisitos | Atualização da lista de itens de trabalho, versionamento, DoR | Requisitos refinados, priorizados e preparados para avançar no desenvolvimento |
 | **Construção** | Representação de Requisitos | Apoio à implementação | Protótipos evolutivos | Melhor entendimento das funcionalidades pela equipe |
 |  | Elicitação e Descoberta | Descoberta de ajustes durante a construção | Feedback de uso, revisões com stakeholders, análise de novas necessidades | Identificação de ajustes, lacunas e novas informações surgidas durante a implementação |
-|  | Declaração de Requisitos | Atualização da especificação durante a implementação | Ajuste de requisitos, critérios de aceitação e regras de negócio | Requisitos mantidos consistentes com as decisões e aprendizados da construção |
+|  | Declaração de Requisitos | Atualização da especificação durante a implementação | Ajuste de requisitos, revisão da priorização e regras de negócio | Requisitos mantidos consistentes com as decisões e aprendizados da construção |
 |  | Verificação da implementação | Conferência do incremento | Testes funcionais e testes de aceitação | Garantia de que a implementação atende aos requisitos especificados |
 |  | Organização e Atualização | Controle de mudanças | Atualização da lista de itens de trabalho, versionamento | Ajustes contínuos com base no feedback |
 |  | Análise e Consenso | Ajustes incrementais | Reuniões de acompanhamento | Correção de problemas e melhoria do sistema |
@@ -87,13 +87,6 @@ As evidências das técnicas previstas na estratégia estão registradas no dire
 - [12/06/2026 - Validação final de identidade visual (logo/banner)](/atas/12-06.md)
 - Resultado incorporado: refinamento de requisitos, terminologia e priorização no backlog, além de aprovação de artefatos visuais usados no projeto.
 
-<iframe
-style="border: 1px solid rgba(0, 0, 0, 0.1);"
-width="800" 
-height="450" 
-src="https://embed.figma.com/board/f6CjlyYaVd3bPZBigmWU9o/Untitled?node-id=0-1&embed-host=share" 
-allowfullscreen>
-</iframe>
 
 ## DoR e DoD
 
