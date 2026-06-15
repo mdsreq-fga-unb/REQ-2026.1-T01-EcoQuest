@@ -28,6 +28,8 @@ Para manter consistência entre ER e desenvolvimento, o projeto utiliza **DoR/Do
 - **Wireframes:** utilizados para estruturar as telas e os fluxos de navegação do EcoQuest.
 - **Fluxos em Casos de Uso:** utilizados para explicitar cenários principal, alternativos e de exceção, reduzindo ambiguidades na implementação.
 
+Foi feito um ajuste para que ao invés de usar Diagrama UML, a equipe optou por utilizar **protótipos e wireframes** como artefatos de representação visual, por serem mais adequados para validar a interface e a experiência do usuário, além de facilitar a comunicação com stakeholders não técnicos.
+
 ### Organização e Atualização de Requisitos
 
 - **Checklist:** garantir que os itens da lista de itens de trabalho estejam claros, sem ambiguidade, completos, verificáveis, consistentes, rastreáveis e com entendimento compartilhado entre equipe e cliente.
