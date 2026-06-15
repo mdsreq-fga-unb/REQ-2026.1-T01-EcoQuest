@@ -34,31 +34,7 @@ Este diretório centraliza as evidências das atividades de Engenharia de Requis
 
 - Entrevistas: [Ata 08-05](./08-05.md)
 - Brainstorming: [Ata 13-05](./13-05.md), [Ata 04-06 (Brainstorming)](./04-06-brainstorming.md)
-- Validação e feedback com stakeholders: [Ata 16-05](./16-05.md), [Ata 17-05](./17-05.md), [Ata 04-06 (Validação)](./04-06-validacao.md), [Ata 12-06](./12-06.md)
-
-## 8.4 Monitoramento da Execução de Engenharia de Requisitos
-
-Cadência definida: a cada 14 dias.
-
-Objetivo do monitoramento: verificar se as atividades previstas de ER foram executadas, se houve resultado incorporado aos requisitos e se existe evidência auditável no repositório.
-
-Template de registro quinzenal:
-
-- **Período:**
-- **Atividade prevista:** monitoramento da execução das atividades de Engenharia de Requisitos na quinzena.
-- **Técnica utilizada:** revisão técnica documental e verificação de completude das atas/evidências.
-- **Responsável:**
-- **Resultado obtido:**
-- **Evidência produzida:**
-
-### Registro Q1 (13/06/2026)
-
-- **Período:** 08/05/2026 a 13/06/2026.
-- **Atividade prevista:** monitoramento da execução das atividades de Engenharia de Requisitos na quinzena.
-- **Técnica utilizada:** revisão técnica documental e completude das atas.
-- **Responsável:** João Victor.
-- **Resultado obtido:** inclusão e consolidação de evidências de ER com foco em validação, brainstorming e entrevista.
-- **Evidência produzida:** atas de entrevista, brainstorming e validação; artefatos visuais (protótipos e wireframes) vinculados às decisões registradas.
+- Validação e feedback com stakeholders: [Ata 16-05](./16-05.md), [Ata 17-05](./17-05.md), [Ata 04-06 (Validação)](./04-06-validacao.md), [Ata 12-06](./12-06.md).
 
 ## Histórico de Versão
 
