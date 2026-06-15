@@ -1,0 +1,1 @@
+export { ExtratoView } from "./extrato-descarte.view";
