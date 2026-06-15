@@ -702,14 +702,65 @@ export function AppLayout({
 
 	var qr = null;
 	var lendo = false;
+	var validando = false;
+
+	function mostrarMensagem(texto) {
+		resultado.textContent = texto;
+	}
+
+	function mostrarResultadoSucesso(payload) {
+		mostrarMensagem(
+			'Descarte validado com sucesso. Pontos: ' +
+				payload.pointsAwarded +
+				' | Saldo: ' +
+				payload.pointsBalanceAfter,
+		);
+	}
+
+	function mostrarResultadoErro(mensagem) {
+		mostrarMensagem(mensagem);
+	}
+
+	function validarTokenNoBackend(decodedText) {
+		if (validando) return;
+		validando = true;
+		mostrarMensagem('Validando token...');
+
+		fetch('/disposal/validate-token', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				'Accept': 'application/json'
+			},
+			body: JSON.stringify({ jti: decodedText })
+		})
+			.then(function(response){
+				return response.json().then(function(data){
+					return { ok: response.ok, status: response.status, data: data };
+				});
+			})
+			.then(function(result){
+				if (result.ok) {
+					mostrarResultadoSucesso(result.data);
+					return;
+				}
+				mostrarResultadoErro((result.data && result.data.message) ? result.data.message : 'Falha ao validar o token.');
+			})
+			.catch(function(err){
+				mostrarResultadoErro('Falha na comunicação com o servidor: ' + (err && err.message ? err.message : String(err)));
+			})
+			.finally(function(){
+				validando = false;
+			});
+	}
 
 	function qrCodeSuccessCallback(decodedText, decodedResult) {
-		resultado.textContent = 'Token lido: ' + decodedText;
+		mostrarMensagem('Token lido. Validando...');
 		if (qr && lendo) {
 			qr.stop().catch(function(){});
 			lendo = false;
 		}
-		// TODO: na próxima etapa, enviar decodedText para endpoint de validação do backend.
+		validarTokenNoBackend(decodedText);
 	}
 
 	function obterLeitor() {
