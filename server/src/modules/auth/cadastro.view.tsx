@@ -1,5 +1,5 @@
 import { Html } from "@elysia/html";
-import { Layout } from "../../components/Layout";
+import { Layout } from "../../components/Layout-auth";
 
 export function CadastroView() {
 	return (

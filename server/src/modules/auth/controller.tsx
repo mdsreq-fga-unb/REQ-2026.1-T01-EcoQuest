@@ -1,6 +1,12 @@
 import { Html } from "@elysia/html";
 import { Elysia } from "elysia";
 import {
+	cookieDeLogin,
+	cookieDeLogout,
+	obterSessao,
+} from "../../../lib/session";
+import { sessionPlugin } from "../../plugins/session";
+import {
 	autenticarUsuario,
 	cpfJaCadastrado,
 	criarUsuario,
@@ -9,6 +15,17 @@ import {
 	emailJaCadastrado,
 } from "./service";
 import { CadastroView, LoginView } from "./views";
+
+const SESSION_DEBUG = process.env.SESSION_DEBUG === "1";
+
+function authDebug(evento: string, detalhes?: Record<string, unknown>) {
+	if (!SESSION_DEBUG) return;
+	if (detalhes) {
+		console.log(`[auth] ${evento}`, detalhes);
+		return;
+	}
+	console.log(`[auth] ${evento}`);
+}
 
 function cpfValido(digits: string): boolean {
 	if (digits.length !== 11) return false;
@@ -29,17 +46,6 @@ function cpfValido(digits: string): boolean {
 	return true;
 }
 
-function popupHeader(
-	set: any,
-	ok: boolean,
-	message: string,
-	redirect?: string,
-) {
-	const detail: Record<string, unknown> = { ok, message };
-	if (redirect) detail.redirect = redirect;
-	set.headers["HX-Trigger"] = JSON.stringify({ popup: detail });
-}
-
 function emailValido(email: string): boolean {
 	return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
@@ -54,29 +60,66 @@ function senhaForte(senha: string): boolean {
 	);
 }
 
+function popupHeader(
+	set: any,
+	ok: boolean,
+	message: string,
+	redirect?: string,
+) {
+	const detail: Record<string, unknown> = { ok, message };
+	if (redirect) detail.redirect = redirect;
+	set.headers["HX-Trigger"] = JSON.stringify({ popup: detail });
+}
+
 export const authController = new Elysia({ prefix: "/auth" })
-	.get("/login", () => <LoginView />)
-	.get("/cadastro", () => <CadastroView />)
+	.use(sessionPlugin)
+
+	.get("/login", async ({ request, set }) => {
+		const sessaoAtual = await obterSessao(request.headers.get("cookie"));
+		authDebug("get-login", {
+			temSessao: !!sessaoAtual,
+			usuarioId: sessaoAtual?.id ?? null,
+		});
+		if (sessaoAtual) {
+			set.status = 302;
+			set.headers["Location"] = "/";
+			return;
+		}
+		return <LoginView />;
+	})
+
+	.get("/cadastro", async ({ request, set }) => {
+		const sessaoAtual = await obterSessao(request.headers.get("cookie"));
+		authDebug("get-cadastro", {
+			temSessao: !!sessaoAtual,
+			usuarioId: sessaoAtual?.id ?? null,
+		});
+		if (sessaoAtual) {
+			set.status = 302;
+			set.headers["Location"] = "/";
+			return;
+		}
+		return <CadastroView />;
+	})
+
+	.get("/logout", ({ set }) => {
+		authDebug("logout");
+		set.status = 302;
+		set.headers["Set-Cookie"] = cookieDeLogout();
+		set.headers["Location"] = "/auth/login";
+	})
 
 	.get("/check-email", async ({ query }) => {
 		const email = (query.email ?? "").trim();
-
-		if (!email) {
-			return { status: "vazio", message: "" };
-		}
-
-		if (!emailValido(email)) {
+		if (!email) return { status: "vazio", message: "" };
+		if (!emailValido(email))
 			return { status: "pendente", message: "Informe um email válido" };
-		}
-
 		try {
-			const jaExiste = await emailJaCadastrado(email);
-			if (jaExiste) {
+			if (await emailJaCadastrado(email))
 				return {
 					status: "pendente",
-					message: `Já existe uma conta com este email`,
+					message: "Já existe uma conta com este email",
 				};
-			}
 		} catch {
 			return { status: "vazio", message: "" };
 		}
@@ -85,31 +128,20 @@ export const authController = new Elysia({ prefix: "/auth" })
 	.get("/check-cpf", async ({ query }) => {
 		const cpfRaw = (query.cpf ?? "").trim();
 		const cpfDigits = cpfRaw.replace(/\D/g, "");
-
-		if (!cpfDigits) {
-			return { status: "vazio", message: "" };
-		}
-
-		if (cpfDigits.length < 11) {
+		if (!cpfDigits) return { status: "vazio", message: "" };
+		if (cpfDigits.length < 11)
 			return { status: "pendente", message: "Digite os 11 números do CPF" };
-		}
-
-		if (!cpfValido(cpfDigits)) {
+		if (!cpfValido(cpfDigits))
 			return { status: "pendente", message: "CPF inválido" };
-		}
-
 		try {
-			const jaExiste = await cpfJaCadastrado(cpfDigits);
-			if (jaExiste) {
+			if (await cpfJaCadastrado(cpfDigits))
 				return {
 					status: "pendente",
-					message: `Já existe uma conta com este CPF`,
+					message: "Já existe uma conta com este CPF",
 				};
-			}
 		} catch {
 			return { status: "vazio", message: "" };
 		}
-
 		return { status: "cumprido", message: "CPF válido" };
 	})
 
@@ -127,7 +159,6 @@ export const authController = new Elysia({ prefix: "/auth" })
 			popupHeader(set, false, "Informe seu nome completo.");
 			return <div class="erro">Informe seu nome completo.</div>;
 		}
-
 		if (!cpfValido(cpfDigits)) {
 			set.status = 400;
 			popupHeader(set, false, "CPF inválido. Verifique os números digitados.");
@@ -135,7 +166,6 @@ export const authController = new Elysia({ prefix: "/auth" })
 				<div class="erro">CPF inválido. Verifique os números digitados.</div>
 			);
 		}
-
 		if (telefoneDigits.length !== 11) {
 			set.status = 400;
 			popupHeader(
@@ -149,13 +179,11 @@ export const authController = new Elysia({ prefix: "/auth" })
 				</div>
 			);
 		}
-
 		if (!emailValido(emailTrim)) {
 			set.status = 400;
 			popupHeader(set, false, "Informe um email válido.");
 			return <div class="erro">Informe um email válido.</div>;
 		}
-
 		if (!senha || !senhaForte(senha)) {
 			set.status = 400;
 			popupHeader(
@@ -170,7 +198,6 @@ export const authController = new Elysia({ prefix: "/auth" })
 				</div>
 			);
 		}
-
 		if (senha !== confirmarSenha) {
 			set.status = 400;
 			popupHeader(
@@ -190,35 +217,20 @@ export const authController = new Elysia({ prefix: "/auth" })
 				cpfJaCadastrado(cpfDigits),
 				emailJaCadastrado(emailTrim),
 			]);
-
 			if (cpfExiste && emailExiste) {
 				set.status = 400;
 				return (
-					<div class="erro">
-						Já existe uma conta com este email e este CPF. Verifique os campos
-						destacados.
-					</div>
+					<div class="erro">Já existe uma conta com este email e este CPF.</div>
 				);
 			}
-
 			if (cpfExiste) {
 				set.status = 400;
-				return (
-					<div class="erro">
-						Já existe uma conta com o CPF {cpf}. Verifique o campo destacado.
-					</div>
-				);
+				return <div class="erro">Já existe uma conta com o CPF {cpf}.</div>;
 			}
-
 			if (emailExiste) {
 				set.status = 400;
-				return (
-					<div class="erro">
-						Já existe uma conta com este email. Verifique o campo destacado.
-					</div>
-				);
+				return <div class="erro">Já existe uma conta com este email.</div>;
 			}
-
 			await criarUsuario({
 				nome: nomeTrim,
 				cpf: cpfDigits,
@@ -243,6 +255,10 @@ export const authController = new Elysia({ prefix: "/auth" })
 
 	.post("/login", async ({ body, set }) => {
 		const { email, senha } = body as Record<string, string>;
+		authDebug("post-login-inicio", {
+			email: email?.trim() || null,
+			temSenha: !!senha,
+		});
 
 		if (!email || !senha) {
 			set.status = 400;
@@ -263,14 +279,19 @@ export const authController = new Elysia({ prefix: "/auth" })
 		}
 
 		if (resultado.status === "usuario_nao_encontrado") {
+			authDebug("post-login-usuario-nao-encontrado", {
+				email: email.trim(),
+			});
 			set.status = 401;
 			popupHeader(set, false, "Não existe conta cadastrada com este email.");
 			return (
 				<div class="erro">Não existe conta cadastrada com este email.</div>
 			);
 		}
-
 		if (resultado.status === "senha_invalida") {
+			authDebug("post-login-senha-invalida", {
+				email: email.trim(),
+			});
 			set.status = 401;
 			popupHeader(set, false, "Senha incorreta. Verifique e tente novamente.");
 			return (
@@ -278,15 +299,29 @@ export const authController = new Elysia({ prefix: "/auth" })
 			);
 		}
 
-		popupHeader(
-			set,
-			true,
-			`Login realizado com sucesso! Bem-vindo(a), ${resultado.usuario.nome}.`,
-			"/",
-		);
+		const { usuario } = resultado;
+		const cookie = await cookieDeLogin({
+			id: usuario.id,
+			nome: usuario.nome,
+			email: usuario.email,
+		});
+		authDebug("post-login-sucesso-cookie-gerado", {
+			usuarioId: usuario.id,
+			email: usuario.email,
+			cookieTemHttpOnly: cookie.includes("HttpOnly"),
+			cookieTemSameSiteLax: cookie.includes("SameSite=Lax"),
+			cookieTemDomain: cookie.includes("Domain="),
+		});
+		set.headers["Set-Cookie"] = cookie;
+		set.headers["HX-Redirect"] = "/";
+		authDebug("post-login-headers-definidos", {
+			hxRedirect: set.headers["HX-Redirect"],
+			temSetCookie: !!set.headers["Set-Cookie"],
+		});
+
 		return (
 			<div class="sucesso">
-				Login realizado com sucesso! Bem-vindo(a), {resultado.usuario.nome}.
+				Login realizado com sucesso! Bem-vindo(a), {usuario.nome}.
 			</div>
 		);
 	});

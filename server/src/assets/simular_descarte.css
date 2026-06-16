@@ -1,0 +1,255 @@
+.app-main {
+	padding: 0 5%;
+}
+
+.simular-conteudo {
+	padding: 2rem 0 4rem;
+	display: grid;
+	gap: 1.5rem;
+}
+
+.simular-topo {
+	background: #f0faf2;
+	border: 1px solid rgba(43, 86, 51, 0.2);
+	border-radius: 14px;
+	padding: 1.25rem 1.5rem;
+	box-shadow: var(--shadow-sm);
+}
+
+.simular-topo h1 {
+	font-family: "Oxanium", sans-serif;
+	color: #1e3d24;
+	font-size: 1.7rem;
+	margin-bottom: 0.35rem;
+}
+
+.simular-topo p {
+	color: #33553b;
+	font-size: 0.96rem;
+}
+
+.simular-form {
+	display: grid;
+	gap: 1.25rem;
+}
+
+.simular-categoria {
+	background: #f7fdf8;
+	border: 1px solid rgba(43, 86, 51, 0.2);
+	border-radius: 14px;
+	padding: 1rem;
+}
+
+.simular-categoria h2 {
+	font-size: 1.1rem;
+	font-family: "Oxanium", sans-serif;
+	color: #1f4b28;
+	margin-bottom: 0.75rem;
+}
+
+.simular-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+	gap: 0.8rem;
+}
+
+.simular-item {
+	background: #fff;
+	border: 1px solid rgba(43, 86, 51, 0.2);
+	border-radius: 12px;
+	padding: 0.9rem;
+	display: grid;
+	gap: 0.55rem;
+}
+
+.simular-item_nome {
+	font-size: 0.98rem;
+	color: #1e3d24;
+	line-height: 1.3;
+}
+
+.simular-item_meta,
+.simular-item_peso {
+	font-size: 0.85rem;
+	color: #3f5b45;
+}
+
+.simular-item_controles {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.simular-item_quantidade {
+	min-width: 2rem;
+	text-align: center;
+	font-weight: 600;
+	color: #1e3d24;
+}
+
+.simular-item_btn,
+.simular-btn {
+	border: none;
+	border-radius: 8px;
+	background: #2b5633;
+	color: #fff;
+	font-weight: 600;
+	font-size: 0.95rem;
+	padding: 0.55rem 0.95rem;
+	cursor: pointer;
+	transition: filter 0.2s ease;
+	text-decoration: none;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.simular-item_btn {
+	padding: 0.2rem 0.65rem;
+	font-size: 1rem;
+}
+
+.simular-item_btn:hover,
+.simular-btn:hover {
+	filter: brightness(0.95);
+}
+
+.simular-btn_secundario {
+	background: #e3f1e6;
+	color: #1e3d24;
+	border: 1px solid rgba(43, 86, 51, 0.35);
+}
+
+.simular-resumo-parcial {
+	background: #fff;
+	border-radius: 12px;
+	padding: 0.85rem 1rem;
+	border: 1px dashed rgba(43, 86, 51, 0.45);
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+	flex-wrap: wrap;
+}
+
+.simular-resultado-placeholder,
+.simular-resultado {
+	background: #f0faf2;
+	border: 1px solid rgba(43, 86, 51, 0.2);
+	border-radius: 14px;
+	padding: 1rem;
+	color: #1f4b28;
+}
+
+.simular-resultado {
+	display: grid;
+	gap: 0.75rem;
+}
+
+.simular-resultado_qr {
+	background: #fff;
+	padding: 0.6rem;
+	border-radius: 10px;
+	border: 1px solid rgba(43, 86, 51, 0.2);
+	width: fit-content;
+}
+
+.simular-resultado_qr img {
+	width: 220px;
+	height: 220px;
+	display: block;
+}
+
+.simular-resultado_jti {
+	font-size: 0.84rem;
+	word-break: break-all;
+}
+
+.simular-resultado_totais {
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap;
+}
+
+.simular-resultado_lista {
+	list-style: none;
+	display: grid;
+	gap: 0.35rem;
+}
+
+.simular-resultado_item {
+	display: grid;
+	grid-template-columns: 1fr auto auto;
+	gap: 0.8rem;
+	font-size: 0.9rem;
+	background: #fff;
+	border: 1px solid rgba(43, 86, 51, 0.15);
+	border-radius: 8px;
+	padding: 0.45rem 0.6rem;
+}
+
+.simular-resultado_acoes {
+	display: flex;
+	gap: 0.7rem;
+	flex-wrap: wrap;
+}
+
+@media (max-width: 700px) {
+	.simular-conteudo {
+		padding: 1.15rem 1rem 5rem;
+	}
+
+	.simular-topo h1 {
+		font-size: 1.35rem;
+	}
+
+	.simular-resultado_qr img {
+		width: 180px;
+		height: 180px;
+	}
+}
+
+.simular-categoria_titulo {
+	display: flex;
+	align-items: center;
+	gap: 0.55rem;
+}
+
+.simular-cat_icone {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 28px;
+	height: 28px;
+	background: #e2f0e5;
+	border-radius: 7px;
+	color: #1f4b28;
+	flex-shrink: 0;
+}
+
+.simular-cat_icone-svg {
+	width: 16px;
+	height: 16px;
+}
+
+.simular-categoria--bloqueada {
+	opacity: 0.45;
+	pointer-events: none;
+	position: relative;
+}
+
+.simular-categoria--bloqueada::after {
+	content: "Finalize ou remova os itens da categoria selecionada para escolher outra.";
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(247, 253, 248, 0.82);
+	border-radius: 14px;
+	color: #1f4b28;
+	font-size: 0.88rem;
+	font-weight: 500;
+	text-align: center;
+	padding: 1rem 1.5rem;
+	pointer-events: none;
+}

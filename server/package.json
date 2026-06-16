@@ -2,16 +2,21 @@
   "name": "my-app",
   "version": "1.0.50",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "bun test",
     "dev": "bun run --watch src/index.tsx",
     "docker:up": "docker compose -f src/db/compose.yml --env-file .env up -d",
     "docker:down": "docker compose -f src/db/compose.yml --env-file .env down",
-    "docker:logs": "docker compose -f src/db/compose.yml --env-file .env logs -f"
+    "docker:logs": "docker compose -f src/db/compose.yml --env-file .env logs -f",
+    "docker:delete": "docker compose -f src/db/compose.yml --env-file .env down -v --rmi all --remove-orphans"
   },
   "dependencies": {
     "@elysia/html": "^1.4.1",
+    "@elysiajs/cors": "^1.4.2",
     "@kitajs/ts-html-plugin": "^4.1.4",
+    "@paulmillr/qr": "^0.3.0",
+    "better-auth": "^1.6.18",
     "elysia": "latest",
+    "html5-qrcode": "^2.3.8",
     "react": "^19.2.6",
     "react-dom": "^19.2.6"
   },

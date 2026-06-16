@@ -1,62 +1,54 @@
 import { Html, html } from "@elysia/html";
 import { Elysia } from "elysia";
-import { authController } from "./modules/auth/controller";
+import { networkInterfaces } from "os";
 import { ensureSchema } from "./db";
+import { authController } from "./modules/auth/controller";
+import { disposalController } from "./modules/disposal/controller";
+import { extratoController } from "./modules/extrato/controller";
+import { simularDescarteController } from "./modules/simular_descarte/controller";
+import { sessionPlugin } from "./plugins/session";
 
 await ensureSchema();
 
-const app = new Elysia()
+const app = new Elysia({
+	serve: {
+		tls: {
+			key: Bun.file("./localhost-key.pem"),
+			cert: Bun.file("./localhost.pem"),
+		},
+	},
+})
 	.use(html())
-	.get("/", () => (
-		<html lang="en">
-			<head>
-				<meta charset="UTF-8" />
-				<title>Elysia + HTMX + TSX</title>
-				{/* Load HTMX via CDN */}
-				<script
-					src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.10/dist/htmx.min.js"
-					integrity="sha384-H5SrcfygHmAuTDZphMHqBJLc3FhssKjG7w/CeCpFReSfwBWDTKpkzPP8c+cLsK+V"
-					crossorigin="anonymous"
-				></script>
-			</head>
-			<body>
-				<main style="padding: 2rem; font-family: sans-serif;">
-					<h1>Hello Elysia + HTMX</h1>
+	.use(sessionPlugin)
 
-					{/* HTMX Button triggering a partial DOM swap */}
-					<button
-						type="button"
-						hx-post="/clicked"
-						hx-target="#result"
-						hx-swap="innerHTML"
-					>
-						Click Me
-					</button>
-
-					<div id="result" style="margin-top: 1rem;">
-						Ready to swap content...
-					</div>
-				</main>
-			</body>
-		</html>
-	))
-	.post("/clicked", () => (
-		<div id="result" style="color: green; font-weight: bold;">
-			⚡ Content swapped instantly by HTMX from Elysia!
-		</div>
-	))
 	.get("/assets/*", async ({ path, set }) => {
 		const file = Bun.file(`./src${path}`);
 		if (!(await file.exists())) {
 			set.status = 404;
 			return "Not found";
 		}
-
 		return file;
 	})
+
 	.use(authController)
+	.use(disposalController)
+	.use(extratoController)
+	.use(simularDescarteController)
 	.listen(3000);
 
+function getLocalIP() {
+	const nets = networkInterfaces();
+	for (const name of Object.keys(nets)) {
+		if (!nets[name]) continue;
+		for (const net of nets[name]) {
+			// Skip internal (localhost) and non-IPv4 addresses
+			if (net.family === "IPv4" && !net.internal) {
+				return net.address;
+			}
+		}
+	}
+	return "127.0.0.1";
+}
 console.log(
-	`🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`,
+	`🔋 EcoQuest rodando em https://${getLocalIP()}:${app.server?.port}`,
 );

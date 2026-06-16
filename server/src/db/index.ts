@@ -15,6 +15,32 @@ export async function ensureSchema() {
 	`;
 
 	if (exists) {
+		const [{ disposalMaterialExists }] = await db`
+			SELECT EXISTS (
+				SELECT 1
+				FROM information_schema.columns
+				WHERE table_schema = 'public'
+				AND table_name = 'disposal'
+				AND column_name = 'material_type'
+			) AS "disposalMaterialExists"
+		`;
+		const [{ disposalWeightExists }] = await db`
+			SELECT EXISTS (
+				SELECT 1
+				FROM information_schema.columns
+				WHERE table_schema = 'public'
+				AND table_name = 'disposal'
+				AND column_name = 'weight_kg'
+			) AS "disposalWeightExists"
+		`;
+
+		if (!disposalMaterialExists) {
+			await db.unsafe(`ALTER TABLE disposal ADD COLUMN material_type TEXT`);
+		}
+		if (!disposalWeightExists) {
+			await db.unsafe(`ALTER TABLE disposal ADD COLUMN weight_kg NUMERIC`);
+		}
+
 		console.log("Schema do banco ja existe. Pulando inicializacao.");
 		return;
 	}
