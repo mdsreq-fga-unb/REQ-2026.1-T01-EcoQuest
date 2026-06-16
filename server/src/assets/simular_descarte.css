@@ -230,3 +230,26 @@
 	width: 16px;
 	height: 16px;
 }
+
+.simular-categoria--bloqueada {
+	opacity: 0.45;
+	pointer-events: none;
+	position: relative;
+}
+
+.simular-categoria--bloqueada::after {
+	content: "Finalize ou remova os itens da categoria selecionada para escolher outra.";
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(247, 253, 248, 0.82);
+	border-radius: 14px;
+	color: #1f4b28;
+	font-size: 0.88rem;
+	font-weight: 500;
+	text-align: center;
+	padding: 1rem 1.5rem;
+	pointer-events: none;
+}

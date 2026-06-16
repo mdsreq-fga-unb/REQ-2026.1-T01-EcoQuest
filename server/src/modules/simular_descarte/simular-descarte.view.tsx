@@ -125,15 +125,11 @@ function IconeOutros() {
 	);
 }
 
-// ── Agrupamento por ícone ─────────────────────────────────────────────────
-
 type TipoIcone = "pilha" | "bateria" | "telefone" | "computador" | "outros";
 
 const CHAVE_PARA_TIPO: Record<string, TipoIcone> = {
-	// Baterias
 	bateria_laptop: "bateria",
 	bateria_prova_falhas: "bateria",
-	// Telefones e acessórios relacionados
 	aparelho_celular: "telefone",
 	smartphone: "telefone",
 	telefone_sem_fio: "telefone",
@@ -141,7 +137,6 @@ const CHAVE_PARA_TIPO: Record<string, TipoIcone> = {
 	fax: "telefone",
 	carregadores: "telefone",
 	adaptadores: "telefone",
-	// Computadores e acessórios relacionados
 	microcomputador: "computador",
 	monitor_tubo: "computador",
 	monitor_lcd: "computador",
@@ -155,7 +150,6 @@ const CHAVE_PARA_TIPO: Record<string, TipoIcone> = {
 	estabilizador: "computador",
 	tablet: "computador",
 	no_break: "computador",
-	// Outros: pilhas, modem/roteador, cabos
 	cabos_alimentacao: "outros",
 	cabos_forca: "outros",
 	modem: "outros",
@@ -178,10 +172,7 @@ const ICONE_TIPO: Record<TipoIcone, () => JSX.Element> = {
 	outros: IconeOutros,
 };
 
-// Ordem de exibição dos subgrupos
 const ORDEM_TIPO: TipoIcone[] = ["bateria", "telefone", "computador", "outros"];
-
-// ── Card de item ───────────────────────────────────────────────────────────
 
 function CardItem({
 	nome,
@@ -230,14 +221,10 @@ function CardItem({
 	);
 }
 
-// ── Ícone do cabeçalho da categoria ───────────────────────────────────────
-
 function IconeCategoria({ tipo }: { tipo: TipoIcone }) {
 	const Icone = ICONE_TIPO[tipo];
 	return <Icone />;
 }
-
-// ── Resumo do resultado ────────────────────────────────────────────────────
 
 function ResumoItens({ itens }: { itens: ItemResumoGerado[] }) {
 	return (
@@ -327,7 +314,6 @@ export function SimularDescarteView({
 					hx-swap="innerHTML"
 				>
 					{(() => {
-						// Achata todos os itens de todas as categorias do serviço
 						const todosItens = categorias.flatMap((cat) => cat.itens);
 
 						// Agrupa por tipo de ícone
@@ -343,6 +329,7 @@ export function SimularDescarteView({
 								class="simular-categoria"
 								aria-labelledby={`cat-icone-${tipo}`}
 								key={tipo}
+								data-categoria={tipo}
 							>
 								<h2 id={`cat-icone-${tipo}`} class="simular-categoria_titulo">
 									<span class="simular-cat_icone" aria-hidden="true">

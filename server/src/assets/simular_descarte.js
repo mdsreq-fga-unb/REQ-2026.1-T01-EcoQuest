@@ -4,6 +4,37 @@
 		return `${Math.round(pesoKg * 1000)} g`;
 	}
 
+	function categoriaDoCard(card) {
+		return card.closest(".simular-categoria")?.dataset?.categoria ?? null;
+	}
+
+	function categoriaAtiva() {
+		const cards = document.querySelectorAll(".simular-item[data-item]");
+		for (const card of cards) {
+			const input = card.querySelector('[data-role="input-qty"]');
+			const qtd = Number.parseInt(input?.value ?? "0", 10) || 0;
+			if (qtd > 0) return categoriaDoCard(card);
+		}
+		return null;
+	}
+
+	function atualizarBloqueio() {
+		const ativa = categoriaAtiva();
+		const secoes = document.querySelectorAll(".simular-categoria[data-categoria]");
+
+		for (const secao of secoes) {
+			const tipo = secao.dataset.categoria;
+			const bloqueada = ativa !== null && tipo !== ativa;
+
+			secao.classList.toggle("simular-categoria--bloqueada", bloqueada);
+
+			const botoes = secao.querySelectorAll(".simular-item_btn");
+			for (const btn of botoes) {
+				btn.disabled = bloqueada;
+			}
+		}
+	}
+
 	function atualizarTotais() {
 		const cards = document.querySelectorAll(".simular-item[data-item]");
 		let totalItens = 0;
@@ -29,6 +60,8 @@
 		const elTotalPeso = document.getElementById("simular-total-peso");
 		if (elTotalItens) elTotalItens.textContent = String(totalItens);
 		if (elTotalPeso) elTotalPeso.textContent = formatarPeso(totalPesoKg);
+
+		atualizarBloqueio();
 	}
 
 	function alterarQuantidade(card, delta) {
