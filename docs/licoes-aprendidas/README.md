@@ -33,13 +33,27 @@
 
 **Dificuldades Enfrentadas e Resoluções:**
 
-
 **Dificuldade 2:** Redundância Estrutural entre Critérios. Ao longo das revisões iterativas, a equipe percebeu que vários critérios verificavam o mesmo artefato por caminhos diferentes. Redundância em critérios não adiciona segurança; adiciona ruído à cerimônia e aumenta o risco de verificação superficial.
 **Como foi superada:** Através de avaliações iterativas guiadas pela pergunta "esses dois critérios podem estar em estados diferentes no nosso processo?", a equipe fundiu critérios redundantes e separou critérios que pareciam redundantes mas verificavam condições genuinamente distintas.
+
+## Unidade 3
+
+**No âmbito da Verificação e Validação (V&V):** A equipe constatou que a execução rigorosa e sistemática das atividades de V&V elevou diretamente a qualidade técnica das entregas, reduzindo drasticamente o risco de retrabalho e refinando o valor real do produto final.
+**Ação de Melhoria:** Incorporar as rotinas de V&V como etapa obrigatória e contínua no fluxo de trabalho de cada iteração, garantindo que nenhum artefato ou código mude de estado sem passar por uma validação formal.
+
+**No âmbito da Gestão de Tempo e Produtividade:** A pressão exercida por demandas e atividades concorrentes ao desenvolvimento do projeto forçou a equipe a amadurecer na gestão do tempo, exigindo uma postura muito mais cirúrgica e realista em relação à priorização de tarefas.
+**Ação de Melhoria:**  Utilizar estimativas de esforço mais conservadoras e aplicar técnicas de time-boxing para blindar as janelas de desenvolvimento, mitigando o impacto de gargalos externos na cadência da equipe.
+
+**No âmbito da Transparência e Cultura de Evidências:** Compreendemos que a geração de evidências sólidas não é um mero cumprimento de tabela; elas servem como um guia visual e técnico para o próprio desenvolvimento da equipe, além de tornarem o progresso do projeto totalmente inteligível e autoexplicativo para stakeholders externos que não participam do dia a dia.
+**Ação de Melhoria:** Padronizar e centralizar o registro de evidências e validações no repositório do projeto, assegurando que o histórico de evolução seja facilmente auditável por qualquer pessoa.
+
+**No âmbito do Benchmarking e Escopo:** A análise e a observação do progresso do trabalho desenvolvido pela outra equipe serviram como um valioso espelho crítico. Essa perspectiva externa nos impulsionou a repensar a nossa própria matriz de priorização e a realizar uma revisão necessária e mais realista no MVP.
+**Ação de Melhoria:** Estabelecer momentos formais de avaliação cruzada e troca de experiências com equipes paralelas ao longo do ciclo de vida, utilizando esse feedback indireto para calibrar continuamente a linha de corte do nosso escopo.
+
 
 ## Histórico de Versão
 
 | Data | Versão | Descrição da Alteração | Autor(a) |
 |-------|-------|------|------|
 | 12/04/2026 | 0.1 | Criação do documento referente a Unidade 1. | Paulo Vitor | 
-| 15/05/2026 | 0.2 | Adição de documento referente a Unidade 2. | Paulo Vitor | 
+| 15/05/2026 | 0.2 | Adição de documento referente a Unidade 2. | Paulo Vitor |
