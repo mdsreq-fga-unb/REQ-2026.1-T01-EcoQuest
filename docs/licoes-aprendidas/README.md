@@ -57,3 +57,4 @@
 |-------|-------|------|------|
 | 12/04/2026 | 0.1 | Criação do documento referente a Unidade 1. | Paulo Vitor | 
 | 15/05/2026 | 0.2 | Adição de documento referente a Unidade 2. | Paulo Vitor |
+| 15/06/2026 | 0.3 | Adição de documento referente a Unidade 3. | Paulo Vitor |
