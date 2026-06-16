@@ -115,13 +115,6 @@ As evidências das técnicas previstas na estratégia estão registradas no dire
 - [12/06/2026 - Validação final de identidade visual (logo/banner)](/atas/12-06.md)
 - Resultado incorporado: refinamento de requisitos, terminologia e priorização no backlog, além de aprovação de artefatos visuais usados no projeto.
 
-<iframe
-style="border: 1px solid rgba(0, 0, 0, 0.1);"
-width="800" 
-height="450" 
-src="https://embed.figma.com/board/f6CjlyYaVd3bPZBigmWU9o/Untitled?node-id=0-1&embed-host=share" 
-allowfullscreen>
-</iframe>
 
 ## Monitoramento da Execução de Engenharia de Requisitos
 
