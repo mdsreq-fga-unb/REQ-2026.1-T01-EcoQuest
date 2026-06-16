@@ -110,7 +110,6 @@ function IcoCamera() {
 
 const NAV_ITEMS = [
 	{ href: "/", label: "Extrato", Icone: IcoDescarte },
-	// { href: "/simular_descarte", label: "Simular descarte", Icone: IcoDescarte },
 	{ href: "/insignias", label: "Insígnias", Icone: IcoInsignia },
 	{ href: "/ranking", label: "Ranking", Icone: IcoRanking },
 ] as const;
@@ -838,6 +837,7 @@ export function AppLayout({
 	var qr = null;
 	var lendo = false;
 	var validando = false;
+	var recarregarAoFechar = false;
 
 	function capturarControlesLeitura() {
 		btnPermissao = document.getElementById('btn-permissao-camera');
@@ -895,13 +895,19 @@ export function AppLayout({
 		if (reader) reader.remove();
 		if (actions) actions.remove();
 
-		var titulo = document.getElementById('qr-modal-title');
-		if (titulo) titulo.textContent = 'Validação concluída';
+		var titulo = document.getElementById('qr-modal-title');\r\n\t\tif (titulo) titulo.textContent = 'Validação concluída';
 
 		resultado.innerHTML =
 			'<span class="qr-modal_result-destaque">+' + payload.pointsAwarded + ' pontos</span>' +
 			'<br>Descarte validado com sucesso.' +
 			'<br>Saldo atual: ' + payload.pointsBalanceAfter;
+
+		var btnFechar = document.getElementById('btn-fechar-qr');
+		if (btnFechar) {
+			btnFechar.textContent = 'Ver no extrato';
+		}
+
+		recarregarAoFechar = true;
 	}
 
 	function mostrarResultadoErro(mensagem) {
@@ -1066,6 +1072,9 @@ export function AppLayout({
 			lendo = false;
 		}
 		if (fileInput) fileInput.value = '';
+		if (recarregarAoFechar) {
+			window.location.reload();
+		}
 	}
 
 	botoesAbrir.forEach(function(btn){

@@ -17,28 +17,28 @@ function formatarPeso(pesoKg: number | null): string {
 		: `${(pesoKg * 1000).toFixed(0)} g`;
 }
 
-function IconeMaterial({ tipo }: { tipo: string | null }) {
+// Mesmas categorias da página de simulação, detectadas pelo nome do item no texto.
+// O materialTipo é uma string como "Bateria de laptop (1x), Carregadores (2x)".
+function classificarIcone(tipo: string | null): "bateria" | "telefone" | "computador" | "outros" {
 	const t = (tipo ?? "").toLowerCase();
-	if (t.includes("pilha")) {
-		return (
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				viewBox="0 0 24 24"
-				fill="none"
-				stroke="currentColor"
-				strokeWidth="1.8"
-				strokeLinecap="round"
-				strokeLinejoin="round"
-				aria-hidden="true"
-				class="extrato-card_icone-svg"
-			>
-				<rect x="6" y="4" width="12" height="16" rx="2" />
-				<line x1="10" y1="2" x2="14" y2="2" />
-				<line x1="10" y1="8" x2="14" y2="8" />
-			</svg>
-		);
-	}
-	if (t.includes("bateria")) {
+
+	const BATERIA = ["bateria"];
+	const TELEFONE = ["celular", "smartphone", "telefone", "fax", "carregador", "adaptador"];
+	const COMPUTADOR = [
+		"microcomputador", "monitor", "notebook", "servidor",
+		"teclado", "mouse", "impressora", "estabilizador", "tablet", "no-break",
+	];
+
+	if (BATERIA.some((p) => t.includes(p))) return "bateria";
+	if (TELEFONE.some((p) => t.includes(p))) return "telefone";
+	if (COMPUTADOR.some((p) => t.includes(p))) return "computador";
+	return "outros";
+}
+
+function IconeMaterial({ tipo }: { tipo: string | null }) {
+	const categoria = classificarIcone(tipo);
+
+	if (categoria === "bateria") {
 		return (
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -58,7 +58,7 @@ function IconeMaterial({ tipo }: { tipo: string | null }) {
 			</svg>
 		);
 	}
-	if (t.includes("telefone")) {
+	if (categoria === "telefone") {
 		return (
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -76,7 +76,7 @@ function IconeMaterial({ tipo }: { tipo: string | null }) {
 			</svg>
 		);
 	}
-	if (t.includes("computador")) {
+	if (categoria === "computador") {
 		return (
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -95,25 +95,7 @@ function IconeMaterial({ tipo }: { tipo: string | null }) {
 			</svg>
 		);
 	}
-	if (t.includes("outros")) {
-		return (
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				viewBox="0 0 24 24"
-				fill="none"
-				stroke="currentColor"
-				stroke-width="1.8"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				aria-hidden="true"
-				class="extrato-card_icone-svg"
-			>
-				<rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-				<line x1="8" y1="21" x2="16" y2="21" />
-				<line x1="12" y1="17" x2="12" y2="21" />
-			</svg>
-		);
-	}
+	// "outros" — setas de reciclagem
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
