@@ -536,6 +536,85 @@ body {
 	display: none;
 }
 
+/* ── Pop-up E2: Falha ao registrar descarte ── */
+.descarte-erro-overlay {
+	display: none;
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.55);
+	z-index: 900;
+	align-items: center;
+	justify-content: center;
+	padding: 1rem;
+}
+.descarte-erro-overlay.aberto {
+	display: flex;
+}
+.descarte-erro-card {
+	background: var(--color-surface, #fff);
+	border-radius: 16px;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+	padding: 2rem 1.75rem 1.5rem;
+	max-width: 360px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.85rem;
+	text-align: center;
+	animation: descarte-erro-entrada 0.2s ease;
+}
+@keyframes descarte-erro-entrada {
+	from { opacity: 0; transform: scale(0.93) translateY(8px); }
+	to   { opacity: 1; transform: scale(1)   translateY(0);    }
+}
+.descarte-erro-icone {
+	width: 52px;
+	height: 52px;
+	border-radius: 50%;
+	background: #fff3f3;
+	border: 2px solid #f5c6c6;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #c62828;
+	flex-shrink: 0;
+}
+.descarte-erro-icone svg {
+	width: 28px;
+	height: 28px;
+}
+.descarte-erro-titulo {
+	font-size: 1.05rem;
+	font-weight: 700;
+	color: var(--color-text, #1a1a1a);
+	margin: 0;
+	line-height: 1.3;
+}
+.descarte-erro-mensagem {
+	font-size: 0.88rem;
+	color: var(--color-text-secondary, #555);
+	margin: 0;
+	line-height: 1.55;
+}
+.descarte-erro-btn {
+	margin-top: 0.4rem;
+	width: 100%;
+	padding: 0.7rem 1rem;
+	border: none;
+	border-radius: 8px;
+	background: #c62828;
+	color: #fff;
+	font-size: 0.95rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background 0.15s ease;
+}
+.descarte-erro-btn:hover,
+.descarte-erro-btn:focus-visible {
+	background: #a31515;
+}
+
 /* ── Menu overlay ── */
 .menu-overlay {
   display: none; position: fixed; inset: 0;
@@ -664,6 +743,53 @@ export function AppLayout({
 				</div>
 			</div>
 
+			{/* Pop-up E2 — Falha ao registrar o descarte */}
+			<div
+				class="descarte-erro-overlay"
+				id="descarte-erro-overlay"
+				aria-hidden="true"
+			>
+				<div
+					class="descarte-erro-card"
+					role="alertdialog"
+					aria-modal="true"
+					aria-labelledby="descarte-erro-titulo"
+					aria-describedby="descarte-erro-mensagem"
+				>
+					<div class="descarte-erro-icone" aria-hidden="true">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="1.8"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<circle cx="12" cy="12" r="10" />
+							<line x1="12" y1="8" x2="12" y2="12" />
+							<line x1="12" y1="16" x2="12.01" y2="16" />
+						</svg>
+					</div>
+					<h3 class="descarte-erro-titulo" id="descarte-erro-titulo">
+						Não foi possível registrar o descarte
+					</h3>
+					<p class="descarte-erro-mensagem" id="descarte-erro-mensagem">
+						Ocorreu um problema ao comunicar com o servidor. O descarte não foi
+						registrado, nenhum ponto foi creditado e as insígnias não foram
+						verificadas. Por favor, tente novamente mais tarde.
+					</p>
+					<button
+						type="button"
+						class="descarte-erro-btn"
+						id="btn-fechar-descarte-erro"
+						aria-label="Fechar aviso de erro"
+					>
+						Entendido
+					</button>
+				</div>
+			</div>
+
 			<MenuMobile rotaAtiva={rotaAtiva} nomeUsuario={nomeUsuario} />
 
 			<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
@@ -782,6 +908,34 @@ export function AppLayout({
 		mostrarMensagem(mensagem);
 	}
 
+	function abrirPopupErroDescarte() {
+		fecharModal();
+		var overlay = document.getElementById('descarte-erro-overlay');
+		var btnFecharErro = document.getElementById('btn-fechar-descarte-erro');
+		if (!overlay) return;
+		overlay.classList.add('aberto');
+		overlay.setAttribute('aria-hidden', 'false');
+		if (btnFecharErro) btnFecharErro.focus();
+
+		function fecharErro() {
+			overlay.classList.remove('aberto');
+			overlay.setAttribute('aria-hidden', 'true');
+		}
+		if (btnFecharErro && !btnFecharErro.dataset.erroBound) {
+			btnFecharErro.addEventListener('click', fecharErro);
+			btnFecharErro.dataset.erroBound = '1';
+		}
+		overlay.addEventListener('click', function(ev) {
+			if (ev.target === overlay) fecharErro();
+		});
+		document.addEventListener('keydown', function handler(e) {
+			if (e.key === 'Escape' && overlay.classList.contains('aberto')) {
+				fecharErro();
+				document.removeEventListener('keydown', handler);
+			}
+		});
+	}
+
 	function validarTokenNoBackend(decodedText) {
 		if (validando) return;
 		validando = true;
@@ -805,10 +959,16 @@ export function AppLayout({
 					mostrarResultadoSucesso(result.data);
 					return;
 				}
+				var codigo = result.data && result.data.status;
+				var ehFalhaRegistro = codigo === 'falha_validacao' || result.status >= 500;
+				if (ehFalhaRegistro) {
+					abrirPopupErroDescarte();
+					return;
+				}
 				mostrarResultadoErro((result.data && result.data.message) ? result.data.message : 'Falha ao validar o token.');
 			})
-			.catch(function(err){
-				mostrarResultadoErro('Falha na comunicação com o servidor: ' + (err && err.message ? err.message : String(err)));
+			.catch(function(){
+				abrirPopupErroDescarte();
 			})
 			.finally(function(){
 				validando = false;
