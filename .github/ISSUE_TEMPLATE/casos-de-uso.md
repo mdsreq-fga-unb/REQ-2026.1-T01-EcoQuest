@@ -41,7 +41,7 @@ assignees: ''
 *Para que este UC seja movido para "Ready for Dev", TODOS os itens abaixo devem estar marcados no refinamento.*
 
 **Dimensão de Clareza**
-- [ ] Ator, objetivo de negócio e critérios de aceite descritos e inequivocamente compreendidos por todos.
+- [ ] Ator, objetivo de negócio estão descritos e inequivocamente compreendidos por todos.
 - [ ] IP calculado e classificação MoSCoW registrada no template.
 
 **Dimensão de Viabilidade**

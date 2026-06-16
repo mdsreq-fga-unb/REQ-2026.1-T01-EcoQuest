@@ -15,7 +15,7 @@
   * [Lista de itens de trabalho](lista-de-itens-de-trabalho/)
   * [Critérios](criterios/)
   * 
-
+critérios
 * **Acompanhamento**
   * [Ata - Reuniões](atas/)
   * [Cronograma e Entregas](cronograma-e-entregas/)

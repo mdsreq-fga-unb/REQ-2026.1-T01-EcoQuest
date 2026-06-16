@@ -16,9 +16,9 @@
 
 - **Casos de Uso:** utilizados como artefato principal para descrever comportamento do sistema por meio de fluxo principal, alternativos e de exceção.
 - **Casos de Uso de alto nível:** utilizados para consolidar o entendimento funcional e orientar o detalhamento incremental dos requisitos.
-- **Critérios de Aceitação + DoR/DoD:** utilizados para definir condições verificáveis de prontidão, implementação e validação junto aos stakeholders.
+- **DoR/DoD:** utilizados para definir condições verificáveis de prontidão, implementação e validação junto aos stakeholders.
 
-O projeto não adota Histórias de Usuário como artefato principal. A equipe optou por trabalhar com **Casos de Uso + Critérios de Aceitação**, por aderência a terminologia correta do processo e à necessidade de explicitar regras de negócio com maior detalhamento.
+O projeto não adota Histórias de Usuário como artefato principal. A equipe optou por trabalhar com **Casos de Uso**, por aderência a terminologia correta do processo e à necessidade de explicitar regras de negócio com maior detalhamento.
 
 Para manter consistência entre ER e desenvolvimento, o projeto utiliza **DoR/DoD** como critérios de prontidão e conclusão dos requisitos, conectando cada caso de uso aos objetivos (OE) e às características do produto (CP). As checklists estão em [DoR e DoD](../dor-e-dod/).
 
@@ -33,13 +33,13 @@ Foi feito um ajuste para que ao invés de usar Diagrama UML, a equipe optou por 
 ### Organização e Atualização de Requisitos
 
 - **Checklist:** garantir que os itens da lista de itens de trabalho estejam claros, sem ambiguidade, completos, verificáveis, consistentes, rastreáveis e com entendimento compartilhado entre equipe e cliente.
-- **Refinamento e controle dos requisitos:** realizado de forma contínua durante as iterações, com revisão de prioridade (MoSCoW), análise de impacto em OE/CP, ajuste de critérios de aceitação e atualização da documentação/atas sempre que houver mudança aprovada.
+- **Refinamento e controle dos requisitos:** realizado de forma contínua durante as iterações, com revisão de prioridade (MoSCoW), análise de impacto em OE/CP e atualização da documentação/atas sempre que houver mudança aprovada.
 
 ### Verificação e Validação de Requisitos
 
 - **DoR (Definition of Ready):** utilizado para verificar se os requisitos estão claros, completos, consistentes, rastreáveis e prontos para seguir no fluxo de desenvolvimento. O DoR confirma se cada item possui objetivo, ator, prioridade, regras de negócio e relação com OE e CP antes de ser assumido pela equipe.
 - **Feedback com stakeholders:** utilizado para validar se os requisitos refletem corretamente as necessidades da cliente e dos demais stakeholders do EcoQuest.
-- **Testes:** utilizados posteriormente para verificar se as funcionalidades implementadas atendem aos requisitos e critérios de aceitação definidos.
+- **Testes:** utilizados posteriormente para verificar se as funcionalidades implementadas atendem aos requisitos definidos.
 
 ## 4.2 Engenharia de Requisitos e o OpenUP
 
@@ -53,7 +53,7 @@ A tabela a seguir apresenta o mapeamento entre as fases do OpenUP, as atividades
 |------------------|--------------|--------|--------|-------------------|
 | **Concepção** | Elicitação e Descoberta | Levantamento inicial de requisitos | Entrevistas com cliente, Brainstorming | Identificação do problema dos requisitos iniciais |
 |  | Análise e Consenso | Alinhamento com stakeholders | Discussões em equipe, Priorização MoSCoW | Priorização das funcionalidades essenciais |
-|  | Declaração de Requisitos | Formalização inicial | Casos de Uso de alto nível, critérios de aceitação iniciais | Registro inicial de funcionalidades e regras principais |
+|  | Declaração de Requisitos | Formalização inicial | Casos de Uso de alto nível | Registro inicial de funcionalidades e regras principais |
 |  | Organização e Atualização | Estruturação inicial | Criação da lista de itens de trabalho | Lista de itens de trabalho inicial alinhada a OE/CP |
 |  | Verificação e Validação | Avaliação inicial dos requisitos | Revisão interna + feedback com stakeholder | Confirmação de entendimento compartilhado e viabilidade inicial |
 | **Elaboração** | Representação de Requisitos | Modelagem da solução | Protótipos e wireframes | Visualização dos fluxos de navegação e interação |
@@ -156,7 +156,7 @@ _Verifica se o "o quê" e o "por quê" estão absolutamente claros para toda a e
 
 > - O ator, qualquer entidade externa ao sistema que interage com ele para atingir um objetivo, está nomeado, seu papel está descrito e seu objetivo de negócio está explícito no Caso de Uso?
 > - O IP foi calculado, o quadrante definido e a classificação MoSCoW registrada na lista de itens de trabalho ?
-> - Os critérios de aceitação — condições verificáveis que definem as formas de uso das funcionalidades implementadas no UC, existem e estão ligados ao OE e CP correspondentes?
+> - As condições verificáveis que definem as formas de uso das funcionalidades implementadas no UC, existem e estão ligados ao OE e CP correspondentes?
 > - As regras de negócio estão devidamente verificadas dentro do contexto? _(Critério de completude do contexto de negócio, especialmente para lógicas de gamificação: missões, tokens, progressão e recompensas.)_
 > - O validador, o canal de validação e o critério de aprovação estão definidos e registrados no UC?
 
@@ -189,7 +189,6 @@ _Atesta que o código foi construído com excelência técnica, integrado sem qu
 
 - [ ] Todos os fluxos principais, alternativos e de exceção descritos no Caso de Uso foram implementados.
 - [ ] Cenários de falha (ex: instabilidade externa, dados inválidos) possuem tratamento de erro com feedback amigável ao usuário.
-- [ ] O código implementado atende integralmente a todos os Critérios de Aceitação (ACs) definidos no DoR.
 - [ ] O comportamento funcional da interface atende integralmente aos ACs, independentemente de variações visuais em relação ao Design System.
 
 ##### Dimensão de Qualidade Técnica (RNF)
@@ -282,6 +281,6 @@ flowchart TD
 | Data | Versão | Descrição da Alteração | Autor(a) |
 |-------|-------|------|------|
 | 02/05/2026 | 0.1 | Criação do documento e estruturação dos tópicos iniciais. | Nayra |
-| 18/05/2026 | 1.1 | Inclusão das dimensões e domínios do DoD.| Paulo Vitor |
+| 18/05/2026 | 1.1 | Inclusão das dimensões e domínios do DoR e DoD.| Paulo Vitor |
 | 12/06/2026 | 1.2 | Inclusão de evidências verificáveis de entrevistas, brainstorming e validação com stakeholders. | João Victor |
 | 14/06/2026 | 1.3 | Adequação da estratégia ao processo real, inclusão de organização/atualização de requisitos e explicitação das adaptações metodológicas. | João Victor |

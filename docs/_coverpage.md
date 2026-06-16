@@ -1,5 +1,5 @@
 <a href="#/">
-  <img src="assets/logo-ecoquest.png" alt="Logo EcoQuest" width="650">
+  <img src="assets/logo-ecoquest.png" alt="Logo EcoQuest" width="450">
 </a>
 <small>v1.0</small>
 
