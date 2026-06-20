@@ -863,9 +863,10 @@ Após o cálculo da prioridade final, os Casos de Uso foram posicionados em uma 
 
 |    Data    | Versão |                               Descrição da Alteração                             |     Autor(a)     |
 |------------|--------|----------------------------------------------------------------------------------|------------------|
-| 13/05/2026 |   1.0  | Criação do documento e estruturação dos tópicos iniciais, bem como seu conteúdo. | Joaquim e Nayla  |
+| 13/05/2026 |   1.0  | Criação do documento e estruturação dos tópicos iniciais, bem como seu conteúdo. | Joaquim e Nayra  |
 | 17/04/2026 |   2.0  | Correção da priorização conforme feedback do professor.                          | Yasmim e Joaquim |
 | 18/04/2026 |   2.1  | Corrigindo template das tabelas, adicionando os Casos de Uso e definição do MVP. | Yasmim e Joaquim |
 | 13/06/2026 |   2.2  | Adicionando regras de negócio e removendo critérios de aceitação                 | Yasmim           |
 | 13/06/2026 |   2.3  | Adicionando fluxos de exceção                                                    | Nayra            |
 | 15/06/2026 |   3.0  | Revisão e correção da priorização.                                               | Joaquim          |
+| 20/06/2026 |   3.1  | Melhora na rastreabilidade dos casos de uso                                      | Yasmim         |
