@@ -4,7 +4,7 @@ import { Layout } from "../../components/Layout-auth";
 export function CadastroView() {
 	return (
 		<Layout title="Cadastro - EcoQuest">
-			<link rel="stylesheet" href="../assets/cadastro.css" />
+			<link rel="stylesheet" href="../assets/css/auth.css" />
 
 			<header class="header">
 				<img src="../assets/img/logo.png" alt="EcoQuest" class="logo" />
@@ -268,7 +268,8 @@ export function CadastroView() {
 				</div>
 			</main>
 
-			<script src="/assets/cadastro.js"></script>
+			<script src="/assets/js/password-toggle.js"></script>
+			<script src="/assets/js/cadastro.js"></script>
 		</Layout>
 	);
 }
