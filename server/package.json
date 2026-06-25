@@ -3,7 +3,8 @@
   "version": "1.0.50",
   "scripts": {
     "test": "test -f env/.env && bun test --env-file=env/.env",
-    "dev": "test -f env/.env && bun run --watch src/index.tsx --env-file=env/.env",
+    "dev": "test -f env/.env && bun --env-file=env/.env run --watch src/index.tsx",
+    "prod": "test -f env/.env && bun --env-file=env/.env src/index.tsx",
     "docker:up": "test -f env/.env && docker compose -f src/db/compose.yml --env-file env/.env up -d",
     "docker:down": "test -f env/.env && docker compose -f src/db/compose.yml --env-file env/.env down",
     "docker:logs": "test -f env/.env && docker compose -f src/db/compose.yml --env-file env/.env logs -f",
