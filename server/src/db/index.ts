@@ -1,5 +1,9 @@
 import { SQL } from "bun";
 
+
+console.log("Conectando ao banco de dados...");
+console.log("URL do banco de dados:", process.env.POSTGRES_URL ?? process.env.DATABASE_URL);
+
 export const db = new SQL({
 	url: process.env.POSTGRES_URL ?? process.env.DATABASE_URL,
 });
