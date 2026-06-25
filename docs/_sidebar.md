@@ -19,6 +19,7 @@ critérios
 * **Acompanhamento**
   * [Ata - Reuniões](atas/)
   * [Cronograma e Entregas](cronograma-e-entregas/)
+  * [Monitoramento MVP](acompanhamento/)
   * [Lições Aprendidas](licoes-aprendidas/)
   * [Entregas de Unidade](entregas/)
   * [Evidências de Software](evidencias/)
