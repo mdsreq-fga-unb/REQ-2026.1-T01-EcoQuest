@@ -11,6 +11,8 @@ import { sessionPlugin } from "./plugins/session";
 await ensureSchema();
 
 const CERTIFICATE_PATH = process.env.CERTIFICATE_PATH;
+const PORT = process.env.PORT || 3000;
+
 if (!CERTIFICATE_PATH) {
 	throw new Error(
 		"CERTIFICATE_PATH is not defined in the environment variables.",
@@ -48,7 +50,7 @@ const app = new Elysia({
 	.use(disposalController)
 	.use(extratoController)
 	.use(simularDescarteController)
-	.listen(3000);
+	.listen(PORT);
 
 function getLocalIP() {
 	const nets = networkInterfaces();
