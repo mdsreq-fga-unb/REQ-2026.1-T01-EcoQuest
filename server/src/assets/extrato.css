@@ -1,3 +1,7 @@
+body {
+    background-color: #303030;
+}
+
 .extrato-conteudo {
     flex: 1;
     padding: 40px 48px;
@@ -10,7 +14,7 @@
     font-family: 'Oxanium', sans-serif;
     font-weight: 700;
     font-size: 2rem;
-    color: var(--color-text);
+    color: #D0EFD6;
     text-align: center;
     margin-bottom: 32px;
 }
@@ -105,18 +109,19 @@
 .extrato-vazio_icone {
     width: 64px;
     height: 64px;
-    color: var(--color-primary);
+    color: #98DDA6;
     opacity: .4;
 }
 
 .extrato-vazio_texto {
     font-size: 1rem;
     font-weight: 500;
+    color: #98DDA6;
 }
 
 .extrato-vazio_subtexto {
     font-size: .87rem;
-    color: var(--color-muted);
+    color: #D0EFD6;
     max-width: 340px;
     line-height: 1.55;
 }
@@ -124,12 +129,13 @@
 .extrato-vazio_cta {
     display: inline-block;
     margin-top: 8px;
-    background: var(--color-primary);
-    color: var(--color-white);
+    background: #66CC7A;
+    color: #D0EFD6;
     font-weight: 500;
     font-size: .9rem;
     padding: 10px 24px;
     border-radius: 8px;
+    border: none;
     text-decoration: none;
     transition: background var(--transition);
 }

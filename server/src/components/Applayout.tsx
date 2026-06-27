@@ -421,7 +421,7 @@ body {
 .header-mobile_menu:hover, .header-mobile_menu:focus-visible {
   background: rgba(43,86,51,.1);
 }
-.header-mobile_logo { display: flex; align-items: center; flex: 1; justify-content: center; }
+.header-mobile_logo { display: flex; align-items: center; flex: 1; justify-content: center; position:absolute; left: 0; right: 0; }
 .header-mobile_logo-img { height: 36px; object-fit: contain; }
 
 /* ── FAB câmera ── */
@@ -429,16 +429,16 @@ body {
   display: none;
   position: fixed; bottom: 28px; right: 24px;
   width: 56px; height: 56px; border-radius: 50%;
-  background: var(--color-primary); color: var(--color-white);
+  background: #66CC7A; color: var(--color-white);
   align-items: center; justify-content: center;
   box-shadow: 0 4px 16px rgba(43,86,51,.40);
+  cursor: pointer; border: none;
   text-decoration: none;
   transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
   z-index: 100;
 }
 .btn-camera:hover, .btn-camera:focus-visible {
-  background: var(--color-primary-dk); transform: scale(1.06);
-  box-shadow: 0 6px 20px rgba(43,86,51,.50);
+  background: #5DBA6F; transform: scale(1.06);
 }
 
 .qr-modal {
