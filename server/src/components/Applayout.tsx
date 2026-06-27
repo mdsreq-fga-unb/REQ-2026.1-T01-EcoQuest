@@ -86,6 +86,28 @@ function IcoLocalizarPev() {
 	);
 }
 
+function IcoRecompensa() {
+	return (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			stroke-width="2"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			class="nav_icon"
+			aria-hidden="true"
+		>
+			<rect x="3" y="8" width="18" height="13" rx="1" />
+			<path d="M3 12h18" />
+			<path d="M12 8v13" />
+			<path d="M12 8c-1.5-3-3.5-4.5-5.5-4-1.6.4-2 2.1-1 3.2C6.6 8.5 9 8 12 8z" />
+			<path d="M12 8c1.5-3 3.5-4.5 5.5-4 1.6.4 2 2.1 1 3.2-1.1 1.3-3.5.8-6.5.8z" />
+		</svg>
+	);
+}
+
 function IcoMenu() {
 	return (
 		<svg
@@ -132,6 +154,7 @@ const NAV_ITEMS = [
 	{ href: "/localizar-pev", label: "Localizar PEV", Icone: IcoLocalizarPev },
 	{ href: "/insignias", label: "Insígnias", Icone: IcoInsignia },
 	{ href: "/ranking", label: "Ranking", Icone: IcoRanking },
+	{ href: "/recompensas", label: "Recompensas", Icone: IcoRecompensa },
 ] as const;
 
 function Sidebar({
@@ -432,13 +455,12 @@ body {
   gap: 12px;
   border-bottom: 1px solid rgba(43,86,51,.12);
   position: sticky; top: 0; z-index: 50;
-  z-index: 50;
 }
 .header-mobile_menu {
   background: none; border: none; cursor: pointer;
   color: var(--color-primary); display: flex; align-items: center;
   padding: 4px; border-radius: 6px; transition: background var(--transition);
-  z-index: 50;
+  position: relative; z-index: 1;
 }
 .header-mobile_menu:hover, .header-mobile_menu:focus-visible {
   background: rgba(43,86,51,.1);
