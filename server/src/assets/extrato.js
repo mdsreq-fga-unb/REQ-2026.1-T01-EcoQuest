@@ -8,7 +8,7 @@
 
   if (!btnMenu || !menu || !overlay) return;
 
-  function abrirmenu() {
+  function abrirMenu() {
     menu.classList.add('aberto');
     overlay.classList.add('aberto');
     menu.setAttribute('aria-hidden', 'false');
