@@ -26,8 +26,9 @@
       
       loadSidebar: '_sidebar.md',
       loadNavbar: '_navbar.md',
-  
-      subMaxLevel: 3,
+
+      sidebarDisplayLevel: 1,
+
       themeColor: '#2E7D32',
       auto2top: true,
 
@@ -50,12 +51,91 @@
               mermaid.init(undefined, '.mermaid');
             }
           });
+        },
+        function(hook) {
+          var BLOCK_ID = 'page-headings-block';
+
+          var EXCLUDE_PATTERNS = [
+            /\/lista-de-itens-de-trabalho\/uc\d{2}(\.md)?$/i,
+            /\/lista-de-itens-de-trabalho\/rastreabilidade(\.md)?$/i
+          ];
+
+          function isExcluded(path) {
+            return EXCLUDE_PATTERNS.some(function(re) { return re.test(path); });
+          }
+
+          function normalize(p) {
+            return (p || '')
+              .split('?')[0]
+              .replace(/\.md$/i, '')
+              .replace(/\/$/, '')
+              .replace(/^#/, '');
+          }
+
+          hook.doneEach(function() {
+            var existing = document.getElementById(BLOCK_ID);
+            if (existing) {
+              existing.remove();
+            }
+
+            var rawPath = window.location.hash.replace('#', '').split('?')[0] || '/';
+
+            if (isExcluded(rawPath)) {
+              return;
+            }
+
+            var headings = document.querySelectorAll('#main h2');
+            if (!headings.length) return;
+
+            var targetPath = normalize(rawPath);
+
+            var sidebarLinks = document.querySelectorAll('.sidebar-nav a');
+            var activeLink = null;
+            for (var i = 0; i < sidebarLinks.length; i++) {
+              var href = sidebarLinks[i].getAttribute('href') || '';
+              if (normalize(href) === targetPath) {
+                activeLink = sidebarLinks[i];
+                break;
+              }
+            }
+            if (!activeLink) return;
+
+            var parentLi = activeLink.parentElement;
+
+            var ul = document.createElement('ul');
+            ul.id = BLOCK_ID;
+            ul.className = 'page-headings-block';
+
+            headings.forEach(function(h) {
+              var li = document.createElement('li');
+              var a = document.createElement('a');
+              a.href = '#' + rawPath + '?id=' + h.id;
+              a.textContent = h.textContent.replace(/\s*#\s*$/, '');
+              li.appendChild(a);
+              ul.appendChild(li);
+            });
+            var existingSubUl = parentLi.querySelector('ul');
+            if (existingSubUl) {
+              parentLi.insertBefore(ul, existingSubUl);
+            } else {
+              parentLi.appendChild(ul);
+            }
+          });
         }
       ]
     }
   </script>
   
+  <style>
+    .page-headings-block {
+      border-bottom: 1px dashed #cfd8dc;
+      margin-bottom: 4px;
+      padding-bottom: 4px;
+    }
+  </style>
+  
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/mermaid@9.4.3/dist/mermaid.min.js"></script>
 </body>
 </html>
