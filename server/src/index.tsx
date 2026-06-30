@@ -2,6 +2,7 @@ import { Html, html } from "@elysia/html";
 import { Elysia } from "elysia";
 import { networkInterfaces } from "os";
 import { db, ensureSchema } from "./db";
+import { achievementController } from "./modules/achievement/controller";
 import { authController } from "./modules/auth/controller";
 import { catalogoController } from "./modules/catalogo/controller";
 import { disposalController } from "./modules/disposal/controller";
@@ -68,6 +69,7 @@ const app = new Elysia({
 	})
 
 	.use(authController)
+	.use(achievementController)
 	.use(disposalController)
 	.use(extratoController)
 	.use(catalogoController)
