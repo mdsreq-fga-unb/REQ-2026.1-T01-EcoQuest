@@ -44,7 +44,7 @@
 | **RF16** | Visualizar Painel de Impacto Pessoal | [**UC16**](https://mdsreq-fga-unb.github.io/REQ-2026.1-T01-EcoQuest/#/lista-de-itens-de-trabalho/uc16) | Exibir métricas de impacto ambiental geradas pelo usuário | **RNF01** - Responsividade Mobile<br>**RNF02** - Desempenho de Resposta<br>**RNF03** - Acessibilidade Digital<br>**RNF04** - Alta Disponibilidade | **RN3** - Pontuação por descarte |
 | **RF17** | Consultar Estatísticas do Impacto da Comunidade | [**UC17**](https://mdsreq-fga-unb.github.io/REQ-2026.1-T01-EcoQuest/#/lista-de-itens-de-trabalho/uc17) | Exibir o impacto ambiental acumulado por todos os usuários da plataforma | **RNF01** - Responsividade Mobile<br>**RNF02** - Desempenho de Resposta<br>**RNF03** - Acessibilidade Digital<br>**RNF04** - Alta Disponibilidade | -- |
 
-## 10.2 Priorização
+## 10.3. Priorização
 
 A priorização da lista de itens de trabalho foi realizada com base no modelo MoSCoW (Must Have, Should Have, Could Have e Won’t Have). Esse modelo orienta o desenvolvimento conforme os objetivos do projeto, garantindo que as funcionalidades mais relevantes sejam priorizadas durante o planejamento das entregas.
 
@@ -162,7 +162,7 @@ Após o cálculo da prioridade final, os Casos de Uso foram posicionados em uma 
 | [**UC17**](https://mdsreq-fga-unb.github.io/REQ-2026.1-T01-EcoQuest/#/lista-de-itens-de-trabalho/uc17) | Consultar Estatísticas do Impacto da Comunidade | -- | V  | V  | -- | 2  |
 
 
-## 10.3. Matriz de esforço
+## 10.4. Matriz de esforço
 
 <iframe
   width="100%"
