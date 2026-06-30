@@ -218,7 +218,8 @@ export async function cookieDeLogin(sessao: Omit<SessaoUsuario, "iat">): Promise
 }
 
 export function cookieDeLogout(): string {
-	return `${COOKIE_NAME}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0`;
+	const dominio = process.env.DOMAIN ? `; Domain=${process.env.DOMAIN}` : "";
+	return `${COOKIE_NAME}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0${dominio}`;
 }
 
 export { COOKIE_NAME };
