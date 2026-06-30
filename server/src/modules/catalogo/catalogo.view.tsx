@@ -79,14 +79,36 @@ function CardCatalogo({ item }: { item: Catalogo }) {
 	);
 }
 
-function SecaoCategoria({ categoria }: { categoria: Categoria }) {
+function SecaoCategoria({ categoria, indice }: { categoria: Categoria; indice: number }) {
+	const trilhaId = `catalogo-trilha-${indice}`;
+
 	return (
 		<section class="catalogo-categoria" aria-label={`Categoria ${categoria.nome}`}>
 			<h2 class="catalogo-categoria_titulo">{categoria.nome}</h2>
-			<div class="catalogo-grid">
-				{categoria.itens.map((item) => (
-					<CardCatalogo item={item} />
-				))}
+			<div class="catalogo-carrossel">
+				<button
+					type="button"
+					class="catalogo-carrossel_seta catalogo-carrossel_seta--prev"
+					data-carrossel-prev={trilhaId}
+					aria-label={`Ver recompensas anteriores de ${categoria.nome}`}
+				>
+					‹
+				</button>
+
+				<div class="catalogo-grid catalogo-trilha" id={trilhaId}>
+					{categoria.itens.map((item) => (
+						<CardCatalogo item={item} />
+					))}
+				</div>
+
+				<button
+					type="button"
+					class="catalogo-carrossel_seta catalogo-carrossel_seta--next"
+					data-carrossel-next={trilhaId}
+					aria-label={`Ver mais recompensas de ${categoria.nome}`}
+				>
+					›
+				</button>
 			</div>
 		</section>
 	);
@@ -118,8 +140,8 @@ export function CatalogoView({
 					<span class="catalogo-header_pontos">{pontos} pts</span>
 				</div>
 
-				{CATEGORIAS.map((categoria) => (
-					<SecaoCategoria categoria={categoria} />
+				{CATEGORIAS.map((categoria, indice) => (
+					<SecaoCategoria categoria={categoria} indice={indice} />
 				))}
 			</main>
 			<script src="/assets/catalogo.js"></script>
