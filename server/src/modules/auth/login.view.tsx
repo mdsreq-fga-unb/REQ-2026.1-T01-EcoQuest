@@ -5,6 +5,7 @@ export function LoginView() {
 	return (
 		<Layout title="Login - EcoQuest">
 			<link rel="stylesheet" href="../assets/css/auth.css" />
+			<link rel="stylesheet" href="../assets/css/globals.css" />
 
 			<main class="container">
 				<section class="login-content" aria-labelledby="login-title">

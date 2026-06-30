@@ -5,6 +5,7 @@ export function CadastroView() {
 	return (
 		<Layout title="Cadastro - EcoQuest">
 			<link rel="stylesheet" href="../assets/css/auth.css" />
+			<link rel="stylesheet" href="../assets/css/globals.css" />
 
 			<header class="header">
 				<img src="../assets/img/logo.png" alt="EcoQuest" class="logo" />

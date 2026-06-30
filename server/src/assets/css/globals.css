@@ -13,20 +13,27 @@
 }
 
 :root {
-	--color-bg: #D0EFD6;
-	--color-surface: #F0FAF2;
-	--color-border: #2B5633;
-	--color-primary: #2B5633;
-	--color-primary-dk: #1e3d24;
-	--color-text: #1F1F1F;
-	--color-muted: #7A7A7A;
+	--color-bg: #0e0e0e;
+	--color-surface: #1e1e1e;
+	--color-border: #5c5c5c;
+	--color-primary: #5bcd6b;
+	--color-primary-dk: #478955;
+	--color-text: #f7f7f7;
+	--color-muted: #666666;
 	--color-white: #ffffff;
+	--color-overlay: rgba(0, 0, 0, 0.85);
+	--color-overlay-light: rgba(255, 255, 255, 0.1);
 	--shadow-sm: 0 2px 8px rgba(0, 0, 0, .05);
 	--shadow-md: 0 4px 16px rgba(0, 0, 0, .10);
 	--sidebar-w: 72px;
 	--sidebar-w-open: 200px;
 	--transition: .2s ease;
 	--radius-card: 12px;
+}
+
+::selection {
+	background: var(--color-primary);
+	color: var(--color-text);
 }
 
 body {
