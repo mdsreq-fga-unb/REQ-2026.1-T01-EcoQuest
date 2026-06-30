@@ -60,9 +60,78 @@ body {
     margin-bottom: 14px;
 }
 
+.catalogo-carrossel {
+    position: relative;
+}
+
 .catalogo-grid {
-    display: inline-flex;
+    display: flex;
+    flex-wrap: wrap;
     gap: 16px;
+}
+
+.catalogo-trilha.is-carrossel {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x proximity;
+    scroll-padding-inline: 4px;
+    padding-bottom: 6px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.catalogo-trilha.is-carrossel::-webkit-scrollbar {
+    display: none;
+}
+
+.catalogo-trilha.is-carrossel .catalogo-card {
+    scroll-snap-align: start;
+    flex-shrink: 0;
+}
+
+.catalogo-carrossel_seta {
+    display: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: var(--catalogo-surface);
+    color: var(--catalogo-text);
+    font-size: 1.4rem;
+    line-height: 1;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, .35);
+    transition: background .15s ease, color .15s ease, transform .15s ease;
+}
+
+.catalogo-categoria.tem-carrossel .catalogo-carrossel_seta {
+    display: flex;
+}
+
+.catalogo-carrossel_seta:hover,
+.catalogo-carrossel_seta:focus-visible {
+    background: var(--catalogo-accent);
+    color: #1F1F1F;
+    outline: none;
+}
+
+.catalogo-carrossel_seta--prev {
+    left: -18px;
+}
+
+.catalogo-carrossel_seta--next {
+    right: -18px;
+}
+
+.catalogo-categoria.tem-carrossel .catalogo-trilha {
+    margin-inline: 28px;
 }
 
 .catalogo-card {
@@ -144,10 +213,6 @@ body {
 
 /* ── Tablet ── */
 @media (max-width: 1024px) {
-    .catalogo-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
     .catalogo-page {
         margin: 40px;
     }
@@ -162,8 +227,21 @@ body {
     }
 
     .catalogo-grid {
-        grid-template-columns: 1fr;
+        flex-direction: column;
+        flex-wrap: wrap;
         gap: 12px;
+    }
+
+    .catalogo-carrossel_seta {
+        display: none !important;
+    }
+
+    .catalogo-categoria.tem-carrossel .catalogo-trilha {
+        margin-inline: 0;
+    }
+
+    .catalogo-trilha.is-carrossel {
+        flex-direction: row;
     }
 
     .catalogo-header_titulo {
