@@ -336,6 +336,7 @@ input:autofill {
 	.card {
 		max-width: 420px;
 		padding: 32px;
+		min-width: 350px;
 	}
 
 	.title {
