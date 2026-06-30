@@ -6,6 +6,7 @@ import { authController } from "./modules/auth/controller";
 import { disposalController } from "./modules/disposal/controller";
 import { extratoController } from "./modules/extrato/controller";
 import { catalogoController } from "./modules/catalogo/controller";
+import { rankingController } from "./modules/ranking/controller";
 import { simularDescarteController } from "./modules/simular_descarte/controller";
 import { sessionPlugin } from "./plugins/session";
 
@@ -56,6 +57,7 @@ const app = new Elysia({
 	.use(disposalController)
 	.use(extratoController)
 	.use(catalogoController)
+	.use(rankingController)
 	.use(simularDescarteController)
 	.listen(PORT);
 

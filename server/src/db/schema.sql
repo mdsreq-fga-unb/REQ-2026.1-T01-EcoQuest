@@ -7,6 +7,7 @@ CREATE TABLE "user" (
 	password_hash VARCHAR(512) NOT NULL,
 	points_balance INTEGER NOT NULL DEFAULT 0,
 	points_total_earned INTEGER NOT NULL DEFAULT 0,
+	ranking_anonymous BOOLEAN NOT NULL DEFAULT FALSE,
 	created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
 	updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),
 	CONSTRAINT user_email_not_empty CHECK (char_length(btrim(email)) > 0),
@@ -171,6 +172,7 @@ COMMENT ON COLUMN "user".phone IS 'Telefone do usuário.';
 COMMENT ON COLUMN "user".password_hash IS 'Hash da senha (ex: Argon2/BCrypt).';
 COMMENT ON COLUMN "user".points_balance IS 'Saldo atual de pontos disponível para resgate.';
 COMMENT ON COLUMN "user".points_total_earned IS 'Total de pontos ganhos (base para ranking).';
+COMMENT ON COLUMN "user".ranking_anonymous IS 'Se true, nome do usuário é mascarado no ranking público.';
 COMMENT ON COLUMN "user".created_at IS 'Data/hora de criação do registro.';
 COMMENT ON COLUMN "user".updated_at IS 'Data/hora da última atualização do registro.';
 
