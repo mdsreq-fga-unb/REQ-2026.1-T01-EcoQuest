@@ -295,8 +295,8 @@ export function SimularDescarteView({
 			title="Simular Descarte - EcoQuest"
 			rotaAtiva="/simular_descarte"
 			nomeUsuario={nomeUsuario}
-			cssExtra="/assets/simular_descarte.css"
-			jsExtra="/assets/simular_descarte.js"
+			cssExtra="/assets/css/simular.css"
+			jsExtra="/assets/js/simular.js"
 		>
 			<main class="simular-conteudo" id="conteudo-principal">
 				<header class="simular-topo">
@@ -324,31 +324,33 @@ export function SimularDescarteView({
 							porTipo.get(tipo)!.push(item);
 						}
 
-						return ORDEM_TIPO.filter((tipo) => porTipo.has(tipo)).map((tipo) => (
-							<section
-								class="simular-categoria"
-								aria-labelledby={`cat-icone-${tipo}`}
-								key={tipo}
-								data-categoria={tipo}
-							>
-								<h2 id={`cat-icone-${tipo}`} class="simular-categoria_titulo">
-									<span class="simular-cat_icone" aria-hidden="true">
-										<IconeCategoria tipo={tipo} />
-									</span>
-									{ROTULO_TIPO[tipo]}
-								</h2>
-								<div class="simular-grid">
-									{porTipo.get(tipo)!.map((item) => (
-										<CardItem
-											key={item.chave}
-											nome={item.nome}
-											chave={item.chave}
-											pesoUnitarioKg={item.pesoUnitarioKg}
-										/>
-									))}
-								</div>
-							</section>
-						));
+						return ORDEM_TIPO.filter((tipo) => porTipo.has(tipo)).map(
+							(tipo) => (
+								<section
+									class="simular-categoria"
+									aria-labelledby={`cat-icone-${tipo}`}
+									key={tipo}
+									data-categoria={tipo}
+								>
+									<h2 id={`cat-icone-${tipo}`} class="simular-categoria_titulo">
+										<span class="simular-cat_icone" aria-hidden="true">
+											<IconeCategoria tipo={tipo} />
+										</span>
+										{ROTULO_TIPO[tipo]}
+									</h2>
+									<div class="simular-grid">
+										{porTipo.get(tipo)!.map((item) => (
+											<CardItem
+												key={item.chave}
+												nome={item.nome}
+												chave={item.chave}
+												pesoUnitarioKg={item.pesoUnitarioKg}
+											/>
+										))}
+									</div>
+								</section>
+							),
+						);
 					})()}
 
 					<section class="simular-resumo-parcial" aria-live="polite">

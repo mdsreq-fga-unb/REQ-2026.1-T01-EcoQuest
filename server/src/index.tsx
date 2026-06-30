@@ -11,11 +11,27 @@ import { sessionPlugin } from "./plugins/session";
 
 await ensureSchema();
 
+const CERTIFICATE_PATH = process.env.CERTIFICATE_PATH;
+const PORT = process.env.PORT || 3000;
+
+if (!CERTIFICATE_PATH) {
+	throw new Error(
+		"CERTIFICATE_PATH is not defined in the environment variables.",
+	);
+}
+
+const CERTIFICATE_KEY_PATH = process.env.CERTIFICATE_KEY_PATH;
+if (!CERTIFICATE_KEY_PATH) {
+	throw new Error(
+		"CERTIFICATE_KEY_PATH is not defined in the environment variables.",
+	);
+}
+
 const app = new Elysia({
 	serve: {
 		tls: {
-			key: Bun.file("./localhost-key.pem"),
-			cert: Bun.file("./localhost.pem"),
+			key: Bun.file(CERTIFICATE_KEY_PATH),
+			cert: Bun.file(CERTIFICATE_PATH),
 		},
 	},
 })
@@ -36,7 +52,7 @@ const app = new Elysia({
 	.use(extratoController)
 	.use(rankingController)
 	.use(simularDescarteController)
-	.listen(3000);
+	.listen(PORT);
 
 function getLocalIP() {
 	const nets = networkInterfaces();

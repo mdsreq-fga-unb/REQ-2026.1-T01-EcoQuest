@@ -145,8 +145,9 @@ export function lerCookieDeRequest(cookieHeader: string | null | undefined): str
 		sessionDebug("cookie-header-ausente");
 		return null;
 	}
-	for (const parte of cookieHeader.split(";")) {
-		const [chave, ...resto] = parte.trim().split("=");
+	const partes = cookieHeader.split(";").map((p) => p.trim());
+	for (const parte of partes) {
+		const [chave, ...resto] = parte.split("=");
 		if (chave?.trim() === COOKIE_NAME) {
 			const token = decodeURIComponent(resto.join("="));
 			sessionDebug("cookie-encontrado", {
@@ -155,9 +156,23 @@ export function lerCookieDeRequest(cookieHeader: string | null | undefined): str
 			return token;
 		}
 	}
+	const nomesCookies = partes.map((p) => p.split("=")[0]);
 	sessionDebug("cookie-nao-encontrado", {
-		cookies: cookieHeader.split(";").map((parte) => parte.trim().split("=")[0]),
+		cookiesPresentes: nomesCookies,
+		cookieProcurado: COOKIE_NAME,
+		rawHeaderPreview: cookieHeader.slice(0, 200),
 	});
+
+	// ⚠️ Se há cookies mas nenhum deles é o de sessão, pode ser problema de domínio
+	// (Domain= no cookie não bate com o domínio atual) ou o cookie expirou/foi removido.
+	if (nomesCookies.length > 0 && !nomesCookies.includes(COOKIE_NAME)) {
+		console.warn(
+			`⚠️  [session] Cookie "${COOKIE_NAME}" não encontrado entre ${nomesCookies.length} cookie(s) recebido(s). ` +
+				`Possíveis causas: (1) DOMAIN=${process.env.DOMAIN} não corresponde ao domínio atual — ` +
+				"o navegador rejeitou o cookie; (2) cookie expirou; (3) cookie foi removido.",
+		);
+	}
+
 	return null;
 }
 

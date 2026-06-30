@@ -19,14 +19,31 @@ function formatarPeso(pesoKg: number | null): string {
 
 // Mesmas categorias da página de simulação, detectadas pelo nome do item no texto.
 // O materialTipo é uma string como "Bateria de laptop (1x), Carregadores (2x)".
-function classificarIcone(tipo: string | null): "bateria" | "telefone" | "computador" | "outros" {
+function classificarIcone(
+	tipo: string | null,
+): "bateria" | "telefone" | "computador" | "outros" {
 	const t = (tipo ?? "").toLowerCase();
 
 	const BATERIA = ["bateria"];
-	const TELEFONE = ["celular", "smartphone", "telefone", "fax", "carregador", "adaptador"];
+	const TELEFONE = [
+		"celular",
+		"smartphone",
+		"telefone",
+		"fax",
+		"carregador",
+		"adaptador",
+	];
 	const COMPUTADOR = [
-		"microcomputador", "monitor", "notebook", "servidor",
-		"teclado", "mouse", "impressora", "estabilizador", "tablet", "no-break",
+		"microcomputador",
+		"monitor",
+		"notebook",
+		"servidor",
+		"teclado",
+		"mouse",
+		"impressora",
+		"estabilizador",
+		"tablet",
+		"no-break",
 	];
 
 	if (BATERIA.some((p) => t.includes(p))) return "bateria";
@@ -168,7 +185,7 @@ export function ExtratoView({
 			rotaAtiva="/"
 			nomeUsuario={nomeUsuario}
 		>
-			<link rel="stylesheet" href="../assets/extrato.css" />
+			<link rel="stylesheet" href="../assets/css/extrato.css" />
 
 			<main class="extrato-conteudo" id="conteudo-principal">
 				<h1 class="extrato-titulo">Extrato</h1>

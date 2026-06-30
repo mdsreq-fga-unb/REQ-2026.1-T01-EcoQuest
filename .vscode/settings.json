@@ -3,5 +3,26 @@
     "editor.codeActionsOnSave": {
         "source.organizeImports.biome": "explicit",
         "source.fixAll.biome": "explicit"
-    }
+    },
+    "chat.utilityModel": "deepseek/deepseek-v4-pro",
+    "chat.utilitySmallModel": "deepseek/deepseek-v4-flash",
+    "chat.mcp.serverSampling": {
+        "Global in Code - Insiders: ida-pro-mcp": {
+            "allowedModels": [
+                "deepseek/deepseek-v4-pro",
+                "deepseek/deepseek-v4-flash"
+            ]
+        },
+        "Global in Code - Insiders: ghidra-mcp": {
+            "allowedModels": [
+                "deepseek/deepseek-v4-pro",
+                "deepseek/deepseek-v4-flash"
+            ]
+        }
+    },
+    "inlineChat.defaultModel": "DeepSeek V4 Flash (deepseek)",
+    "github.copilot.selectedCompletionModel": "deepseek/deepseek-v4-flash",
+    "github.copilot.chat.executionSubagent.model": "deepseek/deepseek-v4-flash",
+    "github.copilot.chat.instantApply.shortContextModelName": "deepseek/deepseek-v4-flash",
+    "deepseek-copilot.experimental.stabilizeToolList": true
 }

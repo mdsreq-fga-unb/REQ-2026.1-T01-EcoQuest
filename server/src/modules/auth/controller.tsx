@@ -75,16 +75,28 @@ export const authController = new Elysia({ prefix: "/auth" })
 	.use(sessionPlugin)
 
 	.get("/login", async ({ request, set }) => {
-		const sessaoAtual = await obterSessao(request.headers.get("cookie"));
+		const cookieHeader = request.headers.get("cookie");
+		const sessaoAtual = await obterSessao(cookieHeader);
 		authDebug("get-login", {
 			temSessao: !!sessaoAtual,
 			usuarioId: sessaoAtual?.id ?? null,
+			temCookieHeader: !!cookieHeader,
+			cookieNames: cookieHeader?.split(";").map((c) => c.trim().split("=")[0]),
+			url: request.url,
 		});
 		if (sessaoAtual) {
+			authDebug("get-login-redirecionando-home", {
+				usuarioId: sessaoAtual.id,
+			});
 			set.status = 302;
 			set.headers["Location"] = "/";
 			return;
 		}
+		authDebug("get-login-exibindo-formulario", {
+			motivo: !cookieHeader
+				? "nenhum cookie enviado"
+				: "sessão inválida ou expirada",
+		});
 		return <LoginView />;
 	})
 
@@ -311,7 +323,22 @@ export const authController = new Elysia({ prefix: "/auth" })
 			cookieTemHttpOnly: cookie.includes("HttpOnly"),
 			cookieTemSameSiteLax: cookie.includes("SameSite=Lax"),
 			cookieTemDomain: cookie.includes("Domain="),
+			dominioEnv: process.env.DOMAIN ?? "(não definido)",
 		});
+
+		// ⚠️ AVISO: se DOMAIN estiver definido (ex: "ecoquest.org") mas o servidor estiver
+		// rodando em localhost ou IP local, o navegador REJEITA o cookie porque o domínio
+		// do cookie não corresponde ao domínio do site. Isso faz o login parecer "bem-sucedido"
+		// mas a sessão nunca é realmente armazenada.
+		if (cookie.includes("Domain=")) {
+			console.warn(
+				`⚠️  [auth] Cookie de sessão contém "Domain=${process.env.DOMAIN}". ` +
+					`Se o servidor não estiver rodando em ${process.env.DOMAIN}, ` +
+					"o navegador REJEITARÁ este cookie e o login não funcionará.\n" +
+					`  → Cookie: ${cookie}`,
+			);
+		}
+
 		set.headers["Set-Cookie"] = cookie;
 		set.headers["HX-Redirect"] = "/";
 		authDebug("post-login-headers-definidos", {

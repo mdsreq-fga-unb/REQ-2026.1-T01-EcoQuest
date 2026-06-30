@@ -1,3 +1,7 @@
+/* ═══════════════════════════════════════════
+   simular.js — Controles da página de simulação de descarte
+   ═══════════════════════════════════════════ */
+
 (() => {
 	function formatarPeso(pesoKg) {
 		if (pesoKg >= 1) return `${pesoKg.toFixed(2).replace(".", ",")} kg`;
