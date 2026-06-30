@@ -92,7 +92,7 @@ input:autofill {
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 	padding: 40px;
 	width: 40%;
-	/* max-width: 480px; */
+	max-width: 480px;
 }
 
 /* ── Form grid (cadastro) ── */
@@ -334,8 +334,9 @@ input:autofill {
 	}
 
 	.card {
-		/* max-width: 420px; */
+		max-width: 420px;
 		padding: 32px;
+		min-width: 350px;
 	}
 
 	.title {

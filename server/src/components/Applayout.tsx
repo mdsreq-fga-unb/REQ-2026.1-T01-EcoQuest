@@ -1,4 +1,5 @@
 import { Html } from "@elysia/html";
+import { assetUrl } from "../lib/asset-url";
 import { Layout } from "./Layout-auth";
 
 export interface AppLayoutProps {
@@ -148,7 +149,7 @@ function Sidebar({
 			<div class="sidebar_logo">
 				<a href="/" aria-label="EcoQuest – página inicial">
 					<img
-						src="/assets/img/logo.png"
+						src={assetUrl("img/logo.png")}
 						alt="EcoQuest"
 						class="sidebar_logo-img"
 					/>
@@ -221,7 +222,7 @@ function HeaderMobile() {
 
 			<a href="/" class="header-mobile_logo" aria-label="EcoQuest – início">
 				<img
-					src="/assets/img/logo.png"
+					src={assetUrl("img/logo.png")}
 					alt="EcoQuest"
 					class="header-mobile_logo-img"
 				/>
@@ -705,10 +706,10 @@ export function AppLayout({
 }: AppLayoutProps) {
 	return (
 		<Layout title={title}>
-			<link rel="stylesheet" href="/assets/css/globals.css" />
-			<link rel="stylesheet" href="/assets/css/components.css" />
+			<link rel="stylesheet" href={assetUrl("css/globals.css")} />
+			<link rel="stylesheet" href={assetUrl("css/components.css")} />
 			{cssExtra && <link rel="stylesheet" href={cssExtra} />}
-			<script src="/assets/js/menu.js"></script>
+			<script src={assetUrl("js/menu.js")}></script>
 			{jsExtra && <script src={jsExtra} />}
 
 			<div class="app-layout">

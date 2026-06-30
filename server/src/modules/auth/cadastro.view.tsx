@@ -1,14 +1,15 @@
 import { Html } from "@elysia/html";
 import { Layout } from "../../components/Layout-auth";
+import { assetUrl } from "../../lib/asset-url";
 
 export function CadastroView() {
 	return (
 		<Layout title="Cadastro - EcoQuest">
-			<link rel="stylesheet" href="../assets/css/auth.css" />
-			<link rel="stylesheet" href="../assets/css/globals.css" />
+			<link rel="stylesheet" href={assetUrl("css/auth.css")} />
+			<link rel="stylesheet" href={assetUrl("css/globals.css")} />
 
 			<header class="header">
-				<img src="../assets/img/logo.png" alt="EcoQuest" class="logo" />
+				<img src={assetUrl("img/logo.png")} alt="EcoQuest" class="logo" />
 			</header>
 
 			<main class="container">
@@ -269,8 +270,8 @@ export function CadastroView() {
 				</div>
 			</main>
 
-			<script src="/assets/js/password-toggle.js"></script>
-			<script src="/assets/js/cadastro.js"></script>
+			<script src={assetUrl("js/password-toggle.js")}></script>
+			<script src={assetUrl("js/cadastro.js")}></script>
 		</Layout>
 	);
 }
