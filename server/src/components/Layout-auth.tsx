@@ -1,4 +1,5 @@
 import { Html } from "@elysia/html";
+import { assetUrl } from "../lib/asset-url";
 
 export function Layout({ children, title }: { children: any; title: string }) {
 	return (
@@ -9,7 +10,7 @@ export function Layout({ children, title }: { children: any; title: string }) {
 
 				<title>{title}</title>
 
-				<link rel="icon" href="/assets/img/favicon.png" />
+				<link rel="icon" href={assetUrl("img/favicon.png")} />
 
 				<script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.10/dist/htmx.min.js"></script>
 

@@ -1,5 +1,6 @@
 import { Html } from "@elysia/html";
 import { AppLayout } from "../../components/Applayout";
+import { assetUrl } from "../../lib/asset-url";
 import type { RegistroExtrato } from "./service";
 
 function formatarData(data: Date): string {
@@ -185,7 +186,7 @@ export function ExtratoView({
 			rotaAtiva="/"
 			nomeUsuario={nomeUsuario}
 		>
-			<link rel="stylesheet" href="../assets/css/extrato.css" />
+			<link rel="stylesheet" href={assetUrl("css/extrato.css")} />
 
 			<main class="extrato-conteudo" id="conteudo-principal">
 				<h1 class="extrato-titulo">Extrato</h1>

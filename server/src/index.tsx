@@ -43,6 +43,11 @@ const app = new Elysia({
 			set.status = 404;
 			return "Not found";
 		}
+
+		// Cache agressivo: o navegador nunca revalida — a versão é controlada
+		// pelo query param `?v=XXXX` incluído nas URLs dos assets.
+		set.headers["Cache-Control"] = "public, max-age=31536000, immutable";
+
 		return file;
 	})
 

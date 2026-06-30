@@ -1,5 +1,6 @@
 import { Html } from "@elysia/html";
 import { AppLayout } from "../../components/Applayout";
+import { assetUrl } from "../../lib/asset-url";
 import type {
 	CategoriaSimulacao,
 	ItemResumoGerado,
@@ -295,8 +296,8 @@ export function SimularDescarteView({
 			title="Simular Descarte - EcoQuest"
 			rotaAtiva="/simular_descarte"
 			nomeUsuario={nomeUsuario}
-			cssExtra="/assets/css/simular.css"
-			jsExtra="/assets/js/simular.js"
+			cssExtra={assetUrl("css/simular.css")}
+			jsExtra={assetUrl("js/simular.js")}
 		>
 			<main class="simular-conteudo" id="conteudo-principal">
 				<header class="simular-topo">

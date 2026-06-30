@@ -1,16 +1,17 @@
 import { Html } from "@elysia/html";
 import { Layout } from "../../components/Layout-auth";
+import { assetUrl } from "../../lib/asset-url";
 
 export function LoginView() {
 	return (
 		<Layout title="Login - EcoQuest">
-			<link rel="stylesheet" href="../assets/css/auth.css" />
-			<link rel="stylesheet" href="../assets/css/globals.css" />
+			<link rel="stylesheet" href={assetUrl("css/auth.css")} />
+			<link rel="stylesheet" href={assetUrl("css/globals.css")} />
 
 			<main class="container">
 				<section class="login-content" aria-labelledby="login-title">
 					<img
-						src="../assets/img/logo-ecoquest.png"
+						src={assetUrl("img/logo-ecoquest.png")}
 						alt="EcoQuest"
 						class="login-logo"
 					/>
@@ -134,7 +135,7 @@ export function LoginView() {
 				</section>
 			</main>
 
-			<script src="/assets/js/password-toggle.js"></script>
+			<script src={assetUrl("js/password-toggle.js")}></script>
 		</Layout>
 	);
 }
