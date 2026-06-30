@@ -28,7 +28,7 @@ Este diretório centraliza as evidências das atividades de Engenharia de Requis
 
 - Decisão de executar validações recorrentes em formato assíncrono (WhatsApp/e-mail), com registros em ata.
 - Decisão de produzir protótipos visuais em duas variações de cor para validação com a cliente.
-- Resultados incorporados em requisitos e artefatos: itens de trabalho, critérios de aceite e protótipos de alta fidelidade.
+- Resultados incorporados em requisitos e artefatos: itens de trabalho e protótipos de alta fidelidade.
 
 ## 8.3 Evidências por Técnica de ER
 

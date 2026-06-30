@@ -32,7 +32,12 @@
     * [UC17 - Consultar Estatísticas do Impacto da Comunidade](lista-de-itens-de-trabalho/uc17.md)
   * [Rastreabilidade dos Casos de Uso](lista-de-itens-de-trabalho/rastreabilidade-casos.md)
   * [Critérios](criterios/)
+<<<<<<< HEAD
 
+=======
+  * 
+critérios
+>>>>>>> 151c9018b699b537480469593e899471960a8843
 * **Acompanhamento**
   * [Ata - Reuniões](atas/)
   * [Cronograma e Entregas](cronograma-e-entregas/)
