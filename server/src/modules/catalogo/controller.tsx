@@ -1,6 +1,7 @@
 import { Html } from "@elysia/html";
 import { Elysia } from "elysia";
 import { sessionPlugin } from "../../plugins/session";
+import { listarRecompensas } from "../reward/service";
 import { CatalogoView } from "./catalogo.view";
 import { buscarSaldoPontos, ErroSaldoIndisponivel } from "./service";
 
@@ -14,8 +15,21 @@ export const catalogoController = new Elysia().use(sessionPlugin).get(
 		}
 
 		try {
-			const pontos = await buscarSaldoPontos(sessao.id);
-			return <CatalogoView nomeUsuario={sessao.nome} pontos={pontos} />;
+			const [pontos, recompensas] = await Promise.all([
+				buscarSaldoPontos(sessao.id),
+				listarRecompensas(),
+			]);
+
+			// Monta um mapa: nome da recompensa → id real no banco
+			const mapaId = new Map(recompensas.map((r) => [r.nome, r.id]));
+
+			return (
+				<CatalogoView
+					nomeUsuario={sessao.nome}
+					pontos={pontos}
+					mapaIdRecompensa={mapaId}
+				/>
+			);
 		} catch (err) {
 			if (err instanceof ErroSaldoIndisponivel) {
 				set.status = 503;
