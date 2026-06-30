@@ -41,6 +41,21 @@ export async function ensureSchema() {
 			await db.unsafe(`ALTER TABLE disposal ADD COLUMN weight_kg NUMERIC`);
 		}
 
+		const [{ rankingAnonymousExists }] = await db`
+			SELECT EXISTS (
+				SELECT 1
+				FROM information_schema.columns
+				WHERE table_schema = 'public'
+				AND table_name = 'user'
+				AND column_name = 'ranking_anonymous'
+			) AS "rankingAnonymousExists"
+		`;
+		if (!rankingAnonymousExists) {
+			await db.unsafe(
+				`ALTER TABLE "user" ADD COLUMN ranking_anonymous BOOLEAN NOT NULL DEFAULT FALSE`,
+			);
+		}
+
 		console.log("Schema do banco ja existe. Pulando inicializacao.");
 		return;
 	}
