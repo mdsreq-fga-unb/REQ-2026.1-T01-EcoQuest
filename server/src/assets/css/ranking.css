@@ -1,9 +1,3 @@
-/* ═══════════════════════════════════════════
-   Ranking — UC15
-   ═══════════════════════════════════════════ */
-
-/* ── Layout principal ── */
-/* Override do AppLayout para fundo escuro do mockup */
 .app-main {
     background: #373737;
 }
@@ -25,9 +19,6 @@
     width: 100%;
 }
 
-/* ═══════════════════════════════════════════
-   PÓDIO
-   ═══════════════════════════════════════════ */
 .ranking-podio {
     display: flex;
     align-items: flex-end;
@@ -52,20 +43,42 @@
     max-width: 200px;
 }
 
-/* Avatar acima do bloco */
+.ranking-podio_texto_topo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 8px;
+    text-align: center;
+}
+.ranking-podio_texto_topo .ranking-podio_nome {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-white);
+    max-width: 90px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+.ranking-podio_texto_topo .ranking-podio_xp {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
 .ranking-podio_avatar {
     width: 64px;
     height: 64px;
     border-radius: 50%;
     background: #ffffff;
     border: 3px solid var(--color-white);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, .12);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
     flex-shrink: 0;
     margin-bottom: -8px;
     z-index: 2;
 }
 
-/* Bloco colorido */
 .ranking-podio_bloco {
     width: 100%;
     display: flex;
@@ -75,13 +88,12 @@
 }
 
 .ranking-podio_pos {
-    font-family: 'Oxanium', sans-serif;
+    font-family: "Oxanium", sans-serif;
     font-weight: 700;
     color: var(--color-white);
-    text-shadow: 0 1px 3px rgba(0, 0, 0, .15);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
-/* 1º lugar — centro, mais alto, verde escuro */
 .ranking-podio_lugar--1 .ranking-podio_avatar {
     width: 76px;
     height: 76px;
@@ -89,14 +101,13 @@
 
 .ranking-podio_lugar--1 .ranking-podio_bloco {
     height: 120px;
-    background: #2B5633;
+    background: #2b5633;
 }
 
 .ranking-podio_lugar--1 .ranking-podio_pos {
     font-size: 2.2rem;
 }
 
-/* 2º lugar — esquerda, médio, verde médio */
 .ranking-podio_lugar--2 .ranking-podio_bloco {
     height: 90px;
     background: #3d7a47;
@@ -106,7 +117,6 @@
     font-size: 1.7rem;
 }
 
-/* 3º lugar — direita, mais baixo, verde claro */
 .ranking-podio_lugar--3 .ranking-podio_bloco {
     height: 72px;
     background: #5cb85c;
@@ -116,9 +126,6 @@
     font-size: 1.5rem;
 }
 
-/* ═══════════════════════════════════════════
-   CARD (lista)
-   ═══════════════════════════════════════════ */
 .ranking-card {
     background: var(--color-white);
     border-radius: 16px;
@@ -129,7 +136,6 @@
     z-index: 2;
 }
 
-/* Lista ordenada */
 .ranking-lista {
     list-style: none;
     display: flex;
@@ -137,9 +143,6 @@
     gap: 0;
 }
 
-/* ═══════════════════════════════════════════
-   LINHA (cada entrada do ranking)
-   ═══════════════════════════════════════════ */
 .ranking-linha {
     display: flex;
     align-items: center;
@@ -149,34 +152,31 @@
 }
 
 .ranking-linha + .ranking-linha {
-    border-top: 1px solid rgba(43, 86, 51, .08);
+    border-top: 1px solid rgba(43, 86, 51, 0.08);
 }
 
 .ranking-linha:hover {
-    background: rgba(43, 86, 51, .03);
+    background: rgba(43, 86, 51, 0.03);
 }
 
-/* Linha do usuário no top 20 */
 .ranking-linha--eu {
-    background: rgba(43, 86, 51, .06);
+    background: rgba(43, 86, 51, 0.06);
 }
 
 .ranking-linha--eu:hover {
-    background: rgba(43, 86, 51, .09);
+    background: rgba(43, 86, 51, 0.09);
 }
 
-/* Posição numérica */
 .ranking-linha_pos {
-    font-family: 'Oxanium', sans-serif;
+    font-family: "Oxanium", sans-serif;
     font-weight: 700;
-    font-size: .95rem;
+    font-size: 0.95rem;
     color: var(--color-muted);
     width: 32px;
     text-align: center;
     flex-shrink: 0;
 }
 
-/* Avatar na lista */
 .ranking-linha_avatar {
     width: 42px;
     height: 42px;
@@ -185,7 +185,6 @@
     flex-shrink: 0;
 }
 
-/* Info (nome + insígnia) */
 .ranking-linha_info {
     flex: 1;
     min-width: 0;
@@ -195,7 +194,7 @@
 }
 
 .ranking-linha_nome {
-    font-size: .92rem;
+    font-size: 0.92rem;
     font-weight: 500;
     color: #333333;
     overflow: hidden;
@@ -209,42 +208,38 @@
 }
 
 .ranking-linha_insignia {
-    font-size: .76rem;
+    font-size: 0.76rem;
     color: var(--color-primary);
-    opacity: .7;
+    opacity: 0.7;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-/* XP à direita */
 .ranking-linha_xp {
-    font-family: 'Oxanium', sans-serif;
+    font-family: "Oxanium", sans-serif;
     font-weight: 700;
-    font-size: .9rem;
+    font-size: 0.9rem;
     color: #333333;
     white-space: nowrap;
     flex-shrink: 0;
 }
 
-/* ═══════════════════════════════════════════
-   SEPARADOR + LINHA "VOCÊ"
-   ═══════════════════════════════════════════ */
 .ranking-separador {
     height: 1px;
     margin: 4px 24px;
-    background: rgba(43, 86, 51, .15);
+    background: rgba(43, 86, 51, 0.15);
 }
 
 .ranking-linha--voce {
     border-top: none;
     padding: 14px 24px 18px;
-    background: rgba(43, 86, 51, .05);
+    background: rgba(43, 86, 51, 0.05);
     border-radius: 0 0 16px 16px;
 }
 
 .ranking-linha--voce:hover {
-    background: rgba(43, 86, 51, .08);
+    background: rgba(43, 86, 51, 0.08);
 }
 
 .ranking-linha--voce .ranking-linha_pos {
@@ -256,9 +251,6 @@
     color: var(--color-primary);
 }
 
-/* ═══════════════════════════════════════════
-   ESTADO VAZIO (FA-2A)
-   ═══════════════════════════════════════════ */
 .ranking-vazio {
     display: flex;
     flex-direction: column;
@@ -272,7 +264,7 @@
     width: 64px;
     height: 64px;
     color: var(--color-primary);
-    opacity: .4;
+    opacity: 0.4;
 }
 
 .ranking-vazio_texto {
@@ -282,15 +274,12 @@
 }
 
 .ranking-vazio_subtexto {
-    font-size: .87rem;
+    font-size: 0.87rem;
     color: var(--color-muted);
     max-width: 340px;
     line-height: 1.55;
 }
 
-/* ═══════════════════════════════════════════
-   RESPONSIVO — Tablet (≤ 1024px)
-   ═══════════════════════════════════════════ */
 @media (max-width: 1024px) {
     .ranking-conteudo {
         padding: 0 0 88px;
@@ -310,22 +299,31 @@
         height: 66px;
     }
 
-    .ranking-podio_lugar--1 .ranking-podio_bloco { height: 100px; }
-    .ranking-podio_lugar--2 .ranking-podio_bloco { height: 76px; }
-    .ranking-podio_lugar--3 .ranking-podio_bloco { height: 60px; }
+    .ranking-podio_lugar--1 .ranking-podio_bloco {
+        height: 100px;
+    }
+    .ranking-podio_lugar--2 .ranking-podio_bloco {
+        height: 76px;
+    }
+    .ranking-podio_lugar--3 .ranking-podio_bloco {
+        height: 60px;
+    }
 
-    .ranking-podio_lugar--1 .ranking-podio_pos { font-size: 1.8rem; }
-    .ranking-podio_lugar--2 .ranking-podio_pos { font-size: 1.4rem; }
-    .ranking-podio_lugar--3 .ranking-podio_pos { font-size: 1.2rem; }
+    .ranking-podio_lugar--1 .ranking-podio_pos {
+        font-size: 1.8rem;
+    }
+    .ranking-podio_lugar--2 .ranking-podio_pos {
+        font-size: 1.4rem;
+    }
+    .ranking-podio_lugar--3 .ranking-podio_pos {
+        font-size: 1.2rem;
+    }
 
     .ranking-card {
         margin: -4px 16px 0;
     }
 }
 
-/* ═══════════════════════════════════════════
-   RESPONSIVO — Mobile (≤ 600px)
-   ═══════════════════════════════════════════ */
 @media (max-width: 600px) {
     .ranking-conteudo {
         padding: 0 0 90px;
@@ -345,13 +343,25 @@
         height: 56px;
     }
 
-    .ranking-podio_lugar--1 .ranking-podio_bloco { height: 88px; }
-    .ranking-podio_lugar--2 .ranking-podio_bloco { height: 66px; }
-    .ranking-podio_lugar--3 .ranking-podio_bloco { height: 52px; }
+    .ranking-podio_lugar--1 .ranking-podio_bloco {
+        height: 88px;
+    }
+    .ranking-podio_lugar--2 .ranking-podio_bloco {
+        height: 66px;
+    }
+    .ranking-podio_lugar--3 .ranking-podio_bloco {
+        height: 52px;
+    }
 
-    .ranking-podio_lugar--1 .ranking-podio_pos { font-size: 1.5rem; }
-    .ranking-podio_lugar--2 .ranking-podio_pos { font-size: 1.2rem; }
-    .ranking-podio_lugar--3 .ranking-podio_pos { font-size: 1rem; }
+    .ranking-podio_lugar--1 .ranking-podio_pos {
+        font-size: 1.5rem;
+    }
+    .ranking-podio_lugar--2 .ranking-podio_pos {
+        font-size: 1.2rem;
+    }
+    .ranking-podio_lugar--3 .ranking-podio_pos {
+        font-size: 1rem;
+    }
 
     .ranking-card {
         margin: -4px 8px 0;
@@ -369,19 +379,19 @@
     }
 
     .ranking-linha_nome {
-        font-size: .84rem;
+        font-size: 0.84rem;
     }
 
     .ranking-linha_insignia {
-        font-size: .7rem;
+        font-size: 0.7rem;
     }
 
     .ranking-linha_xp {
-        font-size: .82rem;
+        font-size: 0.82rem;
     }
 
     .ranking-linha_pos {
-        font-size: .85rem;
+        font-size: 0.85rem;
         width: 28px;
     }
 
@@ -395,9 +405,6 @@
     }
 }
 
-/* ═══════════════════════════════════════════
-   RESPONSIVO — Telas muito pequenas (≤ 380px)
-   ═══════════════════════════════════════════ */
 @media (max-width: 380px) {
     .ranking-podio {
         padding: 16px 8px 0;
@@ -413,13 +420,25 @@
         height: 48px;
     }
 
-    .ranking-podio_lugar--1 .ranking-podio_bloco { height: 76px; }
-    .ranking-podio_lugar--2 .ranking-podio_bloco { height: 56px; }
-    .ranking-podio_lugar--3 .ranking-podio_bloco { height: 44px; }
+    .ranking-podio_lugar--1 .ranking-podio_bloco {
+        height: 76px;
+    }
+    .ranking-podio_lugar--2 .ranking-podio_bloco {
+        height: 56px;
+    }
+    .ranking-podio_lugar--3 .ranking-podio_bloco {
+        height: 44px;
+    }
 
-    .ranking-podio_lugar--1 .ranking-podio_pos { font-size: 1.3rem; }
-    .ranking-podio_lugar--2 .ranking-podio_pos { font-size: 1rem; }
-    .ranking-podio_lugar--3 .ranking-podio_pos { font-size: .85rem; }
+    .ranking-podio_lugar--1 .ranking-podio_pos {
+        font-size: 1.3rem;
+    }
+    .ranking-podio_lugar--2 .ranking-podio_pos {
+        font-size: 1rem;
+    }
+    .ranking-podio_lugar--3 .ranking-podio_pos {
+        font-size: 0.85rem;
+    }
 
     .ranking-linha {
         padding: 10px 12px;
@@ -432,24 +451,23 @@
     }
 
     .ranking-linha_pos {
-        font-size: .8rem;
+        font-size: 0.8rem;
         width: 24px;
     }
 
     .ranking-linha_nome {
-        font-size: .78rem;
+        font-size: 0.78rem;
     }
 
     .ranking-linha_insignia {
-        font-size: .65rem;
+        font-size: 0.65rem;
     }
 
     .ranking-linha_xp {
-        font-size: .75rem;
+        font-size: 0.75rem;
     }
-    
+
     .ranking-card {
         margin: -4px 4px 0;
     }
 }
-

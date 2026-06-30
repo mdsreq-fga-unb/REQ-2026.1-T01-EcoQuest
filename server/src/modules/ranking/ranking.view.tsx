@@ -11,9 +11,16 @@ function Podio({ top3 }: { top3: EntradaRanking[] }) {
 
   return (
     <div class="ranking-podio" aria-label="Pódio dos 3 primeiros colocados">
-      {/* 2º lugar — esquerda */}
       {segundo ? (
         <div class="ranking-podio_lugar ranking-podio_lugar--2">
+          <div class="ranking-podio_texto_topo">
+            <span class="ranking-podio_nome" title={segundo.nome}>
+              {segundo.nome.split(" ")[0]}
+            </span>
+            <span class="ranking-podio_xp">
+              {segundo.pontuacao.toLocaleString("pt-BR")} XP
+            </span>
+          </div>
           <div class="ranking-podio_avatar" aria-hidden="true"></div>
           <div class="ranking-podio_bloco">
             <span class="ranking-podio_pos">2º</span>
@@ -23,9 +30,16 @@ function Podio({ top3 }: { top3: EntradaRanking[] }) {
         <div class="ranking-podio_lugar ranking-podio_lugar--vazio"></div>
       )}
 
-      {/* 1º lugar — centro (mais alto) */}
       {primeiro ? (
         <div class="ranking-podio_lugar ranking-podio_lugar--1">
+          <div class="ranking-podio_texto_topo">
+            <span class="ranking-podio_nome" title={primeiro.nome}>
+              {primeiro.nome.split(" ")[0]}
+            </span>
+            <span class="ranking-podio_xp">
+              {primeiro.pontuacao.toLocaleString("pt-BR")} XP
+            </span>
+          </div>
           <div class="ranking-podio_avatar" aria-hidden="true"></div>
           <div class="ranking-podio_bloco">
             <span class="ranking-podio_pos">1º</span>
@@ -35,9 +49,16 @@ function Podio({ top3 }: { top3: EntradaRanking[] }) {
         <div class="ranking-podio_lugar ranking-podio_lugar--vazio"></div>
       )}
 
-      {/* 3º lugar — direita */}
       {terceiro ? (
         <div class="ranking-podio_lugar ranking-podio_lugar--3">
+          <div class="ranking-podio_texto_topo">
+            <span class="ranking-podio_nome" title={terceiro.nome}>
+              {terceiro.nome.split(" ")[0]}
+            </span>
+            <span class="ranking-podio_xp">
+              {terceiro.pontuacao.toLocaleString("pt-BR")} XP
+            </span>
+          </div>
           <div class="ranking-podio_avatar" aria-hidden="true"></div>
           <div class="ranking-podio_bloco">
             <span class="ranking-podio_pos">3º</span>
@@ -118,7 +139,7 @@ export function RankingView({
       rotaAtiva="/ranking"
       nomeUsuario={nomeUsuario}
     >
-      <link rel="stylesheet" href="../assets/ranking.css?v=2" />
+      <link rel="stylesheet" href="../assets/ranking.css?v=3" />
 
       <main class="ranking-conteudo" id="conteudo-principal">
         {top20.length === 0 ? (
@@ -154,7 +175,7 @@ export function RankingView({
             {/* Card com lista completa */}
             <div class="ranking-card">
               <ol class="ranking-lista" aria-label="Classificação dos usuários">
-                {top20.map((entrada) => (
+                {top20.slice(3).map((entrada) => (
                   <LinhaRanking entrada={entrada} />
                 ))}
               </ol>

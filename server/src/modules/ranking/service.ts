@@ -57,8 +57,6 @@ interface LinhaPosicaoUsuarioBruta {
   insigniaMaisRecente: string | null;
 }
 
-// ── Lógica ──
-
 const TOP_N = 20;
 
 function mascararNome(nome: string): string {
