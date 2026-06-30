@@ -197,7 +197,7 @@
 .ranking-linha_nome {
     font-size: .92rem;
     font-weight: 500;
-    color: var(--color-text);
+    color: #333333;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -222,7 +222,7 @@
     font-family: 'Oxanium', sans-serif;
     font-weight: 700;
     font-size: .9rem;
-    color: var(--color-text);
+    color: #333333;
     white-space: nowrap;
     flex-shrink: 0;
 }
@@ -278,6 +278,7 @@
 .ranking-vazio_texto {
     font-size: 1rem;
     font-weight: 500;
+    color: #333333;
 }
 
 .ranking-vazio_subtexto {

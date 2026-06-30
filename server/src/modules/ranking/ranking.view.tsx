@@ -118,7 +118,7 @@ export function RankingView({
       rotaAtiva="/ranking"
       nomeUsuario={nomeUsuario}
     >
-      <link rel="stylesheet" href="../assets/ranking.css" />
+      <link rel="stylesheet" href="../assets/ranking.css?v=2" />
 
       <main class="ranking-conteudo" id="conteudo-principal">
         {top20.length === 0 ? (
