@@ -25,22 +25,14 @@ export const rewardController = new Elysia()
 		async ({ sessao, params, set }) => {
 			if (!sessao) {
 				set.status = 401;
-				return (
-					<div class="erro" safe>
-						Sessão expirada. Faça login novamente.
-					</div>
-				);
+				return <div class="erro">Sessão expirada. Faça login novamente.</div>;
 			}
 
 			const idRecompensa = Number(params.id);
 
 			if (!Number.isFinite(idRecompensa) || idRecompensa <= 0) {
 				set.status = 400;
-				return (
-					<div class="erro" safe>
-						Recompensa inválida.
-					</div>
-				);
+				return <div class="erro">Recompensa inválida.</div>;
 			}
 
 			try {
@@ -48,7 +40,7 @@ export const rewardController = new Elysia()
 				set.status = 200;
 
 				return (
-					<div class="resgate-sucesso" safe>
+					<div class="resgate-sucesso">
 						<h2>✅ Resgate realizado com sucesso!</h2>
 						<p>
 							Seu cupom: <strong>{resultado.codigo}</strong>
@@ -62,7 +54,7 @@ export const rewardController = new Elysia()
 						<button
 							class="btn btn--fechar-modal"
 							type="button"
-							onclick="fecharModal()"
+							onclick="fecharModal(true)"
 							style="margin-top: 1.25rem; padding: 0.6rem 1.5rem; background: #2e7d32; color: #fff; border: none; border-radius: 8px; font-size: 0.95rem; cursor: pointer; width: 100%;"
 						>
 							OK
@@ -73,7 +65,7 @@ export const rewardController = new Elysia()
 				if (err instanceof ErroRecompensaIndisponivel) {
 					set.status = 404;
 					return (
-						<div class="erro" safe>
+						<div class="erro">
 							<p>{err.message}</p>
 							<button
 								class="btn btn--fechar-modal"
@@ -90,7 +82,7 @@ export const rewardController = new Elysia()
 				if (err instanceof ErroSaldoInsuficiente) {
 					set.status = 400;
 					return (
-						<div class="erro" safe>
+						<div class="erro">
 							<p style="margin-bottom: 0.75rem;">{err.message}</p>
 							<button
 								class="btn btn--fechar-modal"
@@ -107,7 +99,7 @@ export const rewardController = new Elysia()
 				if (err instanceof ErroFalhaGeracaoCupom) {
 					set.status = 503;
 					return (
-						<div class="erro" safe>
+						<div class="erro">
 							<p>{err.message}</p>
 							<button
 								class="btn btn--fechar-modal"
@@ -124,7 +116,7 @@ export const rewardController = new Elysia()
 				if (err instanceof ErroFalhaDebitoPosCupom) {
 					set.status = 500;
 					return (
-						<div class="erro" safe>
+						<div class="erro">
 							<p>{err.message}</p>
 							<button
 								class="btn btn--fechar-modal"
@@ -155,22 +147,14 @@ export const rewardController = new Elysia()
 		async ({ sessao, params, set }) => {
 			if (!sessao) {
 				set.status = 401;
-				return (
-					<div class="erro" safe>
-						Sessão expirada. Faça login novamente.
-					</div>
-				);
+				return <div class="erro">Sessão expirada. Faça login novamente.</div>;
 			}
 
 			const idRecompensa = Number(params.id);
 
 			if (!Number.isFinite(idRecompensa) || idRecompensa <= 0) {
 				set.status = 400;
-				return (
-					<div class="erro" safe>
-						Recompensa inválida.
-					</div>
-				);
+				return <div class="erro">Recompensa inválida.</div>;
 			}
 
 			try {
@@ -181,11 +165,7 @@ export const rewardController = new Elysia()
 
 				if (!recompensa || !recompensa.ativo) {
 					set.status = 404;
-					return (
-						<div class="erro" safe>
-							Recompensa não encontrada.
-						</div>
-					);
+					return <div class="erro">Recompensa não encontrada.</div>;
 				}
 
 				const esgotada = recompensa.estoque !== null && recompensa.estoque <= 0;
@@ -232,11 +212,7 @@ export const rewardController = new Elysia()
 				);
 			} catch {
 				set.status = 500;
-				return (
-					<div class="erro" safe>
-						Erro ao carregar detalhes da recompensa.
-					</div>
-				);
+				return <div class="erro">Erro ao carregar detalhes da recompensa.</div>;
 			}
 		},
 		{ auth: true },

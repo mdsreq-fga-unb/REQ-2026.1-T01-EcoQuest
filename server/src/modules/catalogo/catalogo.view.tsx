@@ -268,7 +268,6 @@ export function CatalogoView({
 				role="dialog"
 				aria-modal="true"
 				aria-label="Detalhes da recompensa"
-				hx-on:click="if(event.target === this) this.style.display='none'"
 			></div>
 
 			{/* ── Botão para fechar modal manualmente (injetado via JS) ── */}
@@ -370,11 +369,17 @@ export function CatalogoView({
 
 			<script>{`
 				(function() {
-					function fechar() {
+					var _sucesso = false;
+
+					function fechar(reload) {
 						var overlay = document.getElementById('modal-recompensa');
 						if (overlay) {
 							overlay.style.display = 'none';
 							overlay.innerHTML = '';
+						}
+						_sucesso = false;
+						if (reload) {
+							window.location.reload();
 						}
 					}
 
@@ -386,7 +391,16 @@ export function CatalogoView({
 							var overlay = document.getElementById('modal-recompensa');
 							if (overlay && overlay.innerHTML.trim() !== '') {
 								overlay.style.display = 'flex';
+								_sucesso = overlay.querySelector('.resgate-sucesso') !== null;
 							}
+						}
+					});
+
+					// Fechar clicando fora — recarrega se foi sucesso
+					document.addEventListener('click', function(evt) {
+						var overlay = document.getElementById('modal-recompensa');
+						if (overlay && evt.target === overlay) {
+							fechar(_sucesso);
 						}
 					});
 				})();
