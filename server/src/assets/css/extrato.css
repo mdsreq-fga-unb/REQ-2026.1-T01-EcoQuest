@@ -150,12 +150,12 @@ body {
 .extrato-vazio_texto {
 	font-size: 1rem;
 	font-weight: 500;
-	color: var(--color-primary-lighter);
+	color: var(--color-white);
 }
 
 .extrato-vazio_subtexto {
 	font-size: .87rem;
-	color: var(--color-primary-lighter);
+	color: var(--color-white);
 	max-width: 340px;
 	line-height: 1.55;
 }
