@@ -123,6 +123,8 @@ Esta seção centraliza as **atas**, **decisões** e **Change Requests (CR)** le
 > [04/06/2026 - Validação de wireframes](/atas/04-06-validacao.md)
 > 
 > [12/06/2026 - Validação de identidade visual](/atas/12-06.md)
+>
+> [30/06/2026 - Validação da conclusão funcional do MVP](/atas/30-06.md)
 > 
 > Histórico completo em [Atas](/atas/).
 
@@ -139,3 +141,4 @@ Esta seção centraliza as **atas**, **decisões** e **Change Requests (CR)** le
 | 18/05/2026 | 1.3 | Simplificação e formato mais adequado ao template. | João Victor |
 | 12/06/2026 | 1.4 | Atualização dos links e centralização das evidências em /atas. | João Victor |
 | 14/06/2026 | 1.5 | Ajuste de terminologia e adequação do processo documentado ao fluxo real da equipe. | João Victor |
+| 01/07/2026 | 1.6 | Inclusão de evidências de validação do conclusão funcional do MVP. | João Victor |

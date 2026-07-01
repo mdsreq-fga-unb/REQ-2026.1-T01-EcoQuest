@@ -89,32 +89,15 @@ As evidências das técnicas previstas na estratégia estão registradas no dire
 
 ### Validação e Feedback com Stakeholders
 
-- Evidências: [16/05/2026 - Validação de terminologia, regras de negócio e foco do MVP](/atas/16-05.md), [17/05/2026 - Validação de wireframe de simulação de descarte](/atas/17-05.md), [04/06/2026 - Validação de wireframes](/atas/04-06-validacao.md), [12/06/2026 - Validação final de identidade visual](/atas/12-06.md)
-- Resultado incorporado: ajustes de terminologia, priorização da lista de itens de trabalho, validação dos protótipos e consolidação de decisões de interface.
+As validações com a cliente foram conduzidas de forma assíncrona (WhatsApp/e-mail) conforme canal definido em conjunto, abrangendo diferentes tipos de artefato ao longo das iterações. A tabela a seguir sintetiza as validações realizadas por incremento/UC.
 
-## 4.3 Evidências de Execução das Técnicas de ER
-
-As evidências das técnicas previstas na estratégia estão registradas no diretório [Atas](/atas/), com participantes, data, objetivo, decisões e resultados vinculados aos artefatos.
-
-### Entrevistas
-
-- [08/05/2026 - Entrevista inicial e definição de fluxo de comunicação](/atas/08-05.md)
-- Resultado incorporado: formalização do canal assíncrono de validação com stakeholders e ajustes de escopo do MVP.
-
-### Brainstorming
-
-- [13/05/2026 - Brainstorming de fluxo de simulação de descarte e recompensas](/atas/13-05.md)
-- [04/06/2026 - Brainstorming de identidade visual](/atas/04-06-brainstorming.md)
-- Resultado incorporado: produção de protótipos e variações visuais que alimentaram os artefatos de wireframe e as decisões de interface.
-
-### Validação e Feedback com Stakeholders
-
-- [16/05/2026 - Validação de terminologia, regras de negócio e foco do MVP](/atas/16-05.md)
-- [17/05/2026 - Validação de wireframe de simulação de descarte](/atas/17-05.md)
-- [04/06/2026 - Validação de wireframes de insígnias, prêmios, navegação e ranking](/atas/04-06-validacao.md)
-- [12/06/2026 - Validação final de identidade visual (logo/banner)](/atas/12-06.md)
-- Resultado incorporado: refinamento de requisitos, terminologia e priorização no backlog, além de aprovação de artefatos visuais usados no projeto.
-
+| Data | Tipo de Validação | Incremento Apresentado | UC/RF | Feedback da Cliente | Decisão | Status | Ata |
+|------|-------------------|----------------------|-------|--------------------|---------|--------|-----|
+| 16/05/2026 | Validação de regra de negócio | Terminologia de domínio, regras de negócio e priorização do MVP | — (requisitos gerais) | Sugeriu alteração de "doação" para "descarte sustentável e responsável"; "resíduos especializados" para "resíduos potencial contaminantes"; priorizar gamificação sobre localização de PEVs; precificação dinâmica aceita como regra de negócio | CR-1 a CR-4 registrados e incorporados | Aprovado com ressalvas | [🔗](/atas/16-05.md) |
+| 17/05/2026 | Validação de protótipo | Wireframe de simulação de descarte | UC08 / RF08 | Wireframe aprovado, com ajustes de navegação e clareza do fluxo solicitados | Aplicar ajustes de refinamento visual e avançar para próximas validações | Aprovado com ressalvas | [🔗](/atas/17-05.md) |
+| 04/06/2026 | Validação de protótipo | Wireframes de insígnias, prêmios, navegação e ranking | UC01, UC02, UC08, UC09, UC10, UC11, UC12, UC15 | Conjunto de wireframes validado para continuidade no refinamento | Prosseguir com refinamentos visuais e atualização de requisitos associados | Aprovado com ressalvas | [🔗](/atas/04-06-validacao.md) |
+| 12/06/2026 | Validação de protótipo | Identidade visual final (logo e banner) | — (identidade visual) | Decisões de cor e logo validadas conforme discutido no brainstorming de 04/06 | Consolidar identidade visual aprovada para uso nos materiais e protótipos | Aprovado | [🔗](/atas/12-06.md) |
+| 30/06/2026 | Validação de incremento funcional | MVP completo — Cadastro, Autenticação, Localização de PEVs, Leitura de Token, Extrato, Catálogo de Recompensas, Resgate, Vitrine de Conquistas e Ranking | UC01, UC02, UC06, UC08, UC09, UC10, UC11, UC12, UC15 | Aprovado, repetiu o comentário, "Excelente." e que agora planeja transformar o projeto em um projeto de extensão da universidade | MVP aprovado pela cliente para continuidade e evolução do projeto | Aprovado | [🔗](/atas/30-06.md) |
 
 ## Monitoramento da Execução de Engenharia de Requisitos
 
@@ -285,3 +268,4 @@ flowchart TD
 | 18/05/2026 | 1.1 | Inclusão das dimensões e domínios do DoD.| Paulo Vitor |
 | 12/06/2026 | 1.2 | Inclusão de evidências verificáveis de entrevistas, brainstorming e validação com stakeholders. | João Victor |
 | 14/06/2026 | 1.3 | Adequação da estratégia ao processo real, inclusão de organização/atualização de requisitos e explicitação das adaptações metodológicas. | João Victor |
+| 01/07/2026 | 1.4 | Correção da classificação das atividades de ER conforme feedback do professor; adição de tabela de síntese de validações com stakeholders e registro da validação final do MVP. | João Victor |
