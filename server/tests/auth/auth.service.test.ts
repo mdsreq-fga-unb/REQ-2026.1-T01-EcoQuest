@@ -287,7 +287,7 @@ describe("Auth Service", () => {
       ).rejects.toBeInstanceOf(ErroAutenticacaoIndisponivel);
     });
   });
-  test("lança ErroAutenticacaoIndisponivel quando falha ao resetar tentativas no login de sucesso (Caixa Branca / Try-Catch - Linha 173)", async () => {
+  test("lança ErroAutenticacaoIndisponivel quando falha ao resetar tentativas no login de sucesso", async () => {
     dbMock
       .mockResolvedValueOnce([usuarioBase()])
       .mockRejectedValueOnce(new Error("Timeout no UPDATE do banco"));
@@ -300,7 +300,7 @@ describe("Auth Service", () => {
     ).rejects.toBeInstanceOf(ErroAutenticacaoIndisponivel);
   });
 
-  test("lança ErroAutenticacaoIndisponivel quando falha ao aplicar o bloqueio no limite de tentativas (Caixa Branca / Try-Catch - Linha 196)", async () => {
+  test("lança ErroAutenticacaoIndisponivel quando falha ao aplicar o bloqueio no limite de tentativas", async () => {
     dbMock
       .mockResolvedValueOnce([
         usuarioBase({ failedLoginAttempts: LIMITE_TENTATIVAS_LOGIN - 1 }),

@@ -24,7 +24,7 @@ describe("Extrato Service (Híbrido)", () => {
   });
 
   describe("buscarExtratoPorUsuario", () => {
-    test("deve retornar registros formatados usando dados da simulação (Regra de Negócio / Desvio)", async () => {
+    test("deve retornar registros formatados usando dados da simulação", async () => {
       // Mock DB
       dbMock.mockResolvedValueOnce([
         {
@@ -57,7 +57,7 @@ describe("Extrato Service (Híbrido)", () => {
       expect(obterSimulacaoMock).toHaveBeenCalledWith("mock-jti");
     });
 
-    test("deve usar o fallback do banco quando não há simulação em memória (Caixa Branca / Fallback)", async () => {
+    test("deve usar o fallback do banco quando não há simulação em memória", async () => {
       // Mock DB: registros
       dbMock.mockResolvedValueOnce([
         {
@@ -82,7 +82,7 @@ describe("Extrato Service (Híbrido)", () => {
       expect(extrato.registros[0].pesoKg).toBe(5);
     });
 
-    test("deve lançar ErroExtratoIndisponivel se a query principal falhar (Caixa Branca / Fail Fast)", async () => {
+    test("deve lançar ErroExtratoIndisponivel se a query principal falhar", async () => {
       // Mock DB: falha na primeira query
       dbMock.mockRejectedValueOnce(new Error("Database timeout"));
 
@@ -94,7 +94,7 @@ describe("Extrato Service (Híbrido)", () => {
       expect(dbMock).toHaveBeenCalledTimes(1);
     });
 
-    test("deve tolerar falha na query de saldo marcando saldoIndisponivel = true (Caixa Branca / Desvio)", async () => {
+    test("deve tolerar falha na query de saldo marcando saldoIndisponivel = true", async () => {
       // Mock DB: registro - SUCESSO
       dbMock.mockResolvedValueOnce([]);
 

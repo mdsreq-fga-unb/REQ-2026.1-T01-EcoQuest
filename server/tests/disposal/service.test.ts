@@ -23,7 +23,7 @@ describe("Disposal Service - Validação de Token (Híbrido)", () => {
   });
 
   describe("validarTokenERegistrarDescarte", () => {
-    test("deve validar token com sucesso sem simulação prévia (Caixa Preta / Fallback)", async () => {
+    test("deve validar token com sucesso sem simulação prévia", async () => {
       obterSimulacaoEmitidaPorJtiMock.mockReturnValue(null);
 
       dbMock.mockResolvedValueOnce([{ disposal_id: 10, points_balance: 115 }]);
@@ -40,7 +40,7 @@ describe("Disposal Service - Validação de Token (Híbrido)", () => {
       expect(obterSimulacaoEmitidaPorJtiMock).toHaveBeenCalledWith(validUUID);
     });
 
-    test("deve validar token com cálculo de pontos dinâmico via simulação (Caixa Branca / Regra de Negócio)", async () => {
+    test("deve validar token com cálculo de pontos dinâmico via simulação", async () => {
       obterSimulacaoEmitidaPorJtiMock.mockReturnValue({
         itensSelecionados: [
           { chave: "bateria_laptop", nome: "Bateria", quantidade: 1 }, // 20 pts
@@ -58,7 +58,7 @@ describe("Disposal Service - Validação de Token (Híbrido)", () => {
       expect(resultado.pointsAwarded).toBe(37);
     });
 
-    test("deve barrar UUID mal formatado antes mesmo de ir ao banco (Caixa Branca - Fail Fast)", async () => {
+    test("deve barrar UUID mal formatado antes mesmo de ir ao banco", async () => {
       const uuidInvalido = "um-token-qualquer-nao-uuid";
 
       await expect(
@@ -72,7 +72,7 @@ describe("Disposal Service - Validação de Token (Híbrido)", () => {
       expect(obterSimulacaoEmitidaPorJtiMock).not.toHaveBeenCalled();
     });
 
-    test("deve lançar token_ja_utilizado quando a CTE falha e o fallback identifica uso (Caixa Branca - Desvio de CTE)", async () => {
+    test("deve lançar token_ja_utilizado quando a CTE falha e o fallback identifica uso", async () => {
       // A CTE de atualização falhou
       dbMock.mockResolvedValueOnce([]);
 
@@ -96,7 +96,7 @@ describe("Disposal Service - Validação de Token (Híbrido)", () => {
       expect(dbMock).toHaveBeenCalledTimes(2);
     });
 
-    test("deve lançar token_expirado quando o fallback identifica expiração (Caixa Branca)", async () => {
+    test("deve lançar token_expirado quando o fallback identifica expiração", async () => {
       dbMock.mockResolvedValueOnce([]); // CTE falha
       dbMock.mockResolvedValueOnce([
         {
@@ -114,7 +114,7 @@ describe("Disposal Service - Validação de Token (Híbrido)", () => {
       });
     });
 
-    test("deve lançar token_invalido quando o token sequer existe na tabela (Caixa Branca)", async () => {
+    test("deve lançar token_invalido quando o token sequer existe na tabela", async () => {
       dbMock.mockResolvedValueOnce([]);
       dbMock.mockResolvedValueOnce([]);
 

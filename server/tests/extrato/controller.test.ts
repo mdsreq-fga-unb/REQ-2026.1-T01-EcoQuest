@@ -39,7 +39,7 @@ describe("Extrato Controller (Híbrido)", () => {
   });
 
   describe("GET /", () => {
-    test("deve redirecionar para login caso o usuário não tenha sessão (Caixa Preta)", async () => {
+    test("deve redirecionar para login caso o usuário não tenha sessão", async () => {
       obterSessaoMock.mockResolvedValue(null);
 
       const req = new Request("http://localhost/");
@@ -49,7 +49,7 @@ describe("Extrato Controller (Híbrido)", () => {
       expect(res.headers.get("Location")).toBe("/auth/login");
     });
 
-    test("deve renderizar o ExtratoView corretamente (Caixa Preta)", async () => {
+    test("deve renderizar o ExtratoView corretamente", async () => {
       obterSessaoMock.mockResolvedValue({ id: 1, nome: "Alice" });
       buscarExtratoPorUsuarioMock.mockResolvedValue({
         registros: [],
@@ -69,7 +69,7 @@ describe("Extrato Controller (Híbrido)", () => {
       expect(buscarExtratoPorUsuarioMock).toHaveBeenCalledWith(1);
     });
 
-    test("deve interceptar ErroExtratoIndisponivel e renderizar mensagem 503 (Caixa Branca / Desvio / Error Handling)", async () => {
+    test("deve interceptar ErroExtratoIndisponivel e renderizar mensagem 503", async () => {
       obterSessaoMock.mockResolvedValue({ id: 1, nome: "Alice" });
 
       // Força o erro do if (err instanceof ErroExtratoIndisponivel)
@@ -89,7 +89,7 @@ describe("Extrato Controller (Híbrido)", () => {
       );
     });
 
-    test("deve relançar (throw) qualquer outro erro não mapeado para ser tratado pelo framework (Caixa Branca)", async () => {
+    test("deve relançar (throw) qualquer outro erro não mapeado para ser tratado pelo framework", async () => {
       obterSessaoMock.mockResolvedValue({ id: 1, nome: "Alice" });
 
       // Força um erro genérico

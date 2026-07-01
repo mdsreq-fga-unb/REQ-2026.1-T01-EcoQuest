@@ -430,7 +430,7 @@ describe("Reward Service — resgatarRecompensaInsignia", () => {
     dbMock.reset();
   });
 
-  test("resgata recompensa atrelada a insígnia com sucesso (Caixa Preta / Fluxo Feliz)", async () => {
+  test("resgata recompensa atrelada a insígnia com sucesso", async () => {
     dbMock
       .define(() => Promise.resolve([{ 1: 1 }])) // 1: Usuário possui insígnia? (Sim)
       .define(() => Promise.resolve([{ 1: 1 }])) // 2: Recompensa tem vínculo? (Sim)
@@ -457,7 +457,7 @@ describe("Reward Service — resgatarRecompensaInsignia", () => {
     expect(resultado.codigo).toContain("INS-"); // Prefixo do cupom de insígnia
   });
 
-  test("lança ErroInsigniaNaoPossui se o usuário tentar resgatar recompensa para insígnia que não tem (Caixa Branca / Early Return)", async () => {
+  test("lança ErroInsigniaNaoPossui se o usuário tentar resgatar recompensa para insígnia que não tem", async () => {
     dbMock.define(() => Promise.resolve([])); // Query de posse da insignia retorna vazio
 
     await expect(resgatarRecompensaInsignia(1, 10, 1)).rejects.toBeInstanceOf(
@@ -465,7 +465,7 @@ describe("Reward Service — resgatarRecompensaInsignia", () => {
     );
   });
 
-  test("lança ErroRecompensaIndisponivel se tentar burlar pegando recompensa não vinculada à insígnia (Caixa Branca / Integridade)", async () => {
+  test("lança ErroRecompensaIndisponivel se tentar burlar pegando recompensa não vinculada à insígnia", async () => {
     dbMock
       .define(() => Promise.resolve([{ 1: 1 }])) // Possui insígnia (Sim)
       .define(() => Promise.resolve([])); // Vínculo existe? (NÃO)
@@ -475,7 +475,7 @@ describe("Reward Service — resgatarRecompensaInsignia", () => {
     );
   });
 
-  test("lança ErroRecompensaJaResgatada se usuário tentar resgatar o prêmio duas vezes (Caixa Branca / Duplicidade)", async () => {
+  test("lança ErroRecompensaJaResgatada se usuário tentar resgatar o prêmio duas vezes", async () => {
     dbMock
       .define(() => Promise.resolve([{ 1: 1 }]))
       .define(() => Promise.resolve([{ 1: 1 }]))
@@ -487,7 +487,7 @@ describe("Reward Service — resgatarRecompensaInsignia", () => {
     );
   });
 
-  test("encapsula erros de banco como ErroFalhaGeracaoCupom se a CTE falhar ou quebrar (Caixa Branca / Tratamento de Exceção)", async () => {
+  test("encapsula erros de banco como ErroFalhaGeracaoCupom se a CTE falhar ou quebrar", async () => {
     dbMock
       .define(() => Promise.resolve([{ 1: 1 }]))
       .define(() => Promise.resolve([{ 1: 1 }]))
