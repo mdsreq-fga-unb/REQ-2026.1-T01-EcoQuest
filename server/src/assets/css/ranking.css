@@ -1,9 +1,9 @@
 .app-main {
-    background: #373737;
+    background: var(--color-bg);
 }
 
 .header-mobile {
-    background: #373737;
+    background: var(--color-bg);
     border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -50,6 +50,7 @@
     margin-bottom: 8px;
     text-align: center;
 }
+
 .ranking-podio_texto_topo .ranking-podio_nome {
     font-size: 0.85rem;
     font-weight: 600;
@@ -60,10 +61,11 @@
     text-overflow: ellipsis;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
+
 .ranking-podio_texto_topo .ranking-podio_xp {
     font-size: 0.75rem;
     font-weight: 700;
-    color: var(--color-primary);
+    color: var(--color-primary-dk);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
@@ -127,7 +129,7 @@
 }
 
 .ranking-card {
-    background: var(--color-white);
+    background: var(--color-surface);
     border-radius: 16px;
     box-shadow: var(--shadow-md);
     margin: -4px 24px 0;
@@ -151,7 +153,7 @@
     transition: background var(--transition);
 }
 
-.ranking-linha + .ranking-linha {
+.ranking-linha+.ranking-linha {
     border-top: 1px solid rgba(43, 86, 51, 0.08);
 }
 
@@ -196,7 +198,7 @@
 .ranking-linha_nome {
     font-size: 0.92rem;
     font-weight: 500;
-    color: #333333;
+    color: var(--color-text);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -220,7 +222,7 @@
     font-family: "Oxanium", sans-serif;
     font-weight: 700;
     font-size: 0.9rem;
-    color: #333333;
+    color: var(--color-text);
     white-space: nowrap;
     flex-shrink: 0;
 }
@@ -270,7 +272,7 @@
 .ranking-vazio_texto {
     font-size: 1rem;
     font-weight: 500;
-    color: #333333;
+    color: var(--color-text);
 }
 
 .ranking-vazio_subtexto {
@@ -302,9 +304,11 @@
     .ranking-podio_lugar--1 .ranking-podio_bloco {
         height: 100px;
     }
+
     .ranking-podio_lugar--2 .ranking-podio_bloco {
         height: 76px;
     }
+
     .ranking-podio_lugar--3 .ranking-podio_bloco {
         height: 60px;
     }
@@ -312,9 +316,11 @@
     .ranking-podio_lugar--1 .ranking-podio_pos {
         font-size: 1.8rem;
     }
+
     .ranking-podio_lugar--2 .ranking-podio_pos {
         font-size: 1.4rem;
     }
+
     .ranking-podio_lugar--3 .ranking-podio_pos {
         font-size: 1.2rem;
     }
@@ -346,9 +352,11 @@
     .ranking-podio_lugar--1 .ranking-podio_bloco {
         height: 88px;
     }
+
     .ranking-podio_lugar--2 .ranking-podio_bloco {
         height: 66px;
     }
+
     .ranking-podio_lugar--3 .ranking-podio_bloco {
         height: 52px;
     }
@@ -356,9 +364,11 @@
     .ranking-podio_lugar--1 .ranking-podio_pos {
         font-size: 1.5rem;
     }
+
     .ranking-podio_lugar--2 .ranking-podio_pos {
         font-size: 1.2rem;
     }
+
     .ranking-podio_lugar--3 .ranking-podio_pos {
         font-size: 1rem;
     }
@@ -423,9 +433,11 @@
     .ranking-podio_lugar--1 .ranking-podio_bloco {
         height: 76px;
     }
+
     .ranking-podio_lugar--2 .ranking-podio_bloco {
         height: 56px;
     }
+
     .ranking-podio_lugar--3 .ranking-podio_bloco {
         height: 44px;
     }
@@ -433,9 +445,11 @@
     .ranking-podio_lugar--1 .ranking-podio_pos {
         font-size: 1.3rem;
     }
+
     .ranking-podio_lugar--2 .ranking-podio_pos {
         font-size: 1rem;
     }
+
     .ranking-podio_lugar--3 .ranking-podio_pos {
         font-size: 0.85rem;
     }

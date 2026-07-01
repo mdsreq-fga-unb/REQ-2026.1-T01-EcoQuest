@@ -181,7 +181,7 @@
 	background: none;
 	border: none;
 	cursor: pointer;
-	color: var(--color-primary);
+	color: var(--color-surface);
 	display: flex;
 	align-items: center;
 	padding: 4px;
@@ -319,7 +319,7 @@
 	box-shadow: 0 4px 16px rgba(43, 86, 51, .40);
 	text-decoration: none;
 	transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
-	z-index: 100;
+	z-index: 99999;
 }
 
 .btn-camera:hover,
