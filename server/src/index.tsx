@@ -1,11 +1,12 @@
 import { Html, html } from "@elysia/html";
 import { Elysia } from "elysia";
 import { networkInterfaces } from "os";
-import { ensureSchema } from "./db";
+import { db, ensureSchema } from "./db";
 import { authController } from "./modules/auth/controller";
 import { catalogoController } from "./modules/catalogo/controller";
 import { disposalController } from "./modules/disposal/controller";
 import { extratoController } from "./modules/extrato/controller";
+import { localizarPevController } from "./modules/localizar_pev/controller";
 import { rankingController } from "./modules/ranking/controller";
 import { rewardController } from "./modules/reward/controller";
 import { simularDescarteController } from "./modules/simular_descarte/controller";
@@ -39,7 +40,19 @@ const app = new Elysia({
 })
 	.use(html())
 	.use(sessionPlugin)
-
+	.get("/api/pins", async () => {
+		const pevs = await db`
+			SELECT
+				name,
+				latitude  AS "lat",
+				longitude AS "lng"
+			FROM pev
+			WHERE latitude IS NOT NULL
+			  AND longitude IS NOT NULL
+			ORDER BY name
+		`;
+		return pevs;
+	})
 	.get("/assets/*", async ({ path, set }) => {
 		const file = Bun.file(`./src${path}`);
 		if (!(await file.exists())) {
@@ -60,6 +73,7 @@ const app = new Elysia({
 	.use(catalogoController)
 	.use(rewardController)
 	.use(rankingController)
+	.use(localizarPevController)
 	.use(simularDescarteController)
 	.listen(PORT);
 

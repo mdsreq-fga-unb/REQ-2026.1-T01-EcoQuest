@@ -56,6 +56,32 @@ export async function ensureSchema() {
 			);
 		}
 
+		const [{ pevLatExists }] = await db`
+			SELECT EXISTS (
+				SELECT 1
+				FROM information_schema.columns
+				WHERE table_schema = 'public'
+				AND table_name = 'pev'
+				AND column_name = 'latitude'
+			) AS "pevLatExists"
+		`;
+		if (!pevLatExists) {
+			await db.unsafe(`ALTER TABLE pev ADD COLUMN latitude NUMERIC`);
+		}
+
+		const [{ pevLngExists }] = await db`
+			SELECT EXISTS (
+				SELECT 1
+				FROM information_schema.columns
+				WHERE table_schema = 'public'
+				AND table_name = 'pev'
+				AND column_name = 'longitude'
+			) AS "pevLngExists"
+		`;
+		if (!pevLngExists) {
+			await db.unsafe(`ALTER TABLE pev ADD COLUMN longitude NUMERIC`);
+		}
+
 		console.log("Schema do banco ja existe. Pulando inicializacao.");
 		return;
 	}
