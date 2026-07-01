@@ -3,6 +3,7 @@
   "version": "1.0.50",
   "scripts": {
     "test": "test -f env/.env && bun test --env-file=env/.env",
+    "test:coverage": "test -f env/.env && bun test --env-file=env/.env --coverage",
     "dev": "test -f env/.env && bun --env-file=env/.env run --watch src/index.tsx",
     "prod": "test -f env/.env && nohup bun --env-file=env/.env src/index.tsx > bun.log 2>&1 &",
     "prod:down": "test -f env/.env && pkill -f 'bun --env-file=env/.env src/index.tsx'",

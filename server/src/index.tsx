@@ -7,13 +7,10 @@ import { authController } from "./modules/auth/controller";
 import { catalogoController } from "./modules/catalogo/controller";
 import { disposalController } from "./modules/disposal/controller";
 import { extratoController } from "./modules/extrato/controller";
-<<<<<<< HEAD
 import { rankingController } from "./modules/ranking/controller";
-=======
 import { localizarPevController } from "./modules/localizar_pev/controller";
 import { rankingController } from "./modules/ranking/controller";
 import { rewardController } from "./modules/reward/controller";
->>>>>>> 99e6d546968124c87a832ddcf6f9ec4af32354ee
 import { simularDescarteController } from "./modules/simular_descarte/controller";
 import { sessionPlugin } from "./plugins/session";
 
