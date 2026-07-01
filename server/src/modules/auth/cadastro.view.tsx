@@ -15,7 +15,7 @@ export function CadastroView() {
 			<main class="container">
 				<h1 class="title">Criar conta</h1>
 
-				<div class="card">
+				<div class="card cadastro-card">
 					<form
 						id="form-cadastro"
 						hx-post="/auth/cadastro"
@@ -253,6 +253,34 @@ export function CadastroView() {
 									</li>
 								</ul>
 							</div>
+						</div>
+
+						<div class="field field-termos">
+							<label class="checkbox-wrapper" for="termosAceitos">
+								<input
+									type="checkbox"
+									id="termosAceitos"
+									name="termosAceitos"
+								/>
+								<span>
+									Li e aceito os{" "}
+									<a href="/auth/termos-de-uso" target="_blank" rel="noopener">
+										Termos de Uso
+									</a>{" "}
+									e a{" "}
+									<a
+										href="/auth/politica-de-privacidade"
+										target="_blank"
+										rel="noopener"
+									>
+										Política de Privacidade
+									</a>
+									.
+								</span>
+							</label>
+							<p class="termos-erro" id="termos-erro" hidden>
+								É necessário aceitar os termos para continuar.
+							</p>
 						</div>
 
 						<p class="cadastro-link">

@@ -17,7 +17,26 @@ const {
 	autenticarUsuario,
 	ErroPersistenciaCadastro,
 	ErroAutenticacaoIndisponivel,
+	ErroConsentimentoObrigatorio,
+	LIMITE_TENTATIVAS_LOGIN,
 } = service;
+
+function usuarioBase(overrides: Record<string, unknown> = {}) {
+	return {
+		id: 1,
+		nome: "João",
+		email: "joao@email.com",
+		cpf: "123",
+		telefone: "61999999999",
+		passwordHash: "hash",
+		pointsBalance: 0,
+		pointsTotalEarned: 0,
+		status: "ACTIVE",
+		failedLoginAttempts: 0,
+		lockedUntil: null,
+		...overrides,
+	};
+}
 
 describe("Auth Service", () => {
 	beforeEach(() => {
@@ -69,7 +88,7 @@ describe("Auth Service", () => {
 	});
 
 	describe("criarUsuario", () => {
-		test("cria usuário com sucesso", async () => {
+		test("cria usuário com sucesso quando os termos são aceitos (RN18)", async () => {
 			const hashMock = mock().mockResolvedValue("hash");
 
 			Bun.password.hash = hashMock as any;
@@ -92,6 +111,7 @@ describe("Auth Service", () => {
 				cpf: "123",
 				telefone: "61999999999",
 				senha: "123456",
+				termosAceitos: true,
 			});
 
 			expect(usuario).toEqual({
@@ -127,25 +147,35 @@ describe("Auth Service", () => {
 					cpf: "123",
 					telefone: "61999999999",
 					senha: "123456",
+					termosAceitos: true,
 				}),
 			).rejects.toBeInstanceOf(ErroPersistenciaCadastro);
 		});
-	});
 
-	describe("autenticarUsuario", () => {
-		test("autentica usuário corretamente", async () => {
-			dbMock.mockResolvedValue([
-				{
-					id: 1,
+		test("lança ErroConsentimentoObrigatorio quando os termos não são aceitos (FE-E4/RN18)", async () => {
+			Bun.password.hash = mock().mockResolvedValue("hash") as any;
+
+			await expect(
+				criarUsuario({
 					nome: "João",
 					email: "joao@email.com",
 					cpf: "123",
 					telefone: "61999999999",
-					passwordHash: "hash",
-					pointsBalance: 0,
-					pointsTotalEarned: 0,
-				},
-			]);
+					senha: "123456",
+					termosAceitos: false,
+				}),
+			).rejects.toBeInstanceOf(ErroConsentimentoObrigatorio);
+
+			// Não deve sequer tentar persistir no banco.
+			expect(dbMock).not.toHaveBeenCalled();
+		});
+	});
+
+	describe("autenticarUsuario", () => {
+		test("autentica usuário corretamente e zera tentativas anteriores", async () => {
+			dbMock
+				.mockResolvedValueOnce([usuarioBase()])
+				.mockResolvedValueOnce([]);
 
 			const verifyMock = mock().mockResolvedValue(true);
 
@@ -176,6 +206,8 @@ describe("Auth Service", () => {
 					pointsTotalEarned: 0,
 				});
 			}
+
+			expect(dbMock).toHaveBeenCalledTimes(2);
 		});
 
 		test("retorna usuario_nao_encontrado", async () => {
@@ -191,19 +223,10 @@ describe("Auth Service", () => {
 			});
 		});
 
-		test("retorna senha_invalida", async () => {
-			dbMock.mockResolvedValue([
-				{
-					id: 1,
-					nome: "João",
-					email: "joao@email.com",
-					cpf: "123",
-					telefone: "61999999999",
-					passwordHash: "hash",
-					pointsBalance: 0,
-					pointsTotalEarned: 0,
-				},
-			]);
+		test("retorna senha_invalida com contagem de tentativas restantes (RN15)", async () => {
+			dbMock
+				.mockResolvedValueOnce([usuarioBase({ failedLoginAttempts: 0 })])
+				.mockResolvedValueOnce([]);
 
 			const verifyMock = mock().mockResolvedValue(false);
 
@@ -216,6 +239,7 @@ describe("Auth Service", () => {
 
 			expect(resultado).toEqual({
 				status: "senha_invalida",
+				tentativasRestantes: LIMITE_TENTATIVAS_LOGIN - 1,
 			});
 
 			expect(verifyMock).toHaveBeenCalledTimes(1);
@@ -224,6 +248,53 @@ describe("Auth Service", () => {
 				"senhaErrada",
 				"hash",
 			);
+		});
+
+		test("bloqueia a conta ao atingir o limite de tentativas inválidas (RN15/FE-E3)", async () => {
+			dbMock
+				.mockResolvedValueOnce([
+					usuarioBase({ failedLoginAttempts: LIMITE_TENTATIVAS_LOGIN - 1 }),
+				])
+				.mockResolvedValueOnce([]);
+
+			Bun.password.verify = mock().mockResolvedValue(false) as any;
+
+			const resultado = await autenticarUsuario(
+				"joao@email.com",
+				"senhaErrada",
+			);
+
+			expect(resultado.status).toBe("conta_bloqueada");
+			if (resultado.status === "conta_bloqueada") {
+				expect(resultado.bloqueadaAte.getTime()).toBeGreaterThan(Date.now());
+			}
+		});
+
+		test("impede login enquanto o bloqueio temporário estiver vigente (RN15/FE-E3)", async () => {
+			const bloqueadaAte = new Date(Date.now() + 5 * 60 * 1000);
+			dbMock.mockResolvedValueOnce([
+				usuarioBase({ lockedUntil: bloqueadaAte.toISOString() }),
+			]);
+
+			const verifyMock = mock().mockResolvedValue(true);
+			Bun.password.verify = verifyMock as any;
+
+			const resultado = await autenticarUsuario("joao@email.com", "123456");
+
+			expect(resultado.status).toBe("conta_bloqueada");
+			expect(verifyMock).not.toHaveBeenCalled();
+		});
+
+		test("impede login de conta inativa/bloqueada administrativamente (FE-E4)", async () => {
+			dbMock.mockResolvedValueOnce([usuarioBase({ status: "INACTIVE" })]);
+
+			const verifyMock = mock().mockResolvedValue(true);
+			Bun.password.verify = verifyMock as any;
+
+			const resultado = await autenticarUsuario("joao@email.com", "123456");
+
+			expect(resultado).toEqual({ status: "conta_inativa" });
+			expect(verifyMock).not.toHaveBeenCalled();
 		});
 
 		test("lança erro quando banco falha", async () => {
