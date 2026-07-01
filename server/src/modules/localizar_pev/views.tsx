@@ -798,11 +798,25 @@ export function MapaView({
 						popupAnchor: [0, -34],
 					});
 
+					var searchSetupRealizada = false;
+
 					function carregarPins(lat, lng) {
+						// Remove marcadores antigos do mapa antes de carregar novos
+						markerData.forEach(function(item) {
+							if (item.marker) {
+								map.removeLayer(item.marker);
+							}
+						});
+						markerData = [];
+
 						var url = '/api/pins';
 						if (lat != null && lng != null) {
 							url += '?lat=' + lat + '&lng=' + lng + '&raio=10';
 						}
+
+						// Mostra estado de carregamento
+						geoStatus.className = 'localizar-pev-status localizar-pev-status--carregando';
+						geoStatus.innerHTML = '<div class="localizar-pev-status-spinner"></div><span>Buscando PEVs próximos...</span>';
 
 						console.log('[carregarPins] URL:', url);
 
@@ -822,7 +836,11 @@ export function MapaView({
 								if (!pins || pins.length === 0) {
 									// FA-3A: Nenhum PEV encontrado
 									geoStatus.className = 'localizar-pev-status localizar-pev-status--erro';
-									geoStatus.innerHTML = '<span>Nenhum ponto de coleta encontrado em um raio de 10 km.</span>';
+									if (lat != null && lng != null) {
+										geoStatus.innerHTML = '<span>Nenhum ponto de coleta encontrado em um raio de 10 km.</span>';
+									} else {
+										geoStatus.innerHTML = '<span>Nenhum ponto de coleta encontrado.</span>';
+									}
 									return;
 								}
 
@@ -874,6 +892,9 @@ export function MapaView({
 					}
 
 					function setupSearch() {
+						if (searchSetupRealizada) return;
+						searchSetupRealizada = true;
+
 						var input = document.getElementById('search-pev-input');
 						var lista = document.getElementById('search-pev-lista');
 						if (!input || !lista) return;
@@ -982,7 +1003,7 @@ export function MapaView({
 
 								manualBox.classList.add('visivel');
 								searchWrap.style.display = 'none';
-								carregarPins(null, null);
+								// Não carrega PEVs ainda — aguarda o usuário informar a localização manualmente
 							},
 							{
 								enableHighAccuracy: true,
@@ -996,7 +1017,7 @@ export function MapaView({
 						exibirErro('Seu navegador não suporta geolocalização. Informe sua localização manualmente.', false);
 						manualBox.classList.add('visivel');
 						searchWrap.style.display = 'none';
-						carregarPins(null, null);
+						// Não carrega PEVs ainda — aguarda o usuário informar a localização manualmente
 					}
 
 					// ── Busca manual (FA-2A) ──
