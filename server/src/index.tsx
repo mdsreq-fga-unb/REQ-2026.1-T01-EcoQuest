@@ -45,7 +45,7 @@ const app = new Elysia({
 		try {
 			const userLat = query["lat"] ? Number.parseFloat(query["lat"]) : null;
 			const userLng = query["lng"] ? Number.parseFloat(query["lng"]) : null;
-			const raioKm = query["raio"] ? Number.parseFloat(query["raio"]) : 50;
+			const raioKm = query["raio"] ? Number.parseFloat(query["raio"]) : 10;
 
 			console.log("[api/pins] query params:", { userLat, userLng, raioKm });
 

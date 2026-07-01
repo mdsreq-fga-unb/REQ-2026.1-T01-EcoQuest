@@ -801,7 +801,7 @@ export function MapaView({
 					function carregarPins(lat, lng) {
 						var url = '/api/pins';
 						if (lat != null && lng != null) {
-							url += '?lat=' + lat + '&lng=' + lng + '&raio=50';
+							url += '?lat=' + lat + '&lng=' + lng + '&raio=10';
 						}
 
 						console.log('[carregarPins] URL:', url);
@@ -822,7 +822,7 @@ export function MapaView({
 								if (!pins || pins.length === 0) {
 									// FA-3A: Nenhum PEV encontrado
 									geoStatus.className = 'localizar-pev-status localizar-pev-status--erro';
-									geoStatus.innerHTML = '<span>Nenhum ponto de coleta encontrado nas proximidades.</span>';
+									geoStatus.innerHTML = '<span>Nenhum ponto de coleta encontrado em um raio de 10 km.</span>';
 									return;
 								}
 
@@ -836,7 +836,7 @@ export function MapaView({
 									};
 								});
 
-								exibirSucesso(pins.length + ' PEV' + (pins.length !== 1 ? 's' : '') + ' encontrado' + (pins.length !== 1 ? 's' : '') + ' nas proximidades');
+								exibirSucesso(pins.length + ' PEV' + (pins.length !== 1 ? 's' : '') + ' encontrado' + (pins.length !== 1 ? 's' : '') + ' em um raio de 10 km');
 
 								var markers = [];
 								markerData = [];
