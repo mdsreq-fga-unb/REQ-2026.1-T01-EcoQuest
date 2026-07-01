@@ -82,6 +82,43 @@ export async function ensureSchema() {
 			await db.unsafe(`ALTER TABLE pev ADD COLUMN longitude NUMERIC`);
 		}
 
+		// ── insignia_reward ─────────────────────────────────────────────
+		const [{ insigniaRewardExists }] = await db`
+			SELECT EXISTS (
+				SELECT 1
+				FROM information_schema.tables
+				WHERE table_schema = 'public'
+				AND table_name = 'insignia_reward'
+			) AS "insigniaRewardExists"
+		`;
+		if (!insigniaRewardExists) {
+			await db.unsafe(`
+				CREATE TABLE insignia_reward (
+					id_insignia BIGINT NOT NULL REFERENCES insignia(id) ON DELETE CASCADE,
+					id_reward   BIGINT NOT NULL REFERENCES reward(id) ON DELETE RESTRICT,
+					created_at  TIMESTAMPTZ NOT NULL DEFAULT now(),
+					PRIMARY KEY (id_insignia, id_reward)
+				);
+				CREATE INDEX insignia_reward_insignia_idx ON insignia_reward (id_insignia);
+				CREATE INDEX insignia_reward_reward_idx   ON insignia_reward (id_reward);
+			`);
+			console.log("Tabela 'insignia_reward' criada.");
+		}
+
+		// Remove tabela antiga se ainda existir (migração de premio_insignia)
+		await db.unsafe(`DROP TABLE IF EXISTS premio_insignia CASCADE`);
+
+		// Relaxa constraint do reward_redemption para aceitar 0 (prêmios de insígnia)
+		await db.unsafe(`
+			ALTER TABLE reward_redemption
+			DROP CONSTRAINT IF EXISTS reward_redemption_points_cost_snapshot_positive
+		`);
+		await db.unsafe(`
+			ALTER TABLE reward_redemption
+			ADD CONSTRAINT reward_redemption_points_cost_snapshot_non_negative
+			CHECK (points_cost_snapshot >= 0)
+		`);
+
 		console.log("Schema do banco ja existe. Pulando inicializacao.");
 		return;
 	}

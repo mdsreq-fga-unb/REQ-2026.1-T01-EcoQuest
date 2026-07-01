@@ -6,10 +6,13 @@ import {
 	buscarRecompensaPorId,
 	ErroFalhaDebitoPosCupom,
 	ErroFalhaGeracaoCupom,
+	ErroInsigniaNaoPossui,
 	ErroRecompensaIndisponivel,
+	ErroRecompensaJaResgatada,
 	ErroSaldoInsuficiente,
 	listarRecompensas,
 	resgatarRecompensa,
+	resgatarRecompensaInsignia,
 } from "./service";
 
 export const rewardController = new Elysia()
@@ -130,6 +133,80 @@ export const rewardController = new Elysia()
 					);
 				}
 
+				throw err;
+			}
+		},
+		{ auth: true },
+	)
+
+	/**
+	 * POST /recompensas/:id/insignia/:idInsignia/resgatar
+	 *
+	 * Resgata uma recompensa vinculada a uma insígnia (gratuito, sem débito de pontos).
+	 */
+	.post(
+		"/recompensas/:id/insignia/:idInsignia/resgatar",
+		async ({ sessao, params, set }) => {
+			if (!sessao) {
+				set.status = 401;
+				return <div class="erro">Sessão expirada.</div>;
+			}
+
+			const idRecompensa = Number(params.id);
+			const idInsignia = Number(params.idInsignia);
+
+			if (
+				!Number.isFinite(idRecompensa) ||
+				idRecompensa <= 0 ||
+				!Number.isFinite(idInsignia) ||
+				idInsignia <= 0
+			) {
+				set.status = 400;
+				return <div class="erro">Parâmetros inválidos.</div>;
+			}
+
+			try {
+				const resultado = await resgatarRecompensaInsignia(
+					sessao.id,
+					idInsignia,
+					idRecompensa,
+				);
+
+				return (
+					<div class="resgate-sucesso">
+						<h2>🎉 Prêmio resgatado com sucesso!</h2>
+						<p>
+							Seu cupom: <strong>{resultado.codigo}</strong>
+						</p>
+						<p>
+							Saldo atual: <strong>{resultado.saldoApos} pts</strong>
+						</p>
+						<button
+							class="btn btn--fechar-modal"
+							type="button"
+							onclick="fecharModal(true)"
+							style="margin-top:1.25rem;padding:0.6rem 1.5rem;background:#2e7d32;color:#fff;border:none;border-radius:8px;font-size:.95rem;cursor:pointer;width:100%"
+						>
+							OK
+						</button>
+					</div>
+				);
+			} catch (err) {
+				if (
+					err instanceof ErroInsigniaNaoPossui ||
+					err instanceof ErroRecompensaJaResgatada
+				) {
+					set.status = 403;
+					return <div class="erro">{err.message}</div>;
+				}
+				if (err instanceof ErroRecompensaIndisponivel) {
+					set.status = 404;
+					return <div class="erro">{err.message}</div>;
+				}
+				if (err instanceof ErroFalhaGeracaoCupom) {
+					set.status = 503;
+					return <div class="erro">{err.message}</div>;
+				}
 				throw err;
 			}
 		},

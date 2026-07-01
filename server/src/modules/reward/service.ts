@@ -333,3 +333,124 @@ export async function resgatarRecompensa(
 		throw new ErroFalhaGeracaoCupom(err);
 	}
 }
+
+// ─── Resgate gratuito vinculado a insígnia ────────────────────────────────
+
+export class ErroInsigniaNaoPossui extends Error {
+	constructor(
+		public idInsignia: number,
+		public idRecompensa: number,
+	) {
+		super("Você não possui a insígnia necessária para resgatar esta recompensa.");
+		this.name = "ErroInsigniaNaoPossui";
+	}
+}
+
+export class ErroRecompensaJaResgatada extends Error {
+	constructor(public idRecompensa: number) {
+		super("Você já resgatou esta recompensa anteriormente.");
+		this.name = "ErroRecompensaJaResgatada";
+	}
+}
+
+/**
+ * Resgata uma recompensa vinculada a uma insígnia (gratuita).
+ * Não debita pontos do usuário — a recompensa é um bônus por ter
+ * conquistado a insígnia. O resgate fica registrado em reward_redemption
+ * com cost = 0, e o estoque é decrementado.
+ */
+export async function resgatarRecompensaInsignia(
+	idUsuario: number,
+	idInsignia: number,
+	idRecompensa: number,
+): Promise<ResultadoResgate> {
+	// 1. Verificar se o usuário possui a insígnia
+	const [possuida] = await db`
+		SELECT 1 FROM user_insignia
+		WHERE id_user = ${idUsuario} AND id_insignia = ${idInsignia}
+		LIMIT 1
+	`;
+	if (!possuida) {
+		throw new ErroInsigniaNaoPossui(idInsignia, idRecompensa);
+	}
+
+	// 2. Verificar se a recompensa existe e está vinculada à insígnia
+	const [vinculo] = await db`
+		SELECT 1 FROM insignia_reward
+		WHERE id_insignia = ${idInsignia} AND id_reward = ${idRecompensa}
+		LIMIT 1
+	`;
+	if (!vinculo) {
+		throw new ErroRecompensaIndisponivel(
+			"Esta recompensa não está vinculada à insígnia.",
+		);
+	}
+
+	const recompensa = await buscarRecompensaPorId(idRecompensa);
+	if (!recompensa || !recompensa.ativo) {
+		throw new ErroRecompensaIndisponivel("Recompensa não encontrada.");
+	}
+	if (recompensa.estoque !== null && recompensa.estoque <= 0) {
+		throw new ErroRecompensaIndisponivel("Recompensa esgotada.");
+	}
+
+	// 3. Verificar se já resgatou antes (duplicidade)
+	const [jaResgatado] = await db`
+		SELECT 1 FROM reward_redemption
+		WHERE id_user = ${idUsuario} AND id_reward = ${idRecompensa}
+			AND status != 'CANCELLED'
+		LIMIT 1
+	`;
+	if (jaResgatado) {
+		throw new ErroRecompensaJaResgatada(idRecompensa);
+	}
+
+	// 4. Gerar cupom e registrar (gratuito — points_cost_snapshot = 0)
+	const codigoCupom = `INS-${crypto.randomUUID().replace(/-/g, "").slice(0, 8).toUpperCase()}`;
+
+	try {
+		const rows = await db`
+			WITH redencao_criada AS (
+				INSERT INTO reward_redemption (id_user, id_reward, points_cost_snapshot, code)
+				VALUES (${idUsuario}, ${idRecompensa}, 0, ${codigoCupom})
+				RETURNING id, code, created_at, expires_at
+			),
+			estoque_atualizado AS (
+				UPDATE reward
+				SET stock = CASE
+					WHEN stock IS NOT NULL THEN stock - 1
+					ELSE NULL
+				END
+				WHERE id = ${idRecompensa}
+					AND (stock IS NULL OR stock > 0)
+				RETURNING id
+			)
+			SELECT
+				r.id           AS "redemptionId",
+				r.code,
+				0              AS "custoPontos",
+				r.created_at   AS "criadoEm",
+				r.expires_at   AS "expiraEm",
+				(SELECT points_balance FROM "user" WHERE id = ${idUsuario}) AS "saldoApos"
+			FROM redencao_criada r
+		`;
+
+		if (rows.length === 0) {
+			throw new ErroFalhaGeracaoCupom();
+		}
+
+		const row = rows[0] as Record<string, unknown>;
+		return {
+			id: Number(row.redemptionId),
+			idRecompensa,
+			codigo: String(row.code),
+			custoPontos: 0,
+			saldoApos: Number(row.saldoApos),
+			criadoEm: new Date(row.criadoEm as string),
+			expiraEm: row.expiraEm ? new Date(row.expiraEm as string) : null,
+		};
+	} catch (err) {
+		if (err instanceof ErroFalhaGeracaoCupom) throw err;
+		throw new ErroFalhaGeracaoCupom(err);
+	}
+}

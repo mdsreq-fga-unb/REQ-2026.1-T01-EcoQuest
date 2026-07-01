@@ -1,10 +1,6 @@
 import { Html } from "@elysia/html";
 import { AppLayout } from "../../components/Applayout";
-import type {
-	Conquista,
-	PremioConquista,
-	VitrineConquistas,
-} from "./service";
+import type { Conquista, PremioConquista, VitrineConquistas } from "./service";
 
 interface AchievementViewProps {
 	nomeUsuario: string;
@@ -43,6 +39,16 @@ function Premio({ premio }: { premio: PremioConquista }) {
 			<div>
 				<strong>{premio.nome}</strong>
 				<p>{premio.descricao}</p>
+				{premio.jaResgatado && premio.codigoCupom && (
+					<div style="margin-top:8px;padding:8px 12px;background:rgba(93,216,121,0.12);border-radius:8px;border:1px solid rgba(93,216,121,0.3)">
+						<span style="font-size:0.65rem;color:#8f8;text-transform:uppercase;letter-spacing:0.05em">
+							Cupom
+						</span>
+						<div style="font-family:'Oxanium',monospace;font-size:1.1rem;font-weight:700;color:#5dd879;word-break:break-all;margin-top:2px">
+							{premio.codigoCupom}
+						</div>
+					</div>
+				)}
 			</div>
 		</li>
 	);
@@ -60,7 +66,8 @@ function CardConquista({ conquista }: { conquista: Conquista }) {
 				? "Insígnia em progresso"
 				: "Insígnia bloqueada";
 
-	return (		<article class={`insignias-card insignias-card--${conquista.estado}`}>
+	return (
+		<article class={`insignias-card insignias-card--${conquista.estado}`}>
 			<header class="insignias-card_cabecalho">
 				<IconeInsignia bloqueada={bloqueada} />
 				<div class="insignias-card_resumo">
@@ -80,14 +87,21 @@ function CardConquista({ conquista }: { conquista: Conquista }) {
 						<span style={`width:${progressoBarra}%`}></span>
 					</div>
 					<span class="insignias-card_estado">{estadoTexto}</span>
-				</div>			</header>
+				</div>{" "}
+			</header>
 
-			<section class="insignias-card_secao" aria-labelledby={`criterio-${conquista.id}`}>
+			<section
+				class="insignias-card_secao"
+				aria-labelledby={`criterio-${conquista.id}`}
+			>
 				<h3 id={`criterio-${conquista.id}`}>Critérios</h3>
 				<p>{conquista.criterio}</p>
 			</section>
 
-			<section class="insignias-card_secao" aria-labelledby={`premios-${conquista.id}`}>
+			<section
+				class="insignias-card_secao"
+				aria-labelledby={`premios-${conquista.id}`}
+			>
 				<h3 id={`premios-${conquista.id}`}>Prêmios</h3>
 				{conquista.premios.length > 0 ? (
 					<ul class="insignias-premios" role="list">
@@ -142,9 +156,14 @@ export function AchievementView({
 				) : (
 					<>
 						{nenhumaObtida && (
-							<section class="insignias-vazio" aria-label="Nenhuma conquista obtida">
+							<section
+								class="insignias-vazio"
+								aria-label="Nenhuma conquista obtida"
+							>
 								<strong>Você ainda não conquistou insígnias.</strong>
-								<span>Confira abaixo as conquistas disponíveis para obter.</span>
+								<span>
+									Confira abaixo as conquistas disponíveis para obter.
+								</span>
 							</section>
 						)}
 
