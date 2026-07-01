@@ -23,7 +23,7 @@
 	--color-title: #D0EFD6;
 	--color-muted: #2b5633;
 	--color-white: #ffffff;
-	--color-overlay: rgba(0, 0, 0, 0.85);
+	--color-overlay: rgba(0, 0, 0, 0.75);
 	--color-overlay-light: #d0eed6;
 	--shadow-sm: 0 2px 8px rgba(0, 0, 0, .05);
 	--shadow-md: 0 4px 16px rgba(0, 0, 0, .10);
