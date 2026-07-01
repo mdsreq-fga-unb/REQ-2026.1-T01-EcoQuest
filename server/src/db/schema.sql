@@ -190,12 +190,18 @@ COMMENT ON COLUMN "user".points_balance IS 'Saldo atual de pontos disponível pa
 COMMENT ON COLUMN "user".points_total_earned IS 'Total de pontos ganhos (base para ranking).';
 COMMENT ON COLUMN "user".ranking_anonymous IS 'Se true, nome do usuário é mascarado no ranking público.';
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> adb634abc9ab6cff5ee0a54332fba49a0ed9e3d0
 COMMENT ON COLUMN "user".status IS 'Status administrativo da conta (ACTIVE/INACTIVE/BLOCKED). RN: apenas ACTIVE pode autenticar (UC02).';
 COMMENT ON COLUMN "user".terms_accepted_at IS 'Data/hora do aceite dos termos de uso e da política de privacidade (RN18, LGPD).';
 COMMENT ON COLUMN "user".failed_login_attempts IS 'Contador de tentativas de login consecutivas com credenciais inválidas (RN15).';
 COMMENT ON COLUMN "user".locked_until IS 'Data/hora até quando a conta está temporariamente bloqueada por excesso de tentativas (RN15). Null = não bloqueada.';
+<<<<<<< HEAD
 >>>>>>> 99e6d546968124c87a832ddcf6f9ec4af32354ee
+=======
+>>>>>>> adb634abc9ab6cff5ee0a54332fba49a0ed9e3d0
 COMMENT ON COLUMN "user".created_at IS 'Data/hora de criação do registro.';
 COMMENT ON COLUMN "user".updated_at IS 'Data/hora da última atualização do registro.';
 
@@ -276,4 +282,8 @@ COMMENT ON COLUMN user_insignia.unlocked_at IS 'Data/hora do desbloqueio.';
 
 COMMENT ON TABLE insignia_reward IS 'Recompensas do catálogo vinculadas a cada insígnia.';
 COMMENT ON COLUMN insignia_reward.id_insignia IS 'Insígnia que desbloqueia a recompensa.';
+<<<<<<< HEAD
 COMMENT ON COLUMN insignia_reward.id_reward IS 'Recompensa do catálogo liberada.';
+=======
+COMMENT ON COLUMN insignia_reward.id_reward IS 'Recompensa do catálogo liberada.';
+>>>>>>> adb634abc9ab6cff5ee0a54332fba49a0ed9e3d0

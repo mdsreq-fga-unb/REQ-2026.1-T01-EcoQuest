@@ -1,14 +1,5 @@
 .app-main {
-    background: #373737;
-}
-
-.header-mobile {
-    background: #373737;
-    border-bottom-color: rgba(255, 255, 255, 0.1);
-}
-
-.header-mobile_menu {
-    color: var(--color-white);
+    background: var(--color-bg);
 }
 
 .ranking-conteudo {
@@ -50,10 +41,7 @@
     margin-bottom: 8px;
     text-align: center;
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 99e6d546968124c87a832ddcf6f9ec4af32354ee
 .ranking-podio_texto_topo .ranking-podio_nome {
     font-size: 0.85rem;
     font-weight: 600;
@@ -64,18 +52,11 @@
     text-overflow: ellipsis;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
-<<<<<<< HEAD
-.ranking-podio_texto_topo .ranking-podio_xp {
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--color-primary);
-=======
 
 .ranking-podio_texto_topo .ranking-podio_xp {
     font-size: 0.75rem;
     font-weight: 700;
     color: var(--color-primary-dk);
->>>>>>> 99e6d546968124c87a832ddcf6f9ec4af32354ee
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
@@ -139,11 +120,7 @@
 }
 
 .ranking-card {
-<<<<<<< HEAD
-    background: var(--color-white);
-=======
     background: var(--color-surface);
->>>>>>> 99e6d546968124c87a832ddcf6f9ec4af32354ee
     border-radius: 16px;
     box-shadow: var(--shadow-md);
     margin: -4px 24px 0;
@@ -167,11 +144,7 @@
     transition: background var(--transition);
 }
 
-<<<<<<< HEAD
 .ranking-linha + .ranking-linha {
-=======
-.ranking-linha+.ranking-linha {
->>>>>>> 99e6d546968124c87a832ddcf6f9ec4af32354ee
     border-top: 1px solid rgba(43, 86, 51, 0.08);
 }
 
@@ -216,11 +189,7 @@
 .ranking-linha_nome {
     font-size: 0.92rem;
     font-weight: 500;
-<<<<<<< HEAD
-    color: #333333;
-=======
     color: var(--color-text);
->>>>>>> 99e6d546968124c87a832ddcf6f9ec4af32354ee
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -244,11 +213,7 @@
     font-family: "Oxanium", sans-serif;
     font-weight: 700;
     font-size: 0.9rem;
-<<<<<<< HEAD
-    color: #333333;
-=======
     color: var(--color-text);
->>>>>>> 99e6d546968124c87a832ddcf6f9ec4af32354ee
     white-space: nowrap;
     flex-shrink: 0;
 }
@@ -291,31 +256,19 @@
 .ranking-vazio_icone {
     width: 64px;
     height: 64px;
-<<<<<<< HEAD
-    color: var(--color-primary);
-=======
-    color: #66CC7A;
->>>>>>> 99e6d546968124c87a832ddcf6f9ec4af32354ee
+    color: #66cc7a;
     opacity: 0.4;
 }
 
 .ranking-vazio_texto {
     font-size: 1rem;
     font-weight: 500;
-<<<<<<< HEAD
-    color: #333333;
-=======
     color: var(--color-white);
->>>>>>> 99e6d546968124c87a832ddcf6f9ec4af32354ee
 }
 
 .ranking-vazio_subtexto {
     font-size: 0.87rem;
-<<<<<<< HEAD
-    color: var(--color-muted);
-=======
-    color: #85D695;
->>>>>>> 99e6d546968124c87a832ddcf6f9ec4af32354ee
+    color: #85d695;
     max-width: 340px;
     line-height: 1.55;
 }
@@ -342,17 +295,11 @@
     .ranking-podio_lugar--1 .ranking-podio_bloco {
         height: 100px;
     }
-<<<<<<< HEAD
-    .ranking-podio_lugar--2 .ranking-podio_bloco {
-        height: 76px;
-    }
-=======
 
     .ranking-podio_lugar--2 .ranking-podio_bloco {
         height: 76px;
     }
 
->>>>>>> 99e6d546968124c87a832ddcf6f9ec4af32354ee
     .ranking-podio_lugar--3 .ranking-podio_bloco {
         height: 60px;
     }
@@ -360,17 +307,11 @@
     .ranking-podio_lugar--1 .ranking-podio_pos {
         font-size: 1.8rem;
     }
-<<<<<<< HEAD
-    .ranking-podio_lugar--2 .ranking-podio_pos {
-        font-size: 1.4rem;
-    }
-=======
 
     .ranking-podio_lugar--2 .ranking-podio_pos {
         font-size: 1.4rem;
     }
 
->>>>>>> 99e6d546968124c87a832ddcf6f9ec4af32354ee
     .ranking-podio_lugar--3 .ranking-podio_pos {
         font-size: 1.2rem;
     }
@@ -402,17 +343,11 @@
     .ranking-podio_lugar--1 .ranking-podio_bloco {
         height: 88px;
     }
-<<<<<<< HEAD
-    .ranking-podio_lugar--2 .ranking-podio_bloco {
-        height: 66px;
-    }
-=======
 
     .ranking-podio_lugar--2 .ranking-podio_bloco {
         height: 66px;
     }
 
->>>>>>> 99e6d546968124c87a832ddcf6f9ec4af32354ee
     .ranking-podio_lugar--3 .ranking-podio_bloco {
         height: 52px;
     }
@@ -420,17 +355,11 @@
     .ranking-podio_lugar--1 .ranking-podio_pos {
         font-size: 1.5rem;
     }
-<<<<<<< HEAD
-    .ranking-podio_lugar--2 .ranking-podio_pos {
-        font-size: 1.2rem;
-    }
-=======
 
     .ranking-podio_lugar--2 .ranking-podio_pos {
         font-size: 1.2rem;
     }
 
->>>>>>> 99e6d546968124c87a832ddcf6f9ec4af32354ee
     .ranking-podio_lugar--3 .ranking-podio_pos {
         font-size: 1rem;
     }
@@ -495,17 +424,11 @@
     .ranking-podio_lugar--1 .ranking-podio_bloco {
         height: 76px;
     }
-<<<<<<< HEAD
-    .ranking-podio_lugar--2 .ranking-podio_bloco {
-        height: 56px;
-    }
-=======
 
     .ranking-podio_lugar--2 .ranking-podio_bloco {
         height: 56px;
     }
 
->>>>>>> 99e6d546968124c87a832ddcf6f9ec4af32354ee
     .ranking-podio_lugar--3 .ranking-podio_bloco {
         height: 44px;
     }
@@ -513,17 +436,11 @@
     .ranking-podio_lugar--1 .ranking-podio_pos {
         font-size: 1.3rem;
     }
-<<<<<<< HEAD
-    .ranking-podio_lugar--2 .ranking-podio_pos {
-        font-size: 1rem;
-    }
-=======
 
     .ranking-podio_lugar--2 .ranking-podio_pos {
         font-size: 1rem;
     }
 
->>>>>>> 99e6d546968124c87a832ddcf6f9ec4af32354ee
     .ranking-podio_lugar--3 .ranking-podio_pos {
         font-size: 0.85rem;
     }
@@ -558,8 +475,4 @@
     .ranking-card {
         margin: -4px 4px 0;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 99e6d546968124c87a832ddcf6f9ec4af32354ee

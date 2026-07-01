@@ -59,6 +59,12 @@ export async function ensureSchema() {
     console.log("Schema do banco ja existe. Pulando inicializacao.");
     return;
   }
+  if (exists) {
+    console.log("Schema ja existe. Pulando criacao.");
+    return;
+  }
+
+  console.log("Criando schema a partir de schema.sql...");
 
   console.log("Criando schema a partir de schema.sql...");
 
