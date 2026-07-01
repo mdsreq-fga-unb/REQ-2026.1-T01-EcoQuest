@@ -4,7 +4,6 @@ import { AppLayout } from "../../components/Applayout";
 const CSS_MAPA = `
 	.localizar-pev-page {
 		padding: 24px 28px 40px;
-		margin: 80px;
 		border-radius: 16px;
 		color: #f4f4f4;
 	}
