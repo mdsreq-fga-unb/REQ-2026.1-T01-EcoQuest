@@ -215,6 +215,7 @@ const CSS_MAPA = `
 
 	.localizar-manual_input-group {
 		display: flex;
+		flex-direction: column;
 		gap: 8px;
 	}
 
