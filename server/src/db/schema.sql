@@ -109,7 +109,7 @@ CREATE TABLE reward_redemption (
 	status reward_redemption_status NOT NULL DEFAULT 'ISSUED',
 	created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
 	expires_at TIMESTAMPTZ,
-	CONSTRAINT reward_redemption_points_cost_snapshot_positive CHECK (points_cost_snapshot > 0),
+	CONSTRAINT reward_redemption_points_cost_snapshot_non_negative CHECK (points_cost_snapshot >= 0),
 	CONSTRAINT reward_redemption_code_not_empty CHECK (char_length(btrim(code)) > 0)
 );
 
