@@ -3,9 +3,9 @@
   padding: 42px 32px 64px;
 }
 
-.insignias-pagina > h1 {
+.insignias-pagina>h1 {
   margin: 0 auto 34px;
-  color: #1f1f1f;
+  color: var(--color-text);
   font-family: "Poppins", sans-serif;
   font-size: 1.55rem;
   font-weight: 600;
@@ -21,18 +21,18 @@
 
 .insignias-lista {
   overflow: hidden;
-  border: 1px solid #d7d7d7;
+  border: 1px solid var(--color-border);
   border-radius: 4px;
-  background: #fffdfd;
-  box-shadow: 0 2px 8px rgba(31, 31, 31, 0.04);
+  background: var(--color-surface);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 .insignias-card {
   padding: 34px 28px 30px;
 }
 
-.insignias-card + .insignias-card {
-  border-top: 1px solid #d8d8d8;
+.insignias-card+.insignias-card {
+  border-top: 1px solid var(--color-border);
 }
 
 .insignias-card_cabecalho {
@@ -47,8 +47,8 @@
   flex: 0 0 auto;
   place-items: center;
   border-radius: 50%;
-  background: #e1e5e5;
-  color: #5a6669;
+  background: var(--color-overlay-light);
+  color: var(--color-muted);
 }
 
 .insignias-card_icone {
@@ -57,7 +57,7 @@
 }
 
 .insignias-card_icone--bloqueada {
-  color: #727b7d;
+  color: var(--color-muted);
 }
 
 .insignias-card_icone svg {
@@ -86,9 +86,9 @@
   font-weight: 600;
 }
 
-.insignias-card_titulo > span {
+.insignias-card_titulo>span {
   flex: 0 0 auto;
-  color: #343434;
+  color: var(--color-muted);
   font-size: 0.75rem;
   font-weight: 500;
 }
@@ -98,29 +98,29 @@
   margin-top: 8px;
   overflow: hidden;
   border-radius: 999px;
-  background: #e3e3e3;
+  background: var(--color-overlay-light);
 }
 
-.insignias-progresso > span {
+.insignias-progresso>span {
   display: block;
   height: 100%;
   border-radius: inherit;
-  background: #8d8d8d;
+  background: var(--color-muted);
 }
 
-.insignias-card--obtida .insignias-progresso > span {
-  background: #2b5633;
+.insignias-card--obtida .insignias-progresso>span {
+  background: var(--color-primary);
 }
 
 .insignias-card_estado {
   display: block;
   margin-top: 7px;
-  color: #707070;
+  color: var(--color-muted);
   font-size: 0.72rem;
 }
 
 .insignias-card--obtida .insignias-card_estado {
-  color: #2b5633;
+  color: var(--color-primary);
 }
 
 .insignias-card_secao {
@@ -133,8 +133,8 @@
   font-weight: 600;
 }
 
-.insignias-card_secao > p {
-  color: #292929;
+.insignias-card_secao>p {
+  color: var(--color-text);
   font-size: 0.78rem;
   line-height: 1.55;
 }
@@ -153,13 +153,13 @@
   min-height: 74px;
   padding: 12px 16px;
   border-radius: 7px;
-  background: #e3e3e3;
+  background: var(--color-overlay-light);
 }
 
 .insignias-premio_icone {
   width: 44px;
   height: 44px;
-  background: #fff;
+  background: var(--color-surface);
 }
 
 .insignias-premio_icone svg {
@@ -186,8 +186,8 @@
 .insignias-card_sem-premio {
   padding: 16px;
   border-radius: 7px;
-  background: #ededed;
-  color: #626262;
+  background: var(--color-overlay-light);
+  color: var(--color-muted);
 }
 
 .insignias-vazio {
@@ -196,15 +196,15 @@
   gap: 4px;
   margin-bottom: 18px;
   padding: 16px 20px;
-  border: 1px solid #d7d7d7;
+  border: 1px solid var(--color-border);
   border-radius: 7px;
-  background: #fff;
-  color: #444;
+  background: var(--color-surface);
+  color: var(--color-muted);
   font-size: 0.8rem;
 }
 
 .insignias-vazio strong {
-  color: #1f1f1f;
+  color: var(--color-text);
   font-size: 0.9rem;
 }
 
@@ -215,9 +215,9 @@
   align-items: center;
   justify-content: center;
   padding: 48px 24px;
-  border: 1px solid #d7d7d7;
+  border: 1px solid var(--color-border);
   border-radius: 7px;
-  background: #fff;
+  background: var(--color-surface);
   text-align: center;
 }
 
@@ -229,7 +229,7 @@
 .insignias-feedback p {
   max-width: 430px;
   margin-top: 8px;
-  color: #626262;
+  color: var(--color-muted);
   font-size: 0.82rem;
 }
 
@@ -237,8 +237,8 @@
   margin-top: 22px;
   padding: 10px 18px;
   border-radius: 7px;
-  background: #2b5633;
-  color: #fff;
+  background: var(--color-primary);
+  color: var(--color-text);
   font-size: 0.82rem;
   font-weight: 600;
   text-decoration: none;
@@ -246,7 +246,7 @@
 
 .insignias-feedback_acao:hover,
 .insignias-feedback_acao:focus-visible {
-  background: #1e3d24;
+  background: var(--color-primary-dk);
 }
 
 @media (max-width: 1024px) {
@@ -254,7 +254,7 @@
     padding: 26px 34px 54px;
   }
 
-  .insignias-pagina > h1 {
+  .insignias-pagina>h1 {
     margin-bottom: 22px;
     font-size: 1.35rem;
   }
@@ -269,7 +269,7 @@
     padding: 18px 14px 40px;
   }
 
-  .insignias-pagina > h1 {
+  .insignias-pagina>h1 {
     margin-bottom: 18px;
     font-size: 1.05rem;
   }
@@ -296,7 +296,7 @@
     font-size: 0.86rem;
   }
 
-  .insignias-card_titulo > span {
+  .insignias-card_titulo>span {
     font-size: 0.64rem;
   }
 
@@ -308,7 +308,7 @@
     font-size: 0.78rem;
   }
 
-  .insignias-card_secao > p {
+  .insignias-card_secao>p {
     font-size: 0.68rem;
   }
 
