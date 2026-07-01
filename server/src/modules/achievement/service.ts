@@ -258,13 +258,20 @@ export async function buscarVitrinePorUsuario(
 				const estado: EstadoConquista =
 					progresso !== null && progresso >= 100 ? "obtida" : "bloqueada";
 
+				// Só exibe código do cupom se o critério estiver cumprido AGORA
+				const premios = parsePremios(row.premios).map((p) => ({
+					...p,
+					codigoCupom:
+						progresso !== null && progresso >= 100 ? p.codigoCupom : null,
+				}));
+
 				return {
 					id: Number(row.id),
 					nome: String(row.nome),
 					criterio: obterTextoCriterio(row.criteria, String(row.descricao)),
 					progresso,
 					estado,
-					premios: parsePremios(row.premios),
+					premios,
 				};
 			}),
 			fonte: "banco",

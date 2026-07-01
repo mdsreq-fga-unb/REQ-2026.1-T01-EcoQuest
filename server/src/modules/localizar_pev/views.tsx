@@ -26,7 +26,7 @@ const CSS_MAPA = `
 	}
 
 	#mapa-pev {
-		height: 520px;
+		height: 66.67vh;
 		width: 100%;
 		border-radius: 12px;
 		overflow: hidden;
@@ -63,11 +63,11 @@ const CSS_MAPA = `
 
 	.search-pev-input {
 		width: 100%;
-		padding: 12px 16px 12px 44px;
+		padding: 12px 44px 12px 16px;
 		border: 2px solid rgba(93,216,121,0.3);
-		border-radius: 12px;
-		background: #2a2a2a;
-		color: #f4f4f4;
+		border-radius: 2rem;
+		background: #fffffc;
+		color: rgb(43, 86, 51, 0.31);
 		font-family: 'Poppins', sans-serif;
 		font-size: 0.95rem;
 		outline: none;
@@ -79,11 +79,17 @@ const CSS_MAPA = `
 
 	.search-pev-icone {
 		position: absolute;
-		left: 14px;
+		right: 1.33rem;
 		top: 50%;
 		transform: translateY(-50%);
 		font-size: 1.1rem;
 		pointer-events: none;
+
+		svg {
+			margin-top: 0.5rem;
+			width: 2rem;
+			height: 2rem;
+		}
 	}
 
 	.search-pev-lista {
@@ -153,14 +159,31 @@ export function MapaView({ nomeUsuario }: { nomeUsuario: string }) {
 					<h1>Encontre um Ponto de Entrega Voluntária perto de você!</h1>
 				</div>
 				<div class="search-pev-wrap">
-					<span class="search-pev-icone">🔍</span>
 					<input
 						id="search-pev-input"
 						class="search-pev-input"
 						type="text"
-						placeholder="Pesquisar por cidade ou nome do PEV…"
+						placeholder="Pesquisar por cidade ou nome do PEV..."
 						autocomplete="off"
 					/>
+					<span class="search-pev-icone">
+						<svg
+							width="800px"
+							height="800px"
+							viewBox="0 0 24 24"
+							fill="none"
+							xmlns="http://www.w3.org/2000/svg"
+						>
+							<title>Ícone de lupa</title>
+							<path
+								d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z"
+								stroke="#2b5633"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+							/>
+						</svg>
+					</span>
 					<div id="search-pev-lista" class="search-pev-lista"></div>
 				</div>
 				<div id="mapa-pev" />
