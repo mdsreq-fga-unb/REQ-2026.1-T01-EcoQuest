@@ -52,29 +52,6 @@ export class ErroSimulacaoDescarte extends Error {
 
 export const CATEGORIAS_SIMULACAO: CategoriaSimulacao[] = [
 	{
-		id: "residuos-eletronicos",
-		titulo: "Resíduos eletrônicos",
-		itens: [
-			{ chave: "bateria_laptop", nome: "Bateria de laptop", pesoUnitarioKg: 0.45 },
-			{ chave: "bateria_prova_falhas", nome: "Bateria à prova de falhas", pesoUnitarioKg: 1.2 },
-			{ chave: "cabos_alimentacao", nome: "Cabos de alimentação", pesoUnitarioKg: 0.18 },
-			{ chave: "cabos_forca", nome: "Cabos de força", pesoUnitarioKg: 0.22 },
-			{ chave: "carregadores", nome: "Carregadores", pesoUnitarioKg: 0.14 },
-			{ chave: "adaptadores", nome: "Adaptadores", pesoUnitarioKg: 0.08 },
-		],
-	},
-	{
-		id: "aparelhos-telefonicos",
-		titulo: "Aparelhos telefônicos",
-		itens: [
-			{ chave: "aparelho_celular", nome: "Aparelho celular", pesoUnitarioKg: 0.2 },
-			{ chave: "smartphone", nome: "Smartphone", pesoUnitarioKg: 0.19 },
-			{ chave: "telefone_sem_fio", nome: "Telefone sem fio", pesoUnitarioKg: 0.36 },
-			{ chave: "telefone_com_fio", nome: "Telefone com fio", pesoUnitarioKg: 0.7 },
-			{ chave: "fax", nome: "Fax", pesoUnitarioKg: 6.2 },
-		],
-	},
-	{
 		id: "equipamentos-informatica",
 		titulo: "Equipamentos de Informática",
 		itens: [
@@ -93,6 +70,55 @@ export const CATEGORIAS_SIMULACAO: CategoriaSimulacao[] = [
 			{ chave: "estabilizador", nome: "Estabilizador", pesoUnitarioKg: 2.9 },
 			{ chave: "tablet", nome: "Tablet", pesoUnitarioKg: 0.45 },
 			{ chave: "no_break", nome: "No-break", pesoUnitarioKg: 8.7 },
+		],
+	},
+	{
+		id: "televisores",
+		titulo: "Televisores",
+		itens: [
+			{ chave: "tv_tubo", nome: "Televisão de tubo de imagem", pesoUnitarioKg: 15 },
+			{ chave: "tv_led", nome: "Televisão de LED", pesoUnitarioKg: 8 },
+			{ chave: "tv_lcd", nome: "Televisão de LCD", pesoUnitarioKg: 7 },
+			{ chave: "tv_plasma", nome: "Televisão de Plasma", pesoUnitarioKg: 12 },
+		],
+	},
+	{
+		id: "equipamentos-eletronicos",
+		titulo: "Equipamentos eletrônicos",
+		itens: [
+			{ chave: "video_cassete", nome: "Vídeo cassete", pesoUnitarioKg: 3.5 },
+			{ chave: "dvd_player", nome: "DVD player", pesoUnitarioKg: 1.5 },
+			{ chave: "aparelho_som", nome: "Aparelho de som", pesoUnitarioKg: 4.5 },
+			{ chave: "controle_remoto", nome: "Controle remoto", pesoUnitarioKg: 0.08 },
+			{ chave: "forno_microondas", nome: "Forno microondas", pesoUnitarioKg: 12 },
+			{ chave: "secador_cabelo", nome: "Secador de cabelo", pesoUnitarioKg: 0.6 },
+			{ chave: "prancha_cabelo", nome: "Prancha de cabelo", pesoUnitarioKg: 0.3 },
+		],
+	},
+	{
+		id: "aparelhos-telefonicos",
+		titulo: "Aparelhos telefônicos",
+		itens: [
+			{ chave: "aparelho_celular", nome: "Aparelho celular", pesoUnitarioKg: 0.2 },
+			{ chave: "acessorios", nome: "Acessórios", pesoUnitarioKg: 0.05 },
+			{ chave: "smartphone", nome: "Smartphone", pesoUnitarioKg: 0.19 },
+			{ chave: "telefone_sem_fio", nome: "Aparelho telefônico sem fio", pesoUnitarioKg: 0.36 },
+			{ chave: "telefone_com_fio", nome: "Aparelho telefônico com fio", pesoUnitarioKg: 0.7 },
+			{ chave: "fax", nome: "Fax", pesoUnitarioKg: 6.2 },
+			{ chave: "secretaria_eletronica", nome: "Secretária eletrônica", pesoUnitarioKg: 0.8 },
+		],
+	},
+	{
+		id: "residuos-eletronicos",
+		titulo: "Resíduos eletrônicos",
+		itens: [
+			{ chave: "bateria_notebook", nome: "Baterias de notebooks", pesoUnitarioKg: 0.45 },
+			{ chave: "bateria_no_break", nome: "Baterias de no-breaks", pesoUnitarioKg: 1.2 },
+			{ chave: "chapa_raio_x", nome: "Chapas de raio X", pesoUnitarioKg: 0.15 },
+			{ chave: "cabos_forca", nome: "Cabos de força", pesoUnitarioKg: 0.22 },
+			{ chave: "cabos_geral", nome: "Cabos", pesoUnitarioKg: 0.18 },
+			{ chave: "carregadores", nome: "Carregadores", pesoUnitarioKg: 0.14 },
+			{ chave: "adaptadores", nome: "Adaptadores", pesoUnitarioKg: 0.08 },
 		],
 	},
 ];

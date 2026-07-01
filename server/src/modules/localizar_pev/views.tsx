@@ -228,29 +228,6 @@ interface CategoriaProdutos {
 
 const PRODUTOS_ACEITOS: CategoriaProdutos[] = [
 	{
-		id: "residuos-eletronicos",
-		titulo: "Resíduos eletrônicos",
-		itens: [
-			{ chave: "bateria_laptop", nome: "Bateria de laptop" },
-			{ chave: "bateria_prova_falhas", nome: "Bateria à prova de falhas" },
-			{ chave: "cabos_alimentacao", nome: "Cabos de alimentação" },
-			{ chave: "cabos_forca", nome: "Cabos de força" },
-			{ chave: "carregadores", nome: "Carregadores" },
-			{ chave: "adaptadores", nome: "Adaptadores" },
-		],
-	},
-	{
-		id: "aparelhos-telefonicos",
-		titulo: "Aparelhos telefônicos",
-		itens: [
-			{ chave: "aparelho_celular", nome: "Aparelho celular" },
-			{ chave: "smartphone", nome: "Smartphone" },
-			{ chave: "telefone_sem_fio", nome: "Telefone sem fio" },
-			{ chave: "telefone_com_fio", nome: "Telefone com fio" },
-			{ chave: "fax", nome: "Fax" },
-		],
-	},
-	{
 		id: "equipamentos-informatica",
 		titulo: "Equipamentos de Informática",
 		itens: [
@@ -269,6 +246,55 @@ const PRODUTOS_ACEITOS: CategoriaProdutos[] = [
 			{ chave: "estabilizador", nome: "Estabilizador" },
 			{ chave: "tablet", nome: "Tablet" },
 			{ chave: "no_break", nome: "No-break" },
+		],
+	},
+	{
+		id: "televisores",
+		titulo: "Televisores",
+		itens: [
+			{ chave: "tv_tubo", nome: "Televisão de tubo de imagem" },
+			{ chave: "tv_led", nome: "Televisão de LED" },
+			{ chave: "tv_lcd", nome: "Televisão de LCD" },
+			{ chave: "tv_plasma", nome: "Televisão de Plasma" },
+		],
+	},
+	{
+		id: "equipamentos-eletronicos",
+		titulo: "Equipamentos eletrônicos",
+		itens: [
+			{ chave: "video_cassete", nome: "Vídeo cassete" },
+			{ chave: "dvd_player", nome: "DVD player" },
+			{ chave: "aparelho_som", nome: "Aparelho de som" },
+			{ chave: "controle_remoto", nome: "Controle remoto" },
+			{ chave: "forno_microondas", nome: "Forno microondas" },
+			{ chave: "secador_cabelo", nome: "Secador de cabelo" },
+			{ chave: "prancha_cabelo", nome: "Prancha de cabelo" },
+		],
+	},
+	{
+		id: "aparelhos-telefonicos",
+		titulo: "Aparelhos telefônicos",
+		itens: [
+			{ chave: "aparelho_celular", nome: "Aparelho celular" },
+			{ chave: "acessorios", nome: "Acessórios" },
+			{ chave: "smartphone", nome: "Smartphone" },
+			{ chave: "telefone_sem_fio", nome: "Aparelho telefônico sem fio" },
+			{ chave: "telefone_com_fio", nome: "Aparelho telefônico com fio" },
+			{ chave: "fax", nome: "Fax" },
+			{ chave: "secretaria_eletronica", nome: "Secretária eletrônica" },
+		],
+	},
+	{
+		id: "residuos-eletronicos",
+		titulo: "Resíduos eletrônicos",
+		itens: [
+			{ chave: "bateria_notebook", nome: "Baterias de notebooks" },
+			{ chave: "bateria_no_break", nome: "Baterias de no-breaks" },
+			{ chave: "chapa_raio_x", nome: "Chapas de raio X" },
+			{ chave: "cabos_forca", nome: "Cabos de força" },
+			{ chave: "cabos_geral", nome: "Cabos" },
+			{ chave: "carregadores", nome: "Carregadores" },
+			{ chave: "adaptadores", nome: "Adaptadores" },
 		],
 	},
 ];
@@ -316,7 +342,7 @@ function IconeCaixa() {
 
 function IconeCategoriaTag({ id }: { id: string }) {
 	switch (id) {
-		case "residuos-eletronicos":
+		case "equipamentos-informatica":
 			return (
 				<svg
 					width="16"
@@ -328,11 +354,47 @@ function IconeCategoriaTag({ id }: { id: string }) {
 					stroke-linecap="round"
 					stroke-linejoin="round"
 				>
-					<title>Resíduos eletrônicos</title>
-					<rect x="2" y="7" width="20" height="10" rx="2" />
-					<line x1="22" y1="10" x2="22" y2="14" />
-					<line x1="6" y1="12" x2="10" y2="12" />
-					<line x1="8" y1="10" x2="8" y2="14" />
+					<title>Equipamentos de Informática</title>
+					<rect x="2" y="3" width="20" height="14" rx="2" />
+					<line x1="8" y1="21" x2="16" y2="21" />
+					<line x1="12" y1="17" x2="12" y2="21" />
+				</svg>
+			);
+		case "televisores":
+			return (
+				<svg
+					width="16"
+					height="16"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="#8bc99b"
+					stroke-width="1.8"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<title>Televisores</title>
+					<rect x="2" y="4" width="20" height="14" rx="2" />
+					<line x1="10" y1="18" x2="8" y2="22" />
+					<line x1="14" y1="18" x2="16" y2="22" />
+					<line x1="12" y1="14" x2="12" y2="18" />
+				</svg>
+			);
+		case "equipamentos-eletronicos":
+			return (
+				<svg
+					width="16"
+					height="16"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="#8bc99b"
+					stroke-width="1.8"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<title>Equipamentos eletrônicos</title>
+					<circle cx="12" cy="12" r="7" />
+					<path d="M12 9v3l2 2" />
+					<path d="M5 5L3 3M19 5l2-2" />
 				</svg>
 			);
 		case "aparelhos-telefonicos":
@@ -352,7 +414,7 @@ function IconeCategoriaTag({ id }: { id: string }) {
 					<line x1="11" y1="18" x2="13" y2="18" />
 				</svg>
 			);
-		case "equipamentos-informatica":
+		case "residuos-eletronicos":
 			return (
 				<svg
 					width="16"
@@ -364,10 +426,11 @@ function IconeCategoriaTag({ id }: { id: string }) {
 					stroke-linecap="round"
 					stroke-linejoin="round"
 				>
-					<title>Equipamentos de Informática</title>
-					<rect x="2" y="3" width="20" height="14" rx="2" />
-					<line x1="8" y1="21" x2="16" y2="21" />
-					<line x1="12" y1="17" x2="12" y2="21" />
+					<title>Resíduos eletrônicos</title>
+					<rect x="2" y="7" width="20" height="10" rx="2" />
+					<line x1="22" y1="10" x2="22" y2="14" />
+					<line x1="6" y1="12" x2="10" y2="12" />
+					<line x1="8" y1="10" x2="8" y2="14" />
 				</svg>
 			);
 		default:
@@ -429,6 +492,7 @@ export function MapaView({ nomeUsuario }: { nomeUsuario: string }) {
 				<div class="localizar-pev-header">
 					<h1>Encontre um Ponto de Entrega Voluntária perto de você!</h1>
 				</div>
+				<SecaoProdutosAceitos />
 				<div class="search-pev-wrap">
 					<input
 						id="search-pev-input"
@@ -457,7 +521,6 @@ export function MapaView({ nomeUsuario }: { nomeUsuario: string }) {
 					</span>
 					<div id="search-pev-lista" class="search-pev-lista"></div>
 				</div>
-				<SecaoProdutosAceitos />
 				<div id="mapa-pev" />
 			</main>
 

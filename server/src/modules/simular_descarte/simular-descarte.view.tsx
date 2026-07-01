@@ -126,18 +126,57 @@ function IconeOutros() {
 	);
 }
 
-type TipoIcone = "pilha" | "bateria" | "telefone" | "computador" | "outros";
+function IconeTv() {
+	return (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			stroke-width="1.8"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			aria-hidden="true"
+			class="simular-cat_icone-svg"
+		>
+			<rect x="2" y="4" width="20" height="14" rx="2" />
+			<line x1="10" y1="18" x2="8" y2="22" />
+			<line x1="14" y1="18" x2="16" y2="22" />
+			<line x1="12" y1="14" x2="12" y2="18" />
+		</svg>
+	);
+}
+
+function IconeEletro() {
+	return (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			stroke-width="1.8"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			aria-hidden="true"
+			class="simular-cat_icone-svg"
+		>
+			<circle cx="12" cy="12" r="7" />
+			<path d="M12 9v3l2 2" />
+			<path d="M5 5L3 3M19 5l2-2" />
+		</svg>
+	);
+}
+
+type TipoIcone =
+	| "pilha"
+	| "bateria"
+	| "telefone"
+	| "computador"
+	| "tv"
+	| "eletro"
+	| "outros";
 
 const CHAVE_PARA_TIPO: Record<string, TipoIcone> = {
-	bateria_laptop: "bateria",
-	bateria_prova_falhas: "bateria",
-	aparelho_celular: "telefone",
-	smartphone: "telefone",
-	telefone_sem_fio: "telefone",
-	telefone_com_fio: "telefone",
-	fax: "telefone",
-	carregadores: "telefone",
-	adaptadores: "telefone",
 	microcomputador: "computador",
 	monitor_tubo: "computador",
 	monitor_lcd: "computador",
@@ -151,8 +190,31 @@ const CHAVE_PARA_TIPO: Record<string, TipoIcone> = {
 	estabilizador: "computador",
 	tablet: "computador",
 	no_break: "computador",
-	cabos_alimentacao: "outros",
+	tv_tubo: "tv",
+	tv_led: "tv",
+	tv_lcd: "tv",
+	tv_plasma: "tv",
+	video_cassete: "eletro",
+	dvd_player: "eletro",
+	aparelho_som: "eletro",
+	controle_remoto: "eletro",
+	forno_microondas: "eletro",
+	secador_cabelo: "eletro",
+	prancha_cabelo: "eletro",
+	aparelho_celular: "telefone",
+	acessorios: "telefone",
+	smartphone: "telefone",
+	telefone_sem_fio: "telefone",
+	telefone_com_fio: "telefone",
+	fax: "telefone",
+	secretaria_eletronica: "telefone",
+	carregadores: "telefone",
+	adaptadores: "telefone",
+	bateria_notebook: "bateria",
+	bateria_no_break: "bateria",
+	chapa_raio_x: "outros",
 	cabos_forca: "outros",
+	cabos_geral: "outros",
 	modem: "outros",
 	roteador: "outros",
 };
@@ -162,6 +224,8 @@ const ROTULO_TIPO: Record<TipoIcone, string> = {
 	bateria: "Baterias",
 	telefone: "Telefones e acessórios",
 	computador: "Computadores e acessórios",
+	tv: "Televisores",
+	eletro: "Equipamentos eletrônicos",
 	outros: "Outros",
 };
 
@@ -170,10 +234,19 @@ const ICONE_TIPO: Record<TipoIcone, () => JSX.Element> = {
 	bateria: IconeBateria,
 	telefone: IconeTelefone,
 	computador: IconeComputador,
+	tv: IconeTv,
+	eletro: IconeEletro,
 	outros: IconeOutros,
 };
 
-const ORDEM_TIPO: TipoIcone[] = ["bateria", "telefone", "computador", "outros"];
+const ORDEM_TIPO: TipoIcone[] = [
+	"bateria",
+	"telefone",
+	"computador",
+	"tv",
+	"eletro",
+	"outros",
+];
 
 function CardItem({
 	nome,
