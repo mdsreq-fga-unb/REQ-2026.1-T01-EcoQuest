@@ -150,12 +150,12 @@ body {
 .extrato-vazio_texto {
 	font-size: 1rem;
 	font-weight: 500;
-	color: var(--color-white);
+	color: var(--color-primary-lighter);
 }
 
 .extrato-vazio_subtexto {
 	font-size: .87rem;
-	color: #85D695;
+	color: var(--color-primary-lighter);
 	max-width: 340px;
 	line-height: 1.55;
 }
@@ -172,6 +172,8 @@ body {
 	text-decoration: none;
 	border: none;
 	transition: background var(--transition);
+	outline: none;
+	border: none;
 }
 
 .extrato-vazio_cta:hover,
