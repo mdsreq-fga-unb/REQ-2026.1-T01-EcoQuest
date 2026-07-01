@@ -55,6 +55,86 @@ const CSS_MAPA = `
 		font-size: 0.8rem;
 	}
 
+	/* ── Produtos Aceitos ── */
+	.produtos-aceitos {
+		margin-bottom: 24px;
+		padding: 20px 24px 12px;
+		background: rgba(255, 255, 255, 0.04);
+		border: 1px solid rgba(93, 216, 121, 0.15);
+		border-radius: 14px;
+	}
+
+	.produtos-aceitos_titulo {
+		font-family: 'Oxanium', sans-serif;
+		font-size: 1.1rem;
+		color: #d0eed6;
+		margin: 0 0 4px;
+		display: flex;
+		align-items: center;
+		gap: 8px;
+	}
+
+	.produtos-aceitos_titulo svg {
+		flex-shrink: 0;
+	}
+
+	.produtos-aceitos_subtitulo {
+		color: #ababab;
+		font-size: 0.82rem;
+		margin: 0 0 16px;
+	}
+
+	.produtos-aceitos_categoria {
+		margin-bottom: 14px;
+	}
+
+	.produtos-aceitos_categoria:last-child {
+		margin-bottom: 0;
+	}
+
+	.produtos-aceitos_cat-titulo {
+		font-family: 'Oxanium', sans-serif;
+		font-size: 0.85rem;
+		color: #8bc99b;
+		margin: 0 0 6px;
+		display: flex;
+		align-items: center;
+		gap: 6px;
+	}
+
+	.produtos-aceitos_itens {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 6px 10px;
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.produtos-aceitos_item {
+		display: inline-flex;
+		align-items: center;
+		gap: 4px;
+		font-size: 0.82rem;
+		color: #d4d4d4;
+		background: rgba(93, 216, 121, 0.08);
+		padding: 3px 10px 3px 6px;
+		border-radius: 20px;
+		border: 1px solid rgba(93, 216, 121, 0.12);
+		transition: background 0.15s ease, border-color 0.15s ease;
+	}
+
+	.produtos-aceitos_item:hover {
+		background: rgba(93, 216, 121, 0.16);
+		border-color: rgba(93, 216, 121, 0.3);
+	}
+
+	.produtos-aceitos_item .check-icone {
+		width: 14px;
+		height: 14px;
+		flex-shrink: 0;
+	}
+
 	/* ── Search ── */
 	.search-pev-wrap {
 		position: relative;
@@ -135,6 +215,197 @@ const CSS_MAPA = `
 	}
 `;
 
+interface ProdutoAceito {
+	chave: string;
+	nome: string;
+}
+
+interface CategoriaProdutos {
+	id: string;
+	titulo: string;
+	itens: ProdutoAceito[];
+}
+
+const PRODUTOS_ACEITOS: CategoriaProdutos[] = [
+	{
+		id: "residuos-eletronicos",
+		titulo: "Resíduos eletrônicos",
+		itens: [
+			{ chave: "bateria_laptop", nome: "Bateria de laptop" },
+			{ chave: "bateria_prova_falhas", nome: "Bateria à prova de falhas" },
+			{ chave: "cabos_alimentacao", nome: "Cabos de alimentação" },
+			{ chave: "cabos_forca", nome: "Cabos de força" },
+			{ chave: "carregadores", nome: "Carregadores" },
+			{ chave: "adaptadores", nome: "Adaptadores" },
+		],
+	},
+	{
+		id: "aparelhos-telefonicos",
+		titulo: "Aparelhos telefônicos",
+		itens: [
+			{ chave: "aparelho_celular", nome: "Aparelho celular" },
+			{ chave: "smartphone", nome: "Smartphone" },
+			{ chave: "telefone_sem_fio", nome: "Telefone sem fio" },
+			{ chave: "telefone_com_fio", nome: "Telefone com fio" },
+			{ chave: "fax", nome: "Fax" },
+		],
+	},
+	{
+		id: "equipamentos-informatica",
+		titulo: "Equipamentos de Informática",
+		itens: [
+			{ chave: "microcomputador", nome: "Microcomputador" },
+			{ chave: "monitor_tubo", nome: "Monitor (Tubo)" },
+			{ chave: "monitor_lcd", nome: "Monitor (LCD)" },
+			{ chave: "monitor_led", nome: "Monitor (LED)" },
+			{ chave: "monitor_plasma", nome: "Monitor (Plasma)" },
+			{ chave: "notebook", nome: "Notebook" },
+			{ chave: "servidor", nome: "Servidor" },
+			{ chave: "teclado", nome: "Teclado" },
+			{ chave: "mouse", nome: "Mouse" },
+			{ chave: "modem", nome: "Modem" },
+			{ chave: "roteador", nome: "Roteador" },
+			{ chave: "impressora", nome: "Impressora" },
+			{ chave: "estabilizador", nome: "Estabilizador" },
+			{ chave: "tablet", nome: "Tablet" },
+			{ chave: "no_break", nome: "No-break" },
+		],
+	},
+];
+
+function IconeCheckVerde() {
+	return (
+		<svg
+			class="check-icone"
+			viewBox="0 0 24 24"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<title>Produto aceito</title>
+			<circle cx="12" cy="12" r="10" fill="#2e7d32" />
+			<path
+				d="M8 12l3 3 5-5"
+				stroke="#fff"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+			/>
+		</svg>
+	);
+}
+
+function IconeCaixa() {
+	return (
+		<svg
+			width="20"
+			height="20"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="#5dd879"
+			stroke-width="1.8"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+		>
+			<title>Produtos</title>
+			<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+			<polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+			<line x1="12" y1="22.08" x2="12" y2="12" />
+		</svg>
+	);
+}
+
+function IconeCategoriaTag({ id }: { id: string }) {
+	switch (id) {
+		case "residuos-eletronicos":
+			return (
+				<svg
+					width="16"
+					height="16"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="#8bc99b"
+					stroke-width="1.8"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<title>Resíduos eletrônicos</title>
+					<rect x="2" y="7" width="20" height="10" rx="2" />
+					<line x1="22" y1="10" x2="22" y2="14" />
+					<line x1="6" y1="12" x2="10" y2="12" />
+					<line x1="8" y1="10" x2="8" y2="14" />
+				</svg>
+			);
+		case "aparelhos-telefonicos":
+			return (
+				<svg
+					width="16"
+					height="16"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="#8bc99b"
+					stroke-width="1.8"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<title>Aparelhos telefônicos</title>
+					<rect x="7" y="2" width="10" height="20" rx="2" />
+					<line x1="11" y1="18" x2="13" y2="18" />
+				</svg>
+			);
+		case "equipamentos-informatica":
+			return (
+				<svg
+					width="16"
+					height="16"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="#8bc99b"
+					stroke-width="1.8"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				>
+					<title>Equipamentos de Informática</title>
+					<rect x="2" y="3" width="20" height="14" rx="2" />
+					<line x1="8" y1="21" x2="16" y2="21" />
+					<line x1="12" y1="17" x2="12" y2="21" />
+				</svg>
+			);
+		default:
+			return null;
+	}
+}
+
+function SecaoProdutosAceitos() {
+	return (
+		<section class="produtos-aceitos" aria-label="Produtos aceitos nos PEVs">
+			<h2 class="produtos-aceitos_titulo">
+				<IconeCaixa />
+				Itens aceitos
+			</h2>
+			<p class="produtos-aceitos_subtitulo">
+				Confira os itens que você pode descartar nos Pontos de Entrega
+				Voluntária
+			</p>
+			{PRODUTOS_ACEITOS.map((cat) => (
+				<div class="produtos-aceitos_categoria" key={cat.id}>
+					<h3 class="produtos-aceitos_cat-titulo">
+						<IconeCategoriaTag id={cat.id} />
+						{cat.titulo}
+					</h3>
+					<ul class="produtos-aceitos_itens">
+						{cat.itens.map((item) => (
+							<li class="produtos-aceitos_item" key={item.chave}>
+								<IconeCheckVerde />
+								{item.nome}
+							</li>
+						))}
+					</ul>
+				</div>
+			))}
+		</section>
+	);
+}
+
 export function MapaView({ nomeUsuario }: { nomeUsuario: string }) {
 	return (
 		<AppLayout
@@ -186,6 +457,7 @@ export function MapaView({ nomeUsuario }: { nomeUsuario: string }) {
 					</span>
 					<div id="search-pev-lista" class="search-pev-lista"></div>
 				</div>
+				<SecaoProdutosAceitos />
 				<div id="mapa-pev" />
 			</main>
 
