@@ -135,6 +135,156 @@ const CSS_MAPA = `
 		flex-shrink: 0;
 	}
 
+	/* ── Geolocalização ── */
+	.localizar-pev-status {
+		margin-bottom: 14px;
+		padding: 12px 16px;
+		border-radius: 10px;
+		font-size: 0.85rem;
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
+
+	.localizar-pev-status--carregando {
+		background: rgba(93, 216, 121, 0.08);
+		border: 1px solid rgba(93, 216, 121, 0.2);
+		color: #ababab;
+	}
+
+	.localizar-pev-status--erro {
+		background: rgba(255, 152, 0, 0.08);
+		border: 1px solid rgba(255, 152, 0, 0.25);
+		color: #ffb74d;
+	}
+
+	.localizar-pev-status--sucesso {
+		background: rgba(93, 216, 121, 0.06);
+		border: 1px solid rgba(93, 216, 121, 0.12);
+		color: #a5d6a7;
+		font-size: 0.8rem;
+	}
+
+	.localizar-pev-status-spinner {
+		width: 18px;
+		height: 18px;
+		border: 2px solid rgba(93, 216, 121, 0.25);
+		border-top-color: #5dd879;
+		border-radius: 50%;
+		animation: giro 0.8s linear infinite;
+		flex-shrink: 0;
+	}
+
+	@keyframes giro { to { transform: rotate(360deg); } }
+
+	.btn-tentar-novamente {
+		background: none;
+		border: 1px solid rgba(93, 216, 121, 0.3);
+		color: #5dd879;
+		padding: 6px 14px;
+		border-radius: 2rem;
+		font-family: 'Poppins', sans-serif;
+		font-size: 0.8rem;
+		cursor: pointer;
+		transition: background 0.15s ease;
+		margin-left: auto;
+		flex-shrink: 0;
+	}
+
+	.btn-tentar-novamente:hover {
+		background: rgba(93, 216, 121, 0.1);
+	}
+
+	.localizar-manual {
+		margin-bottom: 14px;
+		padding: 16px 20px;
+		background: rgba(255, 255, 255, 0.04);
+		border: 1px solid rgba(93, 216, 121, 0.15);
+		border-radius: 12px;
+		display: none;
+	}
+
+	.localizar-manual.visivel { display: block; }
+
+	.localizar-manual_titulo {
+		font-family: 'Oxanium', sans-serif;
+		font-size: 0.9rem;
+		color: #d0eed6;
+		margin: 0 0 8px;
+	}
+
+	.localizar-manual_input-group {
+		display: flex;
+		gap: 8px;
+	}
+
+	.localizar-manual_input {
+		flex: 1;
+		padding: 10px 14px;
+		border: 2px solid rgba(93, 216, 121, 0.3);
+		border-radius: 2rem;
+		background: #fffffc;
+		color: #1f1f1f;
+		font-family: 'Poppins', sans-serif;
+		font-size: 0.9rem;
+		outline: none;
+		transition: border-color 0.2s ease;
+		box-sizing: border-box;
+	}
+
+	.localizar-manual_input::placeholder { color: #777; }
+	.localizar-manual_input:focus { border-color: #5dd879; }
+
+	.localizar-manual_btn {
+		padding: 10px 20px;
+		border: none;
+		border-radius: 2rem;
+		background: #2e7d32;
+		color: #fff;
+		font-family: 'Poppins', sans-serif;
+		font-size: 0.9rem;
+		font-weight: 600;
+		cursor: pointer;
+		transition: background 0.15s ease;
+		white-space: nowrap;
+	}
+
+	.localizar-manual_btn:hover { background: #1b5e20; }
+
+	.localizar-manual_btn:disabled {
+		background: #555;
+		cursor: not-allowed;
+	}
+
+	.marcador-usuario {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.marcador-usuario-dot {
+		width: 16px;
+		height: 16px;
+		background: #3b82f6;
+		border: 3px solid #fff;
+		border-radius: 50%;
+		box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4), 0 2px 6px rgba(0,0,0,0.3);
+	}
+
+	.marcador-usuario-pulse {
+		position: absolute;
+		width: 32px;
+		height: 32px;
+		background: rgba(59, 130, 246, 0.2);
+		border-radius: 50%;
+		animation: pulsar 2s infinite;
+	}
+
+	@keyframes pulsar {
+		0% { transform: scale(1); opacity: 0.6; }
+		100% { transform: scale(2.5); opacity: 0; }
+	}
+
 	/* ── Search ── */
 	.search-pev-wrap {
 		position: relative;
@@ -493,6 +643,36 @@ export function MapaView({ nomeUsuario }: { nomeUsuario: string }) {
 					<h1>Encontre um Ponto de Entrega Voluntária perto de você!</h1>
 				</div>
 				<SecaoProdutosAceitos />
+
+				<div
+					id="geo-status"
+					class="localizar-pev-status localizar-pev-status--carregando"
+				>
+					<div class="localizar-pev-status-spinner"></div>
+					<span>Obtendo sua localização...</span>
+				</div>
+
+				<div id="localizar-manual" class="localizar-manual">
+					<p class="localizar-manual_titulo">
+						Informe sua localização manualmente
+					</p>
+					<div class="localizar-manual_input-group">
+						<input
+							id="localizar-manual-input"
+							class="localizar-manual_input"
+							type="text"
+							placeholder="Digite uma cidade, bairro ou endereço..."
+						/>
+						<button
+							id="localizar-manual-btn"
+							class="localizar-manual_btn"
+							type="button"
+						>
+							Buscar
+						</button>
+					</div>
+				</div>
+
 				<div class="search-pev-wrap">
 					<input
 						id="search-pev-input"
@@ -529,26 +709,79 @@ export function MapaView({ nomeUsuario }: { nomeUsuario: string }) {
 					var container = document.getElementById('mapa-pev');
 					if (!container) return;
 
-					// Verifica se Leaflet carregou
 					if (typeof L === 'undefined') {
 						container.textContent = 'Erro ao carregar o mapa.';
 						return;
 					}
 
-					// Centraliza no DF (Gama / Brasília)
-					var map = L.map('mapa-pev', {
-						center: [-15.800, -48.000],
-						zoom: 12,
-						zoomControl: true,
-						scrollWheelZoom: true,
-					});
+					// Elementos DOM
+					var geoStatus = document.getElementById('geo-status');
+					var manualBox = document.getElementById('localizar-manual');
+					var manualInput = document.getElementById('localizar-manual-input');
+					var manualBtn = document.getElementById('localizar-manual-btn');
+					var searchWrap = document.querySelector('.search-pev-wrap');
 
-					L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-						attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-						maxZoom: 19,
-					}).addTo(map);
+					// Estado
+					var map, userMarker, userLat, userLng;
+					var markerData = [];
+					var mapReady = false;
 
-					// Ícone personalizado verde
+					function fmtDist(km) {
+						if (km < 1) return Math.round(km * 1000) + ' m';
+						return km.toFixed(1).replace('.', ',') + ' km';
+					}
+
+					function exibirErro(msg, podeTentarNovamente) {
+						geoStatus.className = 'localizar-pev-status localizar-pev-status--erro';
+						geoStatus.innerHTML = '<span>' + msg + '</span>'
+							+ (podeTentarNovamente
+								? '<button class="btn-tentar-novamente" id="btn-reload">Tentar novamente</button>'
+								: '');
+						if (podeTentarNovamente) {
+							document.getElementById('btn-reload').addEventListener('click', function() {
+								window.location.reload();
+							});
+						}
+					}
+
+					function exibirSucesso(msg) {
+						geoStatus.className = 'localizar-pev-status localizar-pev-status--sucesso';
+						geoStatus.innerHTML = '<span>' + msg + '</span>';
+					}
+
+					function initMap(lat, lng) {
+						if (mapReady) return;
+
+						map = L.map('mapa-pev', {
+							center: [lat, lng],
+							zoom: 13,
+							zoomControl: true,
+							scrollWheelZoom: true,
+						});
+
+						L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+							attribution: '&copy; <a href="https://openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+							maxZoom: 19,
+						}).addTo(map);
+
+						mapReady = true;
+					}
+
+					function addUserMarker(lat, lng) {
+						if (userMarker) map.removeLayer(userMarker);
+
+						var icon = L.divIcon({
+							className: 'marcador-usuario',
+							html: '<div class="marcador-usuario-pulse"></div><div class="marcador-usuario-dot"></div>',
+							iconSize: [32, 32],
+							iconAnchor: [16, 16],
+						});
+
+						userMarker = L.marker([lat, lng], { icon: icon })
+							.addTo(map)
+							.bindPopup('<strong>Sua localização</strong>');
+					}
+
 					var iconePev = L.divIcon({
 						className: '',
 						html: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="#2e7d32" stroke="#fff" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2" stroke="#fff" stroke-width="2" fill="none"/></svg>',
@@ -557,144 +790,255 @@ export function MapaView({ nomeUsuario }: { nomeUsuario: string }) {
 						popupAnchor: [0, -34],
 					});
 
-					// Busca os PEVs cadastrados
-					fetch('/api/pins')
-						.then(function(res) { return res.json(); })
-						.then(function(pins) {
-							if (!pins || pins.length === 0) {
-								L.marker([-15.800, -48.000], { icon: iconePev })
-									.addTo(map)
-									.bindPopup('<strong>Nenhum PEV cadastrado</strong><span class="info-secundaria">Adicione pontos de coleta no banco de dados.</span>');
+					function carregarPins(lat, lng) {
+						var url = '/api/pins';
+						if (lat != null && lng != null) {
+							url += '?lat=' + lat + '&lng=' + lng + '&raio=50';
+						}
+
+						console.log('[carregarPins] URL:', url);
+
+						fetch(url)
+							.then(function(res) {
+								console.log('[carregarPins] status:', res.status);
+								if (!res.ok) {
+									return res.text().then(function(body) {
+										console.error('[carregarPins] corpo do erro:', body);
+										throw new Error('HTTP ' + res.status);
+									});
+								}
+								return res.json();
+							})
+							.then(function(pins) {
+								console.log('[carregarPins] dados recebidos:', pins);
+								if (!pins || pins.length === 0) {
+									// FA-3A: Nenhum PEV encontrado
+									geoStatus.className = 'localizar-pev-status localizar-pev-status--erro';
+									geoStatus.innerHTML = '<span>Nenhum ponto de coleta encontrado nas proximidades.</span>';
+									return;
+								}
+
+								// Converte lat/lng de string para número (PostgreSQL NUMERIC vem como string no JSON)
+								pins = pins.map(function(p) {
+									return {
+										name: p.name,
+										lat: Number(p.lat),
+										lng: Number(p.lng),
+										distanciaKm: p.distanciaKm != null ? Number(p.distanciaKm) : null,
+									};
+								});
+
+								exibirSucesso(pins.length + ' PEV' + (pins.length !== 1 ? 's' : '') + ' encontrado' + (pins.length !== 1 ? 's' : '') + ' nas proximidades');
+
+								var markers = [];
+								markerData = [];
+
+								pins.forEach(function(pin) {
+									var distHtml = '';
+									if (pin.distanciaKm != null) {
+										distHtml = '<span class="info-secundaria">Distância: ' + fmtDist(pin.distanciaKm) + '</span>';
+									}
+
+									var popupHtml = '<strong>' + pin.name + '</strong>' + distHtml;
+
+									var m = L.marker([pin.lat, pin.lng], { icon: iconePev })
+										.addTo(map)
+										.bindPopup(popupHtml);
+
+									markers.push(m);
+									markerData.push({ name: pin.name, lat: pin.lat, lng: pin.lng, marker: m });
+								});
+
+								if (pins.length > 1) {
+									var bounds = pins.map(function(p) { return [p.lat, p.lng]; });
+									map.fitBounds(bounds, { padding: [50, 50] });
+								} else {
+									map.setView([pins[0].lat, pins[0].lng], 14);
+								}
+
+								setupSearch();
+							})
+							.catch(function(err) {
+								console.error('[carregarPins] erro capturado:', err);
+								// FE-E2: Falha ao carregar PEVs
+								exibirErro('Não foi possível carregar os pontos de coleta.', true);
+							});
+					}
+
+					function setupSearch() {
+						var input = document.getElementById('search-pev-input');
+						var lista = document.getElementById('search-pev-lista');
+						if (!input || !lista) return;
+
+						function buscar(q) {
+							var termo = q.toLowerCase().trim();
+							if (!termo) { lista.classList.remove('visivel'); return; }
+
+							var resultados = markerData.filter(function(item) {
+								return item.name.toLowerCase().includes(termo);
+							});
+
+							if (resultados.length === 0) {
+								lista.innerHTML = '<div class="search-pev-sem-resultado">Nenhum PEV encontrado para "' + q + '"</div>';
+								lista.classList.add('visivel');
 								return;
 							}
 
-							var markers = [];
-							var markerData = [];
-
-							pins.forEach(function(pin) {
-								var popupHtml = '<strong>' + pin.name + '</strong>';
-								if (pin.endereco) {
-									popupHtml += '<span class="info-secundaria">' + pin.endereco + '</span>';
-								}
-
-								var m = L.marker([pin.lat, pin.lng], { icon: iconePev })
-									.addTo(map)
-									.bindPopup(popupHtml);
-
-								markers.push(m);
-								markerData.push({ name: pin.name, lat: pin.lat, lng: pin.lng, marker: m });
+							var html = '';
+							resultados.forEach(function(item) {
+								html += '<div class="search-pev-item" data-lat="' + item.lat + '" data-lng="' + item.lng + '">';
+								html += item.name;
+								html += '</div>';
 							});
+							lista.innerHTML = html;
+							lista.classList.add('visivel');
+						}
 
-							// Ajusta zoom para caber todos os pins
-							if (pins.length > 1) {
-								var bounds = pins.map(function(p) { return [p.lat, p.lng]; });
-								map.fitBounds(bounds, { padding: [50, 50] });
-							}
-
-							// ── Search ──
-							var input = document.getElementById('search-pev-input');
-							var lista = document.getElementById('search-pev-lista');
-							if (!input || !lista) return;
-
-							function extrairCidade(nome) {
-								var match = nome.match(/PEVs+(.+?)s*[—–-]/);
-								return match ? match[1].trim() : nome;
-							}
-
-							function buscar(q) {
-								var termo = q.toLowerCase().trim();
-								if (!termo) {
-									lista.classList.remove('visivel');
-									return;
-								}
-
-								var resultados = markerData.filter(function(item) {
-									return item.name.toLowerCase().includes(termo);
-								});
-
-								if (resultados.length === 0) {
-									lista.innerHTML = '<div class="search-pev-sem-resultado">Nenhum PEV encontrado para "' + q + '"</div>';
-									lista.classList.add('visivel');
-									return;
-								}
-
-								var html = '';
-								resultados.forEach(function(item) {
-									var cidade = extrairCidade(item.name);
-									html += '<div class="search-pev-item" data-lat="' + item.lat + '" data-lng="' + item.lng + '">';
-									html += item.name;
-									html += '<span class="item-cidade">' + cidade + '</span>';
-									html += '</div>';
-								});
-								lista.innerHTML = html;
-								lista.classList.add('visivel');
-							}
-
-							function irPara(lat, lng) {
-								lista.classList.remove('visivel');
-								input.value = '';
-
-								map.setView([lat, lng], 15, { animate: true });
-
-								for (var i = 0; i < markerData.length; i++) {
-									if (markerData[i].lat === lat && markerData[i].lng === lng) {
-										markerData[i].marker.openPopup();
-										break;
-									}
+						function irPara(lat, lng) {
+							lista.classList.remove('visivel');
+							input.value = '';
+							map.setView([lat, lng], 15, { animate: true });
+							for (var i = 0; i < markerData.length; i++) {
+								if (markerData[i].lat === lat && markerData[i].lng === lng) {
+									markerData[i].marker.openPopup();
+									break;
 								}
 							}
+						}
 
-							input.addEventListener('input', function() {
-								buscar(input.value);
-							});
+						input.addEventListener('input', function() { buscar(input.value); });
 
-							lista.addEventListener('click', function(ev) {
-								var item = ev.target.closest('.search-pev-item');
-								if (!item) return;
-								var lat = parseFloat(item.getAttribute('data-lat'));
-								var lng = parseFloat(item.getAttribute('data-lng'));
-								irPara(lat, lng);
-							});
-
-							document.addEventListener('click', function(ev) {
-								if (!ev.target.closest('.search-pev-wrap')) {
-									lista.classList.remove('visivel');
-								}
-							});
-
-							input.addEventListener('keydown', function(ev) {
-								var itens = lista.querySelectorAll('.search-pev-item');
-								if (itens.length === 0) return;
-
-								var atual = lista.querySelector('.search-pev-item.destaque');
-								var idx = -1;
-								if (atual) {
-									for (var i = 0; i < itens.length; i++) {
-										if (itens[i] === atual) { idx = i; break; }
-									}
-								}
-
-								if (ev.key === 'ArrowDown') {
-									ev.preventDefault();
-									var next = (idx + 1) % itens.length;
-									if (atual) atual.classList.remove('destaque');
-									itens[next].classList.add('destaque');
-								} else if (ev.key === 'ArrowUp') {
-									ev.preventDefault();
-									var prev = (idx - 1 + itens.length) % itens.length;
-									if (atual) atual.classList.remove('destaque');
-									itens[prev].classList.add('destaque');
-								} else if (ev.key === 'Enter' && atual) {
-									ev.preventDefault();
-									var lat = parseFloat(atual.getAttribute('data-lat'));
-									var lng = parseFloat(atual.getAttribute('data-lng'));
-									irPara(lat, lng);
-								}
-							});
-						})
-						.catch(function() {
-							container.textContent = 'Não foi possível carregar os pontos de coleta.';
+						lista.addEventListener('click', function(ev) {
+							var item = ev.target.closest('.search-pev-item');
+							if (!item) return;
+							irPara(parseFloat(item.getAttribute('data-lat')), parseFloat(item.getAttribute('data-lng')));
 						});
+
+						document.addEventListener('click', function(ev) {
+							if (!ev.target.closest('.search-pev-wrap')) lista.classList.remove('visivel');
+						});
+
+						input.addEventListener('keydown', function(ev) {
+							var itens = lista.querySelectorAll('.search-pev-item');
+							if (itens.length === 0) return;
+							var atual = lista.querySelector('.search-pev-item.destaque');
+							var idx = -1;
+							if (atual) {
+								for (var i = 0; i < itens.length; i++) {
+									if (itens[i] === atual) { idx = i; break; }
+								}
+							}
+							if (ev.key === 'ArrowDown') {
+								ev.preventDefault();
+								var next = (idx + 1) % itens.length;
+								if (atual) atual.classList.remove('destaque');
+								itens[next].classList.add('destaque');
+							} else if (ev.key === 'ArrowUp') {
+								ev.preventDefault();
+								var prev = (idx - 1 + itens.length) % itens.length;
+								if (atual) atual.classList.remove('destaque');
+								itens[prev].classList.add('destaque');
+							} else if (ev.key === 'Enter' && atual) {
+								ev.preventDefault();
+								irPara(parseFloat(atual.getAttribute('data-lat')), parseFloat(atual.getAttribute('data-lng')));
+							}
+						});
+					}
+
+					// ── Início: tenta geolocalização ──
+
+					if ('geolocation' in navigator) {
+						navigator.geolocation.getCurrentPosition(
+							// Sucesso
+							function(pos) {
+								userLat = pos.coords.latitude;
+								userLng = pos.coords.longitude;
+
+								initMap(userLat, userLng);
+								addUserMarker(userLat, userLng);
+
+								geoStatus.className = 'localizar-pev-status localizar-pev-status--carregando';
+								geoStatus.innerHTML = '<div class="localizar-pev-status-spinner"></div><span>Buscando PEVs próximos...</span>';
+
+								carregarPins(userLat, userLng);
+							},
+							// Erro / Negado (FA-2A, FE-E1)
+							function(err) {
+								initMap(-15.800, -48.000);
+
+								if (err.code === err.PERMISSION_DENIED) {
+									exibirErro('Acesso à localização negado. Informe sua localização manualmente.', false);
+								} else {
+									exibirErro('Não foi possível obter sua localização. Informe manualmente.', false);
+								}
+
+								manualBox.classList.add('visivel');
+								searchWrap.style.display = 'none';
+								carregarPins(null, null);
+							},
+							{
+								enableHighAccuracy: true,
+								timeout: 8000,
+								maximumAge: 60000,
+							}
+						);
+					} else {
+						// FE-E1: Geolocalização não suportada
+						initMap(-15.800, -48.000);
+						exibirErro('Seu navegador não suporta geolocalização. Informe sua localização manualmente.', false);
+						manualBox.classList.add('visivel');
+						searchWrap.style.display = 'none';
+						carregarPins(null, null);
+					}
+
+					// ── Busca manual (FA-2A) ──
+					function buscarManual() {
+						var q = manualInput.value.trim();
+						if (!q) return;
+
+						manualBtn.disabled = true;
+						manualBtn.textContent = 'Buscando...';
+
+						fetch('https://nominatim.openstreetmap.org/search?format=json&q=' + encodeURIComponent(q) + '&limit=1&countrycodes=br')
+							.then(function(r) { return r.json(); })
+							.then(function(data) {
+								manualBtn.disabled = false;
+								manualBtn.textContent = 'Buscar';
+
+								if (!data || data.length === 0) {
+									exibirErro('Local não encontrado. Tente um termo diferente.', false);
+									return;
+								}
+
+								var loc = data[0];
+								userLat = parseFloat(loc.lat);
+								userLng = parseFloat(loc.lon);
+
+								if (!userMarker) {
+									addUserMarker(userLat, userLng);
+									map.setView([userLat, userLng], 13);
+								} else {
+									userMarker.setLatLng([userLat, userLng]);
+									map.setView([userLat, userLng], 13);
+								}
+
+								exibirSucesso('Localização definida: ' + loc.display_name.split(',')[0]);
+								manualBox.classList.remove('visivel');
+								searchWrap.style.display = '';
+
+								carregarPins(userLat, userLng);
+							})
+							.catch(function() {
+								manualBtn.disabled = false;
+								manualBtn.textContent = 'Buscar';
+								exibirErro('Falha ao buscar localização. Tente novamente.', true);
+							});
+					}
+
+					manualBtn.addEventListener('click', buscarManual);
+					manualInput.addEventListener('keydown', function(ev) {
+						if (ev.key === 'Enter') buscarManual();
+					});
 				})();
 			`}</script>
 		</AppLayout>

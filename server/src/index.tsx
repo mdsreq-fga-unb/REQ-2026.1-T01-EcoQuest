@@ -41,18 +41,118 @@ const app = new Elysia({
 })
 	.use(html())
 	.use(sessionPlugin)
-	.get("/api/pins", async () => {
-		const pevs = await db`
-			SELECT
-				name,
-				latitude  AS "lat",
-				longitude AS "lng"
-			FROM pev
-			WHERE latitude IS NOT NULL
-			  AND longitude IS NOT NULL
-			ORDER BY name
-		`;
-		return pevs;
+	.get("/api/pins", async ({ query, set }) => {
+		try {
+			const userLat = query["lat"] ? Number.parseFloat(query["lat"]) : null;
+			const userLng = query["lng"] ? Number.parseFloat(query["lng"]) : null;
+			const raioKm = query["raio"] ? Number.parseFloat(query["raio"]) : 50;
+
+			console.log("[api/pins] query params:", { userLat, userLng, raioKm });
+
+			if (
+				userLat !== null &&
+				userLng !== null &&
+				Number.isFinite(userLat) &&
+				Number.isFinite(userLng)
+			) {
+				console.log(
+					`
+					WITH params AS (
+						SELECT
+							${userLat}::numeric AS u_lat,
+							${userLng}::numeric AS u_lng,
+							${raioKm}::numeric  AS raio
+					)
+					SELECT
+						p.name,
+						p.latitude  AS "lat",
+						p.longitude AS "lng",
+						ROUND(CAST(
+							6371 * 2 * ASIN(
+								LEAST(1, SQRT(GREATEST(0,
+									POWER(SIN(RADIANS(p.latitude  - params.u_lat) / 2), 2)
+									+ COS(RADIANS(params.u_lat)) * COS(RADIANS(p.latitude))
+									* POWER(SIN(RADIANS(p.longitude - params.u_lng) / 2), 2)
+								))
+							)
+						AS numeric), 1) AS "distanciaKm"
+					FROM pev p, params
+					WHERE p.latitude IS NOT NULL
+					  AND p.longitude IS NOT NULL
+					  AND 6371 * 2 * ASIN(
+							LEAST(1, SQRT(GREATEST(0,
+								POWER(SIN(RADIANS(p.latitude  - params.u_lat) / 2), 2)
+								+ COS(RADIANS(params.u_lat)) * COS(RADIANS(p.latitude))
+								* POWER(SIN(RADIANS(p.longitude - params.u_lng) / 2), 2)
+							))
+						) <= params.raio
+					ORDER BY "distanciaKm"
+				`,
+				);
+				const pevs = await db`
+    WITH params AS (
+        SELECT
+            ${userLat}::numeric AS u_lat,
+            ${userLng}::numeric AS u_lng,
+            ${raioKm}::numeric  AS raio
+    ),
+    calculated_distances AS (
+        SELECT
+            p.name,
+            p.latitude  AS "lat",
+            p.longitude AS "lng",
+            ROUND(CAST(
+                6371 * 2 * ASIN(
+                    LEAST(1, SQRT(GREATEST(0,
+                        POWER(SIN(RADIANS(p.latitude  - params.u_lat) / 2), 2)
+                        + COS(RADIANS(params.u_lat)) * COS(RADIANS(p.latitude))
+                        * POWER(SIN(RADIANS(p.longitude - params.u_lng) / 2), 2)
+                    )))
+                )
+            AS numeric), 1) AS "distanciaKm"
+        FROM pev p
+        CROSS JOIN params
+        WHERE p.latitude IS NOT NULL
+          AND p.longitude IS NOT NULL
+    )
+    SELECT * 
+    FROM calculated_distances
+    WHERE "distanciaKm" <= (SELECT raio FROM params)
+    ORDER BY "distanciaKm" ASC;
+				`;
+
+				console.log("[api/pins] com geo — encontrados:", pevs.length);
+				if (pevs.length > 0) {
+					console.log(
+						"[api/pins] primeiro:",
+						pevs[0].name,
+						"distância:",
+						pevs[0].distanciaKm,
+					);
+				}
+
+				return pevs;
+			}
+
+			const pevs = await db`
+				SELECT
+					name,
+					latitude  AS "lat",
+					longitude AS "lng"
+				FROM pev
+				WHERE latitude IS NOT NULL
+				  AND longitude IS NOT NULL
+				ORDER BY name
+			`;
+
+			console.log("[api/pins] sem geo — total:", pevs.length);
+
+			return pevs;
+		} catch (err) {
+			console.error("[api/pins] ERRO:", err);
+			set.status = 500;
+			return { erro: "Erro ao consultar PEVs.", detalhe: String(err) };
+		}
 	})
 	.get("/assets/*", async ({ path, set }) => {
 		const file = Bun.file(`./src${path}`);
