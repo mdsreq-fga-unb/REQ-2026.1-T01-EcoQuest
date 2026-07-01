@@ -18,6 +18,12 @@ export class ErroExtratoIndisponivel extends Error {
 	}
 }
 
+export interface ExtratoUsuario {
+	registros: RegistroExtrato[];
+	saldo: number | null;
+	saldoIndisponivel: boolean;
+}
+
 interface LinhaExtratoBruta {
 	id: number | string;
 	jtiToken: string;
@@ -30,7 +36,12 @@ interface LinhaExtratoBruta {
 
 export async function buscarExtratoPorUsuario(
 	idUsuario: number,
-): Promise<RegistroExtrato[]> {
+): Promise<ExtratoUsuario> {
+	let registros: RegistroExtrato[];
+
+	// FE-E1 — Falha ao carregar histórico de descartes e pontos: se a consulta
+	// principal falhar, nenhuma informação (incluindo saldo) é exibida como
+	// definitiva — o erro é propagado para o controller tratar.
 	try {
 		const rows = await db`
 			SELECT
@@ -48,7 +59,7 @@ export async function buscarExtratoPorUsuario(
 		`;
 
 		const linhas = rows as LinhaExtratoBruta[];
-		const registros: RegistroExtrato[] = [];
+		registros = [];
 		for (const row of linhas) {
 			const simulacao = obterSimulacaoEmitidaPorJti(String(row.jtiToken));
 			const materialTipo = simulacao
@@ -58,7 +69,6 @@ export async function buscarExtratoPorUsuario(
 				: row.materialTipo
 					? String(row.materialTipo)
 					: null;
-			console.log("Material tipo bruto:", row.materialTipo, "Material tipo processado:", materialTipo);
 			const pesoKg = simulacao?.totalPesoKg ?? (row.pesoKg == null ? null : Number(row.pesoKg));
 
 			registros.push({
@@ -70,9 +80,22 @@ export async function buscarExtratoPorUsuario(
 				criadoEm: new Date(row.criadoEm),
 			});
 		}
-
-		return registros;
 	} catch (causa) {
 		throw new ErroExtratoIndisponivel(causa);
 	}
+
+	let saldo: number | null = null;
+	let saldoIndisponivel = false;
+	try {
+		const [linhaSaldo] = await db`
+			SELECT points_balance AS "pointsBalance"
+			FROM "user"
+			WHERE id = ${idUsuario}
+		`;
+		saldo = linhaSaldo ? Number(linhaSaldo.pointsBalance) : 0;
+	} catch {
+		saldoIndisponivel = true;
+	}
+
+	return { registros, saldo, saldoIndisponivel };
 }

@@ -265,19 +265,19 @@
 .ranking-vazio_icone {
     width: 64px;
     height: 64px;
-    color: var(--color-primary);
+    color: #66CC7A;
     opacity: 0.4;
 }
 
 .ranking-vazio_texto {
     font-size: 1rem;
     font-weight: 500;
-    color: var(--color-text);
+    color: var(--color-white);
 }
 
 .ranking-vazio_subtexto {
     font-size: 0.87rem;
-    color: var(--color-muted);
+    color: #85D695;
     max-width: 340px;
     line-height: 1.55;
 }

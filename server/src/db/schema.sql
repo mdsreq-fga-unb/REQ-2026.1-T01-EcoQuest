@@ -1,3 +1,5 @@
+CREATE TYPE user_status AS ENUM ('ACTIVE', 'INACTIVE', 'BLOCKED');
+
 CREATE TABLE "user" (
 	id BIGSERIAL PRIMARY KEY,
 	email VARCHAR(256) NOT NULL,
@@ -8,6 +10,10 @@ CREATE TABLE "user" (
 	points_balance INTEGER NOT NULL DEFAULT 0,
 	points_total_earned INTEGER NOT NULL DEFAULT 0,
 	ranking_anonymous BOOLEAN NOT NULL DEFAULT FALSE,
+	status user_status NOT NULL DEFAULT 'ACTIVE',
+	terms_accepted_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+	failed_login_attempts INTEGER NOT NULL DEFAULT 0,
+	locked_until TIMESTAMPTZ,
 	created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
 	updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),
 	CONSTRAINT user_email_not_empty CHECK (char_length(btrim(email)) > 0),
@@ -16,7 +22,8 @@ CREATE TABLE "user" (
 	CONSTRAINT user_phone_not_empty CHECK (char_length(btrim(phone)) > 0),
 	CONSTRAINT user_password_hash_not_empty CHECK (char_length(btrim(password_hash)) > 0),
 	CONSTRAINT user_points_balance_non_negative CHECK (points_balance >= 0),
-	CONSTRAINT user_points_total_earned_non_negative CHECK (points_total_earned >= 0)
+	CONSTRAINT user_points_total_earned_non_negative CHECK (points_total_earned >= 0),
+	CONSTRAINT user_failed_login_attempts_non_negative CHECK (failed_login_attempts >= 0)
 );
 
 CREATE UNIQUE INDEX user_email_lower_unique ON "user" (lower(email));
@@ -182,6 +189,10 @@ COMMENT ON COLUMN "user".password_hash IS 'Hash da senha (ex: Argon2/BCrypt).';
 COMMENT ON COLUMN "user".points_balance IS 'Saldo atual de pontos disponível para resgate.';
 COMMENT ON COLUMN "user".points_total_earned IS 'Total de pontos ganhos (base para ranking).';
 COMMENT ON COLUMN "user".ranking_anonymous IS 'Se true, nome do usuário é mascarado no ranking público.';
+COMMENT ON COLUMN "user".status IS 'Status administrativo da conta (ACTIVE/INACTIVE/BLOCKED). RN: apenas ACTIVE pode autenticar (UC02).';
+COMMENT ON COLUMN "user".terms_accepted_at IS 'Data/hora do aceite dos termos de uso e da política de privacidade (RN18, LGPD).';
+COMMENT ON COLUMN "user".failed_login_attempts IS 'Contador de tentativas de login consecutivas com credenciais inválidas (RN15).';
+COMMENT ON COLUMN "user".locked_until IS 'Data/hora até quando a conta está temporariamente bloqueada por excesso de tentativas (RN15). Null = não bloqueada.';
 COMMENT ON COLUMN "user".created_at IS 'Data/hora de criação do registro.';
 COMMENT ON COLUMN "user".updated_at IS 'Data/hora da última atualização do registro.';
 

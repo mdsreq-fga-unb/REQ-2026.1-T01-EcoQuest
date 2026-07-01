@@ -149,7 +149,7 @@ export function AchievementView({
 			cssExtra="/assets/achievement.css"
 		>
 			<main class="insignias-pagina">
-				<h1>Insígnias</h1>
+				<h1 class="insignias-header-titulo">Insígnias</h1>
 
 				{erro ? (
 					<EstadoErro mensagem={erro} />

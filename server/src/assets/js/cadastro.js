@@ -21,6 +21,19 @@ document.addEventListener('DOMContentLoaded', () => {
 		confirmarSenha: 'Confirme a senha',
 	};
 
+	const termosInput = document.getElementById('termosAceitos');
+	const termosWrapper = termosInput ? termosInput.closest('.checkbox-wrapper') : null;
+	const termosErro = document.getElementById('termos-erro');
+
+	if (termosInput) {
+		termosInput.addEventListener('change', () => {
+			if (termosInput.checked) {
+				if (termosWrapper) termosWrapper.classList.remove('input-error');
+				if (termosErro) termosErro.hidden = true;
+			}
+		});
+	}
+
 	/* ── Máscara de CPF ── */
 	cpfInput.addEventListener('input', (e) => {
 		let value = e.target.value.replace(/\D/g, '').slice(0, 11);
@@ -270,6 +283,8 @@ document.addEventListener('DOMContentLoaded', () => {
 			const el = document.getElementById(id);
 			if (el) el.classList.remove('input-error');
 		});
+		if (termosWrapper) termosWrapper.classList.remove('input-error');
+		if (termosErro) termosErro.hidden = true;
 		mensagem.innerHTML = '';
 	}
 
@@ -293,16 +308,31 @@ document.addEventListener('DOMContentLoaded', () => {
 		if (!senha || senha.length < 8 || !senhaForte(senha)) erros.push('senha');
 		if (!confirmarSenha || confirmarSenha !== senha) erros.push('confirmarSenha');
 
-		if (erros.length > 0) {
+		let termosOk = true;
+		if (termosInput && !termosInput.checked) {
+			termosOk = false;
+			if (termosWrapper) termosWrapper.classList.add('input-error');
+			if (termosErro) termosErro.hidden = false;
+		}
+
+		if (erros.length > 0 || !termosOk) {
 			erros.forEach((id) => {
 				const el = document.getElementById(id);
 				if (el) el.classList.add('input-error');
 			});
+			if (erros.length === 0 && !termosOk) {
+				return false;
+			}
 
 			let textoErro = 'Por favor, preencha corretamente os campos: ';
 			textoErro += erros.map((id) => camposComLabel[id]).join(', ');
 
-			if (erros.includes('confirmarSenha') && senha && confirmarSenha && confirmarSenha !== senha) {
+			if (
+				erros.includes('confirmarSenha') &&
+				senha &&
+				confirmarSenha &&
+				confirmarSenha !== senha
+			) {
 				textoErro += ' — as senhas não coincidem.';
 			}
 

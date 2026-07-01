@@ -3,11 +3,11 @@
   padding: 42px 32px 64px;
 }
 
-.insignias-pagina>h1 {
+.insignias-header-titulo {
   margin: 0 auto 34px;
-  color: var(--color-surface);
-  font-family: "Poppins", sans-serif;
-  font-size: 1.55rem;
+  color: var(--color-title);
+  font-family: 'Oxanium', sans-serif;
+  font-size: 1.75rem;
   font-weight: 600;
   text-align: center;
 }
