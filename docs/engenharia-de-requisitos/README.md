@@ -16,28 +16,26 @@
 
 - **Casos de Uso:** utilizados como artefato principal para descrever comportamento do sistema por meio de fluxo principal, alternativos e de exceção.
 - **Casos de Uso de alto nível:** utilizados para consolidar o entendimento funcional e orientar o detalhamento incremental dos requisitos.
-- **Critérios de Aceitação + DoR/DoD:** utilizados para definir condições verificáveis de prontidão, implementação e validação junto aos stakeholders.
+- **Fluxos em Casos de Uso:** utilizados para explicitar cenários principal, alternativos e de exceção, reduzindo ambiguidades na implementação.
+- **Critérios de Aceitação:** utilizados para definir condições verificáveis de prontidão, implementação e validação junto aos stakeholders.
 
 O projeto não adota Histórias de Usuário como artefato principal. A equipe optou por trabalhar com **Casos de Uso + Critérios de Aceitação**, por aderência a terminologia correta do processo e à necessidade de explicitar regras de negócio com maior detalhamento.
-
-Para manter consistência entre ER e desenvolvimento, o projeto utiliza **DoR/DoD** como critérios de prontidão e conclusão dos requisitos, conectando cada caso de uso aos objetivos (OE) e às características do produto (CP). As checklists estão em [DoR e DoD](../dor-e-dod/).
 
 ### Representação de Requisitos
 
 - **Protótipos:** utilizados para representar visualmente as principais funcionalidades do sistema antes da implementação.
 - **Wireframes:** utilizados para estruturar as telas e os fluxos de navegação do EcoQuest.
-- **Fluxos em Casos de Uso:** utilizados para explicitar cenários principal, alternativos e de exceção, reduzindo ambiguidades na implementação.
 
 Foi feito um ajuste para que ao invés de usar Diagrama UML, a equipe optou por utilizar **protótipos e wireframes** como artefatos de representação visual, por serem mais adequados para validar a interface e a experiência do usuário, além de facilitar a comunicação com stakeholders não técnicos.
 
 ### Organização e Atualização de Requisitos
 
-- **Checklist:** garantir que os itens da lista de itens de trabalho estejam claros, sem ambiguidade, completos, verificáveis, consistentes, rastreáveis e com entendimento compartilhado entre equipe e cliente.
 - **Refinamento e controle dos requisitos:** realizado de forma contínua durante as iterações, com revisão de prioridade (MoSCoW), análise de impacto em OE/CP, ajuste de critérios de aceitação e atualização da documentação/atas sempre que houver mudança aprovada.
 
 ### Verificação e Validação de Requisitos
 
-- **DoR (Definition of Ready):** utilizado para verificar se os requisitos estão claros, completos, consistentes, rastreáveis e prontos para seguir no fluxo de desenvolvimento. O DoR confirma se cada item possui objetivo, ator, prioridade, regras de negócio e relação com OE e CP antes de ser assumido pela equipe.
+- **Checklist:** utilizado para garantir que os itens da lista de itens de trabalho estejam claros, sem ambiguidade, completos, verificáveis, consistentes, rastreáveis e com entendimento compartilhado entre equipe e cliente.
+- **DoR (Definition of Ready) e DoD (Definition of Done):** utilizados para verificar, respectivamente, se os requisitos estão prontos para serem desenvolvidos e se foram implementados e validados conforme os critérios de aceitação. O DoR confirma se cada item possui objetivo, ator, prioridade, regras de negócio e relação com OE e CP antes de ser assumido pela equipe. O DoD define as condições de conclusão técnica e de negócio.
 - **Feedback com stakeholders:** utilizado para validar se os requisitos refletem corretamente as necessidades da cliente e dos demais stakeholders do EcoQuest.
 - **Testes:** utilizados posteriormente para verificar se as funcionalidades implementadas atendem aos requisitos e critérios de aceitação definidos.
 
