@@ -942,24 +942,6 @@ export function AppLayout({
 				</div>
 			</div>
 
-					<h3 class="descarte-erro-titulo" id="desktop-aviso-titulo">
-						Dispositivo não suportado
-					</h3>
-
-					<p class="descarte-erro-mensagem" id="desktop-aviso-mensagem">
-						O descarte por QR Code está disponível apenas em dispositivos móveis.
-					</p>
-
-					<button
-						type="button"
-						class="descarte-erro-btn"
-						id="btn-fechar-desktop-aviso"
-					>
-						Entendido
-					</button>
-				</div>
-			</div>
-
 			<MenuMobile rotaAtiva={rotaAtiva} nomeUsuario={nomeUsuario} logado={logado} />
 
 			<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
