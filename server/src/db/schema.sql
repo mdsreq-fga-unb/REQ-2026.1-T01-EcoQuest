@@ -25,6 +25,8 @@ CREATE UNIQUE INDEX user_cpf_unique ON "user" (cpf);
 CREATE TABLE pev (
 	id BIGSERIAL PRIMARY KEY,
 	name TEXT NOT NULL,
+	latitude NUMERIC,
+	longitude NUMERIC,
 	-- code TEXT UNIQUE,
 	created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
 	CONSTRAINT pev_name_not_empty CHECK (char_length(btrim(name)) > 0)
@@ -162,6 +164,13 @@ CREATE TABLE user_insignia (
 	PRIMARY KEY (id_user, id_insignia)
 );
 
+CREATE TABLE insignia_reward (
+	id_insignia BIGINT NOT NULL REFERENCES insignia(id) ON DELETE CASCADE,
+	id_reward   BIGINT NOT NULL REFERENCES reward(id) ON DELETE RESTRICT,
+	created_at  TIMESTAMPTZ NOT NULL DEFAULT now(),
+	PRIMARY KEY (id_insignia, id_reward)
+);
+
 -- Documentação (comentários curtos por tabela/coluna)
 COMMENT ON TABLE "user" IS 'Usuários cadastrados (autenticação e pontos).';
 COMMENT ON COLUMN "user".id IS 'Identificador do usuário.';
@@ -250,3 +259,7 @@ COMMENT ON TABLE user_insignia IS 'Conquistas desbloqueadas por usuário.';
 COMMENT ON COLUMN user_insignia.id_user IS 'Usuário que desbloqueou.';
 COMMENT ON COLUMN user_insignia.id_insignia IS 'Conquista desbloqueada.';
 COMMENT ON COLUMN user_insignia.unlocked_at IS 'Data/hora do desbloqueio.';
+
+COMMENT ON TABLE insignia_reward IS 'Recompensas do catálogo vinculadas a cada insígnia.';
+COMMENT ON COLUMN insignia_reward.id_insignia IS 'Insígnia que desbloqueia a recompensa.';
+COMMENT ON COLUMN insignia_reward.id_reward IS 'Recompensa do catálogo liberada.';
