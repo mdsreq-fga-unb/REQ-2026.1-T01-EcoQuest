@@ -50,8 +50,15 @@ export const extratoController = new Elysia().use(sessionPlugin).get(
 		});
 
 		try {
-			const registros = await buscarExtratoPorUsuario(sessao.id);
-			return <ExtratoView registros={registros} nomeUsuario={sessao.nome} />;
+			const extrato = await buscarExtratoPorUsuario(sessao.id);
+			return (
+				<ExtratoView
+					registros={extrato.registros}
+					saldo={extrato.saldo}
+					saldoIndisponivel={extrato.saldoIndisponivel}
+					nomeUsuario={sessao.nome}
+				/>
+			);
 		} catch (err) {
 			if (err instanceof ErroExtratoIndisponivel) {
 				set.status = 503;
