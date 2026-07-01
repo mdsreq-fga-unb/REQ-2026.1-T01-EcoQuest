@@ -2,16 +2,16 @@
   "name": "my-app",
   "version": "1.0.50",
   "scripts": {
-    "test": "bun test --env-file=env/.env",
-    "dev": "bun --env-file=env/.env run --watch src/index.tsx",
-    "prod": "bun --env-file=env/.env src/index.tsx",
-    "prod:down": "taskkill /F /IM bun.exe",
-    "docker:up": "docker compose -f src/db/compose.yml --env-file env/.env up -d",
-    "docker:down": "docker compose -f src/db/compose.yml --env-file env/.env down",
-    "docker:logs": "docker compose -f src/db/compose.yml --env-file env/.env logs -f",
-    "docker:delete": "docker compose -f src/db/compose.yml --env-file env/.env down -v --rmi all --remove-orphans",
-    "db:seed": "bun --env-file=env/.env src/db/seed.ts",
-    "db:seed:all": "bun run db:seed src/db/seed_rewards.sql && bun run db:seed src/db/seed_ranking.sql && bun run db:seed src/db/seed_insignias.sql && bun run db:seed src/db/seed_pevs.sql"
+    "test": "test -f env/.env && bun test --env-file=env/.env",
+    "dev": "test -f env/.env && bun --env-file=env/.env run --watch src/index.tsx",
+    "prod": "test -f env/.env && nohup bun --env-file=env/.env src/index.tsx > bun.log 2>&1 &",
+    "prod:down": "test -f env/.env && pkill -f 'bun --env-file=env/.env src/index.tsx'",
+    "docker:up": "test -f env/.env && docker compose -f src/db/compose.yml --env-file env/.env up -d",
+    "docker:down": "test -f env/.env && docker compose -f src/db/compose.yml --env-file env/.env down",
+    "docker:logs": "test -f env/.env && docker compose -f src/db/compose.yml --env-file env/.env logs -f",
+    "docker:delete": "test -f env/.env && docker compose -f src/db/compose.yml --env-file env/.env down -v --rmi all --remove-orphans",
+    "db:seed": "test -f env/.env && bun --env-file=env/.env src/db/seed.ts",
+    "db:seed:all": "test -f env/.env && bun run db:seed src/db/seed_rewards.sql && bun run db:seed src/db/seed_ranking.sql && bun run db:seed src/db/seed_insignias.sql && bun run db:seed src/db/seed_pevs.sql"
   },
   "dependencies": {
     "@elysia/html": "^1.4.1",
