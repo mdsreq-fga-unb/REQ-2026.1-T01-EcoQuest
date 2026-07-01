@@ -3,6 +3,7 @@ import { AppLayout } from "../../components/Applayout";
 import { assetUrl } from "../../lib/asset-url";
 import type { RegistroExtrato } from "./service";
 
+
 function formatarData(data: Date): string {
 	return new Intl.DateTimeFormat("pt-BR", {
 		day: "2-digit",
@@ -173,11 +174,52 @@ function CardExtrato({ registro }: { registro: RegistroExtrato }) {
 	);
 }
 
+function formatarSaldo(saldo: number): string {
+	return new Intl.NumberFormat("pt-BR").format(saldo);
+}
+
+function SaldoHeader({
+	saldo,
+	saldoIndisponivel,
+}: {
+	saldo: number | null;
+	saldoIndisponivel: boolean;
+}) {
+	return (
+		<div class="extrato-header">
+			<div class="extrato-header_topo">
+				<div>
+					<h1 class="extrato-header_titulo">Extrato</h1>
+				</div>
+				{saldo !== null ? (
+					<span class="extrato-header_pontos">
+						{formatarSaldo(saldo)} pts
+					</span>
+				) : (
+					<span class="extrato-header_pontos extrato-header_pontos-indisponivel">
+						—
+					</span>
+				)}
+			</div>
+			{saldoIndisponivel && (
+				<p class="extrato-saldo_aviso" role="alert">
+					Não foi possível atualizar o saldo agora. Tente novamente mais
+					tarde.
+				</p>
+			)}
+		</div>
+	);
+}
+
 export function ExtratoView({
 	registros,
+	saldo,
+	saldoIndisponivel,
 	nomeUsuario,
 }: {
 	registros: RegistroExtrato[];
+	saldo: number | null;
+	saldoIndisponivel: boolean;
 	nomeUsuario: string;
 }) {
 	return (
@@ -189,7 +231,7 @@ export function ExtratoView({
 			<link rel="stylesheet" href={assetUrl("css/extrato.css")} />
 
 			<main class="extrato-conteudo" id="conteudo-principal">
-				<h1 class="extrato-titulo">Extrato</h1>
+				<SaldoHeader saldo={saldo} saldoIndisponivel={saldoIndisponivel} />
 
 				{registros.length === 0 ? (
 					<div class="extrato-vazio" role="note" aria-live="polite">
@@ -225,9 +267,8 @@ export function ExtratoView({
 
 						<button
 							type="button"
-							data-open-qr-scanner="true"
 							class="extrato-vazio_cta-desktop"
-							title="Abrir leitor de QR Code"
+							id="btn-descarte-desktop"
 						>
 							Fazer meu primeiro descarte
 						</button>

@@ -1,5 +1,9 @@
 import { Html } from "@elysia/html";
 import { AppLayout } from "../../components/Applayout";
+<<<<<<< HEAD
+=======
+import { assetUrl } from "../../lib/asset-url";
+>>>>>>> 99e6d546968124c87a832ddcf6f9ec4af32354ee
 import type { EntradaRanking, PosicaoUsuario } from "./service";
 
 // ── Pódio visual (Top 3) ──
@@ -139,7 +143,11 @@ export function RankingView({
       rotaAtiva="/ranking"
       nomeUsuario={nomeUsuario}
     >
+<<<<<<< HEAD
       <link rel="stylesheet" href="../assets/ranking.css?v=3" />
+=======
+      <link rel="stylesheet" href={assetUrl("css/ranking.css")} />
+>>>>>>> 99e6d546968124c87a832ddcf6f9ec4af32354ee
 
       <main class="ranking-conteudo" id="conteudo-principal">
         {top20.length === 0 ? (

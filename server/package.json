@@ -9,7 +9,9 @@
     "docker:up": "test -f env/.env && docker compose -f src/db/compose.yml --env-file env/.env up -d",
     "docker:down": "test -f env/.env && docker compose -f src/db/compose.yml --env-file env/.env down",
     "docker:logs": "test -f env/.env && docker compose -f src/db/compose.yml --env-file env/.env logs -f",
-    "docker:delete": "test -f env/.env && docker compose -f src/db/compose.yml --env-file env/.env down -v --rmi all --remove-orphans"
+    "docker:delete": "test -f env/.env && docker compose -f src/db/compose.yml --env-file env/.env down -v --rmi all --remove-orphans",
+    "db:seed": "test -f env/.env && bun --env-file=env/.env src/db/seed.ts",
+    "db:seed:all": "test -f env/.env && bun run db:seed src/db/seed_rewards.sql && bun run db:seed src/db/seed_ranking.sql && bun run db:seed src/db/seed_insignias.sql && bun run db:seed src/db/seed_pevs.sql"
   },
   "dependencies": {
     "@elysia/html": "^1.4.1",

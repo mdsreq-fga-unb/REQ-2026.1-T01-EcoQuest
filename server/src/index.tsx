@@ -1,11 +1,19 @@
 import { Html, html } from "@elysia/html";
 import { Elysia } from "elysia";
 import { networkInterfaces } from "os";
-import { ensureSchema } from "./db";
+import { db, ensureSchema } from "./db";
+import { achievementController } from "./modules/achievement/controller";
 import { authController } from "./modules/auth/controller";
+import { catalogoController } from "./modules/catalogo/controller";
 import { disposalController } from "./modules/disposal/controller";
 import { extratoController } from "./modules/extrato/controller";
+<<<<<<< HEAD
 import { rankingController } from "./modules/ranking/controller";
+=======
+import { localizarPevController } from "./modules/localizar_pev/controller";
+import { rankingController } from "./modules/ranking/controller";
+import { rewardController } from "./modules/reward/controller";
+>>>>>>> 99e6d546968124c87a832ddcf6f9ec4af32354ee
 import { simularDescarteController } from "./modules/simular_descarte/controller";
 import { sessionPlugin } from "./plugins/session";
 
@@ -37,7 +45,19 @@ const app = new Elysia({
 })
 	.use(html())
 	.use(sessionPlugin)
-
+	.get("/api/pins", async () => {
+		const pevs = await db`
+			SELECT
+				name,
+				latitude  AS "lat",
+				longitude AS "lng"
+			FROM pev
+			WHERE latitude IS NOT NULL
+			  AND longitude IS NOT NULL
+			ORDER BY name
+		`;
+		return pevs;
+	})
 	.get("/assets/*", async ({ path, set }) => {
 		const file = Bun.file(`./src${path}`);
 		if (!(await file.exists())) {
@@ -53,9 +73,17 @@ const app = new Elysia({
 	})
 
 	.use(authController)
+	.use(achievementController)
 	.use(disposalController)
 	.use(extratoController)
+<<<<<<< HEAD
 	.use(rankingController)
+=======
+	.use(catalogoController)
+	.use(rewardController)
+	.use(rankingController)
+	.use(localizarPevController)
+>>>>>>> 99e6d546968124c87a832ddcf6f9ec4af32354ee
 	.use(simularDescarteController)
 	.listen(PORT);
 

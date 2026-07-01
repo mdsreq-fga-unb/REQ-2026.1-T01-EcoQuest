@@ -1,0 +1,333 @@
+.insignias-pagina {
+  width: 100%;
+  padding: 42px 32px 64px;
+}
+
+.insignias-header-titulo {
+  margin: 0 auto 34px;
+  color: var(--color-title);
+  font-family: 'Oxanium', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.insignias-lista,
+.insignias-vazio,
+.insignias-feedback {
+  width: min(100%, 760px);
+  margin-inline: auto;
+}
+
+.insignias-lista {
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background: var(--color-surface);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.insignias-card {
+  padding: 34px 28px 30px;
+}
+
+.insignias-card+.insignias-card {
+  border-top: 1px solid var(--color-border);
+}
+
+.insignias-card_cabecalho {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.insignias-card_icone,
+.insignias-premio_icone {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-overlay-light);
+  color: var(--color-muted);
+}
+
+.insignias-card_icone {
+  width: 48px;
+  height: 48px;
+}
+
+.insignias-card_icone--bloqueada {
+  color: var(--color-muted);
+}
+
+.insignias-card_icone svg {
+  width: 28px;
+  height: 28px;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.insignias-card_resumo {
+  min-width: 0;
+  flex: 1;
+}
+
+.insignias-card_titulo {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.insignias-card_titulo h2 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.insignias-card_titulo>span {
+  flex: 0 0 auto;
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.insignias-progresso {
+  height: 7px;
+  margin-top: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--color-overlay-light);
+}
+
+.insignias-progresso>span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--color-muted);
+}
+
+.insignias-card--obtida .insignias-progresso>span {
+  background: var(--color-primary);
+}
+
+.insignias-card_estado {
+  display: block;
+  margin-top: 7px;
+  color: var(--color-muted);
+  font-size: 0.72rem;
+}
+
+.insignias-card--obtida .insignias-card_estado {
+  color: var(--color-primary);
+}
+
+.insignias-card_secao {
+  margin-top: 28px;
+}
+
+.insignias-card_secao h3 {
+  margin-bottom: 14px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.insignias-card_secao>p {
+  color: var(--color-text);
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+.insignias-premios {
+  display: grid;
+  gap: 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.insignias-premio {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 74px;
+  padding: 12px 16px;
+  border-radius: 7px;
+  background: var(--color-overlay-light);
+}
+
+.insignias-premio_icone {
+  width: 44px;
+  height: 44px;
+  background: var(--color-surface);
+}
+
+.insignias-premio_icone svg {
+  width: 25px;
+  height: 25px;
+  stroke: currentColor;
+  stroke-width: 1.55;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.insignias-premio strong {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 0.76rem;
+  font-weight: 600;
+}
+
+.insignias-premio p {
+  font-size: 0.7rem;
+  line-height: 1.4;
+}
+
+.insignias-card_sem-premio {
+  padding: 16px;
+  border-radius: 7px;
+  background: var(--color-overlay-light);
+  color: var(--color-muted);
+}
+
+.insignias-vazio {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 18px;
+  padding: 16px 20px;
+  border: 1px solid var(--color-border);
+  border-radius: 7px;
+  background: var(--color-surface);
+  color: var(--color-muted);
+  font-size: 0.8rem;
+}
+
+.insignias-vazio strong {
+  color: var(--color-text);
+  font-size: 0.9rem;
+}
+
+.insignias-feedback {
+  display: flex;
+  min-height: 340px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  border: 1px solid var(--color-border);
+  border-radius: 7px;
+  background: var(--color-surface);
+  text-align: center;
+}
+
+.insignias-feedback h2 {
+  margin-top: 18px;
+  font-size: 1.05rem;
+}
+
+.insignias-feedback p {
+  max-width: 430px;
+  margin-top: 8px;
+  color: var(--color-muted);
+  font-size: 0.82rem;
+}
+
+.insignias-feedback_acao {
+  margin-top: 22px;
+  padding: 10px 18px;
+  border-radius: 7px;
+  background: var(--color-primary);
+  color: var(--color-text);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.insignias-feedback_acao:hover,
+.insignias-feedback_acao:focus-visible {
+  background: var(--color-primary-dk);
+}
+
+@media (max-width: 1024px) {
+  .insignias-pagina {
+    padding: 26px 34px 54px;
+  }
+
+  .insignias-pagina>h1 {
+    margin-bottom: 22px;
+    font-size: 1.35rem;
+  }
+
+  .insignias-lista {
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .insignias-pagina {
+    padding: 18px 14px 40px;
+  }
+
+  .insignias-pagina>h1 {
+    margin-bottom: 18px;
+    font-size: 1.05rem;
+  }
+
+  .insignias-card {
+    padding: 26px 18px 24px;
+  }
+
+  .insignias-card_cabecalho {
+    gap: 11px;
+  }
+
+  .insignias-card_icone {
+    width: 40px;
+    height: 40px;
+  }
+
+  .insignias-card_icone svg {
+    width: 23px;
+    height: 23px;
+  }
+
+  .insignias-card_titulo h2 {
+    font-size: 0.86rem;
+  }
+
+  .insignias-card_titulo>span {
+    font-size: 0.64rem;
+  }
+
+  .insignias-card_secao {
+    margin-top: 24px;
+  }
+
+  .insignias-card_secao h3 {
+    font-size: 0.78rem;
+  }
+
+  .insignias-card_secao>p {
+    font-size: 0.68rem;
+  }
+
+  .insignias-premio {
+    align-items: flex-start;
+    min-height: 0;
+    padding: 12px;
+  }
+
+  .insignias-premio_icone {
+    width: 38px;
+    height: 38px;
+  }
+
+  .insignias-premio strong {
+    font-size: 0.68rem;
+  }
+
+  .insignias-premio p {
+    font-size: 0.62rem;
+  }
+}

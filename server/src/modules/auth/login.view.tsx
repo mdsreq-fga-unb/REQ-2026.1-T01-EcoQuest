@@ -20,14 +20,14 @@ export function LoginView() {
 						Entrar no EcoQuest
 					</h1>
 
-					<div class="card">
+					<div class="card login-card">
 						<form
 							id="form-login"
 							hx-post="/auth/login"
 							hx-target="#mensagem-login"
 							hx-swap="innerHTML"
 						>
-							<div class="field">
+							<div class="field login-field">
 								<label for="email">Email</label>
 
 								<input
@@ -40,7 +40,7 @@ export function LoginView() {
 								/>
 							</div>
 
-							<div class="field">
+							<div class="field login-field">
 								<label for="senha">Senha</label>
 
 								<div class="input-senha-wrapper">

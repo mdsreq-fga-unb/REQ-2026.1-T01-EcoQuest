@@ -6,6 +6,7 @@ export interface NovoUsuario {
 	telefone: string;
 	email: string;
 	senha: string;
+	termosAceitos: boolean;
 }
 
 export interface UsuarioPublico {
@@ -16,6 +17,17 @@ export interface UsuarioPublico {
 	telefone: string;
 	pointsBalance: number;
 	pointsTotalEarned: number;
+}
+export const DURACAO_BLOQUEIO_LOGIN_MS = 15 * 60 * 1000;
+export const LIMITE_TENTATIVAS_LOGIN = 5;
+
+export class ErroConsentimentoObrigatorio extends Error {
+	constructor() {
+		super(
+			"É necessário aceitar os termos de uso e a política de privacidade para concluir o cadastro.",
+		);
+		this.name = "ErroConsentimentoObrigatorio";
+	}
 }
 
 export class ErroPersistenciaCadastro extends Error {
@@ -63,6 +75,10 @@ export async function cpfJaCadastrado(cpf: string): Promise<boolean> {
 }
 
 export async function criarUsuario(dados: NovoUsuario): Promise<UsuarioPublico> {
+	if (!dados.termosAceitos) {
+		throw new ErroConsentimentoObrigatorio();
+	}
+
 	const passwordHash = await Bun.password.hash(dados.senha, {
 		algorithm: "bcrypt",
 		cost: 12,
@@ -70,8 +86,8 @@ export async function criarUsuario(dados: NovoUsuario): Promise<UsuarioPublico> 
 
 	try {
 		const [usuario] = await db`
-			INSERT INTO "user" (email, name, cpf, phone, password_hash)
-			VALUES (${dados.email}, ${dados.nome}, ${dados.cpf}, ${dados.telefone}, ${passwordHash})
+			INSERT INTO "user" (email, name, cpf, phone, password_hash, terms_accepted_at)
+			VALUES (${dados.email}, ${dados.nome}, ${dados.cpf}, ${dados.telefone}, ${passwordHash}, now())
 			RETURNING
 				id,
 				name AS nome,
@@ -90,7 +106,9 @@ export async function criarUsuario(dados: NovoUsuario): Promise<UsuarioPublico> 
 export type LoginResultado =
 	| { status: "ok"; usuario: UsuarioPublico }
 	| { status: "usuario_nao_encontrado" }
-	| { status: "senha_invalida" };
+	| { status: "senha_invalida"; tentativasRestantes: number }
+	| { status: "conta_bloqueada"; bloqueadaAte: Date }
+	| { status: "conta_inativa" };
 
 export async function autenticarUsuario(
 	email: string,
@@ -108,7 +126,10 @@ export async function autenticarUsuario(
 				phone AS telefone,
 				password_hash AS "passwordHash",
 				points_balance AS "pointsBalance",
-				points_total_earned AS "pointsTotalEarned"
+				points_total_earned AS "pointsTotalEarned",
+				status,
+				failed_login_attempts AS "failedLoginAttempts",
+				locked_until AS "lockedUntil"
 			FROM "user"
 			WHERE lower(email) = lower(${email})
 			LIMIT 1
@@ -121,15 +142,75 @@ export async function autenticarUsuario(
 		return { status: "usuario_nao_encontrado" };
 	}
 
-	const row = rows[0] as UsuarioPublico & { passwordHash: string };
+	const row = rows[0] as UsuarioPublico & {
+		passwordHash: string;
+		status: "ACTIVE" | "INACTIVE" | "BLOCKED";
+		failedLoginAttempts: number;
+		lockedUntil: Date | string | null;
+	};
+
+	if (row.status !== "ACTIVE") {
+		return { status: "conta_inativa" };
+	}
+
+	const bloqueadaAte = row.lockedUntil ? new Date(row.lockedUntil) : null;
+	if (bloqueadaAte && bloqueadaAte.getTime() > Date.now()) {
+		return { status: "conta_bloqueada", bloqueadaAte };
+	}
 
 	const senhaCorreta = await Bun.password.verify(senha, row.passwordHash);
 
 	if (!senhaCorreta) {
-		return { status: "senha_invalida" };
+		return registrarTentativaInvalida(row.id, row.failedLoginAttempts);
 	}
 
-	const { passwordHash, ...usuario } = row;
+	try {
+		await db`
+			UPDATE "user"
+			SET failed_login_attempts = 0, locked_until = NULL
+			WHERE id = ${row.id}
+		`;
+	} catch (causa) {
+		throw new ErroAutenticacaoIndisponivel(causa);
+	}
+
+	const { passwordHash, status, failedLoginAttempts, lockedUntil, ...usuario } = row;
 
 	return { status: "ok", usuario };
+}
+
+async function registrarTentativaInvalida(
+	idUsuario: number,
+	tentativasAtuais: number,
+): Promise<LoginResultado> {
+	const novasTentativas = tentativasAtuais + 1;
+
+	if (novasTentativas >= LIMITE_TENTATIVAS_LOGIN) {
+		const bloqueadaAte = new Date(Date.now() + DURACAO_BLOQUEIO_LOGIN_MS);
+		try {
+			await db`
+				UPDATE "user"
+				SET failed_login_attempts = 0, locked_until = ${bloqueadaAte}
+				WHERE id = ${idUsuario}
+			`;
+		} catch (causa) {
+			throw new ErroAutenticacaoIndisponivel(causa);
+		}
+		return { status: "conta_bloqueada", bloqueadaAte };
+	}
+
+	try {
+		await db`
+			UPDATE "user"
+			SET failed_login_attempts = ${novasTentativas}
+			WHERE id = ${idUsuario}
+		`;
+	} catch (causa) {
+		throw new ErroAutenticacaoIndisponivel(causa);
+	}
+
+	return {
+		status: "senha_invalida",
+		tentativasRestantes: LIMITE_TENTATIVAS_LOGIN - novasTentativas,
+	};
 }

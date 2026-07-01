@@ -14,19 +14,49 @@ body {
 	width: 100%;
 }
 
-.extrato-titulo {
+/* Cabeçalho do saldo — mesmo padrão visual do cabeçalho do Catálogo de Recompensas */
+.extrato-header {
+	margin-bottom: 28px;
+}
+
+.extrato-header_topo {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 16px;
+	flex-wrap: wrap;
+}
+
+.extrato-header_titulo {
 	font-family: 'Oxanium', sans-serif;
 	font-weight: 700;
-	font-size: 2rem;
-	color: var(--color-text);
-	text-align: center;
-	margin-bottom: 32px;
+	font-size: 1.75rem;
+	color: var(--color-title);
+	margin-bottom: 4px;
+}
+
+.extrato-header_pontos {
+	font-family: 'Oxanium', sans-serif;
+	font-weight: 700;
+	font-size: 1.5rem;
+	color: var(--color-primary-lighter);
+	white-space: nowrap;
+	margin-top: 4px;
+}
+
+.extrato-header_pontos-indisponivel {
+	color: var(--color-muted);
 }
 
 .extrato-lista {
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
+}
+
+.extrato-saldo_aviso {
+	font-size: 0.8rem;
+	color: #c0392b;
 }
 
 /* Card */
@@ -50,7 +80,7 @@ body {
 	width: 48px;
 	height: 48px;
 	border-radius: 50%;
-	background: var(--color-bg);
+	background: var(--color-border);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -113,18 +143,19 @@ body {
 .extrato-vazio_icone {
 	width: 64px;
 	height: 64px;
-	color: var(--color-primary);
+	color: var(--color-primary-lighter);
 	opacity: .4;
 }
 
 .extrato-vazio_texto {
 	font-size: 1rem;
 	font-weight: 500;
+	color: var(--color-white);
 }
 
 .extrato-vazio_subtexto {
 	font-size: .87rem;
-	color: var(--color-muted);
+	color: var(--color-white);
 	max-width: 340px;
 	line-height: 1.55;
 }
@@ -132,14 +163,17 @@ body {
 .extrato-vazio_cta {
 	display: inline-block;
 	margin-top: 8px;
-	background: var(--color-primary);
+	background: var(--color-primary-lighter);
 	color: var(--color-white);
 	font-weight: 500;
 	font-size: .9rem;
 	padding: 10px 24px;
 	border-radius: 8px;
 	text-decoration: none;
+	border: none;
 	transition: background var(--transition);
+	outline: none;
+	border: none;
 }
 
 .extrato-vazio_cta:hover,
@@ -183,9 +217,12 @@ body {
 		padding: 28px 32px 88px;
 	}
 
-	.extrato-titulo {
-		font-size: 1.75rem;
-		margin-bottom: 24px;
+	.extrato-header_titulo {
+		font-size: 1.5rem;
+	}
+
+	.extrato-header_pontos {
+		font-size: 1.3rem;
 	}
 }
 
@@ -194,9 +231,18 @@ body {
 		padding: 20px 16px 90px;
 	}
 
-	.extrato-titulo {
-		font-size: 1.5rem;
-		margin-bottom: 20px;
+	.extrato-header_topo {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 8px;
+	}
+
+	.extrato-header_titulo {
+		font-size: 1.35rem;
+	}
+
+	.extrato-header_pontos {
+		font-size: 1.2rem;
 	}
 
 	.extrato-card {

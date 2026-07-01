@@ -66,7 +66,7 @@ body {
 	font-size: 2.5rem;
 	text-align: center;
 	margin-bottom: 32px;
-	color: var(--color-text);
+	color: var(--color-primary-lighter);
 }
 
 
@@ -92,6 +92,13 @@ input:autofill {
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 	padding: 40px;
 	width: 40%;
+}
+
+.cadastro-card {
+	max-width: 720px;
+}
+
+.login-card {
 	max-width: 480px;
 }
 
@@ -107,7 +114,11 @@ input:autofill {
 	display: flex;
 	flex-direction: column;
 	gap: 8px;
-	margin-bottom: 20px;
+	margin-bottom: 4px;
+}
+
+.login-field {
+	margin-bottom: 16px;
 }
 
 .field label {
@@ -181,6 +192,14 @@ input:autofill {
 	height: 20px;
 }
 
+input[type="password"]::-ms-reveal {
+    display: none;
+}
+
+input[type="password"]::-ms-clear {
+    display: none;
+}
+
 /* ── Requisitos de senha ── */
 .senha-requisitos,
 .senha-requisitos li {
@@ -239,6 +258,50 @@ input:autofill {
 }
 
 .confirmacao-senha li[hidden] {
+	display: none;
+}
+
+.field-termos {
+	margin-top: 16px;
+	margin-bottom: 20px;
+}
+
+.checkbox-wrapper {
+	display: flex;
+	align-items: flex-start;
+	gap: 10px;
+	cursor: pointer;
+	font-size: 0.85rem;
+	line-height: 1.4;
+	color: var(--color-text);
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+	flex-shrink: 0;
+	width: 18px;
+	height: 18px;
+	margin-top: 2px;
+	accent-color: var(--color-primary-dk);
+	cursor: pointer;
+}
+
+.checkbox-wrapper a {
+	color: var(--color-primary-dk);
+	font-weight: 500;
+	text-decoration: underline;
+}
+
+.checkbox-wrapper.input-error span {
+	color: #c0392b;
+}
+
+.termos-erro {
+	margin: 0 0 0 28px;
+	font-size: 0.78rem;
+	color: #c0392b;
+}
+
+.termos-erro[hidden] {
 	display: none;
 }
 
@@ -377,7 +440,7 @@ input:autofill {
 	}
 
 	.form-grid {
-		gap: 14px;
+		gap: 8px;
 	}
 
 	.button-wrapper {

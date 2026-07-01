@@ -5,7 +5,7 @@ JWT_SECRET = "sUPer@sEcreT!key.for-jwt_tOkEn-Generat1on"
 # IMPORTANTE: durante desenvolvimento local (localhost/IP local), deixe DOMAIN vazio ou comente.
 # Se DOMAIN estiver definido, o cookie de sessão será emitido com `Domain=...` e o navegador
 # poderá rejeitá-lo se o domínio não corresponder ao site atual.
-DOMAIN = "ecoquest.org"
+DOMAIN = "eco-quest.org"
 
 # Ativa logs detalhados de depuração da sessão (cookie, token, validação).
 # Define como "1" para ativar. Útil para diagnosticar problemas de login.

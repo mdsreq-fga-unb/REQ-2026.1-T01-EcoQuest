@@ -62,7 +62,7 @@ body {
 }
 
 .simular-item {
-	background: var(--color-bg);
+	background: var(--color-surface);
 	border: 1px solid rgba(43, 86, 51, 0.2);
 	border-radius: 12px;
 	padding: 0.9rem;
@@ -254,7 +254,7 @@ body {
 	justify-content: center;
 	background: var(--color-overlay);
 	border-radius: 14px;
-	color: var(--color-primary);
+	color: var(--color-white);
 	font-size: 0.88rem;
 	font-weight: 500;
 	text-align: center;

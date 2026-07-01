@@ -13,16 +13,18 @@
 }
 
 :root {
-	--color-bg: #0e0e0e;
-	--color-surface: #1e1e1e;
-	--color-border: #5c5c5c;
-	--color-primary: #5bcd6b;
+	--color-bg: #303030;
+	--color-surface: #effaf2;
+	--color-border: #D9D9D9;
+	--color-primary: #2b5633;
 	--color-primary-dk: #478955;
-	--color-text: #f7f7f7;
-	--color-muted: #666666;
+	--color-primary-lighter: #66cc7a;
+	--color-text: #2b5633;
+	--color-title: #D0EFD6;
+	--color-muted: #2b5633;
 	--color-white: #ffffff;
-	--color-overlay: rgba(0, 0, 0, 0.85);
-	--color-overlay-light: rgba(255, 255, 255, 0.1);
+	--color-overlay: rgba(0, 0, 0, 0.75);
+	--color-overlay-light: #d0eed6;
 	--shadow-sm: 0 2px 8px rgba(0, 0, 0, .05);
 	--shadow-md: 0 4px 16px rgba(0, 0, 0, .10);
 	--sidebar-w: 72px;
@@ -32,8 +34,8 @@
 }
 
 ::selection {
-	background: var(--color-primary);
-	color: var(--color-text);
+	background: var(--color-primary-dk);
+	color: black;
 }
 
 body {
@@ -41,4 +43,11 @@ body {
 	font-family: 'Poppins', sans-serif;
 	color: var(--color-text);
 	min-height: 100vh;
+}
+
+button:disabled {
+	opacity: 0.5;
+	pointer-events: none;
+	background: var(--color-overlay-light);
+	color: var(--color-muted);
 }

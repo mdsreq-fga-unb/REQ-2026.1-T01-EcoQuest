@@ -87,6 +87,28 @@ function IcoLocalizarPev() {
 	);
 }
 
+function IcoRecompensa() {
+	return (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			stroke-width="2"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			class="nav_icon"
+			aria-hidden="true"
+		>
+			<rect x="3" y="8" width="18" height="13" rx="1" />
+			<path d="M3 12h18" />
+			<path d="M12 8v13" />
+			<path d="M12 8c-1.5-3-3.5-4.5-5.5-4-1.6.4-2 2.1-1 3.2C6.6 8.5 9 8 12 8z" />
+			<path d="M12 8c1.5-3 3.5-4.5 5.5-4 1.6.4 2 2.1 1 3.2-1.1 1.3-3.5.8-6.5.8z" />
+		</svg>
+	);
+}
+
 function IcoMenu() {
 	return (
 		<svg
@@ -133,6 +155,7 @@ const NAV_ITEMS = [
 	{ href: "/localizar-pev", label: "Localizar PEV", Icone: IcoLocalizarPev },
 	{ href: "/insignias", label: "Insígnias", Icone: IcoInsignia },
 	{ href: "/ranking", label: "Ranking", Icone: IcoRanking },
+	{ href: "/recompensas", label: "Recompensas", Icone: IcoRecompensa },
 ] as const;
 
 function Sidebar({
@@ -426,27 +449,50 @@ body {
 
 /* ── Header mobile ── */
 .header-mobile {
-  display: none;
-  background: var(--color-bg);
-  padding: 14px 20px;
-  align-items: center;
-  gap: 12px;
-  border-bottom: 1px solid rgba(43,86,51,.12);
-  position: sticky; top: 0; z-index: 50;
-  z-index: 50;
+	display: none;
+	background: var(--color-bg);
+	padding: 14px 20px;
+	align-items: center;
+	gap: 12px;
+	border-bottom: 1px solid rgba(43, 86, 51, .12);
+	position: sticky;
+	top: 0;
+	z-index: 50;
 }
-.header-mobile_menu {
-  background: none; border: none; cursor: pointer;
-  color: var(--color-primary); display: flex; align-items: center;
-  padding: 4px; border-radius: 6px; transition: background var(--transition);
-  z-index: 50;
-}
-.header-mobile_menu:hover, .header-mobile_menu:focus-visible {
-  background: rgba(43,86,51,.1);
-}
-.header-mobile_logo { display: flex; align-items: center; flex: 1; justify-content: center; position:absolute; left: 0; right: 0; }
-.header-mobile_logo-img { height: 36px; object-fit: contain; }
 
+.header-mobile_menu {
+	background: none;
+	border: none;
+	cursor: pointer;
+	color: var(--color-surface);
+	display: flex;
+	align-items: center;
+	padding: 4px;
+	border-radius: 6px;
+	transition: background var(--transition);
+	z-index: 100;
+}
+
+.header-mobile_menu:hover,
+.header-mobile_menu:focus-visible {
+	background: rgba(43, 86, 51, .1);
+}
+
+.header-mobile_logo {
+	display: flex;
+	align-items: center;
+	flex: 1;
+	justify-content: center;
+	position: absolute;
+	right: 0;
+	left: 0;
+}
+
+.header-mobile_logo-img {
+	height: 36px;
+	object-fit: contain;
+}
+	
 /* ── FAB câmera ── */
 .btn-camera {
   display: none;
@@ -569,6 +615,7 @@ body {
 	justify-content: center;
 	padding: 1rem;
 }
+
 .descarte-erro-overlay.aberto {
 	display: flex;
 }
@@ -813,6 +860,51 @@ export function AppLayout({
 					</button>
 				</div>
 			</div>
+			<div
+				class="descarte-erro-overlay"
+				id="desktop-aviso-overlay"
+				aria-hidden="true"
+			>
+				<div
+					class="descarte-erro-card"
+					role="alertdialog"
+					aria-modal="true"
+					aria-labelledby="desktop-aviso-titulo"
+					aria-describedby="desktop-aviso-mensagem"
+				>
+					<div class="descarte-erro-icone" aria-hidden="true">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="1.8"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<circle cx="12" cy="12" r="10" />
+							<line x1="12" y1="8" x2="12" y2="12" />
+							<line x1="12" y1="16" x2="12.01" y2="16" />
+						</svg>
+					</div>
+
+					<h3 class="descarte-erro-titulo" id="desktop-aviso-titulo">
+						Dispositivo não suportado
+					</h3>
+
+					<p class="descarte-erro-mensagem" id="desktop-aviso-mensagem">
+						O descarte por QR Code está disponível apenas em dispositivos móveis.
+					</p>
+
+					<button
+						type="button"
+						class="descarte-erro-btn"
+						id="btn-fechar-desktop-aviso"
+					>
+						Entendido
+					</button>
+				</div>
+			</div>
 
 			<MenuMobile rotaAtiva={rotaAtiva} nomeUsuario={nomeUsuario} />
 
@@ -850,6 +942,9 @@ export function AppLayout({
 
 (function(){
 	var botoesAbrir = document.querySelectorAll('[data-open-qr-scanner="true"]');
+	var btnDesktop = document.getElementById('btn-descarte-desktop');
+	var desktopOverlay = document.getElementById('desktop-aviso-overlay');
+	var btnFecharDesktop = document.getElementById('btn-fechar-desktop-aviso');
 	var btnFechar = document.getElementById('btn-fechar-qr');
 	var modal = document.getElementById('qr-modal');
 	var modalCard = modal ? modal.querySelector('.qr-modal_card') : null;
@@ -863,6 +958,21 @@ export function AppLayout({
 	var lendo = false;
 	var validando = false;
 	var recarregarAoFechar = false;
+
+
+	function abrirAvisoDesktop() {
+		if (!desktopOverlay) return;
+
+		desktopOverlay.classList.add('aberto');
+		desktopOverlay.setAttribute('aria-hidden', 'false');
+	}
+
+	function fecharAvisoDesktop() {
+		if (!desktopOverlay) return;
+
+		desktopOverlay.classList.remove('aberto');
+		desktopOverlay.setAttribute('aria-hidden', 'true');
+	}
 
 	function capturarControlesLeitura() {
 		btnPermissao = document.getElementById('btn-permissao-camera');
@@ -1108,6 +1218,26 @@ export function AppLayout({
 			abrirModal();
 		});
 	});
+	
+	if (btnDesktop) {
+		btnDesktop.addEventListener('click', function (e) {
+			e.preventDefault();
+			abrirAvisoDesktop();
+		});
+	}
+
+	if (btnFecharDesktop) {
+		btnFecharDesktop.addEventListener('click', fecharAvisoDesktop);
+	}
+
+	if (desktopOverlay) {
+		desktopOverlay.addEventListener('click', function (e) {
+			if (e.target === desktopOverlay) {
+				fecharAvisoDesktop();
+			}
+		});
+	}
+
 	restaurarElementosDeLeitura();
 	btnFechar.addEventListener('click', fecharModal);
 	modal.addEventListener('click', function(ev){

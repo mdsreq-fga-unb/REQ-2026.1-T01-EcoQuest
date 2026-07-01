@@ -67,6 +67,10 @@ function mascararNome(nome: string): string {
 export async function buscarRanking(
   idUsuario: number,
 ): Promise<ResultadoRanking> {
+<<<<<<< HEAD
+=======
+  // 1. Buscar Top N com insígnia mais recente
+>>>>>>> 99e6d546968124c87a832ddcf6f9ec4af32354ee
   let linhasTop: LinhaTop20Bruta[];
   try {
     const rows = await db`
@@ -93,6 +97,10 @@ export async function buscarRanking(
     throw new ErroRankingIndisponivel(causa);
   }
 
+<<<<<<< HEAD
+=======
+  // 2. Buscar posição global do usuário logado + insígnia
+>>>>>>> 99e6d546968124c87a832ddcf6f9ec4af32354ee
   let linhaPosicao: LinhaPosicaoUsuarioBruta;
   try {
     const rows = await db`
@@ -121,6 +129,10 @@ export async function buscarRanking(
 		`;
 
     if (rows.length === 0) {
+<<<<<<< HEAD
+=======
+      // Usuário sem pontuação — posição fora do ranking
+>>>>>>> 99e6d546968124c87a832ddcf6f9ec4af32354ee
       const [usr] = await db`
 				SELECT
 					u.name,
