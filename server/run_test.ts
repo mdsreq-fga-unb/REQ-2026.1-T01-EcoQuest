@@ -1,0 +1,11 @@
+import { expect, mock } from "bun:test";
+const obterSessaoMock = mock();
+mock.module("./lib/session", () => ({ obterSessao: obterSessaoMock }));
+const { localizarPevController } = await import("./src/modules/localizar_pev/controller");
+obterSessaoMock.mockResolvedValue({ id: 1, nome: "Guilherme Paulo" });
+const req = new Request("http://localhost/localizar-pev", { headers: { cookie: "eq_session=dummy" } });
+const res = await localizarPevController.handle(req);
+const html = await res.text();
+console.log("Called:", obterSessaoMock.mock.calls.length);
+console.log("HTML includes Guilherme?", html.includes("Guilherme Paulo"));
+console.log("HTML includes Visitante?", html.includes("Visitante"));
