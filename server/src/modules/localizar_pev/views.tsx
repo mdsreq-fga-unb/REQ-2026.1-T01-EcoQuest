@@ -620,12 +620,19 @@ function SecaoProdutosAceitos() {
 	);
 }
 
-export function MapaView({ nomeUsuario }: { nomeUsuario: string }) {
+export function MapaView({
+	nomeUsuario,
+	logado = false,
+}: {
+	nomeUsuario: string;
+	logado?: boolean;
+}) {
 	return (
 		<AppLayout
 			title="Localizar PEV – EcoQuest"
 			rotaAtiva="/localizar-pev"
 			nomeUsuario={nomeUsuario}
+			logado={logado}
 		>
 			<style>{CSS_MAPA}</style>
 

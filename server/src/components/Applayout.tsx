@@ -6,6 +6,7 @@ export interface AppLayoutProps {
 	title: string;
 	rotaAtiva?: string;
 	nomeUsuario: string;
+	logado?: boolean;
 	cssExtra?: string;
 	jsExtra?: string;
 	children: any;
@@ -161,9 +162,11 @@ const NAV_ITEMS = [
 function Sidebar({
 	rotaAtiva,
 	nomeUsuario,
+	logado,
 }: {
 	rotaAtiva: string;
 	nomeUsuario: string;
+	logado: boolean;
 }) {
 	const primeiroNome = nomeUsuario.split(" ")[0] || "Perfil";
 
@@ -202,29 +205,37 @@ function Sidebar({
 
 			<div class="sidebar_rodape">
 				<div class="sidebar_avatar" aria-hidden="true"></div>
-				<span class="sidebar_perfil-nome">{primeiroNome}</span>
-				<a
-					href="/auth/logout"
-					class="sidebar_logout"
-					aria-label="Sair da conta"
-				>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="2"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						aria-hidden="true"
-						width="18"
-						height="18"
+				<span class="sidebar_perfil-nome">
+					{logado ? primeiroNome : "Visitante"}
+				</span>
+				{logado ? (
+					<a
+						href="/auth/logout"
+						class="sidebar_logout"
+						aria-label="Sair da conta"
 					>
-						<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-						<polyline points="16 17 21 12 16 7" />
-						<line x1="21" y1="12" x2="9" y2="12" />
-					</svg>
-				</a>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							aria-hidden="true"
+							width="18"
+							height="18"
+						>
+							<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+							<polyline points="16 17 21 12 16 7" />
+							<line x1="21" y1="12" x2="9" y2="12" />
+						</svg>
+					</a>
+				) : (
+					<a href="/auth/login" class="sidebar_entrar" aria-label="Entrar">
+						Entrar
+					</a>
+				)}
 			</div>
 		</aside>
 	);
@@ -257,9 +268,11 @@ function HeaderMobile() {
 function MenuMobile({
 	rotaAtiva,
 	nomeUsuario,
+	logado,
 }: {
 	rotaAtiva: string;
 	nomeUsuario: string;
+	logado: boolean;
 }) {
 	return (
 		<>
@@ -301,10 +314,18 @@ function MenuMobile({
 				<div class="menu_rodape">
 					<div class="sidebar_avatar" aria-hidden="true"></div>
 					<div class="menu_rodape-info">
-						<span class="menu_nome">{nomeUsuario || "Meu perfil"}</span>
-						<a href="/auth/logout" class="menu_logout">
-							Sair da conta
-						</a>
+						<span class="menu_nome">
+							{logado ? nomeUsuario || "Meu perfil" : "Visitante"}
+						</span>
+						{logado ? (
+							<a href="/auth/logout" class="menu_logout">
+								Sair da conta
+							</a>
+						) : (
+							<a href="/auth/login" class="menu_entrar">
+								Entrar
+							</a>
+						)}
 					</div>
 				</div>
 			</nav>
@@ -337,6 +358,7 @@ const CSS_APP = `
   --color-border:     #2B5633;
   --color-primary:    #2B5633;
   --color-primary-dk: #1e3d24;
+  --color-primary-lighter: #66cc7a;
   --color-text:       #1F1F1F;
   --color-muted:      #7A7A7A;
   --color-white:      #ffffff;
@@ -441,6 +463,13 @@ body {
 }
 .sidebar:hover .sidebar_logout { opacity: 1; }
 .sidebar_logout:hover, .sidebar_logout:focus-visible { color: #c62828; }
+.sidebar_entrar {
+  color: var(--color-primary-lighter); font-size: .82rem; font-weight: 600;
+  text-decoration: none; flex-shrink: 0; white-space: nowrap;
+  opacity: 0; transition: opacity .15s ease, color var(--transition);
+}
+.sidebar:hover .sidebar_entrar { opacity: 1; }
+.sidebar_entrar:hover, .sidebar_entrar:focus-visible { color: var(--color-primary); }
 
 /* ── Área de conteúdo ── */
 .app-main {
@@ -729,6 +758,12 @@ body {
   transition: opacity var(--transition);
 }
 .menu_logout:hover { opacity: .75; }
+.menu_entrar {
+  font-size: .78rem; color: var(--color-primary-lighter); font-weight: 600;
+  text-decoration: none;
+  transition: opacity var(--transition);
+}
+.menu_entrar:hover { opacity: .75; }
 
 /* ── Tablet (≤ 1024px) ── */
 @media (max-width: 1024px) {
@@ -747,6 +782,7 @@ export function AppLayout({
 	title,
 	rotaAtiva = "/",
 	nomeUsuario,
+	logado = true,
 	cssExtra,
 	jsExtra,
 	children,
@@ -760,7 +796,7 @@ export function AppLayout({
 			{jsExtra && <script src={jsExtra} />}
 
 			<div class="app-layout">
-				<Sidebar rotaAtiva={rotaAtiva} nomeUsuario={nomeUsuario} />
+				<Sidebar rotaAtiva={rotaAtiva} nomeUsuario={nomeUsuario} logado={logado} />
 
 				<div class="app-main">
 					<HeaderMobile />
@@ -906,7 +942,7 @@ export function AppLayout({
 				</div>
 			</div>
 
-			<MenuMobile rotaAtiva={rotaAtiva} nomeUsuario={nomeUsuario} />
+			<MenuMobile rotaAtiva={rotaAtiva} nomeUsuario={nomeUsuario} logado={logado} />
 
 			<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
 			<script>{`
