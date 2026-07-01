@@ -1003,7 +1003,7 @@ export function MapaView({
 
 								manualBox.classList.add('visivel');
 								searchWrap.style.display = 'none';
-								// Não carrega PEVs ainda — aguarda o usuário informar a localização manualmente
+								carregarPins(null, null);
 							},
 							{
 								enableHighAccuracy: true,
@@ -1017,7 +1017,7 @@ export function MapaView({
 						exibirErro('Seu navegador não suporta geolocalização. Informe sua localização manualmente.', false);
 						manualBox.classList.add('visivel');
 						searchWrap.style.display = 'none';
-						// Não carrega PEVs ainda — aguarda o usuário informar a localização manualmente
+						carregarPins(null, null);
 					}
 
 					// ── Busca manual (FA-2A) ──
