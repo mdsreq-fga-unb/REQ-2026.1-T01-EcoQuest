@@ -143,7 +143,7 @@ body {
 .extrato-vazio_icone {
 	width: 64px;
 	height: 64px;
-	color: #66CC7A;
+	color: var(--color-primary-lighter);
 	opacity: .4;
 }
 
@@ -163,13 +163,14 @@ body {
 .extrato-vazio_cta {
 	display: inline-block;
 	margin-top: 8px;
-	background: var(--color-primary);
+	background: var(--color-primary-lighter);
 	color: var(--color-white);
 	font-weight: 500;
 	font-size: .9rem;
 	padding: 10px 24px;
 	border-radius: 8px;
 	text-decoration: none;
+	border: none;
 	transition: background var(--transition);
 }
 

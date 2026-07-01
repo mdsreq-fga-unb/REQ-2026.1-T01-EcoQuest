@@ -187,6 +187,7 @@
 	padding: 4px;
 	border-radius: 6px;
 	transition: background var(--transition);
+	z-index: 100;
 }
 
 .header-mobile_menu:hover,
@@ -199,6 +200,9 @@
 	align-items: center;
 	flex: 1;
 	justify-content: center;
+	position: absolute;
+	right: 0;
+	left: 0;
 }
 
 .header-mobile_logo-img {
@@ -308,15 +312,15 @@
 	display: none;
 	position: fixed;
 	bottom: 28px;
+	border: none;
 	right: 24px;
 	width: 56px;
 	height: 56px;
 	border-radius: 50%;
-	background: var(--color-primary);
+	background: var(--color-primary-lighter);
 	color: var(--color-white);
 	align-items: center;
 	justify-content: center;
-	box-shadow: 0 4px 16px rgba(43, 86, 51, .40);
 	text-decoration: none;
 	transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
 	z-index: 99999;
@@ -326,7 +330,6 @@
 .btn-camera:focus-visible {
 	background: var(--color-primary-dk);
 	transform: scale(1.06);
-	box-shadow: 0 6px 20px rgba(43, 86, 51, .50);
 }
 
 /* ── QR Modal ── */

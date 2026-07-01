@@ -449,26 +449,50 @@ body {
 
 /* ── Header mobile ── */
 .header-mobile {
-  display: none;
-  background: var(--color-bg);
-  padding: 14px 20px;
-  align-items: center;
-  gap: 12px;
-  border-bottom: 1px solid rgba(43,86,51,.12);
-  position: sticky; top: 0; z-index: 50;
+	display: none;
+	background: var(--color-bg);
+	padding: 14px 20px;
+	align-items: center;
+	gap: 12px;
+	border-bottom: 1px solid rgba(43, 86, 51, .12);
+	position: sticky;
+	top: 0;
+	z-index: 50;
 }
-.header-mobile_menu {
-  background: none; border: none; cursor: pointer;
-  color: var(--color-primary); display: flex; align-items: center;
-  padding: 4px; border-radius: 6px; transition: background var(--transition);
-  position: relative; z-index: 1;
-}
-.header-mobile_menu:hover, .header-mobile_menu:focus-visible {
-  background: rgba(43,86,51,.1);
-}
-.header-mobile_logo { display: flex; align-items: center; flex: 1; justify-content: center; position:absolute; left: 0; right: 0; }
-.header-mobile_logo-img { height: 36px; object-fit: contain; }
 
+.header-mobile_menu {
+	background: none;
+	border: none;
+	cursor: pointer;
+	color: var(--color-surface);
+	display: flex;
+	align-items: center;
+	padding: 4px;
+	border-radius: 6px;
+	transition: background var(--transition);
+	z-index: 100;
+}
+
+.header-mobile_menu:hover,
+.header-mobile_menu:focus-visible {
+	background: rgba(43, 86, 51, .1);
+}
+
+.header-mobile_logo {
+	display: flex;
+	align-items: center;
+	flex: 1;
+	justify-content: center;
+	position: absolute;
+	right: 0;
+	left: 0;
+}
+
+.header-mobile_logo-img {
+	height: 36px;
+	object-fit: contain;
+}
+	
 /* ── FAB câmera ── */
 .btn-camera {
   display: none;

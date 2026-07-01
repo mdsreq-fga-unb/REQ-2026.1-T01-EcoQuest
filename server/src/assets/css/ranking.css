@@ -2,15 +2,6 @@
     background: var(--color-bg);
 }
 
-.header-mobile {
-    background: var(--color-bg);
-    border-bottom-color: rgba(255, 255, 255, 0.1);
-}
-
-.header-mobile_menu {
-    color: var(--color-white);
-}
-
 .ranking-conteudo {
     flex: 1;
     padding: 0 0 48px;
