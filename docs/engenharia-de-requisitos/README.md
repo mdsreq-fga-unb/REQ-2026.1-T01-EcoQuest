@@ -16,7 +16,8 @@
 
 - **Casos de Uso:** utilizados como artefato principal para descrever comportamento do sistema por meio de fluxo principal, alternativos e de exceção.
 - **Casos de Uso de alto nível:** utilizados para consolidar o entendimento funcional e orientar o detalhamento incremental dos requisitos.
-- **DoR/DoD:** utilizados para definir condições verificáveis de prontidão, implementação e validação junto aos stakeholders.
+- **Fluxos em Casos de Uso:** utilizados para explicitar cenários principal, alternativos e de exceção, reduzindo ambiguidades na implementação.
+- **Critérios de Aceitação:** utilizados para definir condições verificáveis de prontidão, implementação e validação junto aos stakeholders.
 
 O projeto não adota Histórias de Usuário como artefato principal. A equipe optou por trabalhar com **Casos de Uso**, por aderência a terminologia correta do processo e à necessidade de explicitar regras de negócio com maior detalhamento.
 
