@@ -4,7 +4,7 @@
 -- TRUNCATE TABLE insignia CASCADE;
 
 -- As insignias utilizadas abaixo são definidas no seed_insignias.sql (executado antes via db:seed:all)
---  104 = Primeiro Descarte  |  105 = Guardião dos Eletrônicos
+--  104 = Primeiro Descarte  
 --  106 = Eco Frequente      |  107 = Bronze
 --  108 = Amigo da Coleta    |  109 = Eco Star
 

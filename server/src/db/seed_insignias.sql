@@ -29,12 +29,6 @@ VALUES
     -- Primeiro Descarte: recompensas mais baratas
     (104, 303),  -- Assaí 10% OFF (280 pts)
     (104, 311),  -- Riachuelo 10% OFF (220 pts)
-
-    -- Guardião dos Eletrônicos: recompensas de eletrônicos
-    (105, 304),  -- Amazon 10% OFF (950 pts)
-    (105, 306),  -- Kabum 15% OFF (600 pts)
-    (105, 307),  -- Fast Shop 5% OFF (1100 pts)
-
     -- Eco Frequente: recompensas de mercado
     (106, 300),  -- Carrefour R$50 OFF (600 pts)
     (106, 302),  -- Extra R$30 OFF (420 pts)
