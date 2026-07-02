@@ -2,7 +2,14 @@
 JWT_SECRET = "sUPer@sEcreT!key.for-jwt_tOkEn-Generat1on"
 
 # The domain of the website it will be running on.
-DOMAIN = "ecoquest.org"
+# IMPORTANTE: durante desenvolvimento local (localhost/IP local), deixe DOMAIN vazio ou comente.
+# Se DOMAIN estiver definido, o cookie de sessão será emitido com `Domain=...` e o navegador
+# poderá rejeitá-lo se o domínio não corresponder ao site atual.
+DOMAIN = "eco-quest.org"
+
+# Ativa logs detalhados de depuração da sessão (cookie, token, validação).
+# Define como "1" para ativar. Útil para diagnosticar problemas de login.
+SESSION_DEBUG = "1"
 
 POSTGRES_USER = 'postgres'
 POSTGRES_PASSWORD = '123456'
@@ -37,3 +44,10 @@ TZ = 'America/Sao_Paulo'
 
 # Database name
 #PGDATABASE = 'postgres'
+
+# Paths to SSL/TLS certificate and key files for secure database connections
+CERTIFICATE_PATH = "./localhost.pem"
+CERTIFICATE_KEY_PATH = "./localhost-key.pem"
+
+# Port number for the server to listen on
+PORT = 3000

@@ -1,25 +1,20 @@
-import { Html } from '@elysia/html'
-
+import { Html } from "@elysia/html";
+import { assetUrl } from "../lib/asset-url";
 
 export function Layout({ children, title }: { children: any; title: string }) {
-  return (
-    <html>
-      <head>
-        <meta charset="UTF-8" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0"
-        />
+	return (
+		<html>
+			<head>
+				<meta charset="UTF-8" />
+				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <title>{title}</title>
+				<title>{title}</title>
 
-        <link rel="icon" href="/assets/img/favicon.ico" />
+				<link rel="icon" href={assetUrl("img/favicon.png")} />
 
-        <script
-          src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.10/dist/htmx.min.js"
-        ></script>
+				<script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.10/dist/htmx.min.js"></script>
 
-        <style>{`
+				<style>{`
           .popup-overlay {
             position: fixed;
             inset: 0;
@@ -58,7 +53,7 @@ export function Layout({ children, title }: { children: any; title: string }) {
           .popup-box.erro .popup-fechar { background: #c62828; }
         `}</style>
 
-        <script>{`
+				<script>{`
           document.addEventListener('htmx:afterRequest', function (e) {
             const triggerHeader = e.detail.xhr.getResponseHeader('HX-Trigger');
             if (!triggerHeader) return;
@@ -119,10 +114,8 @@ export function Layout({ children, title }: { children: any; title: string }) {
             }
           }
         `}</script>
-      </head>
-      <body>
-        {children}
-      </body>
-    </html>
-  );
+			</head>
+			<body>{children}</body>
+		</html>
+	);
 }

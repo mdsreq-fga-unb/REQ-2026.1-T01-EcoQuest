@@ -47,7 +47,7 @@ A cliente principal é a Prof. Dra. Juliana Dalbone, que atua como orientadora e
 
 - **Elicitação/descoberta:** entrevistas e regras do domínio.
 - **Análise/consenso:** escopo, MoSCoW, trade-offs.
-- **Especificação:** casos de uso + critérios de aceitação (AC).
+- **Especificação:** casos de uso + fluxos.
 - **Modelagem:** protótipos e fluxos.
 - **Verificação/validação:** aceite de incrementos e confirmação de AC.
 
@@ -58,7 +58,7 @@ A cliente principal é a Prof. Dra. Juliana Dalbone, que atua como orientadora e
 | **Visão (Vision)** | Objetivo do produto, OE, CP | [Solução Proposta](/solucao-proposta/) | Revisões quinzenais |
 | **Stakeholder Requests** | Feedback, decisões e solicitações | [Atas](/atas/) | Contínuo |
 | **Work Items List** | Lista de Itens de Trabalho priorizada no Kanban | GitHub Projects + [Lista de Itens de Trabalho](/lista-de-itens-de-trabalho/) | Refinamento semanal e planejamento quinzenal |
-| **Requisitos** | Casos de Uso + Critérios de Aceitação + DoR/DoD | [Requisitos de Software](/requisitos-de-software/) | Refinamento semanal |
+| **Requisitos** | Casos de Uso + DoR/DoD | [Requisitos de Software](/requisitos-de-software/) | Refinamento semanal |
 | **Protótipos de IU** | Wireframes/fluxos | Ferramenta/artefatos de design | Refinamento quinzenal |
 | **Change Request (CR)** | Solicitações de mudança | [Atas](/atas/) + Lista de Itens de Trabalho | Contínuo |
 | **Critérios de aceite** | DoR/DoD + testes | [DoR e DoD](/dor-e-dod/) | Entrada (DoR) / saída (DoD) |

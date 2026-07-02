@@ -16,6 +16,9 @@ assignees: ''
 ### 1.1 Pré-condições
 *   [Estado em que o sistema precisa estar para que este caso de uso inicie. Ex: O usuário deve estar autenticado e com saldo positivo.]
 
+### 1.2 Pós-condições
+*   [Estado em que o sistema deve estar após a execução do caso de uso.]
+
 ---
 
 ## 🛤️ 2. Fluxos de Execução
@@ -25,9 +28,17 @@ assignees: ''
 2. O Sistema responde com...
 3. ...
 
-### Fluxos Alternativos e Exceções
+### Fluxos Alternativos
 *   **2.A [Nome da Exceção - Ex: Token Expirado]**: Se no passo X acontecer Y, o sistema deve...
+  *   > 2.A.1 [Nome da Exceção]**: ...
 *   **2.B [Nome da Exceção]**: ...
+  *   > 2.B.1 [Nome da Exceção]**: ...
+
+### Fluxos de Exceção
+*   **2.A [Nome da Exceção - Ex: Token Expirado]**: Se no passo X acontecer Y, o sistema deve...
+  *   > 2.A.1 [Nome da Exceção]**: ...
+*   **2.B [Nome da Exceção]**: ...
+  *   > 2.B.1 [Nome da Exceção]**: ...
 
 ---
 
@@ -41,7 +52,7 @@ assignees: ''
 *Para que este UC seja movido para "Ready for Dev", TODOS os itens abaixo devem estar marcados no refinamento.*
 
 **Dimensão de Clareza**
-- [ ] Ator, objetivo de negócio e critérios de aceite descritos e inequivocamente compreendidos por todos.
+- [ ] Ator, objetivo de negócio estão descritos e inequivocamente compreendidos por todos.
 - [ ] IP calculado e classificação MoSCoW registrada no template.
 
 **Dimensão de Viabilidade**
@@ -50,7 +61,6 @@ assignees: ''
 
 **Dimensão de Estimabilidade**
 - [ ] Os fluxos e regras possuem profundidade suficiente para estimar o esforço e a complexidade.
-- [ ] O UC passou no crivo INVEST (especialmente "Small" - não é grande demais para a iteração).
 - [ ] Tempo total estimado com a dupla técnica. **Esforço Final (ES):** [Inserir Pontuação]
 
 **Dimensão de Escopo**
@@ -60,7 +70,7 @@ assignees: ''
 ---
 
 ## 🚀 5. Definition of Done (DoD) - Filtro Downstream
-*Os responsáveis devem preencher o Nível 1 antes de solicitar o Merge/Review. O Nível 2 será preenchido pelo PO/Coach.*
+*Os responsáveis devem preencher o Nível 1 antes de solicitar o Merge/Review. O Nível 2 será preenchido quando validado pela cliente.*
 
 ### DoD Nível 1: Done Técnico (Pronto para Homologação)
 **Completude Funcional**
@@ -75,11 +85,10 @@ assignees: ''
 - [ ] Code Review aprovado por um par.
 
 **Integração e Documentação**
-- [ ] Documentação técnica (arquitetura, diagramas UML, dicionário de dados) atualizada no GitHub Pages do projeto.
+- [ ] Documentação técnica atualizada no GitHub Pages do projeto.
 - [ ] Rastreabilidade atualizada na ferramenta.
 - [ ] Código integrado na branch principal sem conflitos e pipeline de build validado.
 - [ ] Deploy executado com sucesso no ambiente de Homologação/Staging.
 
 ### DoD Nível 2: Done de Negócio (Finalizado)
 - [ ] UC validado pela cliente no ambiente de Homologação (Síncrono para núcleos principais, Assíncrono para secundários).
-- [ ] A métrica correspondente a esta entrega alimentou o KR (Key Result) do ciclo de OKRs atual.

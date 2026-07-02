@@ -1,3 +1,5 @@
+CREATE TYPE user_status AS ENUM ('ACTIVE', 'INACTIVE', 'BLOCKED');
+
 CREATE TABLE "user" (
 	id BIGSERIAL PRIMARY KEY,
 	email VARCHAR(256) NOT NULL,
@@ -7,6 +9,11 @@ CREATE TABLE "user" (
 	password_hash VARCHAR(512) NOT NULL,
 	points_balance INTEGER NOT NULL DEFAULT 0,
 	points_total_earned INTEGER NOT NULL DEFAULT 0,
+	ranking_anonymous BOOLEAN NOT NULL DEFAULT FALSE,
+	status user_status NOT NULL DEFAULT 'ACTIVE',
+	terms_accepted_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+	failed_login_attempts INTEGER NOT NULL DEFAULT 0,
+	locked_until TIMESTAMPTZ,
 	created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
 	updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),
 	CONSTRAINT user_email_not_empty CHECK (char_length(btrim(email)) > 0),
@@ -15,7 +22,8 @@ CREATE TABLE "user" (
 	CONSTRAINT user_phone_not_empty CHECK (char_length(btrim(phone)) > 0),
 	CONSTRAINT user_password_hash_not_empty CHECK (char_length(btrim(password_hash)) > 0),
 	CONSTRAINT user_points_balance_non_negative CHECK (points_balance >= 0),
-	CONSTRAINT user_points_total_earned_non_negative CHECK (points_total_earned >= 0)
+	CONSTRAINT user_points_total_earned_non_negative CHECK (points_total_earned >= 0),
+	CONSTRAINT user_failed_login_attempts_non_negative CHECK (failed_login_attempts >= 0)
 );
 
 CREATE UNIQUE INDEX user_email_lower_unique ON "user" (lower(email));
@@ -24,6 +32,8 @@ CREATE UNIQUE INDEX user_cpf_unique ON "user" (cpf);
 CREATE TABLE pev (
 	id BIGSERIAL PRIMARY KEY,
 	name TEXT NOT NULL,
+	latitude NUMERIC,
+	longitude NUMERIC,
 	-- code TEXT UNIQUE,
 	created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
 	CONSTRAINT pev_name_not_empty CHECK (char_length(btrim(name)) > 0)
@@ -106,7 +116,7 @@ CREATE TABLE reward_redemption (
 	status reward_redemption_status NOT NULL DEFAULT 'ISSUED',
 	created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
 	expires_at TIMESTAMPTZ,
-	CONSTRAINT reward_redemption_points_cost_snapshot_positive CHECK (points_cost_snapshot > 0),
+	CONSTRAINT reward_redemption_points_cost_snapshot_non_negative CHECK (points_cost_snapshot >= 0),
 	CONSTRAINT reward_redemption_code_not_empty CHECK (char_length(btrim(code)) > 0)
 );
 
@@ -161,6 +171,13 @@ CREATE TABLE user_insignia (
 	PRIMARY KEY (id_user, id_insignia)
 );
 
+CREATE TABLE insignia_reward (
+	id_insignia BIGINT NOT NULL REFERENCES insignia(id) ON DELETE CASCADE,
+	id_reward   BIGINT NOT NULL REFERENCES reward(id) ON DELETE RESTRICT,
+	created_at  TIMESTAMPTZ NOT NULL DEFAULT now(),
+	PRIMARY KEY (id_insignia, id_reward)
+);
+
 -- Documentação (comentários curtos por tabela/coluna)
 COMMENT ON TABLE "user" IS 'Usuários cadastrados (autenticação e pontos).';
 COMMENT ON COLUMN "user".id IS 'Identificador do usuário.';
@@ -171,6 +188,20 @@ COMMENT ON COLUMN "user".phone IS 'Telefone do usuário.';
 COMMENT ON COLUMN "user".password_hash IS 'Hash da senha (ex: Argon2/BCrypt).';
 COMMENT ON COLUMN "user".points_balance IS 'Saldo atual de pontos disponível para resgate.';
 COMMENT ON COLUMN "user".points_total_earned IS 'Total de pontos ganhos (base para ranking).';
+COMMENT ON COLUMN "user".ranking_anonymous IS 'Se true, nome do usuário é mascarado no ranking público.';
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> adb634abc9ab6cff5ee0a54332fba49a0ed9e3d0
+COMMENT ON COLUMN "user".status IS 'Status administrativo da conta (ACTIVE/INACTIVE/BLOCKED). RN: apenas ACTIVE pode autenticar (UC02).';
+COMMENT ON COLUMN "user".terms_accepted_at IS 'Data/hora do aceite dos termos de uso e da política de privacidade (RN18, LGPD).';
+COMMENT ON COLUMN "user".failed_login_attempts IS 'Contador de tentativas de login consecutivas com credenciais inválidas (RN15).';
+COMMENT ON COLUMN "user".locked_until IS 'Data/hora até quando a conta está temporariamente bloqueada por excesso de tentativas (RN15). Null = não bloqueada.';
+<<<<<<< HEAD
+>>>>>>> 99e6d546968124c87a832ddcf6f9ec4af32354ee
+=======
+>>>>>>> adb634abc9ab6cff5ee0a54332fba49a0ed9e3d0
 COMMENT ON COLUMN "user".created_at IS 'Data/hora de criação do registro.';
 COMMENT ON COLUMN "user".updated_at IS 'Data/hora da última atualização do registro.';
 
@@ -248,3 +279,11 @@ COMMENT ON TABLE user_insignia IS 'Conquistas desbloqueadas por usuário.';
 COMMENT ON COLUMN user_insignia.id_user IS 'Usuário que desbloqueou.';
 COMMENT ON COLUMN user_insignia.id_insignia IS 'Conquista desbloqueada.';
 COMMENT ON COLUMN user_insignia.unlocked_at IS 'Data/hora do desbloqueio.';
+
+COMMENT ON TABLE insignia_reward IS 'Recompensas do catálogo vinculadas a cada insígnia.';
+COMMENT ON COLUMN insignia_reward.id_insignia IS 'Insígnia que desbloqueia a recompensa.';
+<<<<<<< HEAD
+COMMENT ON COLUMN insignia_reward.id_reward IS 'Recompensa do catálogo liberada.';
+=======
+COMMENT ON COLUMN insignia_reward.id_reward IS 'Recompensa do catálogo liberada.';
+>>>>>>> adb634abc9ab6cff5ee0a54332fba49a0ed9e3d0

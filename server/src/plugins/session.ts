@@ -12,6 +12,15 @@ function pluginDebug(evento: string, detalhes?: Record<string, unknown>) {
 	console.log(`[session-plugin] ${evento}`);
 }
 
+// ⚠️ Aviso de configuração: se DOMAIN está definido mas o servidor não está rodando
+// naquele domínio, o navegador rejeitará o cookie de sessão.
+if (process.env.DOMAIN) {
+	console.log(
+		`[session-plugin] DOMAIN=${process.env.DOMAIN} — cookie de sessão usará Domain=${process.env.DOMAIN}. ` +
+			`Se não estiver rodando em ${process.env.DOMAIN}, o login NÃO funcionará.`,
+	);
+}
+
 export const sessionPlugin = new Elysia({ name: "session" })
 	.derive(async ({ request }) => {
 		const pathname = new URL(request.url).pathname;

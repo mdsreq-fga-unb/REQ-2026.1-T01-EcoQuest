@@ -1,10 +1,12 @@
 import { Html } from "@elysia/html";
+import { assetUrl } from "../lib/asset-url";
 import { Layout } from "./Layout-auth";
 
 export interface AppLayoutProps {
 	title: string;
 	rotaAtiva?: string;
 	nomeUsuario: string;
+	logado?: boolean;
 	cssExtra?: string;
 	jsExtra?: string;
 	children: any;
@@ -67,6 +69,47 @@ function IcoRanking() {
 	);
 }
 
+function IcoLocalizarPev() {
+	return (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			stroke-width="2"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			class="nav_icon"
+			aria-hidden="true"
+		>
+			<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" />
+			<circle cx="12" cy="10" r="3" />
+		</svg>
+	);
+}
+
+function IcoRecompensa() {
+	return (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			stroke-width="2"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			class="nav_icon"
+			aria-hidden="true"
+		>
+			<rect x="3" y="8" width="18" height="13" rx="1" />
+			<path d="M3 12h18" />
+			<path d="M12 8v13" />
+			<path d="M12 8c-1.5-3-3.5-4.5-5.5-4-1.6.4-2 2.1-1 3.2C6.6 8.5 9 8 12 8z" />
+			<path d="M12 8c1.5-3 3.5-4.5 5.5-4 1.6.4 2 2.1 1 3.2-1.1 1.3-3.5.8-6.5.8z" />
+		</svg>
+	);
+}
+
 function IcoMenu() {
 	return (
 		<svg
@@ -110,16 +153,20 @@ function IcoCamera() {
 
 const NAV_ITEMS = [
 	{ href: "/", label: "Extrato", Icone: IcoDescarte },
+	{ href: "/localizar-pev", label: "Localizar PEV", Icone: IcoLocalizarPev },
 	{ href: "/insignias", label: "Insígnias", Icone: IcoInsignia },
 	{ href: "/ranking", label: "Ranking", Icone: IcoRanking },
+	{ href: "/recompensas", label: "Recompensas", Icone: IcoRecompensa },
 ] as const;
 
 function Sidebar({
 	rotaAtiva,
 	nomeUsuario,
+	logado,
 }: {
 	rotaAtiva: string;
 	nomeUsuario: string;
+	logado: boolean;
 }) {
 	const primeiroNome = nomeUsuario.split(" ")[0] || "Perfil";
 
@@ -128,7 +175,7 @@ function Sidebar({
 			<div class="sidebar_logo">
 				<a href="/" aria-label="EcoQuest – página inicial">
 					<img
-						src="/assets/img/logo.png"
+						src={assetUrl("img/logo.png")}
 						alt="EcoQuest"
 						class="sidebar_logo-img"
 					/>
@@ -158,29 +205,37 @@ function Sidebar({
 
 			<div class="sidebar_rodape">
 				<div class="sidebar_avatar" aria-hidden="true"></div>
-				<span class="sidebar_perfil-nome">{primeiroNome}</span>
-				<a
-					href="/auth/logout"
-					class="sidebar_logout"
-					aria-label="Sair da conta"
-				>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="2"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						aria-hidden="true"
-						width="18"
-						height="18"
+				<span class="sidebar_perfil-nome">
+					{logado ? primeiroNome : "Visitante"}
+				</span>
+				{logado ? (
+					<a
+						href="/auth/logout"
+						class="sidebar_logout"
+						aria-label="Sair da conta"
 					>
-						<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-						<polyline points="16 17 21 12 16 7" />
-						<line x1="21" y1="12" x2="9" y2="12" />
-					</svg>
-				</a>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							aria-hidden="true"
+							width="18"
+							height="18"
+						>
+							<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+							<polyline points="16 17 21 12 16 7" />
+							<line x1="21" y1="12" x2="9" y2="12" />
+						</svg>
+					</a>
+				) : (
+					<a href="/auth/login" class="sidebar_entrar" aria-label="Entrar">
+						Entrar
+					</a>
+				)}
 			</div>
 		</aside>
 	);
@@ -201,7 +256,7 @@ function HeaderMobile() {
 
 			<a href="/" class="header-mobile_logo" aria-label="EcoQuest – início">
 				<img
-					src="/assets/img/logo.png"
+					src={assetUrl("img/logo.png")}
 					alt="EcoQuest"
 					class="header-mobile_logo-img"
 				/>
@@ -213,9 +268,11 @@ function HeaderMobile() {
 function MenuMobile({
 	rotaAtiva,
 	nomeUsuario,
+	logado,
 }: {
 	rotaAtiva: string;
 	nomeUsuario: string;
+	logado: boolean;
 }) {
 	return (
 		<>
@@ -257,10 +314,18 @@ function MenuMobile({
 				<div class="menu_rodape">
 					<div class="sidebar_avatar" aria-hidden="true"></div>
 					<div class="menu_rodape-info">
-						<span class="menu_nome">{nomeUsuario || "Meu perfil"}</span>
-						<a href="/auth/logout" class="menu_logout">
-							Sair da conta
-						</a>
+						<span class="menu_nome">
+							{logado ? nomeUsuario || "Meu perfil" : "Visitante"}
+						</span>
+						{logado ? (
+							<a href="/auth/logout" class="menu_logout">
+								Sair da conta
+							</a>
+						) : (
+							<a href="/auth/login" class="menu_entrar">
+								Entrar
+							</a>
+						)}
 					</div>
 				</div>
 			</nav>
@@ -293,6 +358,7 @@ const CSS_APP = `
   --color-border:     #2B5633;
   --color-primary:    #2B5633;
   --color-primary-dk: #1e3d24;
+  --color-primary-lighter: #66cc7a;
   --color-text:       #1F1F1F;
   --color-muted:      #7A7A7A;
   --color-white:      #ffffff;
@@ -397,6 +463,13 @@ body {
 }
 .sidebar:hover .sidebar_logout { opacity: 1; }
 .sidebar_logout:hover, .sidebar_logout:focus-visible { color: #c62828; }
+.sidebar_entrar {
+  color: var(--color-primary-lighter); font-size: .82rem; font-weight: 600;
+  text-decoration: none; flex-shrink: 0; white-space: nowrap;
+  opacity: 0; transition: opacity .15s ease, color var(--transition);
+}
+.sidebar:hover .sidebar_entrar { opacity: 1; }
+.sidebar_entrar:hover, .sidebar_entrar:focus-visible { color: var(--color-primary); }
 
 /* ── Área de conteúdo ── */
 .app-main {
@@ -405,40 +478,65 @@ body {
 
 /* ── Header mobile ── */
 .header-mobile {
-  display: none;
-  background: var(--color-bg);
-  padding: 14px 20px;
-  align-items: center;
-  gap: 12px;
-  border-bottom: 1px solid rgba(43,86,51,.12);
-  position: sticky; top: 0; z-index: 50;
+	display: none;
+	background: var(--color-bg);
+	padding: 14px 20px;
+	align-items: center;
+	gap: 12px;
+	border-bottom: 1px solid rgba(43, 86, 51, .12);
+	position: sticky;
+	top: 0;
+	z-index: 50;
 }
+
 .header-mobile_menu {
-  background: none; border: none; cursor: pointer;
-  color: var(--color-primary); display: flex; align-items: center;
-  padding: 4px; border-radius: 6px; transition: background var(--transition);
+	background: none;
+	border: none;
+	cursor: pointer;
+	color: var(--color-surface);
+	display: flex;
+	align-items: center;
+	padding: 4px;
+	border-radius: 6px;
+	transition: background var(--transition);
+	z-index: 100;
 }
-.header-mobile_menu:hover, .header-mobile_menu:focus-visible {
-  background: rgba(43,86,51,.1);
+
+.header-mobile_menu:hover,
+.header-mobile_menu:focus-visible {
+	background: rgba(43, 86, 51, .1);
 }
-.header-mobile_logo { display: flex; align-items: center; flex: 1; justify-content: center; }
-.header-mobile_logo-img { height: 36px; object-fit: contain; }
+
+.header-mobile_logo {
+	display: flex;
+	align-items: center;
+	flex: 1;
+	justify-content: center;
+	position: absolute;
+	right: 0;
+	left: 0;
+}
+
+.header-mobile_logo-img {
+	height: 36px;
+	object-fit: contain;
+}
 
 /* ── FAB câmera ── */
 .btn-camera {
   display: none;
   position: fixed; bottom: 28px; right: 24px;
   width: 56px; height: 56px; border-radius: 50%;
-  background: var(--color-primary); color: var(--color-white);
+  background: #66CC7A; color: var(--color-white);
   align-items: center; justify-content: center;
   box-shadow: 0 4px 16px rgba(43,86,51,.40);
+  cursor: pointer; border: none;
   text-decoration: none;
   transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
   z-index: 100;
 }
 .btn-camera:hover, .btn-camera:focus-visible {
-  background: var(--color-primary-dk); transform: scale(1.06);
-  box-shadow: 0 6px 20px rgba(43,86,51,.50);
+  background: #5DBA6F; transform: scale(1.06);
 }
 
 .qr-modal {
@@ -546,6 +644,7 @@ body {
 	justify-content: center;
 	padding: 1rem;
 }
+
 .descarte-erro-overlay.aberto {
 	display: flex;
 }
@@ -659,6 +758,12 @@ body {
   transition: opacity var(--transition);
 }
 .menu_logout:hover { opacity: .75; }
+.menu_entrar {
+  font-size: .78rem; color: var(--color-primary-lighter); font-weight: 600;
+  text-decoration: none;
+  transition: opacity var(--transition);
+}
+.menu_entrar:hover { opacity: .75; }
 
 /* ── Tablet (≤ 1024px) ── */
 @media (max-width: 1024px) {
@@ -677,18 +782,21 @@ export function AppLayout({
 	title,
 	rotaAtiva = "/",
 	nomeUsuario,
+	logado = true,
 	cssExtra,
 	jsExtra,
 	children,
 }: AppLayoutProps) {
 	return (
 		<Layout title={title}>
-			<style>{CSS_APP}</style>
-
+			<link rel="stylesheet" href={assetUrl("css/globals.css")} />
+			<link rel="stylesheet" href={assetUrl("css/components.css")} />
 			{cssExtra && <link rel="stylesheet" href={cssExtra} />}
+			<script src={assetUrl("js/menu.js")}></script>
+			{jsExtra && <script src={jsExtra} />}
 
 			<div class="app-layout">
-				<Sidebar rotaAtiva={rotaAtiva} nomeUsuario={nomeUsuario} />
+				<Sidebar rotaAtiva={rotaAtiva} nomeUsuario={nomeUsuario} logado={logado} />
 
 				<div class="app-main">
 					<HeaderMobile />
@@ -788,8 +896,53 @@ export function AppLayout({
 					</button>
 				</div>
 			</div>
+			<div
+				class="descarte-erro-overlay"
+				id="desktop-aviso-overlay"
+				aria-hidden="true"
+			>
+				<div
+					class="descarte-erro-card"
+					role="alertdialog"
+					aria-modal="true"
+					aria-labelledby="desktop-aviso-titulo"
+					aria-describedby="desktop-aviso-mensagem"
+				>
+					<div class="descarte-erro-icone" aria-hidden="true">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="1.8"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+						>
+							<circle cx="12" cy="12" r="10" />
+							<line x1="12" y1="8" x2="12" y2="12" />
+							<line x1="12" y1="16" x2="12.01" y2="16" />
+						</svg>
+					</div>
 
-			<MenuMobile rotaAtiva={rotaAtiva} nomeUsuario={nomeUsuario} />
+					<h3 class="descarte-erro-titulo" id="desktop-aviso-titulo">
+						Dispositivo não suportado
+					</h3>
+
+					<p class="descarte-erro-mensagem" id="desktop-aviso-mensagem">
+						O descarte por QR Code está disponível apenas em dispositivos móveis.
+					</p>
+
+					<button
+						type="button"
+						class="descarte-erro-btn"
+						id="btn-fechar-desktop-aviso"
+					>
+						Entendido
+					</button>
+				</div>
+			</div>
+
+			<MenuMobile rotaAtiva={rotaAtiva} nomeUsuario={nomeUsuario} logado={logado} />
 
 			<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
 			<script>{`
@@ -825,6 +978,9 @@ export function AppLayout({
 
 (function(){
 	var botoesAbrir = document.querySelectorAll('[data-open-qr-scanner="true"]');
+	var btnDesktop = document.getElementById('btn-descarte-desktop');
+	var desktopOverlay = document.getElementById('desktop-aviso-overlay');
+	var btnFecharDesktop = document.getElementById('btn-fechar-desktop-aviso');
 	var btnFechar = document.getElementById('btn-fechar-qr');
 	var modal = document.getElementById('qr-modal');
 	var modalCard = modal ? modal.querySelector('.qr-modal_card') : null;
@@ -838,6 +994,21 @@ export function AppLayout({
 	var lendo = false;
 	var validando = false;
 	var recarregarAoFechar = false;
+
+
+	function abrirAvisoDesktop() {
+		if (!desktopOverlay) return;
+
+		desktopOverlay.classList.add('aberto');
+		desktopOverlay.setAttribute('aria-hidden', 'false');
+	}
+
+	function fecharAvisoDesktop() {
+		if (!desktopOverlay) return;
+
+		desktopOverlay.classList.remove('aberto');
+		desktopOverlay.setAttribute('aria-hidden', 'true');
+	}
 
 	function capturarControlesLeitura() {
 		btnPermissao = document.getElementById('btn-permissao-camera');
@@ -1083,6 +1254,26 @@ export function AppLayout({
 			abrirModal();
 		});
 	});
+
+	if (btnDesktop) {
+		btnDesktop.addEventListener('click', function (e) {
+			e.preventDefault();
+			abrirAvisoDesktop();
+		});
+	}
+
+	if (btnFecharDesktop) {
+		btnFecharDesktop.addEventListener('click', fecharAvisoDesktop);
+	}
+
+	if (desktopOverlay) {
+		desktopOverlay.addEventListener('click', function (e) {
+			if (e.target === desktopOverlay) {
+				fecharAvisoDesktop();
+			}
+		});
+	}
+
 	restaurarElementosDeLeitura();
 	btnFechar.addEventListener('click', fecharModal);
 	modal.addEventListener('click', function(ev){

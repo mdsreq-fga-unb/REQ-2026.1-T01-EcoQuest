@@ -1,19 +1,21 @@
 import { Html } from "@elysia/html";
 import { Layout } from "../../components/Layout-auth";
+import { assetUrl } from "../../lib/asset-url";
 
 export function CadastroView() {
 	return (
 		<Layout title="Cadastro - EcoQuest">
-			<link rel="stylesheet" href="../assets/cadastro.css" />
+			<link rel="stylesheet" href={assetUrl("css/auth.css")} />
+			<link rel="stylesheet" href={assetUrl("css/globals.css")} />
 
 			<header class="header">
-				<img src="../assets/img/logo.png" alt="EcoQuest" class="logo" />
+				<img src={assetUrl("img/logo.png")} alt="EcoQuest" class="logo" />
 			</header>
 
 			<main class="container">
 				<h1 class="title">Criar conta</h1>
 
-				<div class="card">
+				<div class="card cadastro-card">
 					<form
 						id="form-cadastro"
 						hx-post="/auth/cadastro"
@@ -253,6 +255,34 @@ export function CadastroView() {
 							</div>
 						</div>
 
+						<div class="field field-termos">
+							<label class="checkbox-wrapper" for="termosAceitos">
+								<input
+									type="checkbox"
+									id="termosAceitos"
+									name="termosAceitos"
+								/>
+								<span>
+									Li e aceito os{" "}
+									<a href="/auth/termos-de-uso" target="_blank" rel="noopener">
+										Termos de Uso
+									</a>{" "}
+									e a{" "}
+									<a
+										href="/auth/politica-de-privacidade"
+										target="_blank"
+										rel="noopener"
+									>
+										Política de Privacidade
+									</a>
+									.
+								</span>
+							</label>
+							<p class="termos-erro" id="termos-erro" hidden>
+								É necessário aceitar os termos para continuar.
+							</p>
+						</div>
+
 						<p class="cadastro-link">
 							Já possui uma conta? <a href="/auth/login">Entre aqui</a>
 						</p>
@@ -268,7 +298,8 @@ export function CadastroView() {
 				</div>
 			</main>
 
-			<script src="/assets/cadastro.js"></script>
+			<script src={assetUrl("js/password-toggle.js")}></script>
+			<script src={assetUrl("js/cadastro.js")}></script>
 		</Layout>
 	);
 }

@@ -25,8 +25,8 @@ section.cover {
   background: linear-gradient(135deg, #F9FBE7 0%, #81C784 100%) !important;
 }
 
-section.cover h1, 
-section.cover p, 
+section.cover h1,
+section.cover p,
 section.cover small {
   color: var(--eco-text) !important;
 }
