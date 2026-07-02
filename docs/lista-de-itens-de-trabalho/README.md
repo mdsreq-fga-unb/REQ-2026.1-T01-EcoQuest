@@ -21,12 +21,13 @@
 | **RN15** | Limite de Tentativas de Login | O sistema deve bloquear temporariamente as tentativas de login após 5 tentativas consecutivas com credenciais inválidas |
 | **RN16** | Materiais Aceitos por PEV | Cada PEV deve possuir uma lista de materiais aceitos. Um descarte somente poderá ser registrado se o material informado constar entre os tipos aceitos pelo PEV |
 | **RN17** | Controle de Estoque de Recompensas | O resgate de uma recompensa somente pode ser concluído se houver unidade disponível em estoque. A unidade é reservada no momento da geração do cupom e liberada caso o resgate não seja concluído com sucesso |
+| **RN18** | Consentimento de Termos de Uso e Privacidade | O cadastro de um usuário somente pode ser concluído mediante aceite explícito dos termos de uso e da política de privacidade, em conformidade com a LGPD |
 
 ## 10.2. Lista de Itens de Trabalho
 
 | ID | Nome | ID UC | Objetivo UC | RNFs Relacionados | RNs Relacionadas |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **RF01** | Cadastrar usuário | [**UC01**](https://mdsreq-fga-unb.github.io/REQ-2026.1-T01-EcoQuest/#/lista-de-itens-de-trabalho/uc01) | Permitir a criação de uma conta no sistema | **RNF01** - Responsividade Mobile<br>**RNF03** - Acessibilidade Digital<br>**RNF05** - Segurança de Dados | **RN8** - Unicidade de E-mail<br>**RN9** - Política de Senha |
+| **RF01** | Cadastrar usuário | [**UC01**](https://mdsreq-fga-unb.github.io/REQ-2026.1-T01-EcoQuest/#/lista-de-itens-de-trabalho/uc01) | Permitir a criação de uma conta no sistema | **RNF01** - Responsividade Mobile<br>**RNF03** - Acessibilidade Digital<br>**RNF05** - Segurança de Dados | **RN8** - Unicidade de E-mail<br>**RN9** - Política de Senha<br>**RN18** - Consentimento de Termos de Uso e Privacidade |
 | **RF02** | Autenticar usuário | [**UC02**](https://mdsreq-fga-unb.github.io/REQ-2026.1-T01-EcoQuest/#/lista-de-itens-de-trabalho/uc02) | Permitir acesso seguro ao sistema | **RNF02** - Desempenho de Resposta<br>**RNF04** - Alta Disponibilidade<br>**RNF05** - Segurança de Dados<br>**RNF06** - Integridade de Tokens | **RN15** - Limite de Tentativas de Login |
 | **RF03** | Recuperar senha | [**UC03**](https://mdsreq-fga-unb.github.io/REQ-2026.1-T01-EcoQuest/#/lista-de-itens-de-trabalho/uc03) | Permitir redefinição da senha | **RNF02** - Desempenho de Resposta<br>**RNF05** - Segurança de Dados<br>**RNF06** - Integridade de Tokens | **RN9** - Política de Senha<br>**RN10** - Validade do Token |
 | **RF04** | Gerenciar Perfil | [**UC04**](https://mdsreq-fga-unb.github.io/REQ-2026.1-T01-EcoQuest/#/lista-de-itens-de-trabalho/uc04) | Permitir edição de dados pessoais e preferências | **RNF01** - Responsividade Mobile<br>**RNF03** - Acessibilidade Digital<br>**RNF05** - Segurança de Dados | -- |
