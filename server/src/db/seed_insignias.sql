@@ -6,11 +6,6 @@ VALUES
     (104, 'primeiro_descarte', 'Primeiro Descarte',
      'Realize seu primeiro descarte responsável em um PEV.',
      '[{"tipo":"disposal_count","meta":1,"descricao":"Realizar 1 descarte em qualquer PEV"}]', true),
-
-    (105, 'guardiao_eletronicos', 'Guardião dos Eletrônicos',
-     'Faça 5 descartes de resíduos eletrônicos.',
-     '[{"tipo":"disposal_type_count","subtipo":"eletrônicos","meta":5,"descricao":"Acumular 5 descartes da categoria eletrônicos"}]', true),
-
     (106, 'eco_frequente', 'Eco Frequente',
      'Realize 10 descartes no total.',
      '[{"tipo":"disposal_count","meta":10,"descricao":"Acumular 10 descartes no histórico"}]', true),
