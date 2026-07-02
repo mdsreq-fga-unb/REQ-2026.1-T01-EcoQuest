@@ -23,3 +23,10 @@
 
 **Ações:**
 - Submeter as duas versões de identidade visual para validação da cliente.
+
+**Chat:**
+
+![1](/04-06-brain--1.png)
+![2](/04-06-brain--2.png)
+![3](/04-06-brain--3.png)
+![4](/04-06-brain--4.png)

@@ -30,13 +30,12 @@
     * [UC15 - Visualizar Ranking](lista-de-itens-de-trabalho/uc15.md)
     * [UC16 - Visualizar Painel de Impacto Pessoal](lista-de-itens-de-trabalho/uc16.md)
     * [UC17 - Consultar Estatísticas do Impacto da Comunidade](lista-de-itens-de-trabalho/uc17.md)
-  * [Rastreabilidade dos Casos de Uso](lista-de-itens-de-trabalho/rastreabilidade-casos.md)
   * [Critérios](criterios/)
 
 * **Acompanhamento**
   * [Ata - Reuniões](atas/)
   * [Cronograma e Entregas](cronograma-e-entregas/)
-  * [Monitoramento MVP](acompanhamento/)
+  * [Planejamento e Organização](planejamento-e-organizacao/)
   * [Lições Aprendidas](licoes-aprendidas/)
   * [Entregas de Unidade](entregas/)
   * [Evidências de Software](evidencias/)

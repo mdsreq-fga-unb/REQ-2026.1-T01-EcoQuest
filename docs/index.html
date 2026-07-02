@@ -53,6 +53,75 @@
           });
         },
         function(hook) {
+          hook.mounted(function() {
+            function getSidebar() {
+              return document.querySelector('.sidebar');
+            }
+
+            var sidebar = getSidebar();
+            var backdrop = document.createElement('div');
+            backdrop.className = 'eco-menu-backdrop';
+
+            if (sidebar && sidebar.parentNode) {
+              sidebar.parentNode.insertBefore(backdrop, sidebar);
+            } else {
+              document.body.appendChild(backdrop);
+            }
+
+            var toggle = document.createElement('button');
+            toggle.type = 'button';
+            toggle.className = 'eco-menu-toggle';
+            toggle.setAttribute('aria-label', 'Abrir menu de navegação');
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.innerHTML = '<span></span>';
+            document.body.appendChild(toggle);
+
+            function closeMenu() {
+              var sidebar = getSidebar();
+              if (sidebar) sidebar.classList.remove('eco-sidebar-open');
+              backdrop.classList.remove('eco-sidebar-open');
+              toggle.classList.remove('eco-sidebar-open');
+              toggle.setAttribute('aria-expanded', 'false');
+              toggle.setAttribute('aria-label', 'Abrir menu de navegação');
+              document.body.classList.remove('eco-sidebar-locked');
+            }
+
+            function openMenu() {
+              var sidebar = getSidebar();
+              if (sidebar) sidebar.classList.add('eco-sidebar-open');
+              backdrop.classList.add('eco-sidebar-open');
+              toggle.classList.add('eco-sidebar-open');
+              toggle.setAttribute('aria-expanded', 'true');
+              toggle.setAttribute('aria-label', 'Fechar menu de navegação');
+              document.body.classList.add('eco-sidebar-locked');
+            }
+
+            toggle.addEventListener('click', function() {
+              var sidebar = getSidebar();
+              var aberto = sidebar && sidebar.classList.contains('eco-sidebar-open');
+              if (aberto) {
+                closeMenu();
+              } else {
+                openMenu();
+              }
+            });
+
+            backdrop.addEventListener('click', closeMenu);
+
+            document.addEventListener('keydown', function(ev) {
+              if (ev.key === 'Escape') closeMenu();
+            });
+
+            // Fecha o menu ao navegar para outra página
+            hook.doneEach(closeMenu);
+
+            // Fecha o menu se a tela deixar de ser "mobile"
+            window.addEventListener('resize', function() {
+              if (window.innerWidth > 768) closeMenu();
+            });
+          });
+        },
+        function(hook) {
           var BLOCK_ID = 'page-headings-block';
 
           var EXCLUDE_PATTERNS = [
