@@ -19,3 +19,9 @@
 
 **Ações:**
 - Prosseguir com refinamentos visuais e atualização de requisitos associados.
+
+**Chat:**
+
+![1](/04-06--1-val.png)
+![2](/04-06--2-val.png)
+![3](/04-06--3-val.png)
