@@ -7,9 +7,10 @@ O cronograma do projeto EcoQuest opera em dois níveis de abstração distintos 
 *   **Nível Micro (GitHub Projects):** A gestão operacional do tempo e do esforço. Cada ciclo semanal é planejado, executado e rastreado diretamente no quadro Kanban do repositório, governado pelas regras de Definition of Ready (DoR) e Definition of Done (DoD). O detalhamento tático de iterações não é replicado neste documento para evitar desatualização e redundância.
     
 
-> 🔗 **Acompanhamento:**
+> 🔗 **Acompanhamento e Organização:**
 > 
 > As iterações ativas, o burn rate de horas e o status de cada Caso de Uso podem ser auditados no nosso [Quadro de Iterações — GitHub Projects](https://github.com/orgs/mdsreq-fga-unb/projects/108).
+> O monitoramento do MVP, rastreabilidade e critérios estão detalhados na página de [Planejamento e Organização](../planejamento-e-organizacao/README.md).
 
 6.1. Visão Geral do Ciclo de Vida (OpenUP)
 ------------------------------------------

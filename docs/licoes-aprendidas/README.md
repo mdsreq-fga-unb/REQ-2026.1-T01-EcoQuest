@@ -52,6 +52,13 @@
 
 ## Unidade 4
 
+**No âmbito do Ciclo de Vida:** Ao completar o ciclo de vida (Concepção, Elaboração, Construção e Transição), a equipe consolidou o entendimento de que as dores iniciais com documentação e requisitos (Unidades 1 e 2) foram o que garantiram a estabilidade para construir e entregar o MVP sob pressão na reta final.
+
+**No âmbito da Homologação e Entrega de Valor:** A equipe aprendeu que "funcionar na máquina local" é fundamentalmente diferente de "estar homologado e em produção". O processo de *deploy* do MVP e a preparação da *Release Candidate* exigiram um rigor técnico muito maior em testes (cobertura mínima de 70%) e integração contínua do que o previsto.
+
+**No âmbito da Auditoria e Transparência Final:** A auditoria rigorosa evidenciou que a qualidade de um projeto de software não é medida apenas pelo código, mas pela capacidade da equipe de provar que os processos foram seguidos. Documentação teórica sem evidências práticas (commits, PRs e testes vinculados) não se sustenta numa auditoria.
+
+**Dificuldade 3:** Débito Técnico vs. Pressão de Entrega. Na fase de fechamento, a pressão para entregar todo o escopo do MVP conflitou com a necessidade de manter a cobertura de testes e refatorar códigos legados para cumprir a arquitetura.
 
 ## Histórico de Versão
 
@@ -60,3 +67,4 @@
 | 12/04/2026 | 0.1 | Criação do documento referente a Unidade 1. | Paulo Vitor | 
 | 15/05/2026 | 0.2 | Adição de documento referente a Unidade 2. | Paulo Vitor |
 | 15/06/2026 | 0.3 | Adição de documento referente a Unidade 3. | Paulo Vitor |
+| 01/07/2026 | 0.4 | Adição das lições aprendidas referentes à Unidade 4. | Paulo Vitor |

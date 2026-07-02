@@ -36,7 +36,7 @@
 
 ### 2. Fase de Elaboração
 **Período:** 19 de Maio - 30 de Maio (Iterações 6 e 7)  
-**Foco Estratégico:** Estabilização da arquitetura, modelagem da interface e validação rigorosa das políticas de qualidade (*Definition of Ready* e *Definition of Done*).
+**Foco Estratégico:** Estabilização da arquitetura, modelagem da interface e validação rigorosa das políticas de qualidade (Definition of Ready e Definition of Done).
 
 #### Gatilho de Entrada
 * Marco da Concepção validado.
@@ -63,16 +63,16 @@
 </details>
 
 #### Comprovação de Aplicação de DoR e DoD
-O uso efetivo do DoR e DoD foi registrado nas respectivas *issues* dos casos de uso. Os critérios e evidências de DoR foram validados em cada uma das *issues* dos casos de uso priorizados antes da aprovação para o desenvolvimento.
+O uso efetivo do DoR e DoD foi registrado nas respectivas issues dos casos de uso. Os critérios e evidências de DoR foram validados em cada uma das issues dos casos de uso priorizados antes da aprovação para o desenvolvimento.
 
-**Evidência de DoR:** Links para os checklists de DoR aplicados nas *issues* dos casos de uso.
+**Evidência de DoR:** Links para os checklists de DoR aplicados nas issues dos casos de uso.
 <details>
   <summary>Ver Exemplo de Evidência DoR</summary>
   <img src="../assets/issue-dor.png" alt="Evidências DoR" width="100%">
 </details>
 
 * **Links das Issues auditadas:**
-  [UC-1 (#74)](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-EcoQuest/issues/74) | UC-2 | [UC-6 (#47)](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-EcoQuest/issues/47) | UC-8 | UC-9 | [UC-10 (#48)](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-EcoQuest/issues/48) | [UC-11 (#49)](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-EcoQuest/issues/49) | [UC-12 (#50)](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-EcoQuest/issues/50) | [UC-15 (#51)](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-EcoQuest/issues/51)
+  [UC-1](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-EcoQuest/issues/74) | [UC-2](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-EcoQuest/issues/) | [UC-6 ](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-EcoQuest/issues/47) | [UC-8](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-EcoQuest/issues/) | [UC-9](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-EcoQuest/issues/) | [UC-10 ](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-EcoQuest/issues/48) | [UC-11](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-EcoQuest/issues/49) | [UC-12](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-EcoQuest/issues/50) | [UC-15](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-EcoQuest/issues/51)
 
 **Marco de Transição:** *Marco de Arquitetura do Ciclo de Vida* — A fundação técnica demonstrou suportar a escala de construção e o fluxo de trabalho foi validado na prática.
 
@@ -80,14 +80,14 @@ O uso efetivo do DoR e DoD foi registrado nas respectivas *issues* dos casos de 
 
 ### 3. Fase de Construção
 **Período:** 01 de Junho - 29 de Junho (Iterações 8 a 11)  
-**Foco Estratégico:** Desenvolvimento em fluxo contínuo, garantindo qualidade técnica por meio de *Code Review* e validação incremental.
+**Foco Estratégico:** Desenvolvimento em fluxo contínuo, garantindo qualidade técnica por meio de Code Review e validação incremental.
 
 #### Gatilho de Entrada
-* Arquitetura validada e itens de backlog cumprindo o *Definition of Ready* (DoR).
+* Arquitetura validada e itens de backlog cumprindo o Definition of Ready (DoR).
 
 #### Artefatos de Saída e Auditoria da Fase
-* **Comprovação de DoD de Negócio (Nível 2):** 100% dos Casos de Uso compromissados para o MVP foram validados contra o nosso *Definition of Done*. A aplicação prática do DoD ocorreu no processo de revisão de código, onde os critérios (passar em testes, linting, aprovação de pares) foram exigidos antes do merge.
-* **Evidência de DoD:** Todas as *Issues* dos casos de uso do MVP passaram por ambas as etapas de DoR e DoD de forma rastreável, como exemplificado abaixo:
+* **Comprovação de DoD de Negócio (Nível 2):** 100% dos Casos de Uso compromissados para o MVP foram validados contra o nosso Definition of Done. A aplicação prática do DoD ocorreu no processo de revisão de código, onde os critérios (passar em testes, linting, aprovação de pares) foram exigidos antes do merge.
+* **Evidência de DoD:** Todas as Issues dos casos de uso do MVP passaram por ambas as etapas de DoR e DoD de forma rastreável, como exemplificado abaixo:
   * **[UC-6 (#47)](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-EcoQuest/issues/47)**
   * **[UC-15 (#51)](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-EcoQuest/issues/51)**
 <details>
@@ -103,7 +103,7 @@ O uso efetivo do DoR e DoD foi registrado nas respectivas *issues* dos casos de 
 
 > **Auditoria de Release:** O site da aplicação encontra-se publicado e funcional no domínio: **[EcoQuest](https://eco-quest.org)**
 
-**Marco de Transição:** O software é capaz de executar seus fluxos críticos em ambiente produtivo, validado com sucesso pelos *stakeholders*.
+**Marco de Transição:** O software é capaz de executar seus fluxos críticos em ambiente produtivo, validado com sucesso pelos stakeholders.
 
 ---
 
@@ -116,7 +116,7 @@ O uso efetivo do DoR e DoD foi registrado nas respectivas *issues* dos casos de 
 
 #### Artefatos de Saída e Auditoria da Fase
 * Termo de aceite/homologação final validado com a cliente.
-* Sistema 100% funcional em *deploy*.
+* Sistema 100% funcional em deploy.
 * Documentação técnica final e Matriz de Rastreabilidade atualizadas.
 
 **Marco de Transição:** *Marco de Liberação do Produto* — Encerramento técnico da versão atual do MVP do projeto.
