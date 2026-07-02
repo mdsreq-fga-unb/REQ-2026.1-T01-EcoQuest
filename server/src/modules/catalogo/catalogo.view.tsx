@@ -1,5 +1,6 @@
 import { Html } from "@elysia/html";
 import { AppLayout } from "../../components/Applayout";
+import type { ResgateUsuario } from "../reward/service";
 
 interface Catalogo {
 	titulo: string;
@@ -223,14 +224,56 @@ function SecaoCategoria({
 	);
 }
 
+function SecaoResgatados({ resgates }: { resgates: ResgateUsuario[] }) {
+	const resgatesFiltrados = resgates.filter((r) => r.pontosGastos > 0);
+
+	if (resgatesFiltrados.length === 0) {
+		return null;
+	}
+
+	return (
+		<section class="resgatados" aria-label="Meus cupons resgatados">
+			<h2 class="resgatados_titulo">
+				<span>Meus Cupons Resgatados</span>
+				<span class="resgatados_contagem">{resgatesFiltrados.length}</span>
+			</h2>
+			<div class="resgatados_grid">
+				{resgatesFiltrados.map((r) => (
+					<article class="resgatados-card" tabindex="0">
+						<div class="resgatados-card_cabecalho">
+							<p class="resgatados-card_nome">{r.nomeRecompensa}</p>
+							<p class="resgatados-card_parceiro">{r.parceiro}</p>
+						</div>
+						<div class="resgatados-card_codigo-wrapper">
+							<span class="resgatados-card_codigo-label">Cupom</span>
+							<code class="resgatados-card_codigo">{r.codigo}</code>
+						</div>
+						<div class="resgatados-card_rodape">
+							<span class="resgatados-card_pontos">-{r.pontosGastos} pts</span>
+							<time
+								class="resgatados-card_data"
+								datetime={r.criadoEm.toISOString()}
+							>
+								{r.criadoEm.toLocaleDateString("pt-BR")}
+							</time>
+						</div>
+					</article>
+				))}
+			</div>
+		</section>
+	);
+}
+
 export function CatalogoView({
 	nomeUsuario,
 	pontos,
 	mapaIdRecompensa,
+	resgates = [],
 }: {
 	nomeUsuario: string;
 	pontos: number;
 	mapaIdRecompensa: Map<string, number>;
+	resgates?: ResgateUsuario[];
 }) {
 	return (
 		<AppLayout
@@ -250,6 +293,8 @@ export function CatalogoView({
 					</div>
 					<span class="catalogo-header_pontos">{pontos} pts</span>
 				</div>
+
+				<SecaoResgatados resgates={resgates} />
 
 				{CATEGORIAS.map((categoria, indice) => (
 					<SecaoCategoria
@@ -275,6 +320,130 @@ export function CatalogoView({
 			<script src="/assets/catalogo.js"></script>
 
 			<style>{`
+				/* ── Seção Meus Cupons Resgatados ── */
+				.resgatados {
+					margin-bottom: 28px;
+				}
+
+				.resgatados_titulo {
+					font-family: 'Oxanium', sans-serif;
+					font-size: 1.15rem;
+					color: #d0eed6;
+					display: flex;
+					align-items: center;
+					gap: 10px;
+					margin: 0 0 14px;
+				}
+
+				.resgatados_contagem {
+					background: rgba(93, 216, 121, 0.12);
+					color: #8bc99b;
+					font-size: 0.8rem;
+					font-weight: 600;
+					padding: 2px 10px;
+					border-radius: 20px;
+					font-family: 'Poppins', sans-serif;
+				}
+
+				.resgatados_grid {
+					
+					gap: 12px;
+					display: flex;
+					overflow: scroll;
+					flex-direction: row;
+					scrollbar-width: none;
+				}
+
+				.resgatados-card {
+					background: #EAF4EC;
+					border: 2px solid transparent;
+					border-radius: 12px;
+					padding: 16px;
+					display: flex;
+					flex-direction: column;
+					gap: 10px;
+					transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+					cursor: default;
+					color: #1F1F1F;
+					min-width: 280px;
+				}
+
+				.resgatados-card:hover {
+					transform: translateY(-3px);
+					box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+					border-color: #5DD879;
+				}
+
+				.resgatados-card_cabecalho {
+					display: flex;
+					flex-direction: column;
+					gap: 2px;
+				}
+
+				.resgatados-card_nome {
+					margin: 0;
+					font-family: 'Oxanium', sans-serif;
+					font-size: 0.78rem;
+					font-weight: 700;
+					text-transform: uppercase;
+					letter-spacing: 0.02em;
+					line-height: 1.3;
+					color: #1F1F1F;
+				}
+
+				.resgatados-card_parceiro {
+					margin: 0;
+					font-size: 0.82rem;
+					color: #3F3F3F;
+				}
+
+				.resgatados-card_codigo-wrapper {
+					display: flex;
+					flex-direction: column;
+					gap: 2px;
+				}
+
+				.resgatados-card_codigo-label {
+					font-size: 0.7rem;
+					color: #5a5a5a;
+					text-transform: uppercase;
+					letter-spacing: 0.05em;
+				}
+
+				.resgatados-card_codigo {
+					background: #fff;
+					border: 1px solid #ccc;
+					border-radius: 8px;
+					padding: 8px 12px;
+					font-family: 'Poppins', monospace;
+					font-size: 0.95rem;
+					font-weight: 600;
+					color: #2e7d32;
+					letter-spacing: 0.08em;
+					user-select: all;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+				}
+
+				.resgatados-card_rodape {
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+					margin-top: 2px;
+				}
+
+				.resgatados-card_pontos {
+					font-size: 0.85rem;
+					font-weight: 600;
+					color: var(--color-overlay);
+				}
+
+				.resgatados-card_data {
+					font-size: 0.78rem;
+					color: #888;
+				}
+
 				.modal-overlay {
 					position: fixed;
 					inset: 0;
