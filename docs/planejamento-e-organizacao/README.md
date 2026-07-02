@@ -57,10 +57,10 @@
         *   **Evidência de DoR :** Links para os checklists de DoR aplicados nas issues dos casos de uso.
         * ![Evidências DoR](../assets/issue-dor.png)
           * [UC-1](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-EcoQuest/issues/74)
-          * [UC-2](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-EcoQuest/issues/[INSERIR_NUMERO])
+          * [UC-2](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-EcoQuest/issues/)
           * [UC-6](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-EcoQuest/issues/47)
-          * [UC-8](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-EcoQuest/issues/[INSERIR_NUMERO])
-          * [UC-9](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-EcoQuest/issues/[INSERIR_NUMERO])
+          * [UC-8](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-EcoQuest/issues/)
+          * [UC-9](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-EcoQuest/issues/)
           * [UC-10](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-EcoQuest/issues/48)
           * [UC-11](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-EcoQuest/issues/49)
           * [UC-12](https://github.com/mdsreq-fga-unb/REQ-2026.1-T01-EcoQuest/issues/50)
