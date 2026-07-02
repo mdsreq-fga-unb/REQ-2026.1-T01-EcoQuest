@@ -82,6 +82,10 @@
     *   Taxa de cobertura de testes unitários monitorada para cumprimento da restrição arquitetural (70%).
       >  *   <img src="../assets/testes/cobertura-total.png" alt="Testes do caso de uso UC15" width="100%">
 
+    Aplicamos os checklists de forma rastreável diretamente nas Issues de cada Caso de Uso entregue no MVP, provando a execução.
+    Você pode conferir os checklists de DoR aplicados, por exemplo, na Issue do UC06 (link), e os checklists de DoD comprovando deploy, testes e PR aprovado no UC15 (link).
+    Sendo assim, movemos esta correção para Done.
+
 **Auditoria de Release:** 
 
 > **O site da aplicação está hospedado no seguinte domínio [EcoQuest](https://eco-quest.org)**
