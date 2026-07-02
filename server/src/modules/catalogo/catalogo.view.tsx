@@ -328,7 +328,7 @@ export function CatalogoView({
 				.resgatados_titulo {
 					font-family: 'Oxanium', sans-serif;
 					font-size: 1.15rem;
-					color: #d0eed6;
+					color: var(--catalogo-accent);
 					display: flex;
 					align-items: center;
 					gap: 10px;
