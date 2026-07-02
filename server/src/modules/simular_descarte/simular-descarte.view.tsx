@@ -427,7 +427,11 @@ export function SimularDescarteView({
 						);
 					})()}
 
-					<section class="simular-resumo-parcial" aria-live="polite">
+					<section
+						class="simular-resumo-parcial"
+						aria-live="polite"
+						style="background-color: var(--color-white);"
+					>
 						<p>
 							Total de itens: <strong id="simular-total-itens">0</strong>
 						</p>

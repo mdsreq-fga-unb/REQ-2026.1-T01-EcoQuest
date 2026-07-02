@@ -364,6 +364,26 @@ const CSS_MAPA = `
 		color: #777;
 		font-size: 0.85rem;
 	}
+
+	.search-pev-localizar {
+		padding: 10px 16px;
+		cursor: pointer;
+		border-top: 1px solid rgba(93,216,121,0.2);
+		transition: background 0.15s ease;
+		font-size: 0.85rem;
+		color: #5dd879;
+		display: flex;
+		align-items: center;
+		gap: 8px;
+	}
+	.search-pev-localizar:hover,
+	.search-pev-localizar.destaque {
+		background: rgba(93,216,121,0.15);
+	}
+	.search-pev-localizar .localizar-icone {
+		font-size: 1rem;
+		flex-shrink: 0;
+	}
 `;
 
 interface ProdutoAceito {
@@ -891,6 +911,52 @@ export function MapaView({
 							});
 					}
 
+					function buscarLocalizacao(q) {
+						var inp = document.getElementById('search-pev-input');
+						var lst = document.getElementById('search-pev-lista');
+						if (lst) lst.classList.remove('visivel');
+						if (inp) inp.value = '';
+
+						manualInput.value = q;
+						manualBtn.disabled = true;
+						manualBtn.textContent = 'Buscando...';
+
+						fetch('https://nominatim.openstreetmap.org/search?format=json&q=' + encodeURIComponent(q) + '&limit=1&countrycodes=br')
+							.then(function(r) { return r.json(); })
+							.then(function(data) {
+								manualBtn.disabled = false;
+								manualBtn.textContent = 'Buscar';
+
+								if (!data || data.length === 0) {
+									exibirErro('Local não encontrado: "' + q + '". Tente um termo diferente.', false);
+									return;
+								}
+
+								var loc = data[0];
+								userLat = parseFloat(loc.lat);
+								userLng = parseFloat(loc.lon);
+
+								if (!userMarker) {
+									addUserMarker(userLat, userLng);
+									map.setView([userLat, userLng], 13);
+								} else {
+									userMarker.setLatLng([userLat, userLng]);
+									map.setView([userLat, userLng], 13);
+								}
+
+								exibirSucesso('Localização definida: ' + loc.display_name.split(',')[0]);
+								manualBox.classList.remove('visivel');
+								searchWrap.style.display = '';
+
+								carregarPins(userLat, userLng);
+							})
+							.catch(function() {
+								manualBtn.disabled = false;
+								manualBtn.textContent = 'Buscar';
+								exibirErro('Falha ao buscar localização. Tente novamente.', true);
+							});
+					}
+
 					function setupSearch() {
 						if (searchSetupRealizada) return;
 						searchSetupRealizada = true;
@@ -907,18 +973,22 @@ export function MapaView({
 								return item.name.toLowerCase().includes(termo);
 							});
 
-							if (resultados.length === 0) {
-								lista.innerHTML = '<div class="search-pev-sem-resultado">Nenhum PEV encontrado para "' + q + '"</div>';
-								lista.classList.add('visivel');
-								return;
+							var html = '';
+
+							if (resultados.length > 0) {
+								resultados.forEach(function(item) {
+									html += '<div class="search-pev-item" data-lat="' + item.lat + '" data-lng="' + item.lng + '">';
+									html += item.name;
+									html += '</div>';
+								});
 							}
 
-							var html = '';
-							resultados.forEach(function(item) {
-								html += '<div class="search-pev-item" data-lat="' + item.lat + '" data-lng="' + item.lng + '">';
-								html += item.name;
-								html += '</div>';
-							});
+							// Opção para buscar como localização
+							html += '<div class="search-pev-localizar" data-acao="buscar-localizacao" data-termo="' + q.replace(/"/g, '&quot;') + '">';
+							html += '<span class="localizar-icone">🔍</span>';
+							html += '<span>Buscar "<strong>' + q + '</strong>" como localização</span>';
+							html += '</div>';
+
 							lista.innerHTML = html;
 							lista.classList.add('visivel');
 						}
@@ -939,8 +1009,16 @@ export function MapaView({
 
 						lista.addEventListener('click', function(ev) {
 							var item = ev.target.closest('.search-pev-item');
-							if (!item) return;
-							irPara(parseFloat(item.getAttribute('data-lat')), parseFloat(item.getAttribute('data-lng')));
+							if (item) {
+								irPara(parseFloat(item.getAttribute('data-lat')), parseFloat(item.getAttribute('data-lng')));
+								return;
+							}
+
+							var localizar = ev.target.closest('.search-pev-localizar');
+							if (localizar) {
+								var termo = localizar.getAttribute('data-termo');
+								if (termo) buscarLocalizacao(termo);
+							}
 						});
 
 						document.addEventListener('click', function(ev) {
@@ -948,9 +1026,31 @@ export function MapaView({
 						});
 
 						input.addEventListener('keydown', function(ev) {
-							var itens = lista.querySelectorAll('.search-pev-item');
+							var itens = lista.querySelectorAll('.search-pev-item, .search-pev-localizar');
 							if (itens.length === 0) return;
-							var atual = lista.querySelector('.search-pev-item.destaque');
+
+							if (ev.key === 'Enter') {
+								var destaque = lista.querySelector('.destaque');
+								if (destaque) {
+									ev.preventDefault();
+									if (destaque.classList.contains('search-pev-item')) {
+										irPara(parseFloat(destaque.getAttribute('data-lat')), parseFloat(destaque.getAttribute('data-lng')));
+									} else if (destaque.classList.contains('search-pev-localizar')) {
+										var termo = destaque.getAttribute('data-termo');
+										if (termo) buscarLocalizacao(termo);
+									}
+								} else {
+									// Enter sem destaque — usa o termo digitado como localização
+									var termo = input.value.trim();
+									if (termo) {
+										ev.preventDefault();
+										buscarLocalizacao(termo);
+									}
+								}
+								return;
+							}
+
+							var atual = lista.querySelector('.destaque');
 							var idx = -1;
 							if (atual) {
 								for (var i = 0; i < itens.length; i++) {
@@ -967,9 +1067,6 @@ export function MapaView({
 								var prev = (idx - 1 + itens.length) % itens.length;
 								if (atual) atual.classList.remove('destaque');
 								itens[prev].classList.add('destaque');
-							} else if (ev.key === 'Enter' && atual) {
-								ev.preventDefault();
-								irPara(parseFloat(atual.getAttribute('data-lat')), parseFloat(atual.getAttribute('data-lng')));
 							}
 						});
 					}

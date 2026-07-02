@@ -3,16 +3,12 @@
 -- TRUNCATE TABLE "user" CASCADE;
 -- TRUNCATE TABLE insignia CASCADE;
 
--- 2. Criar algumas insignias para o Ranking
-INSERT INTO insignia (id, code, name, description, criteria, is_active)
-VALUES 
-(100, 'reciclador_iniciante', 'Iniciante', 'Fez o primeiro descarte', '{}', true),
-(101, 'reciclador_prata', 'Prata', 'Atingiu 500 pontos', '{}', true),
-(102, 'reciclador_ouro', 'Ouro', 'Atingiu 1000 pontos', '{}', true),
-(103, 'rei_do_lixo', 'Eco King', 'Atingiu 5000 pontos', '{}', true)
-ON CONFLICT (code) DO NOTHING;
+-- As insignias utilizadas abaixo são definidas no seed_insignias.sql (executado antes via db:seed:all)
+--  104 = Primeiro Descarte  
+--  106 = Eco Frequente      |  107 = Bronze
+--  108 = Amigo da Coleta    |  109 = Eco Star
 
--- 3. Inserir usuários fictícios com pontuações variadas para popular o Ranking (Top 20)
+-- 2. Inserir usuários fictícios com pontuações variadas para popular o Ranking (Top 20)
 -- Os CPFs e emails são fictícios para garantir o UNIQUE constraint
 INSERT INTO "user" (id, name, email, cpf, phone, password_hash, points_balance, points_total_earned, ranking_anonymous)
 VALUES
@@ -42,35 +38,41 @@ VALUES
 (1024, 'Eduardo Pinto', 'eduardo@email.com', '11111111134', '11999999924', 'hash', 0, 50, false)
 ON CONFLICT (cpf) DO NOTHING;
 
--- 4. Associar insignias aos usuários (isso aparecerá abaixo do nome no ranking)
+-- 3. Associar insignias reais (do seed_insignias.sql) aos usuários
 INSERT INTO user_insignia (id_user, id_insignia, unlocked_at)
 VALUES
-(1001, 103, now()), -- Maria: Eco King
-(1002, 103, now()), -- João: Eco King
-(1003, 102, now()), -- Ana: Ouro
-(1004, 102, now()), -- Lucas: Ouro
-(1005, 102, now()), -- Carla: Ouro
-(1006, 102, now()), -- Pedro: Ouro
-(1007, 102, now()), -- Mariana: Ouro
-(1008, 101, now()), -- Roberto: Prata
-(1009, 101, now()), -- Julia: Prata
-(1010, 101, now()), -- Marcos: Prata
-(1011, 101, now()), -- Fernanda: Prata
-(1012, 101, now()), -- Rafael: Prata
-(1013, 101, now()), -- Patricia: Prata
-(1014, 101, now()), -- Tiago: Prata
-(1015, 101, now()), -- Camila: Prata
-(1016, 101, now()), -- Diego: Prata
-(1017, 101, now()), -- Letícia: Prata
-(1018, 100, now()), -- Bruno: Iniciante
-(1019, 100, now()), -- Amanda: Iniciante
-(1020, 100, now()), -- Felipe: Iniciante
-(1021, 100, now()), -- Larissa: Iniciante
-(1022, 100, now()), -- Thiago: Iniciante
-(1023, 100, now()), -- Beatriz: Iniciante
-(1024, 100, now())  -- Eduardo: Iniciante
+-- Eco Star (109) — topo do ranking (2000+ pontos)
+(1001, 109, now()), -- Maria: 5200 pts
+(1002, 109, now()), -- João:  4800 pts
+
+-- Eco Frequente (106) — usuários intermediários (10+ descartes)
+(1003, 106, now()), -- Ana:     4500 pts
+(1004, 106, now()), -- Lucas:   4100 pts
+(1005, 106, now()), -- Carla:   3900 pts
+(1006, 106, now()), -- Pedro:   3500 pts
+(1007, 106, now()), -- Mariana: 3200 pts
+
+-- Bronze (107) — 200+ pontos
+(1008, 107, now()), -- Roberto:  2900 pts
+(1009, 107, now()), -- Julia:    2600 pts
+(1010, 107, now()), -- Marcos:   2400 pts
+(1011, 107, now()), -- Fernanda: 2100 pts
+(1012, 107, now()), -- Rafael:   1900 pts
+(1013, 107, now()), -- Patrícia: 1750 pts
+(1014, 107, now()), -- Tiago:    1600 pts
+(1015, 107, now()), -- Camila:   1400 pts
+(1016, 107, now()), -- Diego:    1250 pts
+(1017, 107, now()), -- Letícia:  1100 pts
+
+-- Primeiro Descarte (104) — usuários iniciais
+(1018, 104, now()), -- Bruno:    950 pts
+(1019, 104, now()), -- Amanda:   800 pts
+(1020, 104, now()), -- Felipe:   600 pts
+(1021, 104, now()), -- Larissa:  400 pts
+(1022, 104, now()), -- Thiago:   200 pts
+(1023, 104, now()), -- Beatriz:  150 pts
+(1024, 104, now())  -- Eduardo:   50 pts
 ON CONFLICT (id_user, id_insignia) DO NOTHING;
 
 -- Atualiza a sequence do ID para evitar erros futuros em inserções normais
 SELECT setval('user_id_seq', (SELECT MAX(id) FROM "user"));
-SELECT setval('insignia_id_seq', (SELECT MAX(id) FROM insignia));

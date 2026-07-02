@@ -454,3 +454,55 @@ export async function resgatarRecompensaInsignia(
 		throw new ErroFalhaGeracaoCupom(err);
 	}
 }
+
+// ─── Resgates do usuário ────────────────────────────────────────────────────
+
+export interface ResgateUsuario {
+	id: number;
+	idRecompensa: number;
+	nomeRecompensa: string;
+	parceiro: string;
+	codigo: string;
+	pontosGastos: number;
+	criadoEm: Date;
+	expiraEm: Date | null;
+	status: string;
+}
+
+/**
+ * Lista todos os resgates (reward_redemption) de um usuário, do mais recente
+ * para o mais antigo, incluindo dados da recompensa e do parceiro.
+ */
+export async function listarResgatesUsuario(
+	idUsuario: number,
+): Promise<ResgateUsuario[]> {
+	const rows = await db`
+		SELECT
+			rr.id,
+			rr.id_reward     AS "idRecompensa",
+			r.name            AS "nomeRecompensa",
+			p.name            AS "parceiro",
+			rr.code,
+			rr.points_cost_snapshot AS "pontosGastos",
+			rr.created_at     AS "criadoEm",
+			rr.expires_at     AS "expiraEm",
+			rr.status
+		FROM reward_redemption rr
+		JOIN reward   r ON r.id = rr.id_reward
+		JOIN partner  p ON p.id = r.id_partner
+		WHERE rr.id_user = ${idUsuario}
+		ORDER BY rr.created_at DESC
+	`;
+
+	return rows.map((row: Record<string, unknown>) => ({
+		id: Number(row.id),
+		idRecompensa: Number(row.idRecompensa),
+		nomeRecompensa: String(row.nomeRecompensa),
+		parceiro: String(row.parceiro),
+		codigo: String(row.code),
+		pontosGastos: Number(row.pontosGastos),
+		criadoEm: new Date(row.criadoEm as string),
+		expiraEm: row.expiraEm ? new Date(row.expiraEm as string) : null,
+		status: String(row.status),
+	}));
+}

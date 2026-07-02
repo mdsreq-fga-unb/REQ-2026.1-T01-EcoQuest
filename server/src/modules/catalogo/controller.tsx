@@ -1,7 +1,7 @@
 import { Html } from "@elysia/html";
 import { Elysia } from "elysia";
 import { sessionPlugin } from "../../plugins/session";
-import { listarRecompensas } from "../reward/service";
+import { listarRecompensas, listarResgatesUsuario } from "../reward/service";
 import { CatalogoView } from "./catalogo.view";
 import { buscarSaldoPontos, ErroSaldoIndisponivel } from "./service";
 
@@ -15,9 +15,10 @@ export const catalogoController = new Elysia().use(sessionPlugin).get(
 		}
 
 		try {
-			const [pontos, recompensas] = await Promise.all([
+			const [pontos, recompensas, resgates] = await Promise.all([
 				buscarSaldoPontos(sessao.id),
 				listarRecompensas(),
+				listarResgatesUsuario(sessao.id),
 			]);
 
 			// Monta um mapa: nome da recompensa → id real no banco
@@ -28,6 +29,7 @@ export const catalogoController = new Elysia().use(sessionPlugin).get(
 					nomeUsuario={sessao.nome}
 					pontos={pontos}
 					mapaIdRecompensa={mapaId}
+					resgates={resgates}
 				/>
 			);
 		} catch (err) {
