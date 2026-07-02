@@ -189,7 +189,7 @@ body {
 	grid-template-columns: 1fr auto auto;
 	gap: 0.8rem;
 	font-size: 0.9rem;
-	background: var(--color-bg);
+	background: var(--color-white);
 	border: 1px solid rgba(43, 86, 51, 0.15);
 	border-radius: 8px;
 	padding: 0.45rem 0.6rem;
